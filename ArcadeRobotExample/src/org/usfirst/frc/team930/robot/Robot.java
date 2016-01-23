@@ -6,6 +6,8 @@ import edu.wpi.first.wpilibj.SampleRobot;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.Counter;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.Timer;
@@ -35,6 +37,7 @@ public class Robot extends SampleRobot {
     CANTalon shooterwheels;
     CANTalon shooterwheels2;
     Preferences prefs;
+    Counter counter1;
 
 
     public Robot() {
@@ -44,6 +47,8 @@ public class Robot extends SampleRobot {
     	shooterwheels = new CANTalon(0);
     	shooterwheels2 = new CANTalon(2);
     	prefs = Preferences.getInstance();
+    	counter1 = new Counter(new DigitalInput(0));
+    	counter1.setSemiPeriodMode(true);
     }
 
     /**
@@ -72,8 +77,11 @@ public class Robot extends SampleRobot {
     		shooterwheels2.set(Speed);
     		SmartDashboard.putNumber("Motor Output", Speed);
     		//rotateValue = prefs.getDouble("Rotatevalue", 4.);
-        	
-        	
+    		
+    		double highPulse = counter1.getPeriod();
+    		highPulse = 30.0/highPulse;
+    		SmartDashboard.putNumber("RPM Output", highPulse);
+    		
         	/*CameraServer server = CameraServer.getInstance();
         	server.setQuality(100);
         	server.startAutomaticCapture("cam0");
