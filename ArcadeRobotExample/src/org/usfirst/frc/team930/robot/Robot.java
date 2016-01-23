@@ -33,6 +33,7 @@ public class Robot extends SampleRobot {
     double rotateValue;
     double Speed;
     CANTalon shooterwheels;
+    CANTalon shooterwheels2;
     Preferences prefs;
 
 
@@ -41,6 +42,7 @@ public class Robot extends SampleRobot {
         //m//yRobot.setExpiration(0.1);
         //stick = new Joystick(0);
     	shooterwheels = new CANTalon(0);
+    	shooterwheels2 = new CANTalon(2);
     	prefs = Preferences.getInstance();
     }
 
@@ -65,8 +67,9 @@ public class Robot extends SampleRobot {
         	
         	
         	
-    		Speed = prefs.getDouble("Speed", 1.0);
+    		Speed = prefs.getDouble("Speed", 0);
     		shooterwheels.set(Speed);
+    		shooterwheels2.set(Speed);
     		SmartDashboard.putNumber("Motor Output", Speed);
     		//rotateValue = prefs.getDouble("Rotatevalue", 4.);
         	
