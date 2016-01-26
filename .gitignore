@@ -46,3 +46,4 @@ local.properties
 
 # Class Files
 *.class
+/bin/
