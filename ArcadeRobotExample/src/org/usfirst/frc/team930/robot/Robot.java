@@ -70,17 +70,30 @@ public class Robot extends SampleRobot {
         	//rotateValue = stick.getX();
         	//moveValue = stick.getY();
         	
+        	double highPulse = counter1.getPeriod();
+        	
+        	if (highPulse > 2000)
+        	{
+        		Speed = 0;
+        	}
+        	else
+        	{
+        		Speed = 1;
+        	}
         	
         	
     		Speed = prefs.getDouble("Speed", 0);
     		shooterwheels.set(Speed);
     		shooterwheels2.set(Speed);
+    		
     		SmartDashboard.putNumber("Motor Output", Speed);
     		//rotateValue = prefs.getDouble("Rotatevalue", 4.);
+    		 
     		
-    		double highPulse = counter1.getPeriod();
     		highPulse = 30.0/highPulse;
     		SmartDashboard.putNumber("RPM Output", highPulse);
+    		
+    		
     		
         	/*CameraServer server = CameraServer.getInstance();
         	server.setQuality(100);
