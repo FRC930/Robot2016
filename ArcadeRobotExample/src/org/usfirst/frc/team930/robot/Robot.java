@@ -72,7 +72,8 @@ public class Robot extends SampleRobot {
         	//moveValue = stick.getY();
         	
         	speedGoal = prefs.getDouble("Speed in RPM", 0);
-        	
+        	double speedPWM = prefs.getDouble("Speed in PWM", 0);
+        	/*
         	double highPulse = counter1.getPeriod();
     		if (highPulse > 0.001 || highPulse < -0.001)
     		{
@@ -92,9 +93,11 @@ public class Robot extends SampleRobot {
         	
     		shooterwheels.set(speed);
     		shooterwheels2.set(speed);
-    		
+    		*/
     		SmartDashboard.putNumber("Motor Output", speed);
     		
+    		shooterwheels.set(speedPWM);
+    		shooterwheels2.set(speedPWM);
     		
     		//rotateValue = prefs.getDouble("Rotatevalue", 4.);
     		
