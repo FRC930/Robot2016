@@ -33,8 +33,8 @@ public class Robot extends SampleRobot {
     //RobotDrive myRobot;
     //Joystick stick;
     double rotateValue;
-    double Speed;
-    double SpeedGoal;
+    double speed;
+    double speedGoal;
     CANTalon shooterwheels;
     CANTalon shooterwheels2;
     Preferences prefs;
@@ -71,42 +71,40 @@ public class Robot extends SampleRobot {
         	//rotateValue = stick.getX();
         	//moveValue = stick.getY();
         	
-        	SpeedGoal = prefs.getDouble("Speed", 0);
-    
+        	speedGoal = prefs.getDouble("Speed in RPM", 0);
         	
         	double highPulse = counter1.getPeriod();
-    		highPulse = 30.0/highPulse;
+    		if (highPulse > 0.001 || highPulse < -0.001)
+    		{
+    			highPulse = 30.0/highPulse;
+    		}
     		SmartDashboard.putNumber("RPM Output", highPulse);
+    		
         	
-        	if (highPulse > SpeedGoal)
+        	if (highPulse > speedGoal)
         	{
-        		Speed = 0;
-        	}
+        		speed = 0;
+        	} 
         	else
         	{
-        		Speed = 1;
+        		speed = 1;
         	}
         	
-    		shooterwheels.set(Speed);
-    		shooterwheels2.set(Speed);
+    		shooterwheels.set(speed);
+    		shooterwheels2.set(speed);
     		
-    		SmartDashboard.putNumber("Motor Output", Speed);
+    		SmartDashboard.putNumber("Motor Output", speed);
+    		
+    		
     		//rotateValue = prefs.getDouble("Rotatevalue", 4.);
-    		 
-
-    		
-    		
     		
         	/*CameraServer server = CameraServer.getInstance();
         	server.setQuality(100);
         	server.startAutomaticCapture("cam0");
         	*/
     		
-        	
-        	
-        	
             //myRobot.arcadeDrive(moveValue, rotateValue); // drive with arcade style (use right stick)
-            Timer.delay(0.005);		// wait for a motor update time
+            Timer.delay(0.001);		// wait for a motor update time
         }
         /*CameraServer server = CameraServer.getInstance();
     	server.setQuality(1);
