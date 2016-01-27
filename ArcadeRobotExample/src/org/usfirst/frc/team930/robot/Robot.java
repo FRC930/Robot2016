@@ -34,6 +34,7 @@ public class Robot extends SampleRobot {
     //Joystick stick;
     double rotateValue;
     double Speed;
+    double SpeedGoal;
     CANTalon shooterwheels;
     CANTalon shooterwheels2;
     Preferences prefs;
@@ -70,9 +71,14 @@ public class Robot extends SampleRobot {
         	//rotateValue = stick.getX();
         	//moveValue = stick.getY();
         	
-        	double highPulse = counter1.getPeriod();
+        	SpeedGoal = prefs.getDouble("Speed", 0);
+    
         	
-        	if (highPulse > 2000)
+        	double highPulse = counter1.getPeriod();
+    		highPulse = 30.0/highPulse;
+    		SmartDashboard.putNumber("RPM Output", highPulse);
+        	
+        	if (highPulse > SpeedGoal)
         	{
         		Speed = 0;
         	}
@@ -81,17 +87,13 @@ public class Robot extends SampleRobot {
         		Speed = 1;
         	}
         	
-        	
-    		Speed = prefs.getDouble("Speed", 0);
     		shooterwheels.set(Speed);
     		shooterwheels2.set(Speed);
     		
     		SmartDashboard.putNumber("Motor Output", Speed);
     		//rotateValue = prefs.getDouble("Rotatevalue", 4.);
     		 
-    		
-    		highPulse = 30.0/highPulse;
-    		SmartDashboard.putNumber("RPM Output", highPulse);
+
     		
     		
     		
