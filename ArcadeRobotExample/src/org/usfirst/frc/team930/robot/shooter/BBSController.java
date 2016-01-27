@@ -1,6 +1,5 @@
 package org.usfirst.frc.team930.robot.shooter;
 
-import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.SpeedController;
 
 /**
@@ -17,7 +16,7 @@ import edu.wpi.first.wpilibj.SpeedController;
  */
 public class BBSController extends Controller {
 	
-	PIDSource m_source;
+	ControllerSource m_source;
 	SpeedController m_sc;
 	double m_targetRPM;
 	
@@ -27,14 +26,18 @@ public class BBSController extends Controller {
 	 * @param sc The SpeedController that will be controlled
 	 * @param targetRPM The target RPM for the SpeedController to spin at
 	 */
-	public BBSController(PIDSource source, SpeedController sc, double targetRPM) {
+	public BBSController(ControllerSource source, SpeedController sc, double targetRPM) {
 		m_source = source;
 		m_sc = sc;
 		m_targetRPM = targetRPM;
 	}
 	
 	public void calculate() {
-		
+		if(m_source.getValue() < m_targetRPM) {
+			m_sc.set(1);
+		} else {
+			m_sc.set(0);
+		}
 	}
 	
 }

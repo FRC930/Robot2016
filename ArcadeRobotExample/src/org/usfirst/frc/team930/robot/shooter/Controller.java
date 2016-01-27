@@ -11,7 +11,7 @@ import java.util.TimerTask;
  */
 abstract public class Controller {
 
-	private static final double DEFAULT_PERIOD = .05;
+	private static final double DEFAULT_PERIOD = .005;
 	private boolean enabled;
 	private java.util.Timer loop;
 	
