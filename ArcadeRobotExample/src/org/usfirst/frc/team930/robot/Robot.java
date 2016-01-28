@@ -1,5 +1,9 @@
 package org.usfirst.frc.team930.robot;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import org.usfirst.frc.team930.robot.shooter.BBSController;
 import org.usfirst.frc.team930.robot.shooter.ControllerSource;
 import org.usfirst.frc.team930.robot.shooter.CounterRPMSource;
@@ -37,14 +41,24 @@ public class Robot extends SampleRobot {
 
 		cont1.enable();
 		cont2.enable();
-
+		try {
+		File txtfile = new File("Outputs.txt");
+		FileWriter fw = new FileWriter(txtfile.getAbsoluteFile());
+		
 		while (isOperatorControl() && isEnabled()) {
 
 			double highPulse = 30.0 / counter.getPeriod();
 			SmartDashboard.putNumber("RPM Output", highPulse);
+			fw.write(""+highPulse);
+			fw.close();
 
 			Timer.delay(0.005); // wait for a motor update time
 		}
+			
+		fw.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		
 		cont1.disable();
 		cont2.disable();
