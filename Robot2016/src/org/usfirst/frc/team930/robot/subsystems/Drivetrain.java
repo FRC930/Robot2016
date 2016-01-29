@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team930.robot.subsystems;
 
+import org.usfirst.frc.team930.robot.OI;
 import org.usfirst.frc.team930.robot.RobotMap;
 import org.usfirst.frc.team930.robot.commands.Drive;
 
@@ -60,22 +61,32 @@ public class Drivetrain extends Subsystem {
     {
     	if(drive > turn)
     	{
-    		L1.set(drive);
+    		/*L1.set(drive);
     		L2.set(drive);
     		L3.set(drive);
     		R1.set(drive);
     		R2.set(drive);
-    		R3.set(drive);
+    		R3.set(drive);*/
+    		System.out.println("Drive Forward");
     		
     	}
     	else
     	{
-    		L1.set(turn);
+    		/*L1.set(turn);
     		L2.set(turn);
     		L3.set(turn);
     		R1.set(-turn);
     		R2.set(-turn);
-    		R3.set(-turn);
+    		R3.set(-turn);*/
+    		if(OI.getYAxis() > 0)
+    		{
+    		System.out.println("Turning Right");
+    		}
+    		if(OI.getYAxis() < 0)
+    		{
+    		System.out.println("Turning Left");
+    		}
+    		
     	}
     }
     

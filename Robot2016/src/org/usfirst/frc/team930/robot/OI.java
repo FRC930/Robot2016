@@ -2,8 +2,11 @@ package org.usfirst.frc.team930.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 import org.usfirst.frc.team930.robot.commands.Drive;
+import org.usfirst.frc.team930.robot.commands.MoveIntakeRollers;
+import org.usfirst.frc.team930.robot.commands.ShootLowGoal;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -16,8 +19,21 @@ public class OI {
     // number it is.
     // Joystick stick = new Joystick(port);
     // Button button = new JoystickButton(stick, buttonNumber);
+	private static OI instance;
+	private OI(){
+		Button button0 = new JoystickButton(driverJoystick, 0);
+		Button button1 = new JoystickButton(driverJoystick, 1);
+		button0.whenPressed(new ShootLowGoal());
+		button1.whenPressed(new MoveIntakeRollers());
 	
+	}
+	public static OI getInstance(){
+		
+		
+	return instance;
+	}
 	static Joystick driverJoystick = new Joystick(0);
+	
 	
 	public static double getXAxis()
 	{

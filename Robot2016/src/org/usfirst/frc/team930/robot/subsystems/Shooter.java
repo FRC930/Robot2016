@@ -1,6 +1,7 @@
 package org.usfirst.frc.team930.robot.subsystems;
 
 import org.usfirst.frc.team930.robot.RobotMap;
+import org.usfirst.frc.team930.robot.commands.ShootHighGoal;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.Victor;
@@ -18,6 +19,7 @@ public class Shooter extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
+    	setDefaultCommand(new ShootHighGoal());
     }
     
     public void setShooter(double speed)
