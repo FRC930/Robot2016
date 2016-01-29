@@ -12,7 +12,6 @@ public class Shooter extends Subsystem {
 	
 	Victor shooter1 = new Victor(RobotMap.S1Port);
 	Victor shooter2 = new Victor(RobotMap.S2Port);
-    
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 

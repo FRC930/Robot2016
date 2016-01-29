@@ -1,8 +1,0 @@
-A Super Sweet Message On There
-<<<<<<< HEAD
-Harry Potter
-=======
-
-
-Are you finished with those snapchats?
->>>>>>> origin/master
