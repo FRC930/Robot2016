@@ -2,4 +2,8 @@
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="edu.wpi.first.wpilibj.Victor"/>
 <fullyQualifiedTypeName name="edu.wpi.first.wpilibj.Timer"/>
+<fullyQualifiedTypeName name="edu.wpi.first.wpilibj.buttons.JoystickButton"/>
+<fullyQualifiedTypeName name="org.usfirst.frc.team930.robot.commands.ShootHighGoal"/>
+<fullyQualifiedTypeName name="org.usfirst.frc.team930.robot.commands.ShootLowGoal"/>
+<fullyQualifiedTypeName name="org.usfirst.frc.team930.robot.commands.MoveIntakeRollers"/>
 </qualifiedTypeNameHistroy>

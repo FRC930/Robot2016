@@ -824,3 +824,87 @@ Caused by: java.io.FileNotFoundException: C:\Users\Devin\Documents\GitHub\Robot2
 
 !ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-01-28 18:05:28.520
 !MESSAGE Installedjava
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-01-28 20:03:14.931
+!MESSAGE Running ant file: C:\Users\Devin\Documents\GitHub\Robot2016\Robot2016\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-01-28 20:03:14.943
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-01-28 20:08:37.547
+!MESSAGE Running ant file: C:\Users\Devin\Documents\GitHub\Robot2016\Robot2016\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-01-28 20:08:37.561
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-01-28 20:12:22.145
+!MESSAGE Running ant file: C:\Users\Devin\Documents\GitHub\Robot2016\Robot2016\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-01-28 20:12:22.236
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-01-28 20:16:43.533
+!MESSAGE Running ant file: C:\Users\Devin\Documents\GitHub\Robot2016\Robot2016\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-01-28 20:16:43.548
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-01-28 20:19:58.975
+!MESSAGE Running ant file: C:\Users\Devin\Documents\GitHub\Robot2016\Robot2016\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-01-28 20:19:58.990
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-01-28 20:28:07.610
+!MESSAGE Running ant file: C:\Users\Devin\Documents\GitHub\Robot2016\Robot2016\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-01-28 20:28:07.616
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-01-28 20:31:35.973
+!MESSAGE Running ant file: C:\Users\Devin\Documents\GitHub\Robot2016\Robot2016\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-01-28 20:31:35.984
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-01-28 20:33:23.703
+!MESSAGE Running ant file: C:\Users\Devin\Documents\GitHub\Robot2016\Robot2016\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-01-28 20:33:23.712
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-01-28 20:37:50.490
+!MESSAGE Running ant file: C:\Users\Devin\Documents\GitHub\Robot2016\Robot2016\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-01-28 20:37:50.505
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-01-28 20:41:48.068
+!MESSAGE Running ant file: C:\Users\Devin\Documents\GitHub\Robot2016\Robot2016\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-01-28 20:41:48.074
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-01-28 20:43:52.788
+!MESSAGE Running ant file: C:\Users\Devin\Documents\GitHub\Robot2016\Robot2016\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-01-28 20:43:52.796
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-01-28 20:45:25.153
+!MESSAGE Running ant file: C:\Users\Devin\Documents\GitHub\Robot2016\Robot2016\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-01-28 20:45:25.159
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-01-28 20:48:02.809
+!MESSAGE Running ant file: C:\Users\Devin\Documents\GitHub\Robot2016\Robot2016\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-01-28 20:48:02.817
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-01-28 20:48:35.309
+!MESSAGE Running ant file: C:\Users\Devin\Documents\GitHub\Robot2016\Robot2016\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-01-28 20:48:35.314
+!MESSAGE Targets: deploy, Mode: run
