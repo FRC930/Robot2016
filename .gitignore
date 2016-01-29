@@ -46,3 +46,6 @@ local.properties
 
 # Class Files
 *.class
+
+.*
+!/.gitignore
