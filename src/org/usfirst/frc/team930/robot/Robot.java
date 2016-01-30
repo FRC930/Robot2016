@@ -24,7 +24,7 @@ public class Robot extends IterativeRobot {
 	public static final Drivetrain Drivetrain1 = new Drivetrain();
 	public static final Intake intake = new Intake();
 	public static final Shooter shooter = new Shooter();
-	public static OI oi = OI.getInstance();
+	public static OI oi;
 
     Command autonomousCommand;
     SendableChooser chooser;
@@ -34,10 +34,11 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
-        chooser = new SendableChooser();
-        chooser.addDefault("Default Auto", new Drive());
+    	//OI.getInstance();
+        //chooser = new SendableChooser();
+        //chooser.addDefault("Default Auto", new Drive());
 //        chooser.addObject("My Auto", new MyAutoCommand());
-        SmartDashboard.putData("Auto mode", chooser);
+        //SmartDashboard.putData("Auto mode", chooser);
     }
 	
 	/**

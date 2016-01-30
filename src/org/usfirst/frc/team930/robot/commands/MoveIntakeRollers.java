@@ -13,6 +13,7 @@ public class MoveIntakeRollers extends Command {
     public MoveIntakeRollers() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	requires(Robot.intake);
     }
 
     // Called just before this Command runs the first time

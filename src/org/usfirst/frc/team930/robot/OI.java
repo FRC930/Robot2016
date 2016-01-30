@@ -21,17 +21,27 @@ public class OI {
 	// Joystick stick = new Joystick(port);
 	// Button button = new JoystickButton(stick, buttonNumber);
 	private static OI instance = new OI();
-	Button button0 = new JoystickButton(driverJoystick, 0);
-	Button button1 = new JoystickButton(driverJoystick, 1);
+	
+	static Joystick driverJoystick1;
+	Button button0;
+	Button button1;
 
 	private OI() {
-		try { // CHECK MEEEE!!!!
+		driverJoystick1 = new Joystick(1);
+		button0 = new JoystickButton(driverJoystick1,1);
+		button1 = new JoystickButton(driverJoystick1,2);
+		
+		// CHECK MEEEE!!!!
+		
+		
+		
+			
 			button0.whenPressed(new ShootLowGoal());
 			button1.whenPressed(new MoveIntakeRollers());
-		} catch (Exception e) {
-			e.printStackTrace();
+		
+		
 		}
-	}
+	
 
 	public static OI getInstance() {
 		if (instance == null)
@@ -39,14 +49,12 @@ public class OI {
 		return instance;
 	}
 
-	static Joystick driverJoystick = new Joystick(0);
-
 	public static double getXAxis() {
-		return driverJoystick.getRawAxis(0);
+		return driverJoystick1.getRawAxis(0);
 	}
 
 	public static double getYAxis() {
-		return driverJoystick.getRawAxis(1);
+		return driverJoystick1.getRawAxis(1);
 	}
 
 	// There are a few additional built in buttons you can use. Additionally,

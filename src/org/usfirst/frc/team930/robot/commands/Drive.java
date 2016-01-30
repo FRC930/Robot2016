@@ -24,8 +24,8 @@ public class Drive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.Drivetrain1.setDriveSpeed(OI.getXAxis(), OI.getYAxis());
-    	
+    	//Robot.Drivetrain1.setDriveSpeed(OI.getXAxis(), OI.getYAxis());
+    	Robot.Drivetrain1.setDriveSpeed(0, 0);
     	
     }
 
