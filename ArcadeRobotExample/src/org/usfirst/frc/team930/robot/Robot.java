@@ -42,24 +42,23 @@ public class Robot extends SampleRobot {
 		cont1.enable();
 		cont2.enable();
 		try {
-		File txtfile = new File("Outputs.txt");
-		FileWriter fw = new FileWriter(txtfile.getAbsoluteFile());
-		
-		while (isOperatorControl() && isEnabled()) {
+			File txtfile = new File("Outputs.txt");
+			FileWriter fw = new FileWriter(txtfile.getAbsoluteFile());
 
-			double highPulse = 30.0 / counter.getPeriod();
-			SmartDashboard.putNumber("RPM Output", highPulse);
-			fw.write(""+highPulse);
-			fw.close();
+			while (isOperatorControl() && isEnabled()) {
 
-			Timer.delay(0.005); // wait for a motor update time
-		}
-			
-		fw.close();
-			} catch (IOException e) {
-				e.printStackTrace();
+				double highPulse = 30.0 / counter.getPeriod();
+				SmartDashboard.putNumber("RPM Output", highPulse);
+				fw.write("" + highPulse + "\n");
+
+				Timer.delay(0.005); // wait for a motor update time
 			}
-		
+
+			fw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 		cont1.disable();
 		cont2.disable();
 	}
