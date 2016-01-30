@@ -59,50 +59,71 @@ public class Drivetrain extends Subsystem {
     }
     public void setDriveSpeed(double drive, double turn)
     {
-    	if(OI.getYAxis() > 0.1 && Math.abs(OI.getXAxis()) < 0.1)
+   
+    	if(Math.abs(OI.getYAxis())>0.4 && Math.abs(OI.getXAxis())>0.4)
     	{
+    		/*L1.set((OI.getYAxis() + OI.getXAxis())/2);
+    		L2.set((OI.getYAxis() + OI.getXAxis())/2);
+    		L3.set((OI.getYAxis() + OI.getXAxis())/2);
+    		R1.set((OI.getYAxis() - OI.getXAxis())/2);
+    		R2.set((OI.getYAxis() - OI.getXAxis())/2);
+    		R3.set((OI.getYAxis() - OI.getXAxis())/2);*/
+    		System.out.println("Going sideways: " + ((OI.getYAxis()+OI.getXAxis())/2));
+    		System.out.println("Going sideways: " + ((OI.getYAxis()-OI.getXAxis())/2));
+    	}
+    	 else if(OI.getYAxis() < -0.1 && Math.abs(OI.getXAxis()) < 0.15)
+     	{
+     		/*L1.set(OI.getYAxis());
+     		L2.set(OI.getYAxis());
+     		L3.set(OI.getYAxis());
+     		R1.set(OI.getYAxis());
+     		R2.set(OI.getYAxis());
+     		R3.set(OI.getYAxis());*/
+     		System.out.println("Drive Forward: " + OI.getYAxis());
+     		
+     	}
+    	else if(OI.getYAxis() > 0.1 && Math.abs(OI.getXAxis()) < 0.15)
+    	{
+    		System.out.println("Going backwards: " + OI.getYAxis());
     		/*L1.set(OI.getYAxis());
     		L2.set(OI.getYAxis());
     		L3.set(OI.getYAxis());
     		R1.set(OI.getYAxis());
     		R2.set(OI.getYAxis());
     		R3.set(OI.getYAxis());*/
-    		System.out.println("Drive Forward");
-    		
     	}
-    	else if(OI.getYAxis() < -0.1 && Math.abs(OI.getXAxis()) < 0.1)
+    	else if(OI.getXAxis()>0.1 && Math.abs(OI.getYAxis()) < 0.15)
     	{
-    		System.out.println("Going backwards");
-    		/*L1.set(OI.getYAxis());
-    		L2.set(OI.getYAxis());
-    		L3.set(OI.getYAxis());
-    		R1.set(OI.getYAxis());
-    		R2.set(OI.getYAxis());
-    		R3.set(OI.getYAxis());*/
+    	System.out.println("Going Right: " + OI.getXAxis());
+    	System.out.println("Going Right: " + -OI.getXAxis());
+    		/*L1.set(OI.getXAxis());
+    		L2.set(OI.getXAxis());
+    		L3.set(OI.getXAxis());
+    		R1.set(-OI.getXAxis());
+    		R2.set(-OI.getXAxis());
+    		R3.set(-OI.getXAxis());*/
     	}
-    	else if(OI.getXAxis()<-0.1 && Math.abs(OI.getYAxis()) < 0.1)
+    	else if(OI.getXAxis()<-0.1 && Math.abs(OI.getYAxis()) < 0.15)
     	{
-    	System.out.println("Going Right");
-    		/*L1.set(OI.getAxis());
-    		L2.set(OI.getAxis());
-    		L3.set(OI.getAxis());
-    		R1.set(-OI.getAxis());
-    		R2.set(-OI.getAxis());
-    		R3.set(-OI.getAxis());*/
+    	System.out.println("Going Left " + OI.getXAxis());
+    	System.out.println("Going Left " + -OI.getXAxis());
+    		/*L1.set(-OI.getXAxis());
+    		L2.set(-OI.getXAxis());
+    		L3.set(-OI.getXAxis());
+    		R1.set(OI.getXAxis());
+    		R2.set(OI.getXAxis());
+    		R3.set(OI.getXAxis());*/
     	}
-    	else if(OI.getXAxis()>0.1 && Math.abs(OI.getYAxis()) < 0.1)
-    	{
-    	System.out.println("Going Left");
-    		/*L1.set(-OI.getAxis());
-    		L2.set(-OI.getAxis());
-    		L3.set(-OI.getAxis());
-    		R1.set(OI.getAxis());
-    		R2.set(OI.getAxis());
-    		R3.set(OI.getAxis());*/
-    	}
+    	
     		else
     		{
     		System.out.println("Staying still");
+    		/*L1.set(0);
+    		L2.set(0);
+    		L3.set(0);
+    		R1.set(0);
+    		R2.set(0);
+    		R3.set(0);*/
     		}
     		
     	}
