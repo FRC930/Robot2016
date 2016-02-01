@@ -11,7 +11,7 @@ import java.util.TimerTask;
  */
 abstract public class Controller {
 
-	private static final double DEFAULT_PERIOD = .005;
+	private static final double DEFAULT_PERIOD = .05;
 	private boolean enabled;
 	private java.util.Timer loop;
 	
@@ -34,6 +34,7 @@ abstract public class Controller {
 	 */
 	public void enable() {
 		enabled = true;
+		System.out.println("Enabled Controller");
 	}
 
 	/**
@@ -41,6 +42,7 @@ abstract public class Controller {
 	 */
 	public void disable() {
 		enabled = false;
+		System.out.println("Disabled Controller");
 	}
 	
 	/**

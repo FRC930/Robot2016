@@ -16,9 +16,12 @@ import edu.wpi.first.wpilibj.SpeedController;
  */
 public class BBSController extends Controller {
 	
-	ControllerSource m_source;
-	SpeedController m_sc;
-	double m_targetRPM;
+	private static int count = 0;
+	
+	private ControllerSource m_source;
+	private SpeedController m_sc;
+	private double m_targetRPM;
+	private int m_count; 
 	
 	/**
 	 * Constructs a Controller given an RPM input, target, and speedcontroller
@@ -30,13 +33,18 @@ public class BBSController extends Controller {
 		m_source = source;
 		m_sc = sc;
 		m_targetRPM = targetRPM;
+		
+		count++;
+		m_count = count;
 	}
 	
 	public void calculate() {
 		if(m_source.getValue() < m_targetRPM) {
+			System.out.println("\t" + count + " Increase!");
 			m_sc.set(1);
 		} else {
 			m_sc.set(0);
+			System.out.println("\t" + count + " OK!");
 		}
 	}
 	

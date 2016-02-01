@@ -30,8 +30,8 @@ public class Robot extends SampleRobot {
 		counter = new CounterRPMSource(new DigitalInput(0));
 		counter.setSemiPeriodMode(true);
 
-		cont1 = new BBSController((ControllerSource) counter, shooter1, 2000.0);
-		cont2 = new BBSController((ControllerSource) counter, shooter2, 2000.0);
+		cont1 = new BBSController((ControllerSource) counter, shooter1, 500.0);
+		cont2 = new BBSController((ControllerSource) counter, shooter2, 500.0);
 	}
 
 	public void autonomous() {
@@ -39,25 +39,12 @@ public class Robot extends SampleRobot {
 
 	public void operatorControl() {
 
+		Timer.delay(5);
+
 		cont1.enable();
 		cont2.enable();
-		try {
-			File txtfile = new File("Outputs.txt");
-			FileWriter fw = new FileWriter(txtfile.getAbsoluteFile());
 
-			while (isOperatorControl() && isEnabled()) {
-
-				double highPulse = 30.0 / counter.getPeriod();
-				SmartDashboard.putNumber("RPM Output", highPulse);
-				fw.write("" + highPulse + "\n");
-
-				Timer.delay(0.005); // wait for a motor update time
-			}
-
-			fw.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		Timer.delay(5);
 
 		cont1.disable();
 		cont2.disable();
