@@ -17,14 +17,14 @@ import edu.wpi.first.wpilibj.SpeedController;
  * 
  * @see Controller.java
  * @author Nick Janovetz
- * @version 2016.02.03_2 Added set methods
+ * @version 2016.02.03_3 Added finality to m_sc
  */
 public class BBSController extends Controller {
 
 	private static int count = 0;
 
 	private ControllerSource m_source;
-	private SpeedController m_sc;
+	private final SpeedController m_sc;
 	private double m_targetRPM;
 	private double m_accel;
 	private int m_count;
