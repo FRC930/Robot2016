@@ -1,9 +1,5 @@
 package org.usfirst.frc.team930.robot;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-
 import org.usfirst.frc.team930.robot.shooter.BBSController;
 import org.usfirst.frc.team930.robot.shooter.ControllerSource;
 import org.usfirst.frc.team930.robot.shooter.CounterRPMSource;
@@ -13,7 +9,6 @@ import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.Counter;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Robot extends SampleRobot {
 
@@ -30,8 +25,8 @@ public class Robot extends SampleRobot {
 		counter = new CounterRPMSource(new DigitalInput(0));
 		counter.setSemiPeriodMode(true);
 
-		cont1 = new BBSController((ControllerSource) counter, shooter1, 500.0);
-		cont2 = new BBSController((ControllerSource) counter, shooter2, 500.0);
+		cont1 = new BBSController((ControllerSource) counter, shooter1, 3000.0, .8);
+		cont2 = new BBSController((ControllerSource) counter, shooter2, 3000.0, .8);
 	}
 
 	public void autonomous() {
@@ -39,12 +34,14 @@ public class Robot extends SampleRobot {
 
 	public void operatorControl() {
 
-		Timer.delay(5);
+		Timer.delay(3);
 
 		cont1.enable();
 		cont2.enable();
 
-		Timer.delay(5);
+		while(isEnabled()){ }
+		
+//		Timer.delay(2);
 
 		cont1.disable();
 		cont2.disable();

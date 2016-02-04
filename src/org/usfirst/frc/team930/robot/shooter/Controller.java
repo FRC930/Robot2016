@@ -6,7 +6,7 @@ import java.util.TimerTask;
  * an enable-able looped calculator. 
  * 
  * @author Nick Janovetz
- * @version 2016.01.26_1
+ * @version 2016.02.03_1 Formatting changes
  *
  */
 abstract public class Controller {
