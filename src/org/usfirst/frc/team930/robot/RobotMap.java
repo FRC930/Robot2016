@@ -11,16 +11,23 @@ public class RobotMap {
     // public static int leftMotor = 1;
     // public static int rightMotor = 2;
 	
-	public static int L1Port = 0;
-	public static int L2Port = 1;
-	public static int L3Port = 2;
-	public static int R1Port = 3;
-	public static int R2Port = 4;
-	public static int R3Port = 5;
-	public static int S1Port = 6;
-	public static int S2Port = 7;
-	public static int I1Port = 8;
-	public static int I2Port = 9;
+	public static int LFrontPort = 0;
+	public static int LTopPort = 1;
+	public static int LBackPort = 2;
+	public static int RFrontPort = 3;
+	public static int RTopPort = 4;
+	public static int RBackPort = 5;
+	public static int S1Port = 0;
+	public static int S2Port = 1;
+	public static int I1Port = 3;
+	public static int I2Port = 4;
+	public static int ILiftPort = 5;
+	public static int lightSensorPort = 0;
+	public static int potPort = 1;
+	public static int shooterSensorPort = 2;
+	public static int distanceSensorPort = 3;
+	
+	
     
     // If you are using multiple modules, make sure to define both the port
     // number and the module. For example you with a rangefinder:

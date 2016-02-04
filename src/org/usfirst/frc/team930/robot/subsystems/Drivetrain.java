@@ -16,12 +16,12 @@ public class Drivetrain extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
-	TalonSRX L1 = new TalonSRX(RobotMap.L1Port);
-	TalonSRX L2 = new TalonSRX(RobotMap.L2Port);
-	TalonSRX L3 = new TalonSRX(RobotMap.L3Port);
-	TalonSRX R1 = new TalonSRX(RobotMap.R1Port);
-	TalonSRX R2 = new TalonSRX(RobotMap.R2Port);
-	TalonSRX R3 = new TalonSRX(RobotMap.R3Port);
+	TalonSRX L1 = new TalonSRX(RobotMap.LFrontPort);
+	TalonSRX L2 = new TalonSRX(RobotMap.LTopPort);
+	TalonSRX L3 = new TalonSRX(RobotMap.LBackPort);
+	TalonSRX R1 = new TalonSRX(RobotMap.RFrontPort);
+	TalonSRX R2 = new TalonSRX(RobotMap.RTopPort);
+	TalonSRX R3 = new TalonSRX(RobotMap.RBackPort);
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
