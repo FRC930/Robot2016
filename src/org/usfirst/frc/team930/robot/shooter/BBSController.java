@@ -3,13 +3,13 @@ package org.usfirst.frc.team930.robot.shooter;
 import edu.wpi.first.wpilibj.SpeedController;
 
 /**
- * Concrete class for the implementation of the Bang Bang Shooter Controller, 
- * which will set the motor speed to max speed if the motor runs below the 
+ * Concrete class for the implementation of the Bang Bang Shooter Controller,
+ * which will set the motor speed to max speed if the motor runs below the
  * target RPM and will let it run freely otherwise (ie, speed of zero).
  * <p>
- * For best results, tune your acceleration values of the speed controller so 
- * that it doesn't jump around the set point - note, it will still control to 
- * your set points, but it will consistently overaccelerate in the calculation 
+ * For best results, tune your acceleration values of the speed controller so
+ * that it doesn't jump around the set point - note, it will still control to
+ * your set points, but it will consistently overaccelerate in the calculation
  * timeframe. As a reference, accel = 1 will produce ~3800 RPM
  * <p>
  * Based on the implementation on <a
@@ -17,7 +17,7 @@ import edu.wpi.first.wpilibj.SpeedController;
  * 
  * @see Controller.java
  * @author Nick Janovetz
- * @version 2016.02.03_1 Added acceleration variable
+ * @version 2016.02.03_2 Added set methods
  */
 public class BBSController extends Controller {
 
@@ -30,7 +30,8 @@ public class BBSController extends Controller {
 	private int m_count;
 
 	/**
-	 * Constructs a Controller given an RPM input, target, speedcontroller, and acceleration
+	 * Constructs a Controller given an RPM input, target, speedcontroller, and
+	 * acceleration
 	 * <p>
 	 * The speedcontroller must be in coast mode - check your NI Dashboard
 	 * 
@@ -40,7 +41,9 @@ public class BBSController extends Controller {
 	 *            The SpeedController that will be controlled
 	 * @param targetRPM
 	 *            The target RPM for the SpeedController to spin at
-	 * @param accel The amount the speedcontroller impulses to when below target, 0 <= accel <= 1
+	 * @param accel
+	 *            The amount the speedcontroller impulses to when below target,
+	 *            0 <= accel <= 1
 	 */
 	public BBSController(ControllerSource source, SpeedController sc,
 			double targetRPM, double accel) {
@@ -52,7 +55,7 @@ public class BBSController extends Controller {
 		count++;
 		m_count = count;
 	}
-	
+
 	/**
 	 * Constructs a controller without a given acceleration, defaulted to 1.0
 	 * <p>
@@ -65,7 +68,8 @@ public class BBSController extends Controller {
 	 * @param targetRPM
 	 *            The target RPM for the SpeedController to spin at
 	 */
-	public BBSController(ControllerSource source, SpeedController sc, double targetRPM) {
+	public BBSController(ControllerSource source, SpeedController sc,
+			double targetRPM) {
 		this(source, sc, targetRPM, 1f);
 	}
 
@@ -73,9 +77,14 @@ public class BBSController extends Controller {
 	 * If less than target RPM, accelerate at given value, otherwise coast
 	 */
 	public void calculate() {
-		if (m_source.getValue() < m_targetRPM) {
+		// Snapshot these values
+		double targetRPM = m_targetRPM;
+		double accel = m_accel;
+
+		// Calculations
+		if (m_source.getValue() < targetRPM) {
 			System.out.println("\t" + m_count + " Increase!");
-			m_sc.set(m_accel);
+			m_sc.set(accel);
 		} else {
 			System.out.println("\t" + m_count + " OK!");
 			m_sc.set(0);
@@ -83,7 +92,8 @@ public class BBSController extends Controller {
 	}
 
 	/**
-	 * Overriden disable from the Controller that also sets the motor controlled to 0
+	 * Overriden disable from the Controller that also sets the motor controlled
+	 * to 0
 	 */
 	@Override
 	public void disable() {
@@ -91,4 +101,23 @@ public class BBSController extends Controller {
 		m_sc.set(0);
 	}
 
+	/**
+	 * Sets the target the controller aims for in the calculation of the RPM
+	 * 
+	 * @param targetRPM
+	 *            New set RPM for the controller to set the speedcontroller to
+	 */
+	public void setRPM(double targetRPM) {
+		m_targetRPM = targetRPM;
+	}
+
+	/**
+	 * Sets the acceleration values of the speedcontroller
+	 * 
+	 * @param accel
+	 *            New acceleration value for the speedcontroller
+	 */
+	public void setAccel(double accel) {
+		m_accel = accel;
+	}
 }
