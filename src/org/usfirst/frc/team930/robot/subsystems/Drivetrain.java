@@ -5,6 +5,10 @@ import org.usfirst.frc.team930.robot.OI;
 import org.usfirst.frc.team930.robot.RobotMap;
 import org.usfirst.frc.team930.robot.commands.Drive;
 
+import edu.wpi.first.wpilibj.AnalogGyro;
+import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.GyroBase;
+import edu.wpi.first.wpilibj.SensorBase;
 import edu.wpi.first.wpilibj.TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -22,6 +26,11 @@ public class Drivetrain extends Subsystem {
 	TalonSRX R1 = new TalonSRX(RobotMap.RFrontPort);
 	TalonSRX R2 = new TalonSRX(RobotMap.RTopPort);
 	TalonSRX R3 = new TalonSRX(RobotMap.RBackPort);
+	
+	AnalogInput distanceSensor = new AnalogInput(0);
+
+	GyroBase gyro = new AnalogGyro(0);
+	
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
@@ -96,7 +105,7 @@ public class Drivetrain extends Subsystem {
     	{
     	System.out.println("Going Right: " + OI.getXAxis());
     	System.out.println("Going Right: " + -OI.getXAxis());
-    		/*L1.set(OI.getXAxis());
+    		/*left1.set(OI.getXAxis());
     		L2.set(OI.getXAxis());
     		L3.set(OI.getXAxis());
     		R1.set(-OI.getXAxis());
