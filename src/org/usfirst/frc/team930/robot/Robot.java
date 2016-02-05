@@ -7,7 +7,8 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc.team930.robot.commands.Drive;
 import org.usfirst.frc.team930.robot.subsystems.Drivetrain;
-import org.usfirst.frc.team930.robot.subsystems.Intake;
+import org.usfirst.frc.team930.robot.subsystems.IntakeLifter;
+import org.usfirst.frc.team930.robot.subsystems.IntakeRoller;
 import org.usfirst.frc.team930.robot.subsystems.Shooter;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -22,8 +23,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends IterativeRobot {
 
 	public static final Drivetrain Drivetrain1 = new Drivetrain();
-	public static final Intake intake = new Intake();
+	public static final IntakeRoller intake = new IntakeRoller();
 	public static final Shooter shooter = new Shooter();
+	public static final IntakeLifter intakeLifter = new IntakeLifter();
+
 	public static OI oi;
 
     Command autonomousCommand;

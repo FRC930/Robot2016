@@ -5,8 +5,11 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 import org.usfirst.frc.team930.robot.commands.Drive;
+import org.usfirst.frc.team930.robot.commands.IntakeLiftCMD;
 import org.usfirst.frc.team930.robot.commands.MoveIntakeRollers;
+import org.usfirst.frc.team930.robot.commands.ShootHighGoal;
 import org.usfirst.frc.team930.robot.commands.ShootLowGoal;
+import org.usfirst.frc.team930.robot.subsystems.IntakeLifter;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -25,11 +28,14 @@ public class OI {
 	static Joystick driverJoystick1;
 	Button button0;
 	Button button1;
-
+	Button button2;
+    Button button3;
 	private OI() {
 		driverJoystick1 = new Joystick(1);
 		button0 = new JoystickButton(driverJoystick1,1);
 		button1 = new JoystickButton(driverJoystick1,2);
+		button2 = new JoystickButton(driverJoystick1,3);
+		button3 = new JoystickButton(driverJoystick1,4);
 		
 		// CHECK MEEEE!!!!
 		
@@ -38,6 +44,8 @@ public class OI {
 			
 			button0.whenPressed(new ShootLowGoal());
 			button1.whenPressed(new MoveIntakeRollers());
+			button2.whenPressed(new IntakeLiftCMD());
+			button3.whenPressed(new ShootHighGoal());
 		
 		
 		}
@@ -50,6 +58,7 @@ public class OI {
 	}
 
 	public static double getXAxis() {
+		//if things go funky change to getAxis
 		return driverJoystick1.getRawAxis(0);
 	}
 
