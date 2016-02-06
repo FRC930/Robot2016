@@ -2,8 +2,11 @@
 package org.usfirst.frc.team930.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+
 import org.usfirst.frc.team930.robot.OI;
 import org.usfirst.frc.team930.robot.Robot;
+import org.usfirst.frc.team930.robot.Robot;
+import org.usfirst.frc.team930.robot.subsystems.Drivetrain;
 
 /** 
  *
@@ -24,14 +27,16 @@ public class Drive extends Command {
     	
     	double x = OI.getXAxis();
     	double y = OI.getYAxis();
-    	x = Math.signum(x)*(x * x);
-    	y = Math.signum(y)*(y * y);
+    	x = x * x;
+    	y = y * y;
     	
     	Robot.Drivetrain1.setL(y + x);
     	Robot.Drivetrain1.setR(y - x);
-    	
     	System.out.println(x);
     	System.out.println(y);
+
+    	
+    	
     	
     }
 

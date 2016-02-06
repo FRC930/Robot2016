@@ -21,7 +21,7 @@ public class IntakeLiftCMD extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.intakeLifter.setintakeLifter(1.0);
+    	Robot.intakeLifter.setintakeLifter(0.5);
     }
 
     // Make this return true when this Command no longer needs to run execute()
