@@ -2,6 +2,7 @@ package org.usfirst.frc.team930.robot.commands;
 
 import org.usfirst.frc.team930.robot.OI;
 import org.usfirst.frc.team930.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -30,7 +31,7 @@ public class MoveIntakeRollers extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return false;
     }
 
     // Called once after isFinished returns true

@@ -9,6 +9,7 @@ import org.usfirst.frc.team930.robot.commands.IntakeLiftCMD;
 import org.usfirst.frc.team930.robot.commands.MoveIntakeRollers;
 import org.usfirst.frc.team930.robot.commands.ShootHighGoal;
 import org.usfirst.frc.team930.robot.commands.ShootLowGoal;
+import org.usfirst.frc.team930.robot.commands.StopRollers;
 import org.usfirst.frc.team930.robot.subsystems.IntakeLifter;
 
 /**
@@ -30,14 +31,14 @@ public class OI {
 	Button button1;
 	Button button2;
     Button button3;
-    
+    Button button4;
 	private OI() {
 		driverJoystick1 = new Joystick(1);
 		button0 = new JoystickButton(driverJoystick1,1);
 		button1 = new JoystickButton(driverJoystick1,2);
 		button2 = new JoystickButton(driverJoystick1,3);
 		button3 = new JoystickButton(driverJoystick1,4);
-		
+		button4 = new JoystickButton(driverJoystick1,5);
 		// CHECK MEEEE!!!!
 		
 		
@@ -47,6 +48,7 @@ public class OI {
 			button1.whenPressed(new MoveIntakeRollers());
 			button2.whenPressed(new IntakeLiftCMD());
 			button3.whenPressed(new ShootHighGoal());
+			button4.whenPressed(new StopRollers());
 		
 		
 		}
