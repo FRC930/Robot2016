@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import org.usfirst.frc.team930.robot.commands.IntakeLiftCMD;
+import org.usfirst.frc.team930.robot.commands.IntakeLiftDown;
 import org.usfirst.frc.team930.robot.commands.MoveIntakeRollers;
 import org.usfirst.frc.team930.robot.commands.ShootHighGoal;
 import org.usfirst.frc.team930.robot.commands.ShootLowGoal;
@@ -29,6 +30,7 @@ public class OI {
 	Button button2;
     Button button3;
     Button button4;
+    Button button5;
 	private OI() {
 		driverJoystick1 = new Joystick(1);
 		button0 = new JoystickButton(driverJoystick1,1);
@@ -36,6 +38,7 @@ public class OI {
 		button2 = new JoystickButton(driverJoystick1,3);
 		button3 = new JoystickButton(driverJoystick1,4);
 		button4 = new JoystickButton(driverJoystick1,5);
+		button5 = new JoystickButton(driverJoystick1,6);
 		// CHECK MEEEE!!!!
 		
 		
@@ -46,6 +49,7 @@ public class OI {
 			button2.whenPressed(new IntakeLiftCMD());
 			button3.whenPressed(new ShootHighGoal());
 			button4.whenPressed(new StopRollers());
+			button5.whenPressed(new IntakeLiftDown());
 		
 		
 		}

@@ -2,6 +2,7 @@ package org.usfirst.frc.team930.robot.commands;
 
 import org.usfirst.frc.team930.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -24,6 +25,8 @@ public class MoveIntakeRollers extends Command {
     	Robot.intake.setintakeRoller(1.0);
     	
 		System.out.println("Pulling in ball");
+	SmartDashboard.putString("Direction of Rollers", "Pulling In");
+	
 		
     }
 

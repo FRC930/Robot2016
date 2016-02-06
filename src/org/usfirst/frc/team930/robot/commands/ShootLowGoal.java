@@ -2,6 +2,7 @@ package org.usfirst.frc.team930.robot.commands;
 
 import org.usfirst.frc.team930.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -23,6 +24,8 @@ public class ShootLowGoal extends Command {
     	Robot.intake.setintakeRoller(-1.0);
     	
 		System.out.println("Pushing Out Ball");
+		SmartDashboard.putString("Direction of Rollers", "Pushing Out");
+
 		
     }
 

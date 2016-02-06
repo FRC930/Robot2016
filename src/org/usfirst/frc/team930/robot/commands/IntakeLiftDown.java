@@ -3,17 +3,16 @@ package org.usfirst.frc.team930.robot.commands;
 import org.usfirst.frc.team930.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
-public class StopRollers extends Command {
+public class IntakeLiftDown extends Command {
 
-    public StopRollers() {
+    public IntakeLiftDown() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.intake);
+    	requires(Robot.intakeLifter);
     }
 
     // Called just before this Command runs the first time
@@ -22,11 +21,7 @@ public class StopRollers extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.intake.setintakeRoller(0);
-		System.out.println("Stopping Rollers");
-		SmartDashboard.putString("Direction of Rollers", "Not Moving");
-
-
+    	Robot.intakeLifter.setintakeLifter(-0.5);
     }
 
     // Make this return true when this Command no longer needs to run execute()
