@@ -23,10 +23,10 @@ public class RobotMap {
 	public static int I2Port = 4;
 	public static int ILiftPort = 5;
 	public static int lightSensorPort = 0;
+	public static int lightSensorShooterPort = 1;
 	public static int potPort = 1;
 	public static int shooterSensorPort = 2;
 	public static int distanceSensorPort = 3;
-	
 	
 	
     

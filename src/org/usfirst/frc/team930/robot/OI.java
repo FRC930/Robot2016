@@ -30,6 +30,7 @@ public class OI {
 	Button button1;
 	Button button2;
     Button button3;
+    
 	private OI() {
 		driverJoystick1 = new Joystick(1);
 		button0 = new JoystickButton(driverJoystick1,1);
