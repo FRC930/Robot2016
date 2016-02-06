@@ -1,8 +1,6 @@
 package org.usfirst.frc.team930.robot.commands;
 
-import org.usfirst.frc.team930.robot.OI;
 import org.usfirst.frc.team930.robot.Robot;
-
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 

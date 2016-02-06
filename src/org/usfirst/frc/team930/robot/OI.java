@@ -3,14 +3,11 @@ package org.usfirst.frc.team930.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-
-import org.usfirst.frc.team930.robot.commands.Drive;
 import org.usfirst.frc.team930.robot.commands.IntakeLiftCMD;
 import org.usfirst.frc.team930.robot.commands.MoveIntakeRollers;
 import org.usfirst.frc.team930.robot.commands.ShootHighGoal;
 import org.usfirst.frc.team930.robot.commands.ShootLowGoal;
 import org.usfirst.frc.team930.robot.commands.StopRollers;
-import org.usfirst.frc.team930.robot.subsystems.IntakeLifter;
 
 /**
  * This class is the glue that binds the controls on the physical operator

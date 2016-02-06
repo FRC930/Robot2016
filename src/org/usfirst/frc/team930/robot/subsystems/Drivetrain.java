@@ -1,16 +1,9 @@
 
 package org.usfirst.frc.team930.robot.subsystems;
 
-import org.usfirst.frc.team930.robot.OI;
 import org.usfirst.frc.team930.robot.RobotMap;
 import org.usfirst.frc.team930.robot.commands.Drive;
-
-import edu.wpi.first.wpilibj.AnalogGyro;
-import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.CANTalon;
-import edu.wpi.first.wpilibj.GyroBase;
-import edu.wpi.first.wpilibj.SensorBase;
-import edu.wpi.first.wpilibj.TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
