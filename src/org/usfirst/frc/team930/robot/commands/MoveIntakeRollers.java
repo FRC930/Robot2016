@@ -23,7 +23,7 @@ public class MoveIntakeRollers extends Command {
     protected void execute() {
     	
     	Robot.intake.setintakeRoller(1.0);
-    	Robot.intake.setintakeLifter(1.0);
+    	
 		System.out.println("Pulling in ball");
 		
     }

@@ -22,7 +22,7 @@ public class ShootLowGoal extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	//Robot.intake.setIntake1(-1.0);
+    	Robot.intake.setintakeRoller(-1.0);
     	
 		System.out.println("Pushing Out Ball");
 		

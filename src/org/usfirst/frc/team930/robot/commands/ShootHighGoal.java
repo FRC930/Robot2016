@@ -23,9 +23,9 @@ public class ShootHighGoal extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	//Robot.shooter.setShooter(1.0);
+    	Robot.shooter.setShooter(1.0);
     	
-		//System.out.println("Shooter Wheel Spinning");
+		System.out.println("Shooter Wheel Spinning");
 		Timer.delay(0);
 		
     }
