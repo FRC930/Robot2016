@@ -9,7 +9,7 @@ import java.util.TimerTask;
  * @version 2016.02.03_1 Formatting changes
  *
  */
-abstract public class Controller {
+abstract class Controller {
 
 	private static final double DEFAULT_PERIOD = .05;
 	private boolean enabled;

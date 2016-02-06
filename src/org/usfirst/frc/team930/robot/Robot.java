@@ -1,7 +1,6 @@
 package org.usfirst.frc.team930.robot;
 
 import org.usfirst.frc.team930.robot.shooter.BBSController;
-import org.usfirst.frc.team930.robot.shooter.ControllerSource;
 import org.usfirst.frc.team930.robot.shooter.CounterRPMSource;
 
 import edu.wpi.first.wpilibj.SampleRobot;
@@ -14,7 +13,7 @@ public class Robot extends SampleRobot {
 
 	CANTalon shooter1;
 	CANTalon shooter2;
-	Counter counter;
+	CounterRPMSource counter;
 	BBSController cont1;
 	BBSController cont2;
 
@@ -25,8 +24,8 @@ public class Robot extends SampleRobot {
 		counter = new CounterRPMSource(new DigitalInput(0));
 		counter.setSemiPeriodMode(true);
 
-		cont1 = new BBSController((ControllerSource) counter, shooter1, 3000.0, .8);
-		cont2 = new BBSController((ControllerSource) counter, shooter2, 3000.0, .8);
+		cont1 = new BBSController(counter, shooter1, 3000.0, .8);
+		cont2 = new BBSController(counter, shooter2, 3000.0, .8);
 	}
 
 	public void autonomous() {
