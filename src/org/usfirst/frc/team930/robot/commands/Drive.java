@@ -24,13 +24,14 @@ public class Drive extends Command {
     	
     	double x = OI.getXAxis();
     	double y = OI.getYAxis();
-    	x = x * x;
-    	y = y * y;
+    	x = Math.signum(x)*(x * x);
+    	y = Math.signum(y)*(y * y);
     	
     	Robot.Drivetrain1.setL(y + x);
     	Robot.Drivetrain1.setR(y - x);
     	
-    	
+    	System.out.println(x);
+    	System.out.println(y);
     	
     }
 
