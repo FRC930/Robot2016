@@ -13,7 +13,7 @@ public class StopRollers extends Command {
     public StopRollers() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.intake);
+    	requires(Robot.intakeRoller);
     }
 
     // Called just before this Command runs the first time
@@ -22,7 +22,7 @@ public class StopRollers extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.intake.setintakeRoller(0);
+    	Robot.intakeRoller.setintakeRoller(0);
 		System.out.println("Stopping Rollers");
 		SmartDashboard.putString("Direction of Rollers", "Not Moving");
 

@@ -12,7 +12,7 @@ public class ShootLowGoal extends Command {
     public ShootLowGoal() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.intake);
+    	requires(Robot.intakeRoller);
     }
 
     // Called just before this Command runs the first time
@@ -21,7 +21,7 @@ public class ShootLowGoal extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.intake.setintakeRoller(-1.0);
+    	Robot.intakeRoller.setintakeRoller(-1.0);
     	
 		System.out.println("Pushing Out Ball");
 		SmartDashboard.putString("Direction of Rollers", "Pushing Out");

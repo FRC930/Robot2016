@@ -7,28 +7,25 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Victor;
 
-/**
- *
- */
 public class Shooter extends Subsystem {
-	
+
 	Victor shooter1 = new Victor(RobotMap.S1Port);
 	Victor shooter2 = new Victor(RobotMap.S2Port);
-	DigitalInput lightSensorShooter = new DigitalInput(RobotMap.lightSensorShooterPort); 
-	
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
+	DigitalInput lightSensorShooter = new DigitalInput(
+			RobotMap.lightSensorShooterPort);
 
-    public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
-    	setDefaultCommand(new ShootHighGoal());
-    }
-    
-    public void setShooter(double speed) {
-    	shooter1.set(speed);
-    	shooter2.set(speed);
-    }
-    
+	// Put methods for controlling this subsystem
+	// here. Call these from Commands.
+
+	public void initDefaultCommand() {
+		// Set the default command for a subsystem here.
+		// setDefaultCommand(new MySpecialCommand());
+		// setDefaultCommand(new ShootHighGoal());
+	}
+
+	public void setShooter(double speed) {
+		shooter1.set(speed);
+		shooter2.set(speed);
+	}
+
 }
-
