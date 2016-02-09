@@ -1,51 +1,74 @@
 package org.usfirst.frc.team930.robot;
 
-import org.usfirst.frc.team930.robot.shooter.BBSController;
-import org.usfirst.frc.team930.robot.shooter.CounterRPMSource;
+import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
-import edu.wpi.first.wpilibj.SampleRobot;
-import edu.wpi.first.wpilibj.CANTalon;
-import edu.wpi.first.wpilibj.Counter;
-import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.Timer;
+import org.usfirst.frc.team930.robot.subsystems.Drivetrain;
+import org.usfirst.frc.team930.robot.subsystems.IntakeLifter;
+import org.usfirst.frc.team930.robot.subsystems.IntakeRoller;
+import org.usfirst.frc.team930.robot.subsystems.Shooter;
 
-public class Robot extends SampleRobot {
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 
-	CANTalon shooter1;
-	CANTalon shooter2;
-	CounterRPMSource counter;
-	BBSController cont1;
-	BBSController cont2;
+public class Robot extends IterativeRobot {
 
-	public Robot() {
-		shooter1 = new CANTalon(0);
-		shooter2 = new CANTalon(2);
+	public static final Drivetrain drivetrain = new Drivetrain();
+	public static final IntakeRoller intakeRoller = new IntakeRoller();
+	public static final Shooter shooter = new Shooter();
+	public static final IntakeLifter intakeLifter = new IntakeLifter();
 
-		counter = new CounterRPMSource(new DigitalInput(0));
-		counter.setSemiPeriodMode(true);
+	public static OI oi;
 
-		cont1 = new BBSController(counter, shooter1, 3000.0, .8);
-		cont2 = new BBSController(counter, shooter2, 3000.0, .8);
+	Command autonomousCommand;
+	SendableChooser chooser;
+
+	public void robotInit() {
+		// OI.getInstance();
+		// chooser = new SendableChooser();
+		// chooser.addDefault("Default Auto", new Drive());
+		// chooser.addObject("My Auto", new MyAutoCommand());
+		// SmartDashboard.putData("Auto mode", chooser);
 	}
 
-	public void autonomous() {
+	public void disabledInit() {
+
 	}
 
-	public void operatorControl() {
-
-		Timer.delay(3);
-
-		cont1.enable();
-		cont2.enable();
-
-		while(isEnabled()){ }
-		
-//		Timer.delay(2);
-
-		cont1.disable();
-		cont2.disable();
+	public void disabledPeriodic() {
+		Scheduler.getInstance().run();
 	}
 
-	public void test() {
+	public void autonomousInit() {
+		autonomousCommand = (Command) chooser.getSelected();
+
+		/*
+		 * String autoSelected = SmartDashboard.getString("Auto Selector",
+		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
+		 * = new MyAutoCommand(); break; case "Default Auto": default:
+		 * autonomousCommand = new ExampleCommand(); break; }
+		 */
+
+		// schedule the autonomous command (example)
+		if (autonomousCommand != null)
+			autonomousCommand.start();
+	}
+
+	public void autonomousPeriodic() {
+		Scheduler.getInstance().run();
+	}
+
+	public void teleopInit() {
+		if (autonomousCommand != null)
+			autonomousCommand.cancel();
+	}
+
+	public void teleopPeriodic() {
+		Scheduler.getInstance().run();
+	}
+
+	public void testPeriodic() {
+		LiveWindow.run();
 	}
 }
