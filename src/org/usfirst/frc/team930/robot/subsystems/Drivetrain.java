@@ -2,7 +2,10 @@ package org.usfirst.frc.team930.robot.subsystems;
 
 import org.usfirst.frc.team930.robot.RobotMap;
 import org.usfirst.frc.team930.robot.commands.Drive;
+
+import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.CANTalon;
+import edu.wpi.first.wpilibj.GyroBase;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -22,7 +25,7 @@ public class Drivetrain extends Subsystem {
 
 	// AnalogInput distanceSensor = new AnalogInput(0);
 
-	// GyroBase gyro = new AnalogGyro(0);
+	public GyroBase gyro = new AnalogGyro(0);
 
 	public Drivetrain() {
 		super();
