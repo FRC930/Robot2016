@@ -21,20 +21,18 @@ public class MoveIntakeRollers extends Command {
     protected void initialize() {
     	if(intakeOn == "Off") intakeOn = "On";
     	else if(intakeOn == "On") intakeOn = "Waiting";
-    	if(intakeOn == "Waiting") intakeOn = "Off";
+    	else if(intakeOn == "Waiting") intakeOn = "Off";
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	if(intakeOn == "Off") Robot.intakeRoller.setintakeRoller(1, false);
-    	else if(intakeOn == "On") Robot.intakeRoller.setintakeRoller(0, false);
+    	if(intakeOn == "Off") Robot.intakeRoller.setintakeRoller(0, false);
+    	else if(intakeOn == "On") Robot.intakeRoller.setintakeRoller(1, false);
     	else if(intakeOn == "Waiting") Robot.intakeRoller.setintakeRoller(1, true);
     	
 		System.out.println("Pulling in ball");
-	SmartDashboard.putString("Direction of Rollers", "Pulling In");
-	
-		
+		SmartDashboard.putString("Direction of Rollers", "Pulling In");
     }
 
     // Make this return true when this Command no longer needs to run execute()
