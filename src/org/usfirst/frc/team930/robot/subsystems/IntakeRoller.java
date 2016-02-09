@@ -19,8 +19,9 @@ public class IntakeRoller extends Subsystem {
 		// setDefaultCommand(new MySpecialCommand());
 	}
 
-	public void setintakeRoller(double speed) {
-		intakeRoller.set(speed);
+	public void setintakeRoller(double speed, boolean sensor) {
+		if(sensor == false || sensor == true && lightSensor.get() == false) intakeRoller.set(speed);
+		else intakeRoller.set(0);
 	}
 
 }

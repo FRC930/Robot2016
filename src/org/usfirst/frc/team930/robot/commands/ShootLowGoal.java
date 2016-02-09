@@ -21,7 +21,7 @@ public class ShootLowGoal extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.intakeRoller.setintakeRoller(-1.0);
+    	Robot.intakeRoller.setintakeRoller(-1.0, false);
     	
 		System.out.println("Pushing Out Ball");
 		SmartDashboard.putString("Direction of Rollers", "Pushing Out");
