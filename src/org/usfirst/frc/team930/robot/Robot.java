@@ -18,7 +18,6 @@ public class Robot extends IterativeRobot {
 	public static final IntakeRoller intakeRoller = new IntakeRoller();
 	public static final Shooter shooter = new Shooter();
 	public static final IntakeLifter intakeLifter = new IntakeLifter();
-
 	public static OI oi;
 
 	Command autonomousCommand;

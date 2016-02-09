@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class IntakeLiftDown extends Command {
+public class IntakeLiftLow extends Command {
 
-    public IntakeLiftDown() {
+    public IntakeLiftLow() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.intakeLifter);
@@ -21,7 +21,7 @@ public class IntakeLiftDown extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.intakeLifter.setintakeLifter(-0.5);
+    	Robot.intakeLifter.setintakeLifter(20);
     }
 
     // Make this return true when this Command no longer needs to run execute()
