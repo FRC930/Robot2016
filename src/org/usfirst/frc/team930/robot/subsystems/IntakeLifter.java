@@ -24,7 +24,7 @@ public class IntakeLifter extends Subsystem {
 	}
 
 	public void setintakeLifter(double angle) {
-		intakeLifter.set(angle);
+		//intakeLifter.set(angle);
 		pidController.setSetpoint(angle);
 		System.out.println(potentiometer.get());
 	}

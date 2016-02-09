@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
-import org.usfirst.frc.team930.robot.commands.IntakeLiftHIgh;
+import org.usfirst.frc.team930.robot.commands.IntakeLiftHigh;
 import org.usfirst.frc.team930.robot.commands.IntakeLiftLow;
 import org.usfirst.frc.team930.robot.commands.IntakeLiftPort;
 import org.usfirst.frc.team930.robot.commands.MoveIntakeRollers;
@@ -42,7 +42,7 @@ public class OI {
 
 		button0.whenPressed(new ShootLowGoal());
 		button1.whenPressed(new MoveIntakeRollers());
-		button2.whenPressed(new IntakeLiftHIgh());
+		button2.whenPressed(new IntakeLiftHigh());
 		button3.whenPressed(new ShootHighGoal());
 		button4.whenPressed(new StopRollers());
 		button5.whenPressed(new IntakeLiftLow());

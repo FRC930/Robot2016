@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class IntakeLiftHIgh extends Command {
+public class IntakeLiftHigh extends Command {
 
-    public IntakeLiftHIgh() {
+    public IntakeLiftHigh() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.intakeLifter);
