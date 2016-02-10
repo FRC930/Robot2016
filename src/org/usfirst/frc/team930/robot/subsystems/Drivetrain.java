@@ -6,6 +6,7 @@ import org.usfirst.frc.team930.robot.commands.Drive;
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.GyroBase;
+import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -23,9 +24,11 @@ public class Drivetrain extends Subsystem {
 	CANTalon R2 = new CANTalon(RobotMap.RTopPort);
 	CANTalon R3 = new CANTalon(RobotMap.RBackPort);
 
-	// AnalogInput distanceSensor = new AnalogInput(0);
-
-	public GyroBase gyro = new AnalogGyro(0);
+	//AnalogInput distanceSensor = new AnalogInput(0);
+	
+	//public Ultrasonic ultra = new Ultrasonic(0, 0);
+	
+	//public GyroBase gyro = new AnalogGyro(0);
 
 	public Drivetrain() {
 		super();
