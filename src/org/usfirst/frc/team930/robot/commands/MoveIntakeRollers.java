@@ -37,7 +37,7 @@ public class MoveIntakeRollers extends Command {
 //		SmartDashboard.putString("Direction of Rollers", "Pulling In");
     	
     	
-    	Robot.intakeRoller.setintakeRoller(.25);
+    	Robot.intakeRoller.setintakeRoller(.5);
     }
 
     // Make this return true when this Command no longer needs to run execute()
