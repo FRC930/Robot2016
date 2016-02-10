@@ -22,7 +22,7 @@ public class StopRollers extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.intakeRoller.setintakeRoller(0, false);
+    	Robot.intakeRoller.setintakeRoller(0);
 		System.out.println("Stopping Rollers");
 		SmartDashboard.putString("Direction of Rollers", "Not Moving");
 

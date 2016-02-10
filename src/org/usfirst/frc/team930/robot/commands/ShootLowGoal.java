@@ -21,7 +21,7 @@ public class ShootLowGoal extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.intakeRoller.setintakeRoller(-1.0, false);
+    	Robot.intakeRoller.setintakeRoller(-.25);
     	
 		System.out.println("Pushing Out Ball");
 		SmartDashboard.putString("Direction of Rollers", "Pushing Out");
@@ -36,10 +36,12 @@ public class ShootLowGoal extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	Robot.intakeRoller.setintakeRoller(0);
     }
 }
