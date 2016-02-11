@@ -17,17 +17,17 @@ import edu.wpi.first.wpilibj.SpeedController;
  * 
  * @see Controller.java
  * @author Nick Janovetz
- * @version 2016.02.03_3 Added finality to m_sc
+ * @version 2016.02.10_1 removed Hungarian notation
  */
 public class BBSController extends Controller {
 
-	private static int count = 0;
+	private static int CONTROLLER_COUNT = 0;
 
-	private ControllerSource m_source;
-	private final SpeedController m_sc;
-	private double m_targetRPM;
-	private double m_accel;
-	private int m_count;
+	private ControllerSource source;
+	private final SpeedController speedcontroller;
+	private double targetRPM;
+	private double accel;
+	private int count;
 
 	/**
 	 * Constructs a Controller given an RPM input, target, speedcontroller, and
@@ -35,25 +35,29 @@ public class BBSController extends Controller {
 	 * <p>
 	 * The speedcontroller must be in coast mode - check your NI Dashboard
 	 * 
-	 * @param source
+	 * @param s
 	 *            The PID input for the motor that returns RPM
 	 * @param sc
 	 *            The SpeedController that will be controlled
-	 * @param targetRPM
+	 * @param tr
 	 *            The target RPM for the SpeedController to spin at
-	 * @param accel
+	 * @param a
 	 *            The amount the speedcontroller impulses to when below target,
 	 *            0 <= accel <= 1
 	 */
-	public BBSController(ControllerSource source, SpeedController sc,
-			double targetRPM, double accel) {
-		m_source = source;
-		m_sc = sc;
-		m_targetRPM = targetRPM;
-		m_accel = accel < 0f ? 0f : (accel > 1f ? 1 : accel);
+	public BBSController(ControllerSource s, SpeedController sc,
+			double tr, double a) {
+		source = s;
+		speedcontroller = sc;
+		targetRPM = tr;
+		if (a < 0) {
+			accel = 0;
+		} else if (a > 1) {
+			accel = 1;
+		}
 
-		count++;
-		m_count = count;
+		CONTROLLER_COUNT++;
+		count = CONTROLLER_COUNT;
 	}
 
 	/**
@@ -78,16 +82,16 @@ public class BBSController extends Controller {
 	 */
 	public void calculate() {
 		// Snapshot these values
-		double targetRPM = m_targetRPM;
-		double accel = m_accel;
+		double t = targetRPM;
+		double a = accel;
 
 		// Calculations
-		if (m_source.getValue() < targetRPM) {
-			System.out.println("\t" + m_count + " Increase!");
-			m_sc.set(accel);
+		if (source.getValue() < t) {
+			System.out.println("\t" + count + " Increase!");
+			speedcontroller.set(a);
 		} else {
-			System.out.println("\t" + m_count + " OK!");
-			m_sc.set(0);
+			System.out.println("\t" + count + " OK!");
+			speedcontroller.set(0);
 		}
 	}
 
@@ -98,26 +102,26 @@ public class BBSController extends Controller {
 	@Override
 	public void disable() {
 		super.disable();
-		m_sc.set(0);
+		speedcontroller.set(0);
 	}
 
 	/**
 	 * Sets the target the controller aims for in the calculation of the RPM
 	 * 
-	 * @param targetRPM
+	 * @param tr
 	 *            New set RPM for the controller to set the speedcontroller to
 	 */
-	public void setRPM(double targetRPM) {
-		m_targetRPM = targetRPM;
+	public void setRPM(double tr) {
+		targetRPM = tr;
 	}
 
 	/**
 	 * Sets the acceleration values of the speedcontroller
 	 * 
-	 * @param accel
+	 * @param a
 	 *            New acceleration value for the speedcontroller
 	 */
-	public void setAccel(double accel) {
-		m_accel = accel;
+	public void setAccel(double a) {
+		accel = a;
 	}
 }

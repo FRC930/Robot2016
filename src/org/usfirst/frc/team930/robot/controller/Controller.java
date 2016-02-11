@@ -1,27 +1,29 @@
 package org.usfirst.frc.team930.robot.controller;
 
 import java.util.TimerTask;
+
+import edu.wpi.first.wpilibj.Notifier;
 /**
  * Abstract class to control inputs, or in its basic form
  * an enable-able looped calculator. 
  * 
  * @author Nick Janovetz
- * @version 2016.02.03_1 Formatting changes
+ * @version 2016.02.10_1 Notifier added
  *
  */
 abstract class Controller {
 
 	private static final double DEFAULT_PERIOD = .05;
 	private boolean enabled;
-	private java.util.Timer loop;
+	private Notifier loop;
 	
 	/**
 	 * Default Controller constructor that creates a new timed task and runs it.
 	 */
 	public Controller() {
 		enabled = false;
-		loop = new java.util.Timer();
-		loop.schedule(new ControllerTask(this), 0L, (long) (1000 * DEFAULT_PERIOD));
+		loop = new Notifier(new ControllerTask(this));
+		loop.startPeriodic(DEFAULT_PERIOD);
 	}
 	
 	/**
@@ -51,7 +53,7 @@ abstract class Controller {
 	 * @author Nick Janovetz
 	 * @version 2016.01.26_1
 	 */
-	private class ControllerTask extends TimerTask {
+	private class ControllerTask implements Runnable {
 
         private Controller cont;
 
