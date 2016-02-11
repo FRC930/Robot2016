@@ -3,8 +3,10 @@ package org.usfirst.frc.team930.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import org.usfirst.frc.team930.robot.commands.IntakeLiftCMD;
-import org.usfirst.frc.team930.robot.commands.IntakeLiftDown;
+
+import org.usfirst.frc.team930.robot.commands.IntakeLiftHigh;
+import org.usfirst.frc.team930.robot.commands.IntakeLiftLow;
+import org.usfirst.frc.team930.robot.commands.IntakeLiftPort;
 import org.usfirst.frc.team930.robot.commands.MoveIntakeRollers;
 import org.usfirst.frc.team930.robot.commands.ShootHighGoal;
 import org.usfirst.frc.team930.robot.commands.ShootLowGoal;
@@ -22,6 +24,7 @@ public class OI {
 	Button button3;
 	Button button4;
 	Button button5;
+	Button button6;
 
 	private OI() {
 
@@ -33,15 +36,17 @@ public class OI {
 		button3 = new JoystickButton(driverJoystick1, 4);
 		button4 = new JoystickButton(driverJoystick1, 5);
 		button5 = new JoystickButton(driverJoystick1, 6);
+		button6 = new JoystickButton(driverJoystick1, 7);
 
 		// CHECK MEEEE!!!!
 
 		button0.whenPressed(new ShootLowGoal());
 		button1.whenPressed(new MoveIntakeRollers());
-		button2.whenPressed(new IntakeLiftCMD());
+		button2.whenPressed(new IntakeLiftHigh());
 		button3.whenPressed(new ShootHighGoal());
 		button4.whenPressed(new StopRollers());
-		button5.whenPressed(new IntakeLiftDown());
+		button5.whenPressed(new IntakeLiftLow());
+		button6.whenPressed(new IntakeLiftPort());
 
 	}
 

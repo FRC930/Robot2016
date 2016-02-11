@@ -1,6 +1,7 @@
 package org.usfirst.frc.team930.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team930.robot.OI;
 import org.usfirst.frc.team930.robot.Robot;
@@ -24,7 +25,11 @@ public class Drive extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 
-		double x = OI.getXAxis();
+		//Robot.drivetrain.ultra.setEnabled(true);
+        //Robot.drivetrain.ultra.getRangeInches();
+        //SmartDashboard.putNumber("Distance", 0);
+		
+        double x = OI.getXAxis();
 		double y = OI.getYAxis();
 
 		x = x * x * Math.signum(x);
@@ -35,6 +40,7 @@ public class Drive extends Command {
 
 		System.out.println("X: " + x);
 		System.out.println("Y: " + y);
+        
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

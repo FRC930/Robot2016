@@ -1,18 +1,18 @@
 package org.usfirst.frc.team930.robot.commands;
 
 import org.usfirst.frc.team930.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
-public class ShootLowGoal extends Command {
+public class IntakeLiftHigh extends Command {
 
-    public ShootLowGoal() {
+    public IntakeLiftHigh() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.intakeRoller);
+    	requires(Robot.intakeLifter);
     }
 
     // Called just before this Command runs the first time
@@ -21,12 +21,7 @@ public class ShootLowGoal extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.intakeRoller.setintakeRoller(-1.0, false);
-    	
-		System.out.println("Pushing Out Ball");
-		SmartDashboard.putString("Direction of Rollers", "Pushing Out");
-
-		
+    	Robot.intakeLifter.setintakeLifter(50);
     }
 
     // Make this return true when this Command no longer needs to run execute()
