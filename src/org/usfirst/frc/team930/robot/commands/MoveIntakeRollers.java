@@ -29,12 +29,15 @@ public class MoveIntakeRollers extends Command {
     	System.out.println(intakeOn);
 
     	
-    	if(intakeOn.equals("Off")) Robot.intakeRoller.setintakeRoller(0);
+    	if(intakeOn.equals("Off"))
+    		{Robot.intakeRoller.setintakeRoller(0); 
+    		SmartDashboard.putString("Direction of Rollers", "Pulling In: Waitning for Light Sensor");
+    		}
+
     	else if(intakeOn.equals("On")) Robot.intakeRoller.setintakeRoller(1);
     	
     	
 		System.out.println("Pulling in ball");
-		SmartDashboard.putString("Direction of Rollers", "Pulling In");
     }
 
     // Make this return true when this Command no longer needs to run execute()
