@@ -10,7 +10,7 @@ import org.usfirst.frc.team930.robot.commands.IntakeLiftPort;
 import org.usfirst.frc.team930.robot.commands.MoveIntakeRollers;
 import org.usfirst.frc.team930.robot.commands.ShootHighGoal;
 import org.usfirst.frc.team930.robot.commands.ShootLowGoal;
-import org.usfirst.frc.team930.robot.commands.StopRollers;
+
 
 public class OI {
 
@@ -18,35 +18,35 @@ public class OI {
 
 	static Joystick driverJoystick1;
 
-	Button button0;
 	Button button1;
 	Button button2;
 	Button button3;
 	Button button4;
 	Button button5;
 	Button button6;
+	Button button7;
 
 	private OI() {
 
 		driverJoystick1 = new Joystick(1);
 
-		button0 = new JoystickButton(driverJoystick1, 1);
-		button1 = new JoystickButton(driverJoystick1, 2);
-		button2 = new JoystickButton(driverJoystick1, 3);
-		button3 = new JoystickButton(driverJoystick1, 4);
-		button4 = new JoystickButton(driverJoystick1, 5);
-		button5 = new JoystickButton(driverJoystick1, 6);
-		button6 = new JoystickButton(driverJoystick1, 7);
+		button1 = new JoystickButton(driverJoystick1, 1);
+		button2 = new JoystickButton(driverJoystick1, 2);
+		button3 = new JoystickButton(driverJoystick1, 3);
+		button4 = new JoystickButton(driverJoystick1, 4);
+		button5 = new JoystickButton(driverJoystick1, 5);
+		button6 = new JoystickButton(driverJoystick1, 6);
+		button7 = new JoystickButton(driverJoystick1, 7);
 
 		// CHECK MEEEE!!!!
 
-		button0.whenPressed(new ShootLowGoal());
+		button2.whenPressed(new ShootLowGoal());
 		button1.whenPressed(new MoveIntakeRollers());
-		button2.whenPressed(new IntakeLiftHigh());
-		button3.whenPressed(new ShootHighGoal());
-		button4.whenPressed(new StopRollers());
-		button5.whenPressed(new IntakeLiftLow());
-		button6.whenPressed(new IntakeLiftPort());
+		button3.whenPressed(new IntakeLiftHigh());
+		button4.whenPressed(new ShootHighGoal());
+		
+		button6.whenPressed(new IntakeLiftLow());
+		button7.whenPressed(new IntakeLiftPort());
 
 	}
 
