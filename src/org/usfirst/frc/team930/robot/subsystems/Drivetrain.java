@@ -3,9 +3,11 @@ package org.usfirst.frc.team930.robot.subsystems;
 import org.usfirst.frc.team930.robot.RobotMap;
 import org.usfirst.frc.team930.robot.commands.Drive;
 
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.GyroBase;
+import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -26,14 +28,20 @@ public class Drivetrain extends Subsystem {
 
 	//AnalogInput distanceSensor = new AnalogInput(0);
 	
-	//public Ultrasonic ultra = new Ultrasonic(0, 0);
+	public Ultrasonic ultra = new Ultrasonic(0, 0);
 	
-	//public GyroBase gyro = new AnalogGyro(0);
+	
+	public ADXRS450_Gyro gyro = new ADXRS450_Gyro(SPI.Port.kOnboardCS0);
+	//Command for going straight( zero degrees), if button is pressed
+	public void gyro (){
+		if()
+	}
+	
 
 	public Drivetrain() {
 		super();
 		R1.setInverted(true);
-		R2.setInverted(true);
+		R2.setInverted(true);//http://first.wpi.edu/FRC/roborio/release/docs/java/edu/wpi/first/wpilibj/ADXRS450_Gyro.html#ADXRS450_Gyro--
 		R3.setInverted(true);
 	}
 
@@ -54,4 +62,5 @@ public class Drivetrain extends Subsystem {
 		R3.set(speed);
 	}
 
+	
 }
