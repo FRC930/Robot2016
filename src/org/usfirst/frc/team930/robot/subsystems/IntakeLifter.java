@@ -10,6 +10,10 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 
 public class IntakeLifter extends Subsystem {
+	enum Positions
+	{
+		LOWGOAL, HIGH, PICKUP;
+	}
 	AnalogPotentiometer potentiometer = new AnalogPotentiometer(RobotMap.ILiftPort);
 	Spark intakeLifter = new Spark(RobotMap.I2Port);
 	PIDController pidController = new PIDController(0,0,0,potentiometer,intakeLifter);

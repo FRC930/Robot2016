@@ -10,11 +10,14 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class MoveIntakeRollers extends Command {
 
 	boolean isRolling = false;
+	double speed;                                //.75
 
-	public MoveIntakeRollers() {
+	public MoveIntakeRollers(double s) {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
+		
 		requires(Robot.intakeRoller);
+		speed = s;
 	}
 
 	// Called just before this Command runs the first time
@@ -31,7 +34,7 @@ public class MoveIntakeRollers extends Command {
 		System.out.println(isRolling);
 
 		if (isRolling) {
-			Robot.intakeRoller.setintakeRoller(1);
+			Robot.intakeRoller.setintakeRoller(speed);
 			SmartDashboard.putString("Direction of Rollers",
 					"Pulling In: Waitning for Light Sensor");
 		} else {
