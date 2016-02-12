@@ -2,6 +2,7 @@ package org.usfirst.frc.team930.robot.commands;
 
 import org.usfirst.frc.team930.robot.OI;
 import org.usfirst.frc.team930.robot.Robot;
+import org.usfirst.frc.team930.robot.subsystems.Shooter;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
@@ -23,10 +24,12 @@ public class ShootHighGoal extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.shooter.setShooter(1.0);
+    	Robot.shooter.setShooter(Shooter.HIGH_GOAL_RPM);
     	
+    	// warm up - adjust value later
+    	Timer.delay(.1);
 		//System.out.println("Shooter Wheel Spinning");
-		Timer.delay(0);
+		
 		
     }
 
