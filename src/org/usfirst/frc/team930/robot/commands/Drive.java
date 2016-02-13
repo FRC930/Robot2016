@@ -27,8 +27,8 @@ public class Drive extends Command {
 		double x = OI.getXAxis();
 		double y = OI.getYAxis();
 
-		x = x * x * Math.signum(x);
-		y = y * y * Math.signum(y);
+		x = x * x * Math.signum(x) * .5;
+		y = y * y * Math.signum(y) * .5;
 
 		Robot.drivetrain.setL(y + x);
 		Robot.drivetrain.setR(y - x);

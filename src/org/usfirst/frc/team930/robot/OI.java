@@ -17,6 +17,7 @@ public class OI {
 	private static OI instance = new OI();
 
 	static Joystick driverJoystick1;
+	static Joystick codriverJoystick1;
 
 	Button button1;
 	Button button2;
@@ -29,14 +30,15 @@ public class OI {
 	private OI() {
 
 		driverJoystick1 = new Joystick(1);
+		codriverJoystick1 = new Joystick(2);
 
-		button1 = new JoystickButton(driverJoystick1, 1);
-		button2 = new JoystickButton(driverJoystick1, 2);
-		button3 = new JoystickButton(driverJoystick1, 3);
-		button4 = new JoystickButton(driverJoystick1, 4);
-		button5 = new JoystickButton(driverJoystick1, 5);
-		button6 = new JoystickButton(driverJoystick1, 6);
-		button7 = new JoystickButton(driverJoystick1, 7);
+		button1 = new JoystickButton(codriverJoystick1, 1);
+		button2 = new JoystickButton(codriverJoystick1, 2);
+		button3 = new JoystickButton(codriverJoystick1, 3);
+		button4 = new JoystickButton(codriverJoystick1, 4);
+		button5 = new JoystickButton(codriverJoystick1, 5);
+		button6 = new JoystickButton(codriverJoystick1, 6);
+		button7 = new JoystickButton(codriverJoystick1, 7);
 
 		// CHECK MEEEE!!!!
 		
