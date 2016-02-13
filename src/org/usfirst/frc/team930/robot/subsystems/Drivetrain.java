@@ -34,7 +34,7 @@ public class Drivetrain extends Subsystem {
 	public ADXRS450_Gyro gyro = new ADXRS450_Gyro(SPI.Port.kOnboardCS0);
 	//Command for going straight( zero degrees), if button is pressed
 	public void gyro (){
-		if()
+		
 	}
 	
 
