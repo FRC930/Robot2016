@@ -73,11 +73,13 @@ public class Robot extends IterativeRobot {
 	public void teleopInit() {
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
-		SmartDashboard.putBoolean("Satus of Photo eye", Robot.intakeRoller.seeBall());
+		
 	}
 
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		SmartDashboard.putBoolean("Satus of Photo eye", Robot.intakeRoller.seeBall());
+		System.out.println(Robot.intakeRoller.seeBall());
 	}
 
 	public void testPeriodic() {
