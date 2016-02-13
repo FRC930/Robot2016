@@ -7,22 +7,24 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class IntakeRoller extends Subsystem {
 
-	public enum Direction {
+	public static enum Direction {
 		
-		FORWARD = new Direction(1f),
-		BACKWARD = new Direction(-1f),
-		STOP = new Direction(0f);
+		STOP(0),
+		FORWARD(1),
+		BACKWARD(-1);
 		
 		private final double speed;
 		
-		private Direction(double s) {
-			speed = s;
+		private Direction(double d) {
+			speed = d;
 		}
 		
 		public double getSpeed() {
 			return speed;
 		}
 	}
+	
+	Direction state;
 	
 	Victor intakeRoller = new Victor(RobotMap.I1Port);
 
@@ -31,17 +33,28 @@ public class IntakeRoller extends Subsystem {
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
 
+	public IntakeRoller() {
+		super();
+		state = Direction.STOP;
+		
+		intakeRoller.setInverted(true);
+	}
+	
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
 	}
 
-	public void setintakeRoller(double speed) {
-		intakeRoller.set(speed);
+	public void setState(Direction d) {
+		state = d;
+		intakeRoller.set(state.getSpeed());
 	}
 	
 	public boolean seeBall() {
 		return lightSensor.get();
 	}
 	
+	public Direction getState() {
+		return state;
+	}
 }

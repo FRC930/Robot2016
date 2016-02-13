@@ -9,7 +9,7 @@ import org.usfirst.frc.team930.robot.commands.IntakeLiftLow;
 import org.usfirst.frc.team930.robot.commands.IntakeLiftPort;
 import org.usfirst.frc.team930.robot.commands.MoveIntakeRollers;
 import org.usfirst.frc.team930.robot.commands.ShootHighGoal;
-import org.usfirst.frc.team930.robot.commands.ShootLowGoal;
+import org.usfirst.frc.team930.robot.subsystems.IntakeRoller;
 
 
 public class OI {
@@ -40,8 +40,8 @@ public class OI {
 
 		// CHECK MEEEE!!!!
 
-		button2.whenPressed(new ShootLowGoal());
-		button1.whenPressed(new MoveIntakeRollers(.5));
+		button2.whenPressed(new MoveIntakeRollers(IntakeRoller.Direction.BACKWARD));
+		button1.whenPressed(new MoveIntakeRollers(IntakeRoller.Direction.FORWARD));
 		button3.whenPressed(new IntakeLiftHigh());
 		button4.whenPressed(new ShootHighGoal());
 		

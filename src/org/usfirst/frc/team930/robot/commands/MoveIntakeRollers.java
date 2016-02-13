@@ -1,6 +1,8 @@
 package org.usfirst.frc.team930.robot.commands;
 
 import org.usfirst.frc.team930.robot.Robot;
+import org.usfirst.frc.team930.robot.subsystems.IntakeRoller;
+
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -9,14 +11,14 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class MoveIntakeRollers extends Command {
 
-	double speed;                                //.75
+	IntakeRoller.Direction command;
 
-	public MoveIntakeRollers(double s) {
+	public MoveIntakeRollers(IntakeRoller.Direction d) {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
-		
+
 		requires(Robot.intakeRoller);
-		speed = s;
+		command = d;
 	}
 
 	// Called just before this Command runs the first time
@@ -27,7 +29,11 @@ public class MoveIntakeRollers extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 		
-		System.out.println("Pulling in ball");
+		if(Robot.intakeRoller.getState() != IntakeRoller.Direction.STOP) {
+			Robot.intakeRoller.setState(IntakeRoller.Direction.STOP);
+		} else {
+			Robot.intakeRoller.setState(command);
+		}
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -37,12 +43,12 @@ public class MoveIntakeRollers extends Command {
 
 	// Called once after isFinished returns true
 	protected void end() {
-		Robot.intakeRoller.setintakeRoller(0);
+		Robot.intakeRoller.setState(IntakeRoller.Direction.STOP);
 	}
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	protected void interrupted() {
-		Robot.intakeRoller.setintakeRoller(0);
+		Robot.intakeRoller.setState(IntakeRoller.Direction.STOP);
 	}
 }
