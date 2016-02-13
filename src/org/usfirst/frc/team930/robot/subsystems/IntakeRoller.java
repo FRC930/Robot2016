@@ -10,8 +10,8 @@ public class IntakeRoller extends Subsystem {
 	public static enum Direction {
 		
 		STOP(0),
-		FORWARD(1),
-		BACKWARD(-1);
+		FORWARD(.75),
+		BACKWARD(-.75);
 		
 		private final double speed;
 		
