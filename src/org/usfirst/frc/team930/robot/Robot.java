@@ -78,8 +78,8 @@ public class Robot extends IterativeRobot {
 
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		SmartDashboard.putBoolean("Satus of Photo eye", Robot.intakeRoller.seeBall());
-		System.out.println(Robot.intakeRoller.seeBall());
+		//SmartDashboard.putBoolean("Satus of Photo eye", Robot.intakeRoller.seeBall());
+		System.out.println("Light Status: " + Robot.intakeRoller.seeBall());
 	}
 
 	public void testPeriodic() {
