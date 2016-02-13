@@ -26,6 +26,7 @@ public class IntakeRoller extends Subsystem {
 		public String toString(){
 			return "Speed: " + speed;
 		}
+		
 	}
 	
 	Direction state;
