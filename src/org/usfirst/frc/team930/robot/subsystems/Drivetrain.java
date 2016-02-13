@@ -28,13 +28,12 @@ public class Drivetrain extends Subsystem {
 
 	//AnalogInput distanceSensor = new AnalogInput(0);
 	
-	public Ultrasonic ultra = new Ultrasonic(0, 0);
+	//public Ultrasonic ultra = new Ultrasonic(0, 0);
 	
-	
-	public ADXRS450_Gyro gyro = new ADXRS450_Gyro(SPI.Port.kOnboardCS0);
 	//Command for going straight( zero degrees), if button is pressed
 	public void gyro (){
-		
+		//if()
+		// gyro is analog input
 	}
 	
 

@@ -41,7 +41,7 @@ public class OI {
 		// CHECK MEEEE!!!!
 
 		button2.whenPressed(new ShootLowGoal());
-		button1.whenPressed(new MoveIntakeRollers(0));
+		button1.whenPressed(new MoveIntakeRollers(.5));
 		button3.whenPressed(new IntakeLiftHigh());
 		button4.whenPressed(new ShootHighGoal());
 		

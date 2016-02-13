@@ -14,12 +14,23 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 
 public class Robot extends IterativeRobot {
 
-	public static final Drivetrain drivetrain = new Drivetrain();
-	public static final IntakeRoller intakeRoller = new IntakeRoller();
-	public static final Shooter shooter = new Shooter();
-	public static final IntakeLifter intakeLifter = new IntakeLifter();
+	public static Drivetrain drivetrain;
+	public static IntakeRoller intakeRoller;
+	public static Shooter shooter;
+	public static IntakeLifter intakeLifter;
 	public static OI oi;
-
+	
+	static {
+		try {
+			drivetrain = new Drivetrain();
+			intakeRoller = new IntakeRoller();
+			shooter = new Shooter();
+			intakeLifter = new IntakeLifter();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	Command autonomousCommand;
 	SendableChooser chooser;
 

@@ -27,7 +27,7 @@ public class AutoDrive extends Command {
     	Robot.drivetrain.gyro.reset();
     	
     	double angle = Robot.drivetrain.gyro.getAngle();            // get current heading
-        Robot.drivetrain.drive(-1.0, -angle*Kp);                    // drive towards heading 0
+        //Robot.drivetrain.drive(-1.0, -angle*Kp);                    // drive towards heading 0
         Timer.delay(0.005);
     	*/
         //Robot.drivetrain.ultra.setAutomaticMode(true);
