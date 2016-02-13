@@ -7,6 +7,23 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class IntakeRoller extends Subsystem {
 
+	public enum Direction {
+		
+		FORWARD = new Direction(1f),
+		BACKWARD = new Direction(-1f),
+		STOP = new Direction(0f);
+		
+		private final double speed;
+		
+		private Direction(double s) {
+			speed = s;
+		}
+		
+		public double getSpeed() {
+			return speed;
+		}
+	}
+	
 	Victor intakeRoller = new Victor(RobotMap.I1Port);
 
 	DigitalInput lightSensor = new DigitalInput(RobotMap.lightSensorPort);
@@ -19,9 +36,12 @@ public class IntakeRoller extends Subsystem {
 		// setDefaultCommand(new MySpecialCommand());
 	}
 
-	public void setintakeRoller(double speed/*, boolean sensor*/) {
-		/*if(sensor == false || sensor == true && lightSensor.get() == false) intakeRoller.set(speed);
-		else */ intakeRoller.set(speed);
+	public void setintakeRoller(double speed) {
+		intakeRoller.set(speed);
 	}
-
+	
+	public boolean seeBall() {
+		return lightSensor.get();
+	}
+	
 }

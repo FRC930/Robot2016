@@ -22,13 +22,19 @@ public class AutoDrive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double Kp = 0.03;
+    	/*double Kp = 0.03;
     	
     	Robot.drivetrain.gyro.reset();
     	
     	double angle = Robot.drivetrain.gyro.getAngle();            // get current heading
         //Robot.drivetrain.drive(-1.0, -angle*Kp);                    // drive towards heading 0
         Timer.delay(0.005);
+    	*/
+        //Robot.drivetrain.ultra.setAutomaticMode(true);
+        //double range = Robot.drivetrain.ultra.getRangeInches();
+        
+    
+    
     }
 
     // Make this return true when this Command no longer needs to run execute()

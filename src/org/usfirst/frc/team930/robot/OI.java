@@ -10,7 +10,7 @@ import org.usfirst.frc.team930.robot.commands.IntakeLiftPort;
 import org.usfirst.frc.team930.robot.commands.MoveIntakeRollers;
 import org.usfirst.frc.team930.robot.commands.ShootHighGoal;
 import org.usfirst.frc.team930.robot.commands.ShootLowGoal;
-import org.usfirst.frc.team930.robot.commands.StopRollers;
+
 
 public class OI {
 
@@ -39,14 +39,14 @@ public class OI {
 		button7 = new JoystickButton(driverJoystick1, 7);
 
 		// CHECK MEEEE!!!!
+
+		button2.whenPressed(new ShootLowGoal());
+		button1.whenPressed(new MoveIntakeRollers(.5));
+		button3.whenPressed(new IntakeLiftHigh());
+		button4.whenPressed(new ShootHighGoal());
 		
-		//button1.whenPressed(new StopRollers());
-		button2.whileHeld(new MoveIntakeRollers());
-		button3.whileHeld(new ShootLowGoal());
-		button4.whileHeld(new ShootHighGoal());
-		button5.whileHeld(new IntakeLiftLow());
-		button6.whileHeld(new IntakeLiftHigh());
-		//button6.whenPressed(new IntakeLiftPort());
+		button6.whenPressed(new IntakeLiftLow());
+		button7.whenPressed(new IntakeLiftPort());
 
 	}
 

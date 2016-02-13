@@ -9,51 +9,40 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class MoveIntakeRollers extends Command {
 
-	String intakeOn = "Off";
-	
-    public MoveIntakeRollers() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	requires(Robot.intakeRoller);
-    }
+	double speed;                                //.75
 
-    // Called just before this Command runs the first time
-    protected void initialize() {
-//    	if(intakeOn.equals("Off")) intakeOn = "On";
-//    	else if(intakeOn.equals("On")) intakeOn = "Waiting";
-//    	else if(intakeOn.equals("Waiting")) intakeOn = "Off";
-    }
+	public MoveIntakeRollers(double s) {
+		// Use requires() here to declare subsystem dependencies
+		// eg. requires(chassis);
+		
+		requires(Robot.intakeRoller);
+		speed = s;
+	}
 
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-//    	System.out.println(intakeOn);
-//
-//    	
-//    	if(intakeOn.equals("Off")) Robot.intakeRoller.setintakeRoller(0, false);
-//    	else if(intakeOn.equals("On")) Robot.intakeRoller.setintakeRoller(1, false);
-//    	else if(intakeOn.equals("Waiting")) Robot.intakeRoller.setintakeRoller(1, true);
-//    	
-//		System.out.println("Pulling in ball");
-//		SmartDashboard.putString("Direction of Rollers", "Pulling In");
-    	
-    	
-    	Robot.intakeRoller.setintakeRoller(.25);
-    }
+	// Called just before this Command runs the first time
+	protected void initialize() {
 
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-    	
-        return false;
-    }
+	}
 
-    // Called once after isFinished returns true
-    protected void end() {
-    	
-    }
+	// Called repeatedly when this Command is scheduled to run
+	protected void execute() {
+		
+		System.out.println("Pulling in ball");
+	}
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-    	Robot.intakeRoller.setintakeRoller(0);
-    }
+	// Make this return true when this Command no longer needs to run execute()
+	protected boolean isFinished() {
+		return Robot.intakeRoller.seeBall();
+	}
+
+	// Called once after isFinished returns true
+	protected void end() {
+		Robot.intakeRoller.setintakeRoller(0);
+	}
+
+	// Called when another command which requires one or more of the same
+	// subsystems is scheduled to run
+	protected void interrupted() {
+		Robot.intakeRoller.setintakeRoller(0);
+	}
 }
