@@ -30,18 +30,15 @@ public class Drivetrain extends Subsystem {
 	
 	//public Ultrasonic ultra = new Ultrasonic(0, 0);
 	
-	//Command for going straight( zero degrees), if button is pressed
-	public void gyro (){
-		//if()
-		// gyro is analog input
-	}
-	
+	public AnalogGyro gyro = new AnalogGyro(0);
 
 	public Drivetrain() {
 		super();
 		R1.setInverted(true);
 		R2.setInverted(true);//http://first.wpi.edu/FRC/roborio/release/docs/java/edu/wpi/first/wpilibj/ADXRS450_Gyro.html#ADXRS450_Gyro--
 		R3.setInverted(true);
+		
+		gyro.reset();
 	}
 
 	public void initDefaultCommand() {
@@ -61,5 +58,7 @@ public class Drivetrain extends Subsystem {
 		R3.set(speed);
 	}
 
-	
+	public double getAngle() {
+		return gyro.getAngle();
+	}
 }
