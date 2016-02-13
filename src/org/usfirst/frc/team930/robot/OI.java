@@ -40,8 +40,8 @@ public class OI {
 
 		// CHECK MEEEE!!!!
 
-		button2.whenPressed(new MoveIntakeRollers(IntakeRoller.Direction.BACKWARD));
-		button1.whenPressed(new MoveIntakeRollers(IntakeRoller.Direction.FORWARD));
+		button2.toggleWhenPressed(new MoveIntakeRollers(IntakeRoller.Direction.BACKWARD));
+		button1.toggleWhenPressed(new MoveIntakeRollers(IntakeRoller.Direction.FORWARD));
 		button3.whenPressed(new IntakeLiftHigh());
 		button4.whenPressed(new ShootHighGoal());
 		

@@ -41,8 +41,8 @@ public class Drive extends Command {
 		Robot.drivetrain.setL(y + x);
 		Robot.drivetrain.setR(y - x);
 
-		System.out.println("X: " + x);
-		System.out.println("Y: " + y);
+		//System.out.println("X: " + x);
+		//System.out.println("Y: " + y);
         
 	}
 
