@@ -10,6 +10,17 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 
 public class IntakeLifter extends Subsystem {
+	public static enum Position{
+		LOW(20),HIGH(60),PORT(50);
+		
+		private final double angle;
+		private Position(double a){
+			angle = a;
+		}
+		public double getAngle(){
+			return angle;
+		}
+	}
 	AnalogPotentiometer potentiometer = new AnalogPotentiometer(RobotMap.ILiftPort);
 	Spark intakeLifter = new Spark(RobotMap.I2Port);
 	PIDController pidController = new PIDController(0,0,0,potentiometer,intakeLifter);

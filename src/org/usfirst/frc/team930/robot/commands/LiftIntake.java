@@ -1,5 +1,8 @@
 package org.usfirst.frc.team930.robot.commands;
 
+import org.usfirst.frc.team930.robot.Robot;
+import org.usfirst.frc.team930.robot.subsystems.IntakeLifter;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -7,7 +10,11 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class LiftIntake extends Command {
 
-    public LiftIntake() {
+	IntakeLifter.Position command;
+	
+    public LiftIntake(IntakeLifter.Position c) {
+    	requires(Robot.intakeLifter);
+    	command = c;
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -18,11 +25,12 @@ public class LiftIntake extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	Robot.intakeLifter.setintakeLifter(command.getAngle());
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true
