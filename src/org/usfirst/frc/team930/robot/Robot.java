@@ -11,6 +11,7 @@ import org.usfirst.frc.team930.robot.subsystems.IntakeRoller;
 import org.usfirst.frc.team930.robot.subsystems.Shooter;
 
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Robot extends IterativeRobot {
 
@@ -72,6 +73,7 @@ public class Robot extends IterativeRobot {
 	public void teleopInit() {
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
+		SmartDashboard.putBoolean("Satus of Photo eye", Robot.intakeRoller.seeBall());
 	}
 
 	public void teleopPeriodic() {
