@@ -11,7 +11,8 @@ public class IntakeRoller extends Subsystem {
 		
 		STOP(0),
 		FORWARD(.75),
-		BACKWARD(-.75);
+		BACKWARD(-.75),
+		TO_SHOOTER(.25);
 		
 		private final double speed;
 		
