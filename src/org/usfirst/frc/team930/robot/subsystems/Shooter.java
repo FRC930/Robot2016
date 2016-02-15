@@ -8,58 +8,44 @@ import org.usfirst.frc.team930.robot.controller.CounterRPMSource;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.Victor;
 
 public class Shooter extends Subsystem {
 
 	public static final double HIGH_GOAL_RPM = 3800;
-
+	
 	Victor shooter1 = new Victor(RobotMap.S1Port);
 	Victor shooter2 = new Victor(RobotMap.S2Port);
-
-	DigitalInput lightSensorShooter = new DigitalInput(RobotMap.lightSensorShooterPort);
-
+	
+	DigitalInput lightSensorShooter = new DigitalInput(
+			RobotMap.lightSensorShooterPort);
+	
 	CounterRPMSource rpmSource = new CounterRPMSource(lightSensorShooter);
 
 	BBSController cont1, cont2;
-
+	
 	public Shooter() {
 		super();
-		cont1 = new BBSController(rpmSource, shooter1, 0, 0);
-		cont2 = new BBSController(rpmSource, shooter2, 0, 0);
+		cont1 = new BBSController(rpmSource, shooter1, 3000, .8);
+		cont2 = new BBSController(rpmSource, shooter2, 3000, .8);
 	}
-
+	
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
 
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
-		setDefaultCommand(new ShootHighGoal());
+		// setDefaultCommand(new ShootHighGoal());
 	}
 
 	public void setShooter(double rpm) {
-
+		
 		cont1.setRPM(rpm);
 		cont2.setRPM(rpm);
 		
-//		 shooter1.set(rpm);
-//		 shooter2.set(rpm);
+		//shooter1.set(speed);
+		//shooter2.set(speed);
 	}
 
-	public void setAccel(double accel) {
-		cont1.setAccel(accel);
-		cont2.setAccel(accel);
-	}
-	
-	public void enable() {
-		cont1.enable();
-		cont2.enable();
-	}
-	
-	public void disable() {
-		cont1.disable();
-		cont2.disable();
-	}
 }

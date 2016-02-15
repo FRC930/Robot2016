@@ -38,12 +38,12 @@ public class OI {
 		button6 = new JoystickButton(driverJoystick1, 6);
 		button7 = new JoystickButton(driverJoystick1, 7);
 
-		// CHECK MEEEE!!!! change button 2 and 1 to toggle
+		// CHECK MEEEE!!!!
 
-		button2.whileHeld(new MoveIntakeRollers(IntakeRoller.Direction.BACKWARD));
-		button1.whileHeld(new MoveIntakeRollers(IntakeRoller.Direction.FORWARD));
-		button4.whenPressed(new IntakeLiftHigh());
-		button3.toggleWhenPressed(new ShootHighGoal());
+		button2.toggleWhenPressed(new MoveIntakeRollers(IntakeRoller.Direction.BACKWARD));
+		button1.toggleWhenPressed(new MoveIntakeRollers(IntakeRoller.Direction.FORWARD));
+		button3.whenPressed(new IntakeLiftHigh());
+		button4.whenPressed(new ShootHighGoal());
 		
 		button6.whenPressed(new IntakeLiftLow());
 		button7.whenPressed(new IntakeLiftPort());

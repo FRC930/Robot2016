@@ -23,16 +23,11 @@ public class Robot extends IterativeRobot {
 	
 	static {
 		try {
-			//drivetrain = new Drivetrain();
+			drivetrain = new Drivetrain();
 			intakeRoller = new IntakeRoller();
-			System.out.println("in static");
 			shooter = new Shooter();
-			System.out.println("made shooter");
-
-			//intakeLifter = new IntakeLifter();
+			intakeLifter = new IntakeLifter();
 		} catch(Exception e) {
-			System.out.println("exception");
-
 			e.printStackTrace();
 		}
 	}
@@ -87,10 +82,8 @@ public class Robot extends IterativeRobot {
 
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		//SmartDashboard.putBoolean("Status of Photo eye", Robot.intakeRoller.seeBall());
-		//System.out.println(Robot.intakeRoller.seeBall());
-		//System.out.println("======================");
-		
+		SmartDashboard.putBoolean("Status of Photo eye", Robot.intakeRoller.seeBall());
+		System.out.println(Robot.intakeRoller.seeBall());
 	}
 
 	public void testPeriodic() {
