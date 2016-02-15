@@ -28,6 +28,7 @@ public class Shooter extends Subsystem {
 		super();
 		cont1 = new BBSController(rpmSource, shooter1, 3000, .8);
 		cont2 = new BBSController(rpmSource, shooter2, 3000, .8);
+		//
 	}
 	
 	// Put methods for controlling this subsystem
