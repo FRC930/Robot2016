@@ -4,14 +4,14 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.Preferences;
 
 import org.usfirst.frc.team930.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team930.robot.subsystems.IntakeLifter;
 import org.usfirst.frc.team930.robot.subsystems.IntakeRoller;
 import org.usfirst.frc.team930.robot.subsystems.Shooter;
-
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Robot extends IterativeRobot {
 
@@ -34,6 +34,7 @@ public class Robot extends IterativeRobot {
 	
 	Command autonomousCommand;
 	SendableChooser chooser;
+	public static Preferences prefs;
 
 	public void robotInit() {
 		// OI.getInstance();
@@ -41,6 +42,9 @@ public class Robot extends IterativeRobot {
 		// chooser.addDefault("Default Auto", new Drive());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		// SmartDashboard.putData("Auto mode", chooser);
+		
+		prefs = Preferences.getInstance();
+		SmartDashboard.putData("Update", IntakeLifter.Update()); //Creates a SmartDashboard button to call Update()
 	}
 
 	public void disabledInit() {
@@ -78,7 +82,7 @@ public class Robot extends IterativeRobot {
 
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		SmartDashboard.putBoolean("Satus of Photo eye", Robot.intakeRoller.seeBall());
+		SmartDashboard.putBoolean("Status of Photo eye", Robot.intakeRoller.seeBall());
 		System.out.println(Robot.intakeRoller.seeBall());
 	}
 

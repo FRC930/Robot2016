@@ -10,8 +10,8 @@ public class IntakeRoller extends Subsystem {
 	public static enum Direction {
 		
 		STOP(0),
-		FORWARD(1),
-		BACKWARD(-1);
+		FORWARD(.75),
+		BACKWARD(-.75);
 		
 		private final double speed;
 		
@@ -21,7 +21,12 @@ public class IntakeRoller extends Subsystem {
 		
 		public double getSpeed() {
 			return speed;
+			
 		}
+		public String toString(){
+			return "Speed: " + speed;
+		}
+		
 	}
 	
 	Direction state;
@@ -46,12 +51,15 @@ public class IntakeRoller extends Subsystem {
 	}
 
 	public void setState(Direction d) {
+		//System.out.println("Setting Direction: "+d);
 		state = d;
 		intakeRoller.set(state.getSpeed());
 	}
 	
 	public boolean seeBall() {
+		//System.out.println("I see ball: "+lightSensor.get());
 		return lightSensor.get();
+		
 	}
 	
 	public Direction getState() {
