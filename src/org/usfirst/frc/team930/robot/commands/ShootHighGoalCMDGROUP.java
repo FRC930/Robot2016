@@ -32,7 +32,7 @@ public class ShootHighGoalCMDGROUP extends CommandGroup {
     	addParallel(new ShootHighGoal());
     	System.out.println("finished shooter ");
     	System.out.println("starting intake");
-    	addSequential(new MoveIntakeRollers(IntakeRoller.Direction.FORWARD));
+    	addSequential(new MoveIntakeRollers(IntakeRoller.Direction.SHOOTERPULL));
     	System.out.println("starting timer delay");
     	Timer.delay(3);
     	addSequential(new MoveIntakeRollers(IntakeRoller.Direction.STOP));

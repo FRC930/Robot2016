@@ -44,9 +44,16 @@ public class MoveIntakeRollers extends Command {
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
 		System.out.println("Checking");
+		 if(command.equals(IntakeRoller.Direction.SHOOTERPULL))
+		 {  
+			 Timer.delay(3);
+			 return false;
+		 }
+		if (command.equals(IntakeRoller.Direction.BACKWARD)) {
+			return false;
+		}
+		return Robot.intakeRoller.seeBall();
 		
-		
-		return false;//Robot.intakeRoller.seeBall();
 		
 	}
 
