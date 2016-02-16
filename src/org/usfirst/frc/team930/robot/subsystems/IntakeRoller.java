@@ -1,6 +1,8 @@
 package org.usfirst.frc.team930.robot.subsystems;
 
 import org.usfirst.frc.team930.robot.RobotMap;
+import org.usfirst.frc.team930.robot.commands.MoveIntakeRollers;
+
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -10,8 +12,9 @@ public class IntakeRoller extends Subsystem {
 	public static enum Direction {
 		
 		STOP(0),
-		FORWARD(.75),
-		BACKWARD(-.75);
+		FORWARD(1),
+		BACKWARD(-.75),
+		SHOOTERPULL(.75);
 		
 		private final double speed;
 		
@@ -48,6 +51,7 @@ public class IntakeRoller extends Subsystem {
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
+		//setDefaultCommand(new MoveIntakeRollers(Direction.FORWARD));
 	}
 
 	public void setState(Direction d) {

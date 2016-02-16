@@ -9,6 +9,7 @@ import org.usfirst.frc.team930.robot.commands.IntakeLiftLow;
 import org.usfirst.frc.team930.robot.commands.IntakeLiftPort;
 import org.usfirst.frc.team930.robot.commands.MoveIntakeRollers;
 import org.usfirst.frc.team930.robot.commands.ShootHighGoal;
+import org.usfirst.frc.team930.robot.commands.ShootHighGoalCMDGROUP;
 import org.usfirst.frc.team930.robot.subsystems.IntakeRoller;
 
 
@@ -16,7 +17,7 @@ public class OI {
 
 	private static OI instance = new OI();
 
-	static Joystick driverJoystick1;
+	Joystick driverJoystick1;
 
 	Button button1;
 	Button button2;
@@ -28,7 +29,10 @@ public class OI {
 
 	private OI() {
 
+		try {
 		driverJoystick1 = new Joystick(1);
+		System.out.println("JOYSTICKKKKK");
+		System.out.println(driverJoystick1);
 
 		button1 = new JoystickButton(driverJoystick1, 1);
 		button2 = new JoystickButton(driverJoystick1, 2);
@@ -38,15 +42,19 @@ public class OI {
 		button6 = new JoystickButton(driverJoystick1, 6);
 		button7 = new JoystickButton(driverJoystick1, 7);
 
-		// CHECK MEEEE!!!!
+		// CHECK MEEEE!!!! change button 2 and 1 to toggle
 
-		button2.toggleWhenPressed(new MoveIntakeRollers(IntakeRoller.Direction.BACKWARD));
-		button1.toggleWhenPressed(new MoveIntakeRollers(IntakeRoller.Direction.FORWARD));
-		button3.whenPressed(new IntakeLiftHigh());
-		button4.whenPressed(new ShootHighGoal());
+		button2.whileHeld(new MoveIntakeRollers(IntakeRoller.Direction.BACKWARD));
+		button1.whileHeld(new MoveIntakeRollers(IntakeRoller.Direction.FORWARD));
+		button4.whenPressed(new IntakeLiftHigh());
+		button3.whenPressed(new ShootHighGoalCMDGROUP());
 		
 		button6.whenPressed(new IntakeLiftLow());
 		button7.whenPressed(new IntakeLiftPort());
+		}catch(Exception e) {
+			System.out.println("LOOK AT ME IM MR EXCEPTION");
+			e.printStackTrace();
+		}
 
 	}
 
@@ -56,12 +64,12 @@ public class OI {
 		return instance;
 	}
 
-	public static double getXAxis() {
+	public double getXAxis() {
 		// if things go funky change to getAxis
 		return driverJoystick1.getRawAxis(0);
 	}
 
-	public static double getYAxis() {
+	public double getYAxis() {
 		return -driverJoystick1.getRawAxis(1);
 	}
 }

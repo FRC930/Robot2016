@@ -28,19 +28,18 @@ public class Drive extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 
+		
 		//Robot.drivetrain.ultra.setEnabled(true);
         //Robot.drivetrain.ultra.getRangeInches();
         //SmartDashboard.putNumber("Distance", 0);
-		
-        double x = OI.getXAxis();
-		double y = OI.getYAxis();
+        double x = OI.getInstance().getXAxis();
+		double y = OI.getInstance().getYAxis();
 
 		x = x * x * Math.signum(x);
 		y = y * y * Math.signum(y);
 
 		Robot.drivetrain.setL(y + x);
 		Robot.drivetrain.setR(y - x);
-
 		//System.out.println("X: " + x);
 		//System.out.println("Y: " + y);
         

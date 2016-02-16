@@ -25,9 +25,14 @@ public class Robot extends IterativeRobot {
 		try {
 			drivetrain = new Drivetrain();
 			intakeRoller = new IntakeRoller();
+			System.out.println("in static");
 			shooter = new Shooter();
+			System.out.println("made shooter");
+
 			intakeLifter = new IntakeLifter();
 		} catch(Exception e) {
+			System.out.println("exception");
+
 			e.printStackTrace();
 		}
 	}
@@ -37,14 +42,14 @@ public class Robot extends IterativeRobot {
 	public static Preferences prefs;
 
 	public void robotInit() {
-		// OI.getInstance();
+		 OI.getInstance();
 		// chooser = new SendableChooser();
 		// chooser.addDefault("Default Auto", new Drive());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		// SmartDashboard.putData("Auto mode", chooser);
 		
 		prefs = Preferences.getInstance();
-		SmartDashboard.putData("Update", IntakeLifter.Update()); //Creates a SmartDashboard button to call Update()
+		//SmartDashboard.putData("Update", IntakeLifter.Update()); //Creates a SmartDashboard button to call Update()
 	}
 
 	public void disabledInit() {
@@ -71,7 +76,7 @@ public class Robot extends IterativeRobot {
 	}
 
 	public void autonomousPeriodic() {
-		Scheduler.getInstance().run();
+		//Scheduler.getInstance().run();
 	}
 
 	public void teleopInit() {
@@ -82,8 +87,9 @@ public class Robot extends IterativeRobot {
 
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		SmartDashboard.putBoolean("Status of Photo eye", Robot.intakeRoller.seeBall());
-		System.out.println(Robot.intakeRoller.seeBall());
+		//SmartDashboard.putBoolean("Status of Photo eye", Robot.intakeRoller.seeBall());
+		//System.out.println(Robot.intakeRoller.seeBall());
+		//System.out.println("======================");
 	}
 
 	public void testPeriodic() {

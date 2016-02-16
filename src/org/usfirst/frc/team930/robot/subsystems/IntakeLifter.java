@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 public class IntakeLifter extends Subsystem {
-	enum Positions
+	/*enum Positions
 	{
 		LOWGOAL, HIGH, PICKUP;
 	}
@@ -28,7 +28,7 @@ public class IntakeLifter extends Subsystem {
 
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
-
+*/
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
@@ -41,21 +41,22 @@ public class IntakeLifter extends Subsystem {
 	 * @author GuyAcrossTheStreet
 	 */
 	public static Sendable Update() {
-		P = Robot.prefs.getInt("P", 0);
+		/*P = Robot.prefs.getInt("P", 0);
 		I = Robot.prefs.getInt("I", 0);
 		D = Robot.prefs.getInt("D", 0);
 		PID = new PIDController(P,I,D,potentiometer,intakeLifter);
 		
-		return PID;
+		return PID;*/
+		return null;
 	}
 
 	public void setintakeLifter(double angle) {
 		//intakeLifter.set(angle);
 		//System.out.println(potentiometer.get());
 		
-		PID.setSetpoint(angle);
+		/*PID.setSetpoint(angle);
 		
 		SmartDashboard.putData("Set Angle", PID);
-    	SmartDashboard.putData("Actual Angle", potentiometer);
+    	SmartDashboard.putData("Actual Angle", potentiometer);*/
 	}
 }
