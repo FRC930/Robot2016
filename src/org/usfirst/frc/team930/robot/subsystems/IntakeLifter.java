@@ -12,14 +12,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class IntakeLifter extends Subsystem {
 
-	// Preferences will allow remotely inputted proportional, integrational, and
-	// derivative values
 	static int P = Robot.prefs.getInt("P", 0);
 	static int I = Robot.prefs.getInt("I", 0);
 	static int D = Robot.prefs.getInt("D", 0);
 
 	public static enum Position {
-		LOW(20), HIGH(60), PORT(50);
+		LOW(20), HIGH(60), PORT(50), TO_SHOOTER(0);
 
 		private final double angle;
 

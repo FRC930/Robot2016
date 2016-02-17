@@ -31,30 +31,26 @@ public class MoveIntakeRollers extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 
-		/*if (Robot.intakeRoller.getState() != IntakeRoller.Direction.STOP) {
-			System.out.println("Toggling");
-			Robot.intakeRoller.setState(IntakeRoller.Direction.STOP);
-		} else {
-			System.out.println("Setting Command");
-			Robot.intakeRoller.setState(command);
-		}*/
+		/*
+		 * if (Robot.intakeRoller.getState() != IntakeRoller.Direction.STOP) {
+		 * System.out.println("Toggling");
+		 * Robot.intakeRoller.setState(IntakeRoller.Direction.STOP); } else {
+		 * System.out.println("Setting Command");
+		 * Robot.intakeRoller.setState(command); }
+		 */
 		Robot.intakeRoller.setState(command);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
 		System.out.println("Checking");
-		 if(command.equals(IntakeRoller.Direction.SHOOTERPULL))
-		 {  
-			 Timer.delay(3);
-			 return false;
-		 }
-		if (command.equals(IntakeRoller.Direction.BACKWARD)) {
+		if (command.equals(IntakeRoller.Direction.SHOOTERPULL)) {
 			return false;
 		}
-		return Robot.intakeRoller.seeBall();
-		
-		
+		if (command.equals(IntakeRoller.Direction.BACKWARD)) {
+			return false;
+		} else
+			return Robot.intakeRoller.seeBall();
 	}
 
 	// Called once after isFinished returns true

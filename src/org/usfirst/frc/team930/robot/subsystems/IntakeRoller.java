@@ -46,7 +46,8 @@ public class IntakeRoller extends Subsystem {
 		state = Direction.STOP;
 		
 		intakeRoller.setInverted(true);
-	}
+	}																																																																																																																																																														
+		
 	
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.

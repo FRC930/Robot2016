@@ -24,37 +24,45 @@ public class OI {
 	Button button6;
 	Button button7;
 
+	double leftTrigger;
+	double rightTrigger;
+
 	private OI() {
+		// init
+		driverJoystick1 = new Joystick(1);
 
-		try {
-			driverJoystick1 = new Joystick(1);
-			System.out.println("JOYSTICKKKKK");
-			System.out.println(driverJoystick1);
+		button1 = new JoystickButton(driverJoystick1, 1);
+		button2 = new JoystickButton(driverJoystick1, 2);
+		button3 = new JoystickButton(driverJoystick1, 3);
+		button4 = new JoystickButton(driverJoystick1, 4);
+		button5 = new JoystickButton(driverJoystick1, 5);
+		button6 = new JoystickButton(driverJoystick1, 6);
+		button7 = new JoystickButton(driverJoystick1, 7);
 
-			button1 = new JoystickButton(driverJoystick1, 1);
-			button2 = new JoystickButton(driverJoystick1, 2);
-			button3 = new JoystickButton(driverJoystick1, 3);
-			button4 = new JoystickButton(driverJoystick1, 4);
-			button5 = new JoystickButton(driverJoystick1, 5);
-			button6 = new JoystickButton(driverJoystick1, 6);
-			button7 = new JoystickButton(driverJoystick1, 7);
+		leftTrigger = driverJoystick1.getRawAxis(2);
+		rightTrigger = driverJoystick1.getRawAxis(3);
 
-			// CHECK MEEEE!!!! change button 2 and 1 to toggle
+		// setups
+		button2.toggleWhenPressed(new MoveIntakeRollers(
+				IntakeRoller.Direction.BACKWARD));
+		button1.toggleWhenPressed(new MoveIntakeRollers(
+				IntakeRoller.Direction.FORWARD));
+		button3.whenPressed(new LiftIntake(IntakeLifter.Position.HIGH));
+		button4.whenPressed(new ShootHighGoal());
 
-			button2.whileHeld(new MoveIntakeRollers(
-					IntakeRoller.Direction.BACKWARD));
-			button1.whileHeld(new MoveIntakeRollers(
-					IntakeRoller.Direction.FORWARD));
-			button3.whenPressed(new LiftIntake(IntakeLifter.Position.HIGH));
-			button4.whenPressed(new ShootHighGoal());
+		button6.whenPressed(new LiftIntake(IntakeLifter.Position.LOW));
+		button7.whenPressed(new LiftIntake(IntakeLifter.Position.PORT));
 
-			button6.whenPressed(new LiftIntake(IntakeLifter.Position.LOW));
-			button7.whenPressed(new LiftIntake(IntakeLifter.Position.PORT));
-		} catch (Exception e) {
-			System.out.println("LOOK AT ME IM MR EXCEPTION");
-			e.printStackTrace();
-		}
+		// test me later
+		if (leftTrigger >= 0.75)
+			new LiftIntake(IntakeLifter.Position.HIGH);
+		else
+			new LiftIntake(IntakeLifter.Position.LOW);
 
+		if (rightTrigger >= 0.75)
+			new LiftIntake(IntakeLifter.Position.PORT);
+		else
+			new LiftIntake(IntakeLifter.Position.LOW);
 	}
 
 	public static OI getInstance() {
