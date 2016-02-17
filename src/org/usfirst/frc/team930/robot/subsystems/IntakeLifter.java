@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class IntakeLifter extends Subsystem {
 	enum Positions
 	{
-		LOWGOAL, HIGH, PICKUP;
+		LOWGOAL, HIGH, PICKUP, TO_SHOOTER;
 	}
 	
 	//Preferences will allow remotely inputted proportional, integrational, and derivative values
