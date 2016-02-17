@@ -27,7 +27,6 @@ public class GyroDriveStraight extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 		//Robot.drivetrain.drive(-1.0, -Robot.drivetrain.getAngle()*Kp);                    // drive towards heading 0
-		System.out.println(Robot.drivetrain.getAngle());
 		
 		double angle = Robot.drivetrain.getAngle();
 

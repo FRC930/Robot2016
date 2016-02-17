@@ -84,6 +84,7 @@ public class Robot extends IterativeRobot {
 		Scheduler.getInstance().run();
 		SmartDashboard.putBoolean("Status of Photo eye", Robot.intakeRoller.seeBall());
 		System.out.println(Robot.intakeRoller.seeBall());
+		System.out.println(Robot.drivetrain.gyro.getAngle());
 	}
 
 	public void testPeriodic() {
