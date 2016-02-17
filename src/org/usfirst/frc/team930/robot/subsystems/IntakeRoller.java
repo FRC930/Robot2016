@@ -11,8 +11,7 @@ public class IntakeRoller extends Subsystem {
 		
 		STOP(0),
 		FORWARD(.75),
-		BACKWARD(-.75),
-		TO_SHOOTER(.25);
+		BACKWARD(-.75);
 		
 		private final double speed;
 		
@@ -44,7 +43,8 @@ public class IntakeRoller extends Subsystem {
 		state = Direction.STOP;
 		
 		intakeRoller.setInverted(true);
-	}
+	}																																																																																																																																																														
+		
 	
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.

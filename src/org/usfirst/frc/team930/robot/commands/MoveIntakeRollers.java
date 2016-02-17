@@ -36,10 +36,8 @@ public class MoveIntakeRollers extends Command {
 		//System.out.println("Checking");
 		if (command.equals(IntakeRoller.Direction.BACKWARD)) {
 			return false;
-		}else if (command.equals(IntakeRoller.Direction.TO_SHOOTER)){
-			return !Robot.intakeRoller.seeBall();
-		}
-		return Robot.intakeRoller.seeBall();
+		}else 
+			return Robot.intakeRoller.seeBall();
 	}
 
 	// Called once after isFinished returns true
