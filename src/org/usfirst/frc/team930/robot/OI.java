@@ -1,6 +1,5 @@
 package org.usfirst.frc.team930.robot;
 
-import edu.wpi.first.wpilibj.AnalogTrigger;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -27,8 +26,8 @@ public class OI {
 	Button button6;
 	Button button7;
 	
-	AnalogTrigger leftTrigger;
-	AnalogTrigger rightTrigger;
+	double leftTrigger;
+	double rightTrigger;
 
 	private OI() {
 
@@ -42,8 +41,8 @@ public class OI {
 		button6 = new JoystickButton(driverJoystick1, 6);
 		button7 = new JoystickButton(driverJoystick1, 7);
 		
-		leftTrigger = new AnalogTrigger(2);
-		rightTrigger = new AnalogTrigger(3);
+		leftTrigger = driverJoystick1.getRawAxis(2);
+		rightTrigger = driverJoystick1.getRawAxis(3);
 
 		// CHECK MEEEE!!!!
 
@@ -55,10 +54,10 @@ public class OI {
 		button6.whenPressed(new IntakeLiftLow());
 		button7.whenPressed(new IntakeLiftPort());
 
-		if(leftTrigger.getTriggerState() == true) new IntakeLiftHigh();
+		if(leftTrigger >= 0.75) new IntakeLiftHigh();
 		else new IntakeLiftLow();
 		
-		if(rightTrigger.getTriggerState() == true) new IntakeLiftPort();
+		if(rightTrigger >= 0.75) new IntakeLiftPort();
 		else new IntakeLiftLow();
 	}
 
