@@ -4,14 +4,11 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
-import org.usfirst.frc.team930.robot.commands.IntakeLiftHigh;
-import org.usfirst.frc.team930.robot.commands.IntakeLiftLow;
-import org.usfirst.frc.team930.robot.commands.IntakeLiftPort;
+import org.usfirst.frc.team930.robot.commands.LiftIntake;
 import org.usfirst.frc.team930.robot.commands.MoveIntakeRollers;
 import org.usfirst.frc.team930.robot.commands.ShootHighGoal;
-import org.usfirst.frc.team930.robot.commands.ShootHighGoalCMDGROUP;
+import org.usfirst.frc.team930.robot.subsystems.IntakeLifter;
 import org.usfirst.frc.team930.robot.subsystems.IntakeRoller;
-
 
 public class OI {
 
@@ -30,28 +27,30 @@ public class OI {
 	private OI() {
 
 		try {
-		driverJoystick1 = new Joystick(1);
-		System.out.println("JOYSTICKKKKK");
-		System.out.println(driverJoystick1);
+			driverJoystick1 = new Joystick(1);
+			System.out.println("JOYSTICKKKKK");
+			System.out.println(driverJoystick1);
 
-		button1 = new JoystickButton(driverJoystick1, 1);
-		button2 = new JoystickButton(driverJoystick1, 2);
-		button3 = new JoystickButton(driverJoystick1, 3);
-		button4 = new JoystickButton(driverJoystick1, 4);
-		button5 = new JoystickButton(driverJoystick1, 5);
-		button6 = new JoystickButton(driverJoystick1, 6);
-		button7 = new JoystickButton(driverJoystick1, 7);
+			button1 = new JoystickButton(driverJoystick1, 1);
+			button2 = new JoystickButton(driverJoystick1, 2);
+			button3 = new JoystickButton(driverJoystick1, 3);
+			button4 = new JoystickButton(driverJoystick1, 4);
+			button5 = new JoystickButton(driverJoystick1, 5);
+			button6 = new JoystickButton(driverJoystick1, 6);
+			button7 = new JoystickButton(driverJoystick1, 7);
 
-		// CHECK MEEEE!!!! change button 2 and 1 to toggle
+			// CHECK MEEEE!!!! change button 2 and 1 to toggle
 
-		button2.whileHeld(new MoveIntakeRollers(IntakeRoller.Direction.BACKWARD));
-		button1.whileHeld(new MoveIntakeRollers(IntakeRoller.Direction.FORWARD));
-		button4.whenPressed(new IntakeLiftHigh());
-		button3.whenPressed(new ShootHighGoalCMDGROUP());
-		
-		button6.whenPressed(new IntakeLiftLow());
-		button7.whenPressed(new IntakeLiftPort());
-		}catch(Exception e) {
+			button2.whileHeld(new MoveIntakeRollers(
+					IntakeRoller.Direction.BACKWARD));
+			button1.whileHeld(new MoveIntakeRollers(
+					IntakeRoller.Direction.FORWARD));
+			button3.whenPressed(new LiftIntake(IntakeLifter.Position.HIGH));
+			button4.whenPressed(new ShootHighGoal());
+
+			button6.whenPressed(new LiftIntake(IntakeLifter.Position.LOW));
+			button7.whenPressed(new LiftIntake(IntakeLifter.Position.PORT));
+		} catch (Exception e) {
 			System.out.println("LOOK AT ME IM MR EXCEPTION");
 			e.printStackTrace();
 		}
