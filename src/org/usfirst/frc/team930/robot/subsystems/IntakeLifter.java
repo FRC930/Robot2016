@@ -29,13 +29,17 @@ public class IntakeLifter extends Subsystem {
 			return angle;
 		}
 	}
-
+	Position degree;
 	AnalogPotentiometer potentiometer = new AnalogPotentiometer(
 			RobotMap.ILiftPort);
 	Spark intakeLifter = new Spark(RobotMap.I2Port);
 	PIDController pidController = new PIDController(0, 0, 0, potentiometer,
 			intakeLifter);
 
+	public IntakeLifter(){
+		super();
+		degree = Position.HIGH;
+	}
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
 
@@ -45,6 +49,12 @@ public class IntakeLifter extends Subsystem {
 
 	}
 
+	public void setAngle(Position p)
+	{
+		degree = p;
+		pidController.setSetpoint(degree.getAngle());
+	}
+	
 	/**
 	 * Updates PID Values in accordance to Preferences inputs and returns the
 	 * new angle that will be set.
@@ -72,5 +82,9 @@ public class IntakeLifter extends Subsystem {
 		 * SmartDashboard.putData("Set Angle", PID);
 		 * SmartDashboard.putData("Actual Angle", potentiometer);
 		 */
+	}
+	public Position getAngle()
+	{
+		return degree;
 	}
 }
