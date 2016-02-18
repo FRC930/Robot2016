@@ -29,30 +29,27 @@ public class GyroDriveBackward extends Command {
 		double x = 0;
 		double y = 0;
 
-		if(angle > 0 && angle < 180){
-			x = Math.sin(angle);
-			y = Math.cos(angle);
+		if(angle > 0 && angle < 180){                           // When the robot is facing right
+			Robot.drivetrain.setL(0.5);
+			Robot.drivetrain.setR(-0.5);
 		}
 
 		else {
-			if(angle < 0 && angle > -180) {
-				x = -1*Math.sin(angle);
-				y = -1*Math.cos(angle);
+			if(angle < 180 && angle > 360) {                    // When the robot is facing left
+				Robot.drivetrain.setL(-0.5);
+				Robot.drivetrain.setR(0.5);
 			}
 
 			else {
-				if(angle == 180 || angle == -180) {
-					x = -1;
-					y = 0;
+				if(angle == 0) {                                // When the robot is facing forwards
+					Robot.drivetrain.setL(-0.5);
+					Robot.drivetrain.setR(0.5);
 				}
 			}
 		}
 
 		x = x * x * Math.signum(x);
 		y = y * y * Math.signum(y);
-
-		Robot.drivetrain.setL(y + x);
-		Robot.drivetrain.setR(y - x);
 		
 		//SmartDashboard.putNumber("Angle", angle);
 		//SmartDashboard.putNumber("X Value", x);

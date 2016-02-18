@@ -1,7 +1,10 @@
 package org.usfirst.frc.team930.robot.commands;
 
 import org.usfirst.frc.team930.robot.Robot;
+import org.usfirst.frc.team930.robot.controller.AlignOutput;
+import org.usfirst.frc.team930.robot.controller.AngleSource;
 
+import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -10,6 +13,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class GyroDriveLeft extends Command {
 
+	public PIDController drivePID;
+	AlignOutput alignOutput;
+	AngleSource angleSource;
+	
     public GyroDriveLeft() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -18,6 +25,7 @@ public class GyroDriveLeft extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	//alignOutput = new AlignOutput();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -29,30 +37,27 @@ public class GyroDriveLeft extends Command {
 		double x = 0;
 		double y = 0;
 
-		if(angle > 0 && angle < 180){
-			x = Math.sin(angle);
-			y = Math.cos(angle);
+		if(angle > 60 && angle < 240){
+			Robot.drivetrain.setL(-0.5);
+			Robot.drivetrain.setR(0.5);
 		}
 
 		else {
-			if(angle < 0 && angle > -180) {
-				x = -1*Math.sin(angle);
-				y = -1*Math.cos(angle);
+			if(angle < 300 && angle > 120) {
+				Robot.drivetrain.setL(0.5);
+				Robot.drivetrain.setR(-0.5);
 			}
 
 			else {
-				if(angle == 180 || angle == -180) {
-					x = -1;
-					y = 0;
+				if(angle == 120) {
+					Robot.drivetrain.setL(-0.5);
+					Robot.drivetrain.setR(0.5);
 				}
 			}
 		}
 
 		x = x * x * Math.signum(x);
 		y = y * y * Math.signum(y);
-
-		Robot.drivetrain.setL(y + x);
-		Robot.drivetrain.setR(y - x);
 		
 		//SmartDashboard.putNumber("Angle", angle);
 		//SmartDashboard.putNumber("X Value", x);
