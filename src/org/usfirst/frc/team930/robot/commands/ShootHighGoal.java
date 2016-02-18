@@ -45,8 +45,8 @@ public class ShootHighGoal extends Command {
 			/*
 			 * STATE 1 - set shooter speed - set start time
 			 */
-			Robot.shooter.setShooter(Shooter.HIGH_GOAL_RPM); // turn on shooter
-																// wheels
+			// turn on shooter wheels
+			Robot.shooter.setShooter(Shooter.HIGH_GOAL_RPM);
 			startTime = timer.get(); // gets the starting time in seconds
 			state = State.WAIT_ONE; // move onto the next state
 			break;
@@ -55,8 +55,9 @@ public class ShootHighGoal extends Command {
 			 * STATE 2 - get current time - wait 1 second
 			 */
 			currentTime = timer.get(); // gets current time
-			if ((currentTime - startTime) >= 1) { // after a total 1 second, the
-													// state moves on
+			// after a total 1 second, the state moves on
+			if ((currentTime - startTime) >= 1) {
+
 				state = State.INTAKE_FORWARD;
 			}
 			break;
@@ -64,10 +65,9 @@ public class ShootHighGoal extends Command {
 			/*
 			 * STATE 3 - set intake rollers to forward
 			 */
-			Robot.intakeRoller.setState(IntakeRoller.Direction.FORWARD); // intake
-																			// rollers
-																			// move
-																			// forward
+
+			// intake rollers move forward
+			Robot.intakeRoller.setState(IntakeRoller.Direction.FORWARD);
 			state = State.NO_BALL;
 			break;
 		case NO_BALL:
@@ -75,10 +75,9 @@ public class ShootHighGoal extends Command {
 			 * STATE 4 - ball sensor must be false (the ball isn't in the
 			 * intake)
 			 */
-			if (Robot.intakeRoller.seeBall() == false) { // once the ball isn't
-															// in the intake,
-															// the state moves
-															// on
+
+			// once the ball isn't in the intake, the state moves on
+			if (Robot.intakeRoller.seeBall() == false) {
 				state = State.INTAKE_OFF;
 			}
 			break;
@@ -86,11 +85,9 @@ public class ShootHighGoal extends Command {
 			/*
 			 * STATE 5 - intake rollers are set to off
 			 */
-			Robot.intakeRoller.setState(IntakeRoller.Direction.STOP); // the
-																		// intake
-																		// rollers
-																		// shut
-																		// off
+
+			// the intake rollers shut off
+			Robot.intakeRoller.setState(IntakeRoller.Direction.STOP);
 			state = State.WAIT_THREE;
 			break;
 		case WAIT_THREE:
@@ -98,8 +95,8 @@ public class ShootHighGoal extends Command {
 			 * STATE 6 - get current time - wait 2 more seconds (3 total)
 			 */
 			currentTime = timer.get(); // gets current time
-			if ((currentTime - startTime) >= 3) { // after a total 3 seconds,
-													// the state moves on
+			// after a total 3 seconds, the state moves on
+			if ((currentTime - startTime) >= 3) {
 				state = State.SHOOTER_OFF;
 			}
 			break;
