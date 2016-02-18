@@ -6,6 +6,7 @@ import org.usfirst.frc.team930.robot.Robot;
 import org.usfirst.frc.team930.robot.subsystems.IntakeRoller;
 import org.usfirst.frc.team930.robot.subsystems.Shooter;
 
+import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -13,7 +14,7 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class ShootHighGoal extends Command {
-	
+
 	private static final int START_STATE = 1;
 	private static final int WAIT_ONE_STATE = 2;
 	private static final int INTAKE_FORWARD_STATE = 3;
@@ -29,6 +30,7 @@ public class ShootHighGoal extends Command {
 	int state; // state of shooting, from 1 to 6
 
     public ShootHighGoal() {
+    	System.out.println("Making Command");
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.shooter);
@@ -43,6 +45,7 @@ public class ShootHighGoal extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+
     	if(state == START_STATE){
     		/* STATE 1
     		 * - set shooter speed 
@@ -104,6 +107,7 @@ public class ShootHighGoal extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.shooter.disable();
     }
 
     // Called when another command which requires one or more of the same
