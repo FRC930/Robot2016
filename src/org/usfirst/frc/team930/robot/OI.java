@@ -15,43 +15,62 @@ public class OI {
 
 	private static OI instance = new OI();
 
-	Joystick driverJoystick1;
+	Joystick driverJoystick;
+	Joystick coJoystick;
 
-	Button button1;
-	Button button2;
-	Button button3;
-	Button button4;
-	Button button5;
-	Button button6;
-	Button button7;
+	Button driverButton1;
+	Button driverButton2;
+	Button driverButton3;
+	Button driverButton4;
+	Button driverButton5;
+	Button driverButton6;
+	Button driverButton7;
+	
+	Button coDriverButton1;
+	Button coDriverButton2;
+	Button coDriverButton3;
+	Button coDriverButton4;
+	Button coDriverButton5;
+	Button coDriverButton6;
+	Button coDriverButton7;
+	Button coDriverButton8;
 
 	double leftTrigger;
 	double rightTrigger;
 
 	private OI() {
 		// init
-		driverJoystick1 = new Joystick(1);
+		driverJoystick = new Joystick(1);
 
-		button1 = new JoystickButton(driverJoystick1, 1);
-		button2 = new JoystickButton(driverJoystick1, 2);
-		button3 = new JoystickButton(driverJoystick1, 3);
-		button4 = new JoystickButton(driverJoystick1, 4);
-		button5 = new JoystickButton(driverJoystick1, 5);
-		button6 = new JoystickButton(driverJoystick1, 6);
-		button7 = new JoystickButton(driverJoystick1, 7);
+		driverButton1 = new JoystickButton(driverJoystick, 1);
+		driverButton2 = new JoystickButton(driverJoystick, 2);
+		driverButton3 = new JoystickButton(driverJoystick, 3);
+		driverButton4 = new JoystickButton(driverJoystick, 4);
+		driverButton5 = new JoystickButton(driverJoystick, 5);
+		driverButton6 = new JoystickButton(driverJoystick, 6);
+		driverButton7 = new JoystickButton(driverJoystick, 7);
+		
+		coDriverButton1 = new JoystickButton(coJoystick, 1);
+		coDriverButton2 = new JoystickButton(coJoystick, 2);
+		coDriverButton3 = new JoystickButton(coJoystick, 3);
+		coDriverButton4 = new JoystickButton(coJoystick, 4);
+		coDriverButton5 = new JoystickButton(coJoystick, 5);
+		coDriverButton6 = new JoystickButton(coJoystick, 6);
+		coDriverButton7 = new JoystickButton(coJoystick, 7);
+		coDriverButton8 = new JoystickButton(coJoystick, 8);
 
-		leftTrigger = driverJoystick1.getRawAxis(2);
-		rightTrigger = driverJoystick1.getRawAxis(3);
+		leftTrigger = driverJoystick.getRawAxis(2);
+		rightTrigger = driverJoystick.getRawAxis(3);
 
-		// setups
-		button2.toggleWhenPressed(new MoveIntakeRollers(
+		//Driver Buttons (May end up being removed)
+		driverButton2.toggleWhenPressed(new MoveIntakeRollers(
 				IntakeRoller.Direction.BACKWARD));
-		button1.whenPressed(new Pickup());
-		button3.whenPressed(new LiftIntake(IntakeLifter.Position.HIGH));
-		button4.whenPressed(new ShootHighGoal());
+		driverButton1.whenPressed(new Pickup());
+		driverButton3.whenPressed(new LiftIntake(IntakeLifter.Position.HIGH));
+		driverButton4.whenPressed(new ShootHighGoal());
 
-		button6.whenPressed(new LiftIntake(IntakeLifter.Position.LOW));
-		button7.whenPressed(new LiftIntake(IntakeLifter.Position.PORT));
+		driverButton6.whenPressed(new LiftIntake(IntakeLifter.Position.LOW));
+		driverButton7.whenPressed(new LiftIntake(IntakeLifter.Position.PORT));
 
 		// test me later
 		if (leftTrigger >= 0.75)
@@ -63,6 +82,24 @@ public class OI {
 			new LiftIntake(IntakeLifter.Position.PORT);
 		else
 			new LiftIntake(IntakeLifter.Position.LOW);
+		
+		
+		//CoDriver Buttons
+		//A Button runs Shooter
+		coDriverButton1.whenPressed(new ShootHighGoal());
+		//Start/Select Buttons run a Hanger command that doesn't exist yet
+		//coDriverButton7.whenPressed(new <LiftHanger>);
+		//coDriverButton8.whenPressed(new <LowerHanger>);
+		
+		//Right Joystick runs Intake
+		if(coJoystick.getRawAxis(2) >= 0.75) new MoveIntakeRollers(IntakeRoller.Direction.FORWARD);
+		else if(coJoystick.getRawAxis(3) >= 0.75) new MoveIntakeRollers(IntakeRoller.Direction.BACKWARD);
+		
+		// test me later
+		if (coJoystick.getRawAxis(5) >= 0.75) new LiftIntake(IntakeLifter.Position.HIGH);
+		else new LiftIntake(IntakeLifter.Position.LOW);
+		if (coJoystick.getRawAxis(5) >= 0.75) new LiftIntake(IntakeLifter.Position.PORT);
+		else new LiftIntake(IntakeLifter.Position.LOW);
 	}
 
 	public static OI getInstance() {
@@ -73,10 +110,10 @@ public class OI {
 
 	public double getXAxis() {
 		// if things go funky change to getAxis
-		return driverJoystick1.getRawAxis(0);
+		return driverJoystick.getRawAxis(0);
 	}
 
 	public double getYAxis() {
-		return -driverJoystick1.getRawAxis(1);
+		return -driverJoystick.getRawAxis(1);
 	}
 }
