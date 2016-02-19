@@ -26,12 +26,17 @@ public class GyroDriveLeft extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	//alignOutput = new AlignOutput();
+    	drivePID = new PIDController(0, 0, 0, new AngleSource(), new AlignOutput(Robot.drivetrain.L1, Robot.drivetrain.L2, Robot.drivetrain.L3, Robot.drivetrain.R1, Robot.drivetrain.R2, Robot.drivetrain.R3), 0.01);
+		drivePID.reset();
+		drivePID.setAbsoluteTolerance(1);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-		System.out.println(Robot.drivetrain.getAngle());
-
+    	
+    	drivePID.setSetpoint(-60.0);
+    	
+    	/*
     	double angle = Robot.drivetrain.getAngle();
 
 		double x = 0;
@@ -58,7 +63,7 @@ public class GyroDriveLeft extends Command {
 
 		x = x * x * Math.signum(x);
 		y = y * y * Math.signum(y);
-		
+		*/
 		//SmartDashboard.putNumber("Angle", angle);
 		//SmartDashboard.putNumber("X Value", x);
 		//SmartDashboard.putNumber("Y Value", y);

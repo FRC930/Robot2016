@@ -2,6 +2,8 @@ package org.usfirst.frc.team930.robot.subsystems;
 
 import org.usfirst.frc.team930.robot.RobotMap;
 import org.usfirst.frc.team930.robot.commands.Drive;
+import org.usfirst.frc.team930.robot.controller.AlignOutput;
+import org.usfirst.frc.team930.robot.controller.AngleSource;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.AnalogGyro;
@@ -20,18 +22,19 @@ public class Drivetrain extends Subsystem {
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
 
-	CANTalon L1 = new CANTalon(RobotMap.LFrontPort);
-	CANTalon L2 = new CANTalon(RobotMap.LTopPort);
-	CANTalon L3 = new CANTalon(RobotMap.LBackPort);
-	CANTalon R1 = new CANTalon(RobotMap.RFrontPort);
-	CANTalon R2 = new CANTalon(RobotMap.RTopPort);
-	CANTalon R3 = new CANTalon(RobotMap.RBackPort);
+	public CANTalon L1 = new CANTalon(RobotMap.LFrontPort);
+	public CANTalon L2 = new CANTalon(RobotMap.LTopPort);
+	public CANTalon L3 = new CANTalon(RobotMap.LBackPort);
+	public CANTalon R1 = new CANTalon(RobotMap.RFrontPort);
+	public CANTalon R2 = new CANTalon(RobotMap.RTopPort);
+	public CANTalon R3 = new CANTalon(RobotMap.RBackPort);
 
 	//AnalogInput distanceSensor = new AnalogInput(0);
 	
 	//public Ultrasonic ultra = new Ultrasonic(0, 0);
 	
 	public AnalogGyro gyro = new AnalogGyro(0);
+	
 
 	public Drivetrain() {
 		super();
@@ -62,4 +65,6 @@ public class Drivetrain extends Subsystem {
 	public double getAngle() {
 		return gyro.getAngle()%360.0;
 	}
+	
+
 }

@@ -1,6 +1,8 @@
 package org.usfirst.frc.team930.robot.commands;
 
 import org.usfirst.frc.team930.robot.Robot;
+import org.usfirst.frc.team930.robot.controller.AlignOutput;
+import org.usfirst.frc.team930.robot.controller.AngleSource;
 
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.Timer;
@@ -12,7 +14,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class GyroDriveStraight extends Command {
 
-	double Kp = 0.03;
+	//double Kp = 0.03;
+	public PIDController drivePID;
+	AlignOutput alignOutput;
+	AngleSource angleSource;
 
 	public GyroDriveStraight() {
 		// Use requires() here to declare subsystem dependencies
@@ -28,32 +33,7 @@ public class GyroDriveStraight extends Command {
 	protected void execute() {
 		//Robot.drivetrain.drive(-1.0, -Robot.drivetrain.getAngle()*Kp);                    // drive towards heading 0
 		
-		double angle = Robot.drivetrain.getAngle();
-
-		double x = 0;
-		double y = 0;
-
-		if(angle > 0 && angle < 180) {                      // When the robot is facing right
-			Robot.drivetrain.setL(-0.5);
-			Robot.drivetrain.setR(0.5);
-		}
-
-		else {
-			if(angle < 180 && angle > 360)  {               // When the robot is facing left
-				Robot.drivetrain.setL(0.5);
-				Robot.drivetrain.setR(-0.5);	
-			}
-
-			else {
-				if(angle == 180) {                          // When the robot is facing backwards
-					Robot.drivetrain.setL(-0.5);
-					Robot.drivetrain.setR(0.5);
-				}
-			}
-		}
-
-		x = x * x * Math.signum(x);
-		y = y * y * Math.signum(y);
+		drivePID.setSetpoint(0.0);
 
 		//SmartDashboard.putNumber("Angle", angle);
 		//SmartDashboard.putNumber("X Value", x);

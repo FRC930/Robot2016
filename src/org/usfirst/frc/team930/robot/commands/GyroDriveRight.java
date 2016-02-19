@@ -1,7 +1,10 @@
 package org.usfirst.frc.team930.robot.commands;
 
 import org.usfirst.frc.team930.robot.Robot;
+import org.usfirst.frc.team930.robot.controller.AlignOutput;
+import org.usfirst.frc.team930.robot.controller.AngleSource;
 
+import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -10,6 +13,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class GyroDriveRight extends Command {
 
+	public PIDController drivePID;
+	AlignOutput alignOutput;
+	AngleSource angleSource;
+	
     public GyroDriveRight() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -22,8 +29,10 @@ public class GyroDriveRight extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-		System.out.println(Robot.drivetrain.getAngle());
-
+    	
+    	drivePID.setSetpoint(60.0);
+    	
+    	/*
     	double angle = Robot.drivetrain.getAngle();
 
 		double x = 0;
@@ -50,7 +59,7 @@ public class GyroDriveRight extends Command {
 
 		x = x * x * Math.signum(x);
 		y = y * y * Math.signum(y);
-		
+	*/	
 		//SmartDashboard.putNumber("Angle", angle);
 		//SmartDashboard.putNumber("X Value", x);
 		//SmartDashboard.putNumber("Y Value", y);
