@@ -44,13 +44,13 @@ public class OI {
 
 		// CHECK MEEEE!!!! change button 2 and 1 to toggle
 
-		button2.whileHeld(new MoveIntakeRollers(IntakeRoller.Direction.BACKWARD));
-		button1.whileHeld(new MoveIntakeRollers(IntakeRoller.Direction.FORWARD));
-		button4.whenPressed(new IntakeLiftHigh());
-		button3.whenPressed(new ShootHighGoalCMDGROUP());
+		//button2.whileHeld(new MoveIntakeRollers(IntakeRoller.Direction.BACKWARD));
+		//button1.whileHeld(new MoveIntakeRollers(IntakeRoller.Direction.FORWARD));
+		button2.whenPressed(new IntakeLiftHigh());
+		button3.whenPressed(new IntakeLiftLow());
 		
-		button6.whenPressed(new IntakeLiftLow());
-		button7.whenPressed(new IntakeLiftPort());
+		//button6.whenPressed(new IntakeLiftLow());
+		button1.whenPressed(new IntakeLiftPort());
 		}catch(Exception e) {
 			System.out.println("LOOK AT ME IM MR EXCEPTION");
 			e.printStackTrace();

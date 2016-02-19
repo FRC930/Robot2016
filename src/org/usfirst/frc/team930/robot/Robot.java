@@ -90,6 +90,8 @@ public class Robot extends IterativeRobot {
 		//SmartDashboard.putBoolean("Status of Photo eye", Robot.intakeRoller.seeBall());
 		//System.out.println(Robot.intakeRoller.seeBall());
 		//System.out.println("======================");
+		System.out.println(Robot.intakeLifter.getPOT());
+		SmartDashboard.putNumber("POT", Robot.intakeLifter.getPOT());
 	}
 
 	public void testPeriodic() {

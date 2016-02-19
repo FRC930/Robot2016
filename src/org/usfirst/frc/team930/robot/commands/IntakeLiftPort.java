@@ -1,6 +1,7 @@
 package org.usfirst.frc.team930.robot.commands;
 
 import org.usfirst.frc.team930.robot.Robot;
+import org.usfirst.frc.team930.robot.subsystems.IntakeLifter;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -21,7 +22,7 @@ public class IntakeLiftPort extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.intakeLifter.setintakeLifter(60);
+    	Robot.intakeLifter.setAngle(IntakeLifter.Positions.PORT);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -31,10 +32,14 @@ public class IntakeLiftPort extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.intakeLifter.setAngle(IntakeLifter.Positions.PORT);
+
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	Robot.intakeLifter.setAngle(IntakeLifter.Positions.PORT);
+
     }
 }
