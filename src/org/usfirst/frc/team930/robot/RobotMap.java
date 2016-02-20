@@ -16,12 +16,16 @@ public class RobotMap {
 	
 	public static int ILiftPort = 5;
 	
+	public static int WinchPort = 6;
+	
 	public static int lightSensorPort = 1;
 	public static int lightSensorShooterPort = 0;
+	
 	
 	public static int potPort = 1;
 	
 	public static int shooterSensorPort = 2;
 	public static int distanceSensorPort = 3;
-	
+	public static int hallPort = 4;
+	public static int hangerSpark = 7;
 }
