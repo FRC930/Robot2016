@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.Preferences;
 import org.usfirst.frc.team930.robot.commands.IntakeLiftHigh;
 import org.usfirst.frc.team930.robot.commands.IntakeLiftPickup;
 import org.usfirst.frc.team930.robot.commands.IntakeLiftPort;
+import org.usfirst.frc.team930.robot.commands.Pickup;
 import org.usfirst.frc.team930.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team930.robot.subsystems.IntakeLifter;
 import org.usfirst.frc.team930.robot.subsystems.IntakeRoller;
@@ -101,7 +102,7 @@ public class Robot extends IterativeRobot {
 		}
 		
 		if (OI.getInstance().getRightTrigger() >= 0.75){
-			new IntakeLiftPickup();
+			new Pickup();
 		}else{
 			new IntakeLiftHigh();
 		}
