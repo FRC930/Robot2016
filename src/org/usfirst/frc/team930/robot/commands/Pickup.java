@@ -27,7 +27,7 @@ public class Pickup extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.intakeLifter.setAngle(IntakeLifter.Position.LOW);
+    	Robot.intakeLifter.setAngle(IntakeLifter.Positions.PICKUP);
     	Robot.intakeRoller.setState(IntakeRoller.Direction.FORWARD);
     }
 
@@ -38,14 +38,14 @@ public class Pickup extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.intakeLifter.setAngle(IntakeLifter.Position.HIGH);
+    	Robot.intakeLifter.setAngle(IntakeLifter.Positions.DEFAULT);
     	Robot.intakeRoller.setState(IntakeRoller.Direction.STOP);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	Robot.intakeLifter.setAngle(IntakeLifter.Position.HIGH);
+    	Robot.intakeLifter.setAngle(IntakeLifter.Positions.DEFAULT);
     	Robot.intakeRoller.setState(IntakeRoller.Direction.STOP);
     }
 }
