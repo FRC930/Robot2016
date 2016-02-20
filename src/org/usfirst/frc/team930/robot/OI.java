@@ -37,10 +37,13 @@ public class OI {
 
 	double leftTrigger;
 	double rightTrigger;
+	double coLeftTrigger;
+	double coRightTrigger;
 
 	private OI() {
 		// init
 		driverJoystick = new Joystick(1);
+		coJoystick = new Joystick(2);
 
 		driverButton1 = new JoystickButton(driverJoystick, 1);
 		driverButton2 = new JoystickButton(driverJoystick, 2);
@@ -61,6 +64,8 @@ public class OI {
 
 		leftTrigger = driverJoystick.getRawAxis(2);
 		rightTrigger = driverJoystick.getRawAxis(3);
+		coLeftTrigger = coJoystick.getRawAxis(2);
+		coRightTrigger = coJoystick.getRawAxis(3);
 
 		//Driver Buttons (May end up being removed)
 		driverButton2.toggleWhenPressed(new MoveIntakeRollers(
@@ -77,8 +82,6 @@ public class OI {
 		//coDriverButton8.whenPressed(new <LowerHanger>);
 		
 		//Right Joystick runs Intake
-		if(coJoystick.getRawAxis(2) >= 0.75) new MoveIntakeRollers(IntakeRoller.Direction.FORWARD);
-		else if(coJoystick.getRawAxis(3) >= 0.75) new MoveIntakeRollers(IntakeRoller.Direction.BACKWARD);
 		
 		// test me later
 //		if (coJoystick.getRawAxis(5) >= 0.75) new LiftIntake(IntakeLifter.Position.HIGH);
@@ -99,6 +102,14 @@ public class OI {
 	
 	public double getRightTrigger(){
 		return rightTrigger;	
+	}
+	
+	public double getCoLeftTrigger(){
+		return coLeftTrigger;	
+	}
+	
+	public double getCoRightTrigger(){
+		return coRightTrigger;	
 	}
 
 	public double getXAxis() {
