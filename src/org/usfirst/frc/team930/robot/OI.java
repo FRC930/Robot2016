@@ -62,15 +62,9 @@ public class OI {
 		coDriverButton7 = new JoystickButton(coJoystick, 7);
 		coDriverButton8 = new JoystickButton(coJoystick, 8);
 
-		leftTrigger = driverJoystick.getRawAxis(2);
-		rightTrigger = driverJoystick.getRawAxis(3);
-		coLeftTrigger = coJoystick.getRawAxis(2);
-		coRightTrigger = coJoystick.getRawAxis(3);
-
 		//Driver Buttons (May end up being removed)
-		driverButton2.toggleWhenPressed(new MoveIntakeRollers(
-				IntakeRoller.Direction.BACKWARD));
-		driverButton1.whenPressed(new Pickup());
+		//driverButton2.toggleWhenPressed(new MoveIntakeRollers(IntakeRoller.Direction.BACKWARD));
+		//driverButton1.whenPressed(new Pickup());
 		driverButton4.whenPressed(new ShootHighGoal());
 		
 		
@@ -97,19 +91,19 @@ public class OI {
 	}
 	
 	public double getLeftTrigger(){
-		return leftTrigger;	
+		return driverJoystick.getRawAxis(2);	
 	}
 	
 	public double getRightTrigger(){
-		return rightTrigger;	
+		return driverJoystick.getRawAxis(3);	
 	}
 	
 	public double getCoLeftTrigger(){
-		return coLeftTrigger;	
+		return coJoystick.getRawAxis(2);	
 	}
 	
 	public double getCoRightTrigger(){
-		return coRightTrigger;	
+		return coJoystick.getRawAxis(3);
 	}
 
 	public double getXAxis() {

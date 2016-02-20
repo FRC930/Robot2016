@@ -15,9 +15,9 @@ public class IntakeLifter extends Subsystem {
 	public static enum Positions
 	{
 		//sets the intakelifter values
-		PORT(120),
-		DEFAULT(0),
-		PICKUP(90);
+		PORT(50),
+		DEFAULT(170),
+		PICKUP(80);
 		// declares the variable that will set the position
 private final double angle;
 		
@@ -44,11 +44,11 @@ private final double angle;
 	
 	//sets the values that the PID will use
 	static double P = 0.02;
-	static double I = 0.0001;
+	static double I = 0.00;
 	static double D = 0;
 
 	//declares the POT and sets the boundry for it
-	static AnalogPotentiometer potentiometer = new AnalogPotentiometer(RobotMap.potPort,270,-135);
+	static AnalogPotentiometer potentiometer = new AnalogPotentiometer(RobotMap.potPort,270,0);
 	//declares the SPARK which runs the motor for the intakelifter
 	static Spark intakeLifter = new Spark(RobotMap.ILiftPort);
 	//declares the PID controller which handles the PID values 

@@ -16,8 +16,6 @@ import org.usfirst.frc.team930.robot.commands.IntakeLiftPort;
 import org.usfirst.frc.team930.robot.commands.MoveIntakeRollers;
 import org.usfirst.frc.team930.robot.commands.Pickup;
 import org.usfirst.frc.team930.robot.subsystems.Drivetrain;
-import org.usfirst.frc.team930.robot.subsystems.HangerLifter;
-import org.usfirst.frc.team930.robot.subsystems.HangerWinch;
 import org.usfirst.frc.team930.robot.subsystems.IntakeLifter;
 import org.usfirst.frc.team930.robot.subsystems.IntakeRoller;
 import org.usfirst.frc.team930.robot.subsystems.Shooter;
@@ -105,23 +103,33 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
 		SmartDashboard.putBoolean("Status of Photo eye", Robot.intakeRoller.seeBall());
-		System.out.println(Robot.intakeRoller.seeBall());
-		System.out.println(Robot.drivetrain.gyro.getAngle());
+		//System.out.println(Robot.intakeRoller.seeBall());
+		//System.out.println(Robot.drivetrain.gyro.getAngle());
+		//System.out.println("Pot value: " + Robot.intakeLifter.getPOT());
 		
 		// When the left trigger is held down, the intake lifter moves to the portcullis angle
 		// When the right trigger is held down, the intake lifter moves down and the rollers move inward 
 		
 		// Moving the position of the arm with driver triggers
+		System.out.println("Left trigger: " + OI.getInstance().getLeftTrigger());
 		if (OI.getInstance().getLeftTrigger() >= 0.75){
+			System.out.println("port ");
 			if(!intakeLiftPortTeleop.isRunning()){
 				intakeLiftPortTeleop.start();
+				System.out.println("starting port ");
 			}	
 		}else if((OI.getInstance().getRightTrigger() >= 0.75)){
+			System.out.println(" pick up ");
 			if(!pickupTeleop.isRunning()){
 				pickupTeleop.start();
+				System.out.println("starting pick up ");
 			}
-		}else
-			intakeLiftHighTeleop.start();
+		}else{
+			if(!intakeLiftHighTeleop.isRunning()) {
+				intakeLiftHighTeleop.start();
+			}
+			System.out.println("Default");
+		}
 		
 		// Moving the rollers with codriver triggers
 		if(OI.getInstance().getCoLeftTrigger() >= 0.75){
@@ -134,7 +142,7 @@ public class Robot extends IterativeRobot {
 				rollersBackwardTeleop.start();
 			}
 		}else{
-			if(!rollersStopTeleop.isRunning()){
+			if(!pickupTeleop.isRunning() && !rollersStopTeleop.isRunning()){
 				rollersStopTeleop.start();
 			}
 		}

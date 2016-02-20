@@ -13,7 +13,8 @@ public class AutoDrivePort extends Command {
 	final int START = 0;
 	final int DRIVE_1 = 1;
 	final int LOWER_INTAKE_AND_DRIVE = 2;
-	final int END = 3;
+	final int TURNING_OFF = 3;
+	final int END = 4;
 	int state = 0;
 	Timer timer = new Timer();
 	double startTime; // time the command starts running (seconds)
@@ -32,11 +33,17 @@ public class AutoDrivePort extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	/*
+		 * STATE 1 - get start time in seconds
+		 */
     	if(state == START){
     		startTime = timer.get(); // gets the starting time in seconds
     		state = DRIVE_1;
     	}
     	
+    	/*
+		 * STATE 2 - drive for 3 seconds
+		 */
     	else if(state == DRIVE_1){
     		currentTime = timer.get();
     		Robot.drivetrain.setL(1);
@@ -46,21 +53,34 @@ public class AutoDrivePort extends Command {
     		}
     	}
     	
+    	/*
+		 * STATE 3 - Lower Intake for Portculis and drive forward for 3 seconds
+		 */
     	else if(state == LOWER_INTAKE_AND_DRIVE){
     		currentTime = timer.get();
     		Robot.intakeLifter.setAngle(IntakeLifter.Positions.PORT);
 
     		Robot.drivetrain.setL(1);
 			Robot.drivetrain.setR(1);
-			if(currentTime - startTime >= 3){
-				state = END;
+			if(currentTime - startTime >= 6){
+				state = TURNING_OFF;
+				
 			}
+    	}
+    	
+    	/*
+		 * STATE 4 - Turns off driving and ends
+		 */
+    	else if(state == TURNING_OFF){
+    		Robot.drivetrain.setL(0);
+			Robot.drivetrain.setR(0);	
+			state = END;
     	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return state == END;
     }
 
     // Called once after isFinished returns true
