@@ -16,9 +16,9 @@ public class IntakeLifter extends Subsystem {
 	
 	public static enum Positions
 	{
-		PORT(120),
-		DEFAULT(0),
-		PICKUP(90);
+		PORT(123),
+		DEFAULT(245),
+		PICKUP(150);
 private final double angle;
 		
 		private Positions(double p) {
@@ -44,7 +44,7 @@ private final double angle;
 	static double D = 0;
 
 	
-	static AnalogPotentiometer potentiometer = new AnalogPotentiometer(RobotMap.potPort,270,-135);
+	static AnalogPotentiometer potentiometer = new AnalogPotentiometer(RobotMap.potPort,270,0);
 	static Spark intakeLifter = new Spark(RobotMap.ILiftPort);
 	public static PIDController PID = new PIDController(P,I,D,potentiometer,intakeLifter);
 
