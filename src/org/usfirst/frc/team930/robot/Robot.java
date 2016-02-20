@@ -43,6 +43,9 @@ public class Robot extends IterativeRobot {
 	}
 	
 	Command autonomousCommand;
+	Command intakeLiftPortTeleop;
+	Command intakeLiftHighTeleop;
+	Command pickupTeleop;
 	SendableChooser chooser;
 	public static Preferences prefs;
 
@@ -82,7 +85,9 @@ public class Robot extends IterativeRobot {
 	public void teleopInit() {
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
-		
+		intakeLiftPortTeleop = new IntakeLiftPort();
+		intakeLiftHighTeleop = new IntakeLiftHigh();
+		pickupTeleop = new Pickup();
 	}
 
 	public void teleopPeriodic() {
@@ -92,19 +97,13 @@ public class Robot extends IterativeRobot {
 		System.out.println(Robot.drivetrain.gyro.getAngle());
 		
 		// When the left trigger is held down, the intake lifter moves to the portcullis angle
-		if (OI.getInstance().getLeftTrigger() >= 0.75){
-			new IntakeLiftPort();
-		}else{
-			new IntakeLiftHigh();
-		}
-		
-		// When the left trigger is held down, the intake lifter moves down and the rollers move inward 
-		if (OI.getInstance().getRightTrigger() >= 0.75){
-			new Pickup();
-		}else{
-			new IntakeLiftHigh();
-		}
-		
+		// When the right trigger is held down, the intake lifter moves down and the rollers move inward 
+		if (OI.getInstance().getLeftTrigger() >= 0.75 && !intakeLiftPortTeleop.isRunning()){
+			intakeLiftPortTeleop.start();
+		}else if((OI.getInstance().getRightTrigger() >= 0.75) && !pickupTeleop.isRunning()){
+			pickupTeleop.start();
+		}else
+			intakeLiftHighTeleop.start();
 		
 		if(oi.getRightTrigger()>0.75 && Robot.intakeRoller.seeBall() == true){
 			oi.driverJoystick.setRumble(RumbleType.kLeftRumble, 1);
