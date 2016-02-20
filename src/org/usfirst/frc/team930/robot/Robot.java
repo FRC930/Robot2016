@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.Joystick.RumbleType;
 
+import org.usfirst.frc.team930.robot.commands.AutoDriveForward;
 import org.usfirst.frc.team930.robot.commands.IntakeLiftHigh;
 import org.usfirst.frc.team930.robot.commands.IntakeLiftPickup;
 import org.usfirst.frc.team930.robot.commands.IntakeLiftPort;
@@ -28,7 +29,7 @@ public class Robot extends IterativeRobot {
 	public static IntakeLifter intakeLifter;
 	public static OI oi;
 	//public static HangerLifter hangerLifter;
-	public static HangerWinch hangerWinch;
+	//public static HangerWinch hangerWinch;
 	
 	static {
 		try {
@@ -68,7 +69,7 @@ public class Robot extends IterativeRobot {
 	}
 
 	public void autonomousInit() {
-		autonomousCommand = (Command) chooser.getSelected();
+		autonomousCommand = new AutoDriveForward();
 
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
