@@ -108,6 +108,10 @@ public class Robot extends IterativeRobot {
 		
 		if(oi.getRightTrigger()>0.75 && Robot.intakeRoller.seeBall() == true){
 			oi.driverJoystick.setRumble(RumbleType.kLeftRumble, 1);
+			oi.driverJoystick.setRumble(RumbleType.kRightRumble, 1);
+		}else{
+			oi.driverJoystick.setRumble(RumbleType.kLeftRumble,0);
+			oi.driverJoystick.setRumble(RumbleType.kRightRumble, 0);
 		}
 		
 	}
