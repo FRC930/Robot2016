@@ -62,7 +62,7 @@ public class IntakeRoller extends Subsystem {
 	
 	public boolean seeBall() {
 		//System.out.println("I see ball: "+lightSensor.get());
-		return lightSensor.get();
+		return (!lightSensor.get());
 		
 	}
 	

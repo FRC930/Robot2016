@@ -82,6 +82,8 @@ public class Robot extends IterativeRobot {
 	public void teleopInit() {
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
+    	Robot.intakeLifter.setAngle(IntakeLifter.Positions.DEFAULT);
+
 		
 	}
 
@@ -92,6 +94,8 @@ public class Robot extends IterativeRobot {
 		//System.out.println("======================");
 		System.out.println(Robot.intakeLifter.getPOT());
 		SmartDashboard.putNumber("POT", Robot.intakeLifter.getPOT());
+		System.out.println("ERROR; "+Robot.intakeLifter.PID.getError());
+		
 	}
 
 	public void testPeriodic() {

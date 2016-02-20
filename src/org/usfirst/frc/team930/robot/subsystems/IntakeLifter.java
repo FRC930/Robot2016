@@ -16,9 +16,9 @@ public class IntakeLifter extends Subsystem {
 	
 	public static enum Positions
 	{
-		PORT(123),
-		DEFAULT(245),
-		PICKUP(150);
+		DEFAULT(170),
+		PORT(50),
+		PICKUP(80);
 private final double angle;
 		
 		private Positions(double p) {
@@ -40,7 +40,7 @@ private final double angle;
 	//static int I = Robot.prefs.getInt("I", 0);
 	//static int D = Robot.prefs.getInt("D", 0);
 	static double P = 0.02;
-	static double I = 0.0001;
+	static double I = 0.00;
 	static double D = 0;
 
 	
@@ -55,7 +55,8 @@ private final double angle;
 		position = Positions.DEFAULT;
 //		PID.setInputRange(-135, 135);
 		intakeLifter.setInverted(true);
-		PID.setAbsoluteTolerance(5);
+	//	PID.setAbsoluteTolerance(5);
+		
 	}
 
 	public void initDefaultCommand() {
