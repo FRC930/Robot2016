@@ -9,7 +9,6 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class HangerLifter extends Subsystem {
-    
 	static final double extendSpeed = 1;
 	static final double retractSpeed = -1;
     Spark spark = new Spark(RobotMap.hangerSpark);
@@ -25,5 +24,6 @@ public class HangerLifter extends Subsystem {
     public void retract() {
     	spark.set(retractSpeed);
     }
+    
 }
 

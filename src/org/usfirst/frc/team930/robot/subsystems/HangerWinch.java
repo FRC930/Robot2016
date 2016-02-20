@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class HangerWinch extends Subsystem {
-    
+
 	int counter;
 	
 	Victor hangerWinch = new Victor(RobotMap.WinchPort); 
@@ -20,6 +20,11 @@ public class HangerWinch extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     	
+    }
+    
+    public void initializeCount()
+    {
+    	counter = 0;
     }
     
     public int getCount()
@@ -43,6 +48,11 @@ public class HangerWinch extends Subsystem {
     	}
     	
     	return counter;
+    }
+    
+    public void turnWinch()
+    {
+    	hangerWinch.set(1);
     }
     
 }

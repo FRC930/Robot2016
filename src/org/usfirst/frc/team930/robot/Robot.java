@@ -14,6 +14,8 @@ import org.usfirst.frc.team930.robot.commands.IntakeLiftPickup;
 import org.usfirst.frc.team930.robot.commands.IntakeLiftPort;
 import org.usfirst.frc.team930.robot.commands.Pickup;
 import org.usfirst.frc.team930.robot.subsystems.Drivetrain;
+import org.usfirst.frc.team930.robot.subsystems.HangerLifter;
+import org.usfirst.frc.team930.robot.subsystems.HangerWinch;
 import org.usfirst.frc.team930.robot.subsystems.IntakeLifter;
 import org.usfirst.frc.team930.robot.subsystems.IntakeRoller;
 import org.usfirst.frc.team930.robot.subsystems.Shooter;
@@ -25,6 +27,8 @@ public class Robot extends IterativeRobot {
 	public static Shooter shooter;
 	public static IntakeLifter intakeLifter;
 	public static OI oi;
+	//public static HangerLifter hangerLifter;
+	public static HangerWinch hangerWinch;
 	
 	static {
 		try {
