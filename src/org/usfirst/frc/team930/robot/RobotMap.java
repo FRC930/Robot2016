@@ -24,4 +24,6 @@ public class RobotMap {
 	public static int shooterSensorPort = 2;
 	public static int distanceSensorPort = 3;
 	
+	public static int hangerSpark = 7;
+	
 }
