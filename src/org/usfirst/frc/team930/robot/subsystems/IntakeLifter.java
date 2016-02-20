@@ -14,16 +14,20 @@ public class IntakeLifter extends Subsystem {
 	
 	public static enum Positions
 	{
+		//sets the intakelifter values
 		PORT(120),
 		DEFAULT(0),
 		PICKUP(90);
+		// declares the variable that will set the position
 private final double angle;
 		
 		private Positions(double p) {
+			//sets angle to equal the position 
 			angle = p;
 		}
 		
 		public double getAngle() {
+			//allows you the get the position of the lifter
 			return angle;
 			
 		}
@@ -37,22 +41,29 @@ private final double angle;
 	//static int P = Robot.prefs.getInt("P", 0);
 	//static int I = Robot.prefs.getInt("I", 0);
 	//static int D = Robot.prefs.getInt("D", 0);
+	
+	//sets the values that the PID will use
 	static double P = 0.02;
 	static double I = 0.0001;
 	static double D = 0;
 
-	
+	//declares the POT and sets the boundry for it
 	static AnalogPotentiometer potentiometer = new AnalogPotentiometer(RobotMap.potPort,270,-135);
+	//declares the SPARK which runs the motor for the intakelifter
 	static Spark intakeLifter = new Spark(RobotMap.ILiftPort);
+	//declares the PID controller which handles the PID values 
 	public static PIDController PID = new PIDController(P,I,D,potentiometer,intakeLifter);
 
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
 	public IntakeLifter() {
 		super();
+		//sets the first position to be at as DEFAULT
 		position = Positions.DEFAULT;
 //		PID.setInputRange(-135, 135);
-		intakeLifter.setInverted(true);
+		
+		intakeLifter.setInverted(true);//sets the motor to go backwards
+		//sets the off in degrees that the PID will accept
 		PID.setAbsoluteTolerance(5);
 	}
 
@@ -63,8 +74,11 @@ private final double angle;
 	}
 	public void setAngle(Positions p) {
 		//System.out.println("Setting Direction: "+d);
+		//sets the position equal to P
 		position = p;
+		//sets the value that the PID is supposed to get to
 		PID.setSetpoint(position.getAngle());
+		//enables the PID
 		PID.enable();
 	}
 	/**
@@ -82,9 +96,11 @@ private final double angle;
 		//return null;
 		
 	}
+	//this makes it possible to find the angle of the arm
 	public Positions getAngle() {
 		return position;
 	}
+	//finds the raw value of the PID
 	public double getPOT(){
 		return potentiometer.get();
 	}

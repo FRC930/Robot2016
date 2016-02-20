@@ -15,7 +15,13 @@ import edu.wpi.first.wpilibj.command.Command;
 public class ShootHighGoal extends Command {
 
 	private enum State {
-		START, WAIT_ONE, INTAKE_FORWARD, NO_BALL, INTAKE_OFF, WAIT_THREE, SHOOTER_OFF, END;
+		START,
+		WAIT_ONE,
+		INTAKE_FORWARD,
+		NO_BALL,
+		INTAKE_OFF,
+		WAIT_THREE,
+		SHOOTER_OFF, END;
 	}
 
 	Timer timer = new Timer();

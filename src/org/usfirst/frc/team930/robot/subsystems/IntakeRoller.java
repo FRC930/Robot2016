@@ -10,18 +10,19 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class IntakeRoller extends Subsystem {
 
 	public static enum Direction {
-		
+	//sets the value for all the speeds the of rollers
 		STOP(0),
 		FORWARD(1),
 		BACKWARD(-.75),
 		SHOOTERPULL(.75);
-		
+		//declaress a variable to run the speed of the rollers
 		private final double speed;
 		
 		private Direction(double d) {
+			//sets the speed to be equal to the direction
 			speed = d;
 		}
-		
+		//gets the speed/direction of the rollers 
 		public double getSpeed() {
 			return speed;
 			
@@ -31,11 +32,11 @@ public class IntakeRoller extends Subsystem {
 		}
 		
 	}
-	
+	//sets it so that you can set the direction with the word state
 	Direction state;
-	
+	//declares the victor to control the motor
 	Victor intakeRoller = new Victor(RobotMap.I1Port);
-
+//declares the Lightsensor so it can get values
 	DigitalInput lightSensor = new DigitalInput(RobotMap.lightSensorPort);
 
 	// Put methods for controlling this subsystem
@@ -43,8 +44,9 @@ public class IntakeRoller extends Subsystem {
 
 	public IntakeRoller() {
 		super();
+		//sets the first direction to stop
 		state = Direction.STOP;
-		
+		//sets the motor to do the opposite of the value I give it
 		intakeRoller.setInverted(true);
 	}																																																																																																																																																														
 		
@@ -57,16 +59,17 @@ public class IntakeRoller extends Subsystem {
 
 	public void setState(Direction d) {
 		//System.out.println("Setting Direction: "+d);
+		//sets state the equal direction
 		state = d;
 		intakeRoller.set(state.getSpeed());
 	}
-	
+	//gives the state of the lightsensor
 	public boolean seeBall() {
 		//System.out.println("I see ball: "+lightSensor.get());
 		return lightSensor.get();
 		
 	}
-	
+	//gets the direction of the rollers
 	public Direction getState() {
 		return state;
 	}

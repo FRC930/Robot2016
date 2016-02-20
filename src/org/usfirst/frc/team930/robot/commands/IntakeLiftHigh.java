@@ -25,6 +25,7 @@ public class IntakeLiftHigh extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.intakeLifter.setAngle(IntakeLifter.Positions.DEFAULT);
+    	//this makes the PDI run the intakelifter until it gets to the default position
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -36,6 +37,7 @@ public class IntakeLiftHigh extends Command {
     // Called once after isFinished returns true
     protected void end() {
     	Robot.intakeLifter.setAngle(IntakeLifter.Positions.DEFAULT);
+    	//when the command ends it will stay at the same position
 
     	
     }
@@ -44,6 +46,7 @@ public class IntakeLiftHigh extends Command {
     // subsystems is scheduled to run
     protected void interrupted() {
     	Robot.intakeLifter.setAngle(IntakeLifter.Positions.DEFAULT);
+    	//when a command takes over the position will stay the same
 
     	
     }
