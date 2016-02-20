@@ -29,6 +29,7 @@ public class Pickup extends Command {
     protected void execute() {
     	Robot.intakeLifter.setAngle(IntakeLifter.Positions.PICKUP);
     	Robot.intakeRoller.setState(IntakeRoller.Direction.FORWARD);
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()

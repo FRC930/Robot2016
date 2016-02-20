@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Preferences;
+import edu.wpi.first.wpilibj.Joystick.RumbleType;
 
 import org.usfirst.frc.team930.robot.commands.IntakeLiftHigh;
 import org.usfirst.frc.team930.robot.commands.IntakeLiftPickup;
@@ -106,6 +107,10 @@ public class Robot extends IterativeRobot {
 		}else{
 			new IntakeLiftHigh();
 		}
+		if(oi.getRightTrigger()>0.75 && Robot.intakeRoller.seeBall() == true){
+			oi.driverJoystick.setRumble(RumbleType.kLeftRumble, 1);
+		}
+		
 	}
 
 	public void testPeriodic() {
