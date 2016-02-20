@@ -27,31 +27,33 @@ public class Pickup extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.intakeLifter.setAngle(IntakeLifter.Positions.PICKUP);
     	//this makes the intake lifter go to the appropriate position for pickup
-    	Robot.intakeRoller.setState(IntakeRoller.Direction.FORWARD);
+    	Robot.intakeLifter.setAngle(IntakeLifter.Positions.PICKUP);
     	//sets the intakeRollers to pull in the ball
-    	
+    	if(!Robot.intakeRoller.seeBall())
+    		Robot.intakeRoller.setState(IntakeRoller.Direction.FORWARD);
+    	else
+    		Robot.intakeRoller.setState(IntakeRoller.Direction.STOP);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.intakeRoller.seeBall();
-        //when the lightsensor is covered then it will stop this command
+    	//when the lightsensor is covered then it will stop this command
+        return Robot.intakeRoller.seeBall(); // Change this maybe 
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	//when it finishes it will stop the rollers and set the lifter to default
     	Robot.intakeLifter.setAngle(IntakeLifter.Positions.DEFAULT);
     	Robot.intakeRoller.setState(IntakeRoller.Direction.STOP);
-    	//when it finishes it will stop the rollers and set the lifter to default
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	Robot.intakeLifter.setAngle(IntakeLifter.Positions.DEFAULT);
-    	Robot.intakeRoller.setState(IntakeRoller.Direction.STOP);
     	//when it finishes it will stop the rollers and set the lifter to default
+    	Robot.intakeLifter.setAngle(IntakeLifter.Positions.DEFAULT);
+    	Robot.intakeRoller.setState(IntakeRoller.Direction.STOP);   	
     }
 }
