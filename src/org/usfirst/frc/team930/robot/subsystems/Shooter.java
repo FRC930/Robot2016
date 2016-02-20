@@ -18,7 +18,7 @@ public class Shooter extends Subsystem {
 	Victor shooter1 = new Victor(RobotMap.S1Port);
 	Victor shooter2 = new Victor(RobotMap.S2Port);
 
-	DigitalInput lightSensorShooter = new DigitalInput(RobotMap.lightSensorShooterPort);
+	DigitalInput lightSensorShooter = new DigitalInput(RobotMap.lightSensorShooterPort); 
 
 	CounterRPMSource rpmSource = new CounterRPMSource(lightSensorShooter);
 
@@ -26,7 +26,8 @@ public class Shooter extends Subsystem {
 
 	public Shooter() {
 		super();
-
+		
+		// bang bang controllers
 		cont1 = new BBSController(rpmSource, shooter1, 0, 0);
 		cont2 = new BBSController(rpmSource, shooter2, 0, 0);
 	}

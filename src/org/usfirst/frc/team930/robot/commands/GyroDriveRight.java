@@ -33,42 +33,7 @@ public class GyroDriveRight extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	
     	drivePID.setSetpoint(60.0);
-    	
-    	/*
-    	double angle = Robot.drivetrain.getAngle();
-
-		double x = 0;
-		double y = 0;
-
-		if(angle > 60 && angle < 240){
-			Robot.drivetrain.setL(-0.5);
-			Robot.drivetrain.setR(0.5);
-		}
-
-		else {
-			if(angle < 300 && angle > 120) {
-				Robot.drivetrain.setL(0.5);
-				Robot.drivetrain.setR(-0.5);
-			}
-
-			else {
-				if(angle == 120) {
-					Robot.drivetrain.setL(-0.5);
-					Robot.drivetrain.setR(0.5);
-				}
-			}
-		}
-
-		x = x * x * Math.signum(x);
-		y = y * y * Math.signum(y);
-	*/	
-		//SmartDashboard.putNumber("Angle", angle);
-		//SmartDashboard.putNumber("X Value", x);
-		//SmartDashboard.putNumber("Y Value", y);
-
-		
     }
 
     // Make this return true when this Command no longer needs to run execute()

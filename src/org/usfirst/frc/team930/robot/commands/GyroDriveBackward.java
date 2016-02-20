@@ -28,43 +28,8 @@ public class GyroDriveBackward extends Command {
     }
 
     // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    	
-    	drivePID.setSetpoint(180.0);
-    	
-    	/*
-    	double angle = Robot.drivetrain.getAngle();
-
-		double x = 0;
-		double y = 0;
-
-		if(angle > 0 && angle < 180){                           // When the robot is facing right
-			Robot.drivetrain.setL(0.5);
-			Robot.drivetrain.setR(-0.5);
-		}
-
-		else {
-			if(angle < 180 && angle > 360) {                    // When the robot is facing left
-				Robot.drivetrain.setL(-0.5);
-				Robot.drivetrain.setR(0.5);
-			}
-
-			else {
-				if(angle == 0) {                                // When the robot is facing forwards
-					Robot.drivetrain.setL(-0.5);
-					Robot.drivetrain.setR(0.5);
-				}
-			}
-		}
-
-		x = x * x * Math.signum(x);
-		y = y * y * Math.signum(y);
-		*/
-		//SmartDashboard.putNumber("Angle", angle);
-		//SmartDashboard.putNumber("X Value", x);
-		//SmartDashboard.putNumber("Y Value", y);
-
-		
+    protected void execute() {    	
+    	drivePID.setSetpoint(180.0);	
     }
 
     // Make this return true when this Command no longer needs to run execute()

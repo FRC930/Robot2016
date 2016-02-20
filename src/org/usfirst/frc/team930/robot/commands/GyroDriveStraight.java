@@ -35,15 +35,7 @@ public class GyroDriveStraight extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		//Robot.drivetrain.drive(-1.0, -Robot.drivetrain.getAngle()*Kp);                    // drive towards heading 0
-		
 		drivePID.setSetpoint(0.0);
-
-		//SmartDashboard.putNumber("Angle", angle);
-		//SmartDashboard.putNumber("X Value", x);
-		//SmartDashboard.putNumber("Y Value", y);
-
-		//Timer.delay(0.005);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

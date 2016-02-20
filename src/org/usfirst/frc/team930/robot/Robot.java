@@ -48,13 +48,8 @@ public class Robot extends IterativeRobot {
 
 	public void robotInit() {
 		 OI.getInstance();
-		// chooser = new SendableChooser();
-		// chooser.addDefault("Default Auto", new Drive());
-		// chooser.addObject("My Auto", new MyAutoCommand());
-		// SmartDashboard.putData("Auto mode", chooser);
 		
 		prefs = Preferences.getInstance();
-		//SmartDashboard.putData("Update", IntakeLifter.Update()); //Creates a SmartDashboard button to call Update()
 	}
 
 	public void disabledInit() {
@@ -96,17 +91,21 @@ public class Robot extends IterativeRobot {
 		System.out.println(Robot.intakeRoller.seeBall());
 		System.out.println(Robot.drivetrain.gyro.getAngle());
 		
+		// When the left trigger is held down, the intake lifter moves to the portcullis angle
 		if (OI.getInstance().getLeftTrigger() >= 0.75){
 			new IntakeLiftPort();
 		}else{
 			new IntakeLiftHigh();
 		}
 		
+		// When the left trigger is held down, the intake lifter moves down and the rollers move inward 
 		if (OI.getInstance().getRightTrigger() >= 0.75){
 			new Pickup();
 		}else{
 			new IntakeLiftHigh();
 		}
+		
+		
 		if(oi.getRightTrigger()>0.75 && Robot.intakeRoller.seeBall() == true){
 			oi.driverJoystick.setRumble(RumbleType.kLeftRumble, 1);
 		}
