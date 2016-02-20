@@ -1,8 +1,8 @@
 package org.usfirst.frc.team930.robot.subsystems;
 
 import org.usfirst.frc.team930.robot.RobotMap;
+import org.usfirst.frc.team930.robot.commands.IntakeLiftHigh;
 import org.usfirst.frc.team930.robot.commands.ShootHighGoal;
-
 import org.usfirst.frc.team930.robot.controller.BBSController;
 import org.usfirst.frc.team930.robot.controller.CounterRPMSource;
 
@@ -37,7 +37,7 @@ public class Shooter extends Subsystem {
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
-		//setDefaultCommand(new ShootHighGoal());
+		setDefaultCommand(new IntakeLiftHigh());
 	}
 
 	public void setShooter(double rpm) {

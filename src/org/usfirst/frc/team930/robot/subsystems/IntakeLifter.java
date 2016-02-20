@@ -11,80 +11,82 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class IntakeLifter extends Subsystem {
-
-	static int P = Robot.prefs.getInt("P", 0);
-	static int I = Robot.prefs.getInt("I", 0);
-	static int D = Robot.prefs.getInt("D", 0);
-
-	public static enum Position {
-		LOW(20), HIGH(60), PORT(50), TO_SHOOTER(0);
-
-		private final double angle;
-
-		private Position(double a) {
-			angle = a;
+	
+	public static enum Positions
+	{
+		PORT(120),
+		DEFAULT(0),
+		PICKUP(90);
+private final double angle;
+		
+		private Positions(double p) {
+			angle = p;
 		}
-
+		
 		public double getAngle() {
 			return angle;
+			
 		}
+		public String toString(){
+			return "Angle: " + angle;
+		}
+		
 	}
-	Position degree;
-	AnalogPotentiometer potentiometer = new AnalogPotentiometer(
-			RobotMap.ILiftPort);
-	Spark intakeLifter = new Spark(RobotMap.I2Port);
-	PIDController pidController = new PIDController(0, 0, 0, potentiometer,
-			intakeLifter);
+	Positions position;
+	//Preferences will allow remotely inputted proportional, integrational, and derivative values
+	//static int P = Robot.prefs.getInt("P", 0);
+	//static int I = Robot.prefs.getInt("I", 0);
+	//static int D = Robot.prefs.getInt("D", 0);
+	static double P = 0.02;
+	static double I = 0.0001;
+	static double D = 0;
 
-	public IntakeLifter(){
-		super();
-		degree = Position.HIGH;
-	}
+	
+	static AnalogPotentiometer potentiometer = new AnalogPotentiometer(RobotMap.potPort,270,-135);
+	static Spark intakeLifter = new Spark(RobotMap.ILiftPort);
+	public static PIDController PID = new PIDController(P,I,D,potentiometer,intakeLifter);
+
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
+	public IntakeLifter() {
+		super();
+		position = Positions.DEFAULT;
+//		PID.setInputRange(-135, 135);
+		intakeLifter.setInverted(true);
+		PID.setAbsoluteTolerance(5);
+	}
 
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
 
 	}
-
-	public void setAngle(Position p)
-	{
-		degree = p;
-		pidController.setSetpoint(degree.getAngle());
+	public void setAngle(Positions p) {
+		//System.out.println("Setting Direction: "+d);
+		position = p;
+		PID.setSetpoint(position.getAngle());
+		PID.enable();
 	}
-	
 	/**
-	 * Updates PID Values in accordance to Preferences inputs and returns the
-	 * new angle that will be set.
+	 * Updates PID Values in accordance to Preferences inputs and returns the new angle that will be set.
 	 * 
 	 * @author GuyAcrossTheStreet
 	 */
 	public static Sendable Update() {
-		/*
-		 * P = Robot.prefs.getInt("P", 0); I = Robot.prefs.getInt("I", 0); D =
-		 * Robot.prefs.getInt("D", 0); PID = new
-		 * PIDController(P,I,D,potentiometer,intakeLifter);
-		 * 
-		 * return PID;
-		 */
+		/*P = Robot.prefs.getInt("P", 0);
+		I = Robot.prefs.getInt("I", 0);
+		D = Robot.prefs.getInt("D", 0);*/
+		//PID = new PIDController(P,I,D,potentiometer,intakeLifter);
+		
 		return null;
+		//return null;
+		
 	}
-
-	public void setintakeLifter(double angle) {
-		// intakeLifter.set(angle);
-		// System.out.println(potentiometer.get());
-
-		/*
-		 * PID.setSetpoint(angle);
-		 * 
-		 * SmartDashboard.putData("Set Angle", PID);
-		 * SmartDashboard.putData("Actual Angle", potentiometer);
-		 */
+	public Positions getAngle() {
+		return position;
 	}
-	public Position getAngle()
-	{
-		return degree;
+	public double getPOT(){
+		return potentiometer.get();
 	}
+	
 }

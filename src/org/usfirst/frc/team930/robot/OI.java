@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
-import org.usfirst.frc.team930.robot.commands.LiftIntake;
+import org.usfirst.frc.team930.robot.commands.IntakeLiftPort;
 import org.usfirst.frc.team930.robot.commands.MoveIntakeRollers;
 import org.usfirst.frc.team930.robot.commands.Pickup;
 import org.usfirst.frc.team930.robot.commands.ShootHighGoal;
@@ -66,22 +66,7 @@ public class OI {
 		driverButton2.toggleWhenPressed(new MoveIntakeRollers(
 				IntakeRoller.Direction.BACKWARD));
 		driverButton1.whenPressed(new Pickup());
-		driverButton3.whenPressed(new LiftIntake(IntakeLifter.Position.HIGH));
 		driverButton4.whenPressed(new ShootHighGoal());
-
-		driverButton6.whenPressed(new LiftIntake(IntakeLifter.Position.LOW));
-		driverButton7.whenPressed(new LiftIntake(IntakeLifter.Position.PORT));
-
-		// test me later
-		if (leftTrigger >= 0.75)
-			new LiftIntake(IntakeLifter.Position.HIGH);
-		else
-			new LiftIntake(IntakeLifter.Position.LOW);
-
-		if (rightTrigger >= 0.75)
-			new LiftIntake(IntakeLifter.Position.PORT);
-		else
-			new LiftIntake(IntakeLifter.Position.LOW);
 		
 		
 		//CoDriver Buttons
@@ -96,16 +81,24 @@ public class OI {
 		else if(coJoystick.getRawAxis(3) >= 0.75) new MoveIntakeRollers(IntakeRoller.Direction.BACKWARD);
 		
 		// test me later
-		if (coJoystick.getRawAxis(5) >= 0.75) new LiftIntake(IntakeLifter.Position.HIGH);
-		else new LiftIntake(IntakeLifter.Position.LOW);
-		if (coJoystick.getRawAxis(5) >= 0.75) new LiftIntake(IntakeLifter.Position.PORT);
-		else new LiftIntake(IntakeLifter.Position.LOW);
+//		if (coJoystick.getRawAxis(5) >= 0.75) new LiftIntake(IntakeLifter.Position.HIGH);
+//		else new LiftIntake(IntakeLifter.Position.LOW);
+//		if (coJoystick.getRawAxis(5) >= 0.75) new LiftIntake(IntakeLifter.Position.PORT);
+//		else new LiftIntake(IntakeLifter.Position.LOW);
 	}
 
 	public static OI getInstance() {
 		if (instance == null)
 			instance = new OI();
 		return instance;
+	}
+	
+	public double getLeftTrigger(){
+		return leftTrigger;	
+	}
+	
+	public double getRightTrigger(){
+		return rightTrigger;	
 	}
 
 	public double getXAxis() {

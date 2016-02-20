@@ -8,6 +8,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Preferences;
 
+import org.usfirst.frc.team930.robot.commands.IntakeLiftHigh;
+import org.usfirst.frc.team930.robot.commands.IntakeLiftPickup;
+import org.usfirst.frc.team930.robot.commands.IntakeLiftPort;
 import org.usfirst.frc.team930.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team930.robot.subsystems.IntakeLifter;
 import org.usfirst.frc.team930.robot.subsystems.IntakeRoller;
@@ -90,6 +93,18 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putBoolean("Status of Photo eye", Robot.intakeRoller.seeBall());
 		System.out.println(Robot.intakeRoller.seeBall());
 		System.out.println(Robot.drivetrain.gyro.getAngle());
+		
+		if (OI.getInstance().getLeftTrigger() >= 0.75){
+			new IntakeLiftPort();
+		}else{
+			new IntakeLiftHigh();
+		}
+		
+		if (OI.getInstance().getRightTrigger() >= 0.75){
+			new IntakeLiftPickup();
+		}else{
+			new IntakeLiftHigh();
+		}
 	}
 
 	public void testPeriodic() {
