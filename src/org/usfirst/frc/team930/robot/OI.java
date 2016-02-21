@@ -70,7 +70,7 @@ public class OI {
 		
 		//CoDriver Buttons
 		//A Button runs Shooter
-		coDriverButton1.whenPressed(new ShootHighGoal());
+		//coDriverButton1.whenPressed(new ShootHighGoal());
 		//Start/Select Buttons run a Hanger command that doesn't exist yet
 		//coDriverButton7.whenPressed(new <LiftHanger>);
 		//coDriverButton8.whenPressed(new <LowerHanger>);

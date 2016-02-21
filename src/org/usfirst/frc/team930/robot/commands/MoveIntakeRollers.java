@@ -44,7 +44,7 @@ public class MoveIntakeRollers extends Command {
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		System.out.println("Checking");
+		//System.out.println("Checking");
 		if (command.equals(IntakeRoller.Direction.SHOOTERPULL)) {
 			return false;//the rollers wont listen to the lightsensor
 			//when pulling the ball into the shooter

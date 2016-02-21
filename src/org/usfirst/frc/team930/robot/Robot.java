@@ -111,41 +111,41 @@ public class Robot extends IterativeRobot {
 		// When the right trigger is held down, the intake lifter moves down and the rollers move inward 
 		
 		// Moving the position of the arm with driver triggers
-		System.out.println("Left trigger: " + OI.getInstance().getLeftTrigger());
+		//System.out.println("See ball: " + Robot.intakeRoller.seeBall());
 		if (OI.getInstance().getLeftTrigger() >= 0.75){
 			System.out.println("port ");
 			if(!intakeLiftPortTeleop.isRunning()){
 				intakeLiftPortTeleop.start();
-				System.out.println("starting port ");
+				//System.out.println("starting port ");
 			}	
 		}else if((OI.getInstance().getRightTrigger() >= 0.75)){
 			System.out.println(" pick up ");
 			if(!pickupTeleop.isRunning()){
 				pickupTeleop.start();
-				System.out.println("starting pick up ");
+				//System.out.println("starting pick up ");
 			}
 		}else{
 			if(!intakeLiftHighTeleop.isRunning()) {
 				intakeLiftHighTeleop.start();
 			}
-			System.out.println("Default");
+			//System.out.println("Default");
 		}
 		
 		// Moving the rollers with codriver triggers
-		if(OI.getInstance().getCoLeftTrigger() >= 0.75){
-			if( !rollersForwardTeleop.isRunning()){
-				rollersForwardTeleop.start();
-			}
-		}else if (OI.getInstance().getCoRightTrigger() >= 0.75){
-			if(!rollersBackwardTeleop.isRunning())
-			{
-				rollersBackwardTeleop.start();
-			}
-		}else{
-			if(!pickupTeleop.isRunning() && !rollersStopTeleop.isRunning()){
-				rollersStopTeleop.start();
-			}
-		}
+//		if(OI.getInstance().getCoLeftTrigger() >= 0.75){
+//			if( !rollersForwardTeleop.isRunning()){
+//				rollersForwardTeleop.start();
+//			}
+//		}else if (OI.getInstance().getCoRightTrigger() >= 0.75){
+//			if(!rollersBackwardTeleop.isRunning())
+//			{
+//				rollersBackwardTeleop.start();
+//			}
+//		}else{
+//			if(!pickupTeleop.isRunning() && !rollersStopTeleop.isRunning()){
+//				rollersStopTeleop.start();
+//			}
+//		}
 		
 	}
 
