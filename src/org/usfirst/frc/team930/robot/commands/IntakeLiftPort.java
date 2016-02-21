@@ -24,7 +24,6 @@ public class IntakeLiftPort extends Command {
     protected void execute() {
     	Robot.intakeLifter.setAngle(IntakeLifter.Positions.PORT);
         // Make this return true when this Command no longer needs to run execute()
-
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -44,7 +43,5 @@ public class IntakeLiftPort extends Command {
     protected void interrupted() {
     	Robot.intakeLifter.setAngle(IntakeLifter.Positions.PORT);
     	//when a command takes over the position will stay the same
-
-
     }
 }

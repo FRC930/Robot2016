@@ -108,7 +108,7 @@ public class OI {
 
 	public double getXAxis() {
 		// if things go funky change to getAxis
-		return driverJoystick.getRawAxis(0);
+		return driverJoystick.getRawAxis(4);
 	}
 
 	public double getYAxis() {
