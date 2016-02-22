@@ -65,8 +65,9 @@ public class OI {
 		//Driver Buttons (May end up being removed)
 		//driverButton2.toggleWhenPressed(new MoveIntakeRollers(IntakeRoller.Direction.BACKWARD));
 		//driverButton1.whenPressed(new Pickup());
-		driverButton4.whenPressed(new ShootHighGoal());
-		
+		driverButton5.whenPressed(new ShootHighGoal());
+		driverButton6.whenPressed(new ShootHighGoal());
+		coDriverButton1.whileHeld(new MoveIntakeRollers(IntakeRoller.Direction.BACKWARD));
 		
 		//CoDriver Buttons
 		//A Button runs Shooter
