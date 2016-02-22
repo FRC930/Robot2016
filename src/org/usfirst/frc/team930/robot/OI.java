@@ -64,22 +64,19 @@ public class OI {
 		coDriverButton7 = new JoystickButton(coJoystick, 7);
 		coDriverButton8 = new JoystickButton(coJoystick, 8);
 
-		leftTrigger = driverJoystick.getRawAxis(2);
-		rightTrigger = driverJoystick.getRawAxis(3);
-		coLeftTrigger = coJoystick.getRawAxis(2);
-		coRightTrigger = coJoystick.getRawAxis(3);
-
 		//Driver Buttons (May end up being removed)
 		driverButton2.toggleWhenPressed(new MoveIntakeRollers(
 				IntakeRoller.Direction.BACKWARD));
 		driverButton1.whenPressed(new Pickup());
-		driverButton4.whenPressed(new ShootHighGoal());
+		driverButton5.whenPressed(new ShootHighGoal());
+		driverButton6.whenPressed(new ShootHighGoal());
+		coDriverButton1.whileHeld(new MoveIntakeRollers(IntakeRoller.Direction.BACKWARD));
 		coDriverButton3.whenPressed(new ManualIntakeDown());
 		coDriverButton4.whenPressed(new ManualIntakeUp());
 		
 		//CoDriver Buttons
 		//A Button runs Shooter
-		coDriverButton1.whenPressed(new ShootHighGoal());
+		//coDriverButton1.whenPressed(new ShootHighGoal());
 		//Start/Select Buttons run a Hanger command that doesn't exist yet
 		//coDriverButton7.whenPressed(new <LiftHanger>);
 		//coDriverButton8.whenPressed(new <LowerHanger>);
@@ -100,24 +97,24 @@ public class OI {
 	}
 	
 	public double getLeftTrigger(){
-		return leftTrigger;	
+		return driverJoystick.getRawAxis(2);	
 	}
 	
 	public double getRightTrigger(){
-		return rightTrigger;	
+		return driverJoystick.getRawAxis(3);	
 	}
 	
 	public double getCoLeftTrigger(){
-		return coLeftTrigger;	
+		return coJoystick.getRawAxis(2);	
 	}
 	
 	public double getCoRightTrigger(){
-		return coRightTrigger;	
+		return coJoystick.getRawAxis(3);
 	}
 
 	public double getXAxis() {
 		// if things go funky change to getAxis
-		return driverJoystick.getRawAxis(0);
+		return driverJoystick.getRawAxis(4);
 	}
 
 	public double getYAxis() {

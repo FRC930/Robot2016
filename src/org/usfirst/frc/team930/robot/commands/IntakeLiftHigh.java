@@ -38,8 +38,6 @@ public class IntakeLiftHigh extends Command {
     protected void end() {
     	Robot.intakeLifter.setAngle(IntakeLifter.Positions.DEFAULT);
     	//when the command ends it will stay at the same position
-
-    	
     }
 
     // Called when another command which requires one or more of the same
@@ -47,7 +45,5 @@ public class IntakeLiftHigh extends Command {
     protected void interrupted() {
     	Robot.intakeLifter.setAngle(IntakeLifter.Positions.DEFAULT);
     	//when a command takes over the position will stay the same
-
-    	
     }
 }

@@ -12,15 +12,15 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class ShootHighGoal extends Command {
+public class ManualShootHighGoal extends Command {
 
 	private enum State {
 		START,
 		WAIT_ONE,
 		INTAKE_FORWARD,
-		NO_BALL,
+		WAIT_THREE_1,
 		INTAKE_OFF,
-		WAIT_THREE,
+		WAIT_THREE_2,
 		SHOOTER_OFF, END;
 	}
 
@@ -29,7 +29,7 @@ public class ShootHighGoal extends Command {
 	double currentTime; // the current time (seconds)
 	State state; // state of shooting, from 1 to 6
 
-	public ShootHighGoal() {
+	public ManualShootHighGoal() {
 		System.out.println("Making Command");
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
@@ -52,9 +52,8 @@ public class ShootHighGoal extends Command {
 			 * STATE 1 - set shooter speed - set start time
 			 */
 			// turn on shooter wheels
-			Robot.shooter.setShooter(1);
+			Robot.shooter.setShooter(Shooter.HIGH_GOAL_RPM);
 			startTime = timer.get(); // gets the starting time in seconds
-			System.out.println("                                   STATE 1 __________------_____________");
 			state = State.WAIT_ONE; // move onto the next state
 			break;
 		case WAIT_ONE:
@@ -63,7 +62,6 @@ public class ShootHighGoal extends Command {
 			 */
 			currentTime = timer.get(); // gets current time
 			// after a total 1 second, the state moves on
-			System.out.println("                                   STATE 2");
 			if ((currentTime - startTime) >= 1) {
 
 				state = State.INTAKE_FORWARD;
@@ -76,19 +74,17 @@ public class ShootHighGoal extends Command {
 
 			// intake rollers move forward
 			Robot.intakeRoller.setState(IntakeRoller.Direction.FORWARD);
-			System.out.println("                                   STATE 3");
-			state = State.NO_BALL;
+			state = State.WAIT_THREE_1;
 			break;
-		case NO_BALL:
+		case WAIT_THREE_1:
 			/*
-			 * STATE 4 - ball sensor must be false (the ball isn't in the
-			 * intake)
+			 * STATE 4 - wait three seconds
+			 * 
 			 */
 
-			// once the ball isn't in the intake, the state moves on
-			currentTime = timer.get(); // gets current time
-			System.out.println("                                   STATE 4");
-			if ((currentTime - startTime) >= 2) {
+			// after three seconds, the state moves on
+			currentTime = timer.get();
+			if(currentTime - startTime >= 4){
 				state = State.INTAKE_OFF;
 			}
 			break;
@@ -99,17 +95,15 @@ public class ShootHighGoal extends Command {
 
 			// the intake rollers shut off
 			Robot.intakeRoller.setState(IntakeRoller.Direction.STOP);
-			System.out.println("                                   STATE 5");
-			state = State.WAIT_THREE;
+			state = State.WAIT_THREE_2;
 			break;
-		case WAIT_THREE:
+		case WAIT_THREE_2:
 			/*
-			 * STATE 6 - get current time - wait 2 more seconds (3 total)
+			 * STATE 6 - get current time - wait 3 more seconds (7 total)
 			 */
 			currentTime = timer.get(); // gets current time
 			// after a total 3 seconds, the state moves on
-			System.out.println("                                   STATE 6");
-			if ((currentTime - startTime) >= 3) {
+			if ((currentTime - startTime) >= 7) {
 				state = State.SHOOTER_OFF;
 			}
 			break;
@@ -118,7 +112,6 @@ public class ShootHighGoal extends Command {
 			 * STATE 7 - turn off shooter
 			 */
 			Robot.shooter.setShooter(0); // shooter is set to 0 rpm
-			System.out.println("                                   STATE 7");
 			state = State.END;
 			break;
 		default:
@@ -138,7 +131,6 @@ public class ShootHighGoal extends Command {
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	protected void interrupted() {
-		System.out.println("INTERUPTED INTERUPTED INTERUPTED INTERUPTED INTERUPTED INTERUPTED INTERUPTED INTERUPTED");
 		Robot.shooter.setShooter(0);
 		Robot.intakeRoller.setState(IntakeRoller.Direction.STOP);
 	}

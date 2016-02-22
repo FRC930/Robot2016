@@ -36,7 +36,7 @@ public class IntakeRoller extends Subsystem {
 	Direction state;
 	//declares the victor to control the motor
 	Victor intakeRoller = new Victor(RobotMap.I1Port);
-//declares the Lightsensor so it can get values
+	//declares the Lightsensor so it can get values
 	DigitalInput lightSensor = new DigitalInput(RobotMap.lightSensorPort);
 
 	// Put methods for controlling this subsystem
@@ -54,7 +54,7 @@ public class IntakeRoller extends Subsystem {
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
-		//setDefaultCommand(new MoveIntakeRollers(Direction.FORWARD));
+		// setDefaultCommand(new MoveIntakeRollers(Direction.FORWARD));
 	}
 
 	public void setState(Direction d) {
@@ -66,7 +66,7 @@ public class IntakeRoller extends Subsystem {
 	//gives the state of the lightsensor
 	public boolean seeBall() {
 		//System.out.println("I see ball: "+lightSensor.get());
-		return lightSensor.get();
+		return !lightSensor.get();
 		
 	}
 	//gets the direction of the rollers

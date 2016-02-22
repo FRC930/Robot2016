@@ -5,6 +5,7 @@ import org.usfirst.frc.team930.robot.subsystems.IntakeRoller;
 
 import edu.wpi.first.wpilibj.command.Command;
 
+import org.usfirst.frc.team930.robot.OI;
 import org.usfirst.frc.team930.robot.Robot;
 /**
  *
@@ -39,13 +40,13 @@ public class Pickup extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	//when the lightsensor is covered then it will stop this command
-        return Robot.intakeRoller.seeBall(); // Change this maybe 
+        return false; // (OI.getInstance().getRightTrigger() < .75);
     }
 
     // Called once after isFinished returns true
     protected void end() {
     	//when it finishes it will stop the rollers and set the lifter to default
-    	Robot.intakeLifter.setAngle(IntakeLifter.Positions.DEFAULT);
+    	Robot.intakeLifter.setAngle(IntakeLifter.Positions.PICKUP);
     	Robot.intakeRoller.setState(IntakeRoller.Direction.STOP);
     }
 
@@ -53,7 +54,7 @@ public class Pickup extends Command {
     // subsystems is scheduled to run
     protected void interrupted() {
     	//when it finishes it will stop the rollers and set the lifter to default
-    	Robot.intakeLifter.setAngle(IntakeLifter.Positions.DEFAULT);
+    	Robot.intakeLifter.setAngle(IntakeLifter.Positions.PICKUP);
     	Robot.intakeRoller.setState(IntakeRoller.Direction.STOP);   	
     }
 }
