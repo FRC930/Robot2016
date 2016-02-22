@@ -5,6 +5,8 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 import org.usfirst.frc.team930.robot.commands.IntakeLiftPort;
+import org.usfirst.frc.team930.robot.commands.ManualIntakeDown;
+import org.usfirst.frc.team930.robot.commands.ManualIntakeUp;
 import org.usfirst.frc.team930.robot.commands.MoveIntakeRollers;
 import org.usfirst.frc.team930.robot.commands.Pickup;
 import org.usfirst.frc.team930.robot.commands.ShootHighGoal;
@@ -72,7 +74,8 @@ public class OI {
 				IntakeRoller.Direction.BACKWARD));
 		driverButton1.whenPressed(new Pickup());
 		driverButton4.whenPressed(new ShootHighGoal());
-		
+		coDriverButton3.whenPressed(new ManualIntakeDown());
+		coDriverButton4.whenPressed(new ManualIntakeUp());
 		
 		//CoDriver Buttons
 		//A Button runs Shooter

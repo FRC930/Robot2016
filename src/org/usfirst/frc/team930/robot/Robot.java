@@ -9,15 +9,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.Joystick.RumbleType;
 
-import org.usfirst.frc.team930.robot.commands.AutoDriveForward;
 import org.usfirst.frc.team930.robot.commands.IntakeLiftHigh;
 import org.usfirst.frc.team930.robot.commands.IntakeLiftPickup;
 import org.usfirst.frc.team930.robot.commands.IntakeLiftPort;
-import org.usfirst.frc.team930.robot.commands.MoveIntakeRollers;
 import org.usfirst.frc.team930.robot.commands.Pickup;
 import org.usfirst.frc.team930.robot.subsystems.Drivetrain;
-import org.usfirst.frc.team930.robot.subsystems.HangerLifter;
-import org.usfirst.frc.team930.robot.subsystems.HangerWinch;
 import org.usfirst.frc.team930.robot.subsystems.IntakeLifter;
 import org.usfirst.frc.team930.robot.subsystems.IntakeRoller;
 import org.usfirst.frc.team930.robot.subsystems.Shooter;
@@ -29,8 +25,6 @@ public class Robot extends IterativeRobot {
 	public static Shooter shooter;
 	public static IntakeLifter intakeLifter;
 	public static OI oi;
-	//public static HangerLifter hangerLifter;
-	//public static HangerWinch hangerWinch;
 	
 	static {
 		try {
@@ -52,9 +46,6 @@ public class Robot extends IterativeRobot {
 	Command intakeLiftPortTeleop;
 	Command intakeLiftHighTeleop;
 	Command pickupTeleop;
-	Command rollersForwardTeleop;
-	Command rollersBackwardTeleop;
-	Command rollersStopTeleop;
 	SendableChooser chooser;
 	public static Preferences prefs;
 
@@ -73,7 +64,7 @@ public class Robot extends IterativeRobot {
 	}
 
 	public void autonomousInit() {
-		autonomousCommand = new AutoDriveForward();
+		autonomousCommand = (Command) chooser.getSelected();
 
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
@@ -97,9 +88,6 @@ public class Robot extends IterativeRobot {
 		intakeLiftPortTeleop = new IntakeLiftPort();
 		intakeLiftHighTeleop = new IntakeLiftHigh();
 		pickupTeleop = new Pickup();
-		rollersForwardTeleop = new MoveIntakeRollers(IntakeRoller.Direction.FORWARD);
-		rollersBackwardTeleop = new MoveIntakeRollers(IntakeRoller.Direction.BACKWARD);
-		rollersStopTeleop = new MoveIntakeRollers(IntakeRoller.Direction.STOP);
 	}
 
 	public void teleopPeriodic() {
@@ -110,33 +98,19 @@ public class Robot extends IterativeRobot {
 		
 		// When the left trigger is held down, the intake lifter moves to the portcullis angle
 		// When the right trigger is held down, the intake lifter moves down and the rollers move inward 
-		
-		// Moving the position of the arm with driver triggers
-		if (OI.getInstance().getLeftTrigger() >= 0.75){
-			if(!intakeLiftPortTeleop.isRunning()){
-				intakeLiftPortTeleop.start();
-			}	
-		}else if((OI.getInstance().getRightTrigger() >= 0.75)){
-			if(!pickupTeleop.isRunning()){
-				pickupTeleop.start();
-			}
+		if (OI.getInstance().getLeftTrigger() >= 0.75 && !intakeLiftPortTeleop.isRunning()){
+			intakeLiftPortTeleop.start();
+		}else if((OI.getInstance().getRightTrigger() >= 0.75) && !pickupTeleop.isRunning()){
+			pickupTeleop.start();
 		}else
 			intakeLiftHighTeleop.start();
 		
-		// Moving the rollers with codriver triggers
-		if(OI.getInstance().getCoLeftTrigger() >= 0.75){
-			if( !rollersForwardTeleop.isRunning()){
-				rollersForwardTeleop.start();
-			}
-		}else if (OI.getInstance().getCoRightTrigger() >= 0.75){
-			if(!rollersBackwardTeleop.isRunning())
-			{
-				rollersBackwardTeleop.start();
-			}
+		if(oi.getRightTrigger()>0.75 && Robot.intakeRoller.seeBall() == true){
+			oi.driverJoystick.setRumble(RumbleType.kLeftRumble, 1);
+			oi.driverJoystick.setRumble(RumbleType.kRightRumble, 1);
 		}else{
-			if(!rollersStopTeleop.isRunning()){
-				rollersStopTeleop.start();
-			}
+			oi.driverJoystick.setRumble(RumbleType.kLeftRumble,0);
+			oi.driverJoystick.setRumble(RumbleType.kRightRumble, 0);
 		}
 		
 	}
