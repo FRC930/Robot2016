@@ -26,12 +26,12 @@ public class AlignOutput implements PIDOutput {
 	
 	public void pidWrite(double output) {
 		// TODO Auto-generated method stub
-		Left1.set(0.5 + output);
-		Left2.set(0.5 + output);
-		Left3.set(0.5 + output);
-		Right1.set(0.5 - output);
-		Right2.set(0.5 - output);
-		Right3.set(0.5 - output);
+		Left1.set(output);
+		Left2.set(output);
+		Left3.set( output);
+		Right1.set(output);
+		Right2.set( output);
+		Right3.set(output);
 		
 	}
 }
