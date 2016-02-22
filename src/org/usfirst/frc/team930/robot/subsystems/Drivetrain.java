@@ -42,10 +42,8 @@ public class Drivetrain extends Subsystem {
 		R2.setInverted(true);//http://first.wpi.edu/FRC/roborio/release/docs/java/edu/wpi/first/wpilibj/ADXRS450_Gyro.html#ADXRS450_Gyro--
 		R3.setInverted(true);
 		
-		
-		
-		
 		gyro.reset();
+		gyro.initGyro();
 	}
 
 	public void initDefaultCommand() {
@@ -66,7 +64,7 @@ public class Drivetrain extends Subsystem {
 	}
 
 	public double getAngle() {
-		return gyro.getAngle()%360.0;
+		return gyro.getAngle();
 	}
 	
 

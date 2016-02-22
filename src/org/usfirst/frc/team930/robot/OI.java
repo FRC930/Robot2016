@@ -4,6 +4,10 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
+import org.usfirst.frc.team930.robot.commands.GyroDriveBackward;
+import org.usfirst.frc.team930.robot.commands.GyroDriveLeft;
+import org.usfirst.frc.team930.robot.commands.GyroDriveRight;
+import org.usfirst.frc.team930.robot.commands.GyroDriveStraight;
 import org.usfirst.frc.team930.robot.commands.IntakeLiftPort;
 import org.usfirst.frc.team930.robot.commands.ManualIntakeDown;
 import org.usfirst.frc.team930.robot.commands.ManualIntakeUp;
@@ -65,14 +69,19 @@ public class OI {
 		coDriverButton8 = new JoystickButton(coJoystick, 8);
 
 		//Driver Buttons (May end up being removed)
-		driverButton2.toggleWhenPressed(new MoveIntakeRollers(
-				IntakeRoller.Direction.BACKWARD));
-		driverButton1.whenPressed(new Pickup());
+		//driverButton2.toggleWhenPressed(new MoveIntakeRollers(IntakeRoller.Direction.BACKWARD));
+		//driverButton1.whenPressed(new Pickup());
 		driverButton5.whenPressed(new ShootHighGoal());
 		driverButton6.whenPressed(new ShootHighGoal());
 		coDriverButton1.whileHeld(new MoveIntakeRollers(IntakeRoller.Direction.BACKWARD));
 		coDriverButton3.whenPressed(new ManualIntakeDown());
 		coDriverButton4.whenPressed(new ManualIntakeUp());
+		
+		driverButton4.whenPressed(new GyroDriveStraight());
+		driverButton2.whenPressed(new GyroDriveRight());
+		driverButton3.whenPressed(new GyroDriveLeft());
+		driverButton1.whenPressed(new GyroDriveBackward());
+		
 		
 		//CoDriver Buttons
 		//A Button runs Shooter

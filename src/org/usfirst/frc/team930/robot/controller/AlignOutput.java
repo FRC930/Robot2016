@@ -15,6 +15,7 @@ public class AlignOutput implements PIDOutput {
 	SpeedController Right3;
 	
 	public AlignOutput(SpeedController L1, SpeedController L2, SpeedController L3, SpeedController R1, SpeedController R2, SpeedController R3) {
+		System.out.println("IN ALIGN OUTPUT CONSTRUCTOR");
 		Left1 = L1;
 		Left2 = L2;
 		Left3 = L3;
@@ -25,6 +26,7 @@ public class AlignOutput implements PIDOutput {
 	}
 	
 	public void pidWrite(double output) {
+		System.out.println("PID WRITE: " + output);
 		// TODO Auto-generated method stub
 		Left1.set(output);
 		Left2.set(output);

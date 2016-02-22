@@ -25,6 +25,12 @@ public class GyroDriveBackward extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	alignOutput = new AlignOutput(Robot.drivetrain.L1, Robot.drivetrain.L2, Robot.drivetrain.L3, Robot.drivetrain.R1, Robot.drivetrain.R2, Robot.drivetrain.R3);
+    	angleSource = new AngleSource();
+    	drivePID = new PIDController(0, 0, 0, angleSource, alignOutput, 0.01);
+		drivePID.reset();
+		drivePID.setAbsoluteTolerance(1);
+		drivePID.enable();
     }
 
     // Called repeatedly when this Command is scheduled to run

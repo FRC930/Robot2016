@@ -10,18 +10,19 @@ public class AngleSource implements PIDSource {
 	PIDSourceType pidSource;
 	
 	public double pidGet() {
-		return Robot.drivetrain.gyro.getAngle();
+		double angle = Robot.drivetrain.gyro.getAngle();
+		System.out.println("ANGLE GET: " + angle);
+		return angle;
 	}
 
 	@Override
 	public void setPIDSourceType(PIDSourceType pidSource) {
-		// TODO Auto-generated method stub
 		this.pidSource = pidSource;
 	}
 
 	@Override
 	public PIDSourceType getPIDSourceType() {
 		// TODO Auto-generated method stub
-		return pidSource;
+		return PIDSourceType.kDisplacement;
 	}
 }
