@@ -10,7 +10,7 @@ public class AngleSource implements PIDSource {
 	PIDSourceType pidSource;
 	
 	public double pidGet() {
-		double angle = Robot.drivetrain.gyro.getAngle();
+		double angle = Robot.drivetrain.gyro.getAngle()%360.0;
 		System.out.println("ANGLE GET: " + angle);
 		return angle;
 	}

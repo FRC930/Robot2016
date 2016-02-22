@@ -77,10 +77,10 @@ public class OI {
 		coDriverButton3.whenPressed(new ManualIntakeDown());
 		coDriverButton4.whenPressed(new ManualIntakeUp());
 		
-		driverButton4.whenPressed(new GyroDriveStraight());
-		driverButton2.whenPressed(new GyroDriveRight());
-		driverButton3.whenPressed(new GyroDriveLeft());
-		driverButton1.whenPressed(new GyroDriveBackward());
+		driverButton4.whileHeld(new GyroDriveStraight());
+		driverButton2.whileHeld(new GyroDriveRight());
+		driverButton3.whileHeld(new GyroDriveLeft());
+		driverButton1.whileHeld(new GyroDriveBackward());
 		
 		
 		//CoDriver Buttons

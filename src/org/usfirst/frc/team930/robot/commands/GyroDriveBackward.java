@@ -23,32 +23,30 @@ public class GyroDriveBackward extends Command {
     	requires(Robot.drivetrain);
     }
 
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    	alignOutput = new AlignOutput(Robot.drivetrain.L1, Robot.drivetrain.L2, Robot.drivetrain.L3, Robot.drivetrain.R1, Robot.drivetrain.R2, Robot.drivetrain.R3);
-    	angleSource = new AngleSource();
-    	drivePID = new PIDController(0, 0, 0, angleSource, alignOutput, 0.01);
-		drivePID.reset();
-		drivePID.setAbsoluteTolerance(1);
-		drivePID.enable();
-    }
+ // Called just before this Command runs the first time
+ 	protected void initialize() {
+ 		Robot.drivetrain.drivePID.setSetpoint(180.0);
+ 	}
 
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {    	
-    	drivePID.setSetpoint(180.0);	
-    }
+ 	// Called repeatedly when this Command is scheduled to run
+ 	protected void execute() {
+ 		System.out.println("GYRO ANGLE: " + Robot.drivetrain.gyro.getAngle() + " : " + Robot.drivetrain.drivePID.getError());
+ 		Robot.drivetrain.drivePID.enable();
+ 	}
 
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return false;
-    }
+ 	// Make this return true when this Command no longer needs to run execute()
+ 	protected boolean isFinished() {
+ 		return Math.abs(Robot.drivetrain.drivePID.getError()) < 2;
+ 	}
 
-    // Called once after isFinished returns true
-    protected void end() {
-    }
+ 	// Called once after isFinished returns true
+ 	protected void end() {
+ 		Robot.drivetrain.drivePID.disable();
+ 	}
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-    }
+ 	// Called when another command which requires one or more of the same
+ 	// subsystems is scheduled to run
+ 	protected void interrupted() {
+ 		Robot.drivetrain.drivePID.disable();
+ 	}
 }
