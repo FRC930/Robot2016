@@ -51,7 +51,7 @@ public class Drive extends Command {
 
 		double wheelNonLinearity;
 
-		wheel = handleDeadband(wheel, .10);
+		wheel = handleDeadband(wheel, .07);
 		throttle = handleDeadband(throttle, .10);
 
 		double negInertia = wheel - oldWheel;
