@@ -147,7 +147,17 @@ public class Robot extends IterativeRobot {
 //				rollersStopTeleop.start();
 //			}
 //		}
-		
+		int counter = 0;
+		counter++;
+		if(Robot.intakeRoller.seeBall() == true && oi.getRightTrigger() >= 0.75 && counter <= 50){
+			oi.driverJoystick.setRumble(RumbleType.kRightRumble,1);
+			oi.driverJoystick.setRumble(RumbleType.kLeftRumble,1);
+		}
+		else{
+			counter = 0;
+			oi.driverJoystick.setRumble(RumbleType.kRightRumble,0);
+			oi.driverJoystick.setRumble(RumbleType.kLeftRumble,0);	
+		}
 	}
 
 	public void testPeriodic() {

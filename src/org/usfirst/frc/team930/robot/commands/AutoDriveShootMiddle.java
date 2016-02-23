@@ -69,6 +69,7 @@ public class AutoDriveShootMiddle extends Command {
     	else if(state == TURNING_OFF){
     		Robot.shooter.setShooter(0);
     		Robot.intakeRoller.setState(IntakeRoller.Direction.STOP);
+    		count = 0;
     		state = END;
     	}
     

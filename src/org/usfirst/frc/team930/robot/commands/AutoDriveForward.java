@@ -21,6 +21,8 @@ public class AutoDriveForward extends Command {
     public AutoDriveForward() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	requires(Robot.drivetrain);
+    	requires(Robot.intakeLifter);
     }
 
     // Called just before this Command runs the first time
