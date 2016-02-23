@@ -40,6 +40,7 @@ public class AutoDriveShootMiddle extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	int count = 0;
     	Robot.drivetrain.drivePID.enable();
     	if(state == START){
     		startTime = timer.get(); // gets the starting time in seconds
@@ -55,8 +56,9 @@ public class AutoDriveShootMiddle extends Command {
     			state = SHOOT;
     		}
     	}
+    	
     	else if(state == SHOOT){
-    		int count = 0;
+    		
     		count++;
     		Robot.shooter.setShooter(1);
     		if(count >= 50){
