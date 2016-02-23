@@ -149,7 +149,7 @@ public class Robot extends IterativeRobot {
 //		}
 		int counter = 0;
 		counter++;
-		if(Robot.intakeRoller.seeBall() == true && oi.getRightTrigger() >= 0.75 && counter <= 50){
+		if(Robot.intakeRoller.seeBall() == true && oi.getRightTrigger() >= 0.75 && counter <= 50 && Robot.intakeRoller.getState() == IntakeRoller.Direction.STOP){
 			oi.driverJoystick.setRumble(RumbleType.kRightRumble,1);
 			oi.driverJoystick.setRumble(RumbleType.kLeftRumble,1);
 		}

@@ -48,6 +48,7 @@ public class AutoDriveShootMiddle extends Command {
     	}
     	
     	else if(state == DRIVE){
+    		Robot.drivetrain.drivePID.enable();
     		currentTime = timer.get();
     		Robot.drivetrain.setL(1);
 			Robot.drivetrain.setR(1);
@@ -58,7 +59,7 @@ public class AutoDriveShootMiddle extends Command {
     	}
     	
     	else if(state == SHOOT){
-    		
+    		Robot.drivetrain.drivePID.enable();
     		count++;
     		Robot.shooter.setShooter(1);
     		if(count >= 50){
@@ -69,6 +70,7 @@ public class AutoDriveShootMiddle extends Command {
     		}
     	}
     	else if(state == TURNING_OFF){
+    		Robot.drivetrain.drivePID.disable();
     		Robot.shooter.setShooter(0);
     		Robot.intakeRoller.setState(IntakeRoller.Direction.STOP);
     		count = 0;
