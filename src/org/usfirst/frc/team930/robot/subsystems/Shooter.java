@@ -18,9 +18,9 @@ public class Shooter extends Subsystem {
 	Victor shooter1 = new Victor(RobotMap.S1Port);
 	Victor shooter2 = new Victor(RobotMap.S2Port);
 
-	DigitalInput lightSensorShooter = new DigitalInput(RobotMap.lightSensorShooterPort); 
+	//DigitalInput lightSensorShooter = new DigitalInput(RobotMap.lightSensorShooterPort); 
 
-	CounterRPMSource rpmSource = new CounterRPMSource(lightSensorShooter);
+	//CounterRPMSource rpmSource = new CounterRPMSource(lightSensorShooter);
 
 	BBSController cont1, cont2;
 
