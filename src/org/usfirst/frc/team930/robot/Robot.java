@@ -10,6 +10,10 @@ import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.Joystick.RumbleType;
 
 import org.usfirst.frc.team930.robot.commands.AutoDriveForward;
+import org.usfirst.frc.team930.robot.commands.GyroDriveBackward;
+import org.usfirst.frc.team930.robot.commands.GyroDriveLeft;
+import org.usfirst.frc.team930.robot.commands.GyroDriveRight;
+import org.usfirst.frc.team930.robot.commands.GyroDriveStraight;
 import org.usfirst.frc.team930.robot.commands.IntakeLiftHigh;
 import org.usfirst.frc.team930.robot.commands.IntakeLiftPickup;
 import org.usfirst.frc.team930.robot.commands.IntakeLiftPort;
@@ -53,6 +57,10 @@ public class Robot extends IterativeRobot {
 	Command rollersForwardTeleop;
 	Command rollersBackwardTeleop;
 	Command rollersStopTeleop;
+	Command gyroDriveBackward;
+	Command gyroDriveLeft;
+	Command gyroDriveRight;
+	Command gyroDriveStraight;
 	SendableChooser chooser;
 	public static Preferences prefs;
 
@@ -93,6 +101,10 @@ public class Robot extends IterativeRobot {
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
 
+		gyroDriveBackward = new GyroDriveBackward();
+		gyroDriveRight = new GyroDriveRight();
+		gyroDriveLeft = new GyroDriveLeft();
+		gyroDriveStraight = new GyroDriveStraight();
 		intakeLiftPortTeleop = new IntakeLiftPort();
 		intakeLiftHighTeleop = new IntakeLiftHigh();
 		pickupTeleop = new Pickup();
@@ -147,6 +159,10 @@ public class Robot extends IterativeRobot {
 //				rollersStopTeleop.start();
 //			}
 //		}
+		
+		
+		
+		//!!!!!!!BEGINNING OF RUMBLE FOR INTAKE
 		int counter = 0;
 		int timer = 0;
 		
@@ -161,7 +177,7 @@ public class Robot extends IterativeRobot {
 			oi.driverJoystick.setRumble(RumbleType.kRightRumble,1);
 			oi.driverJoystick.setRumble(RumbleType.kLeftRumble,1);
 			timer = 0;
-			if(counter >= 50){
+			if(counter >= 30){
 				oi.driverJoystick.setRumble(RumbleType.kRightRumble,0);
 				oi.driverJoystick.setRumble(RumbleType.kLeftRumble,0);
 				counter = 0;
@@ -179,6 +195,23 @@ public class Robot extends IterativeRobot {
 			oi.driverJoystick.setRumble(RumbleType.kLeftRumble,0);
 			timer = 0;
 		}
+		}
+		//!!!!!!!!!!!!!END OF RUMBLE FOR INTAKE
+		
+		//!!!!!!!!!!!!!BEGINNING OF GYRO RUMBLE
+		int pulse = 0;
+		if(gyroDriveBackward.isRunning()&&gyroDriveStraight.isRunning()&&gyroDriveLeft.isRunning()&&gyroDriveLeft.isRunning()){
+			pulse++;
+			if(pulse <= 17){
+			oi.driverJoystick.setRumble(RumbleType.kRightRumble, 1);
+			oi.driverJoystick.setRumble(RumbleType.kLeftRumble, 1);
+			
+			}
+			else{
+				pulse = 0;
+				oi.driverJoystick.setRumble(RumbleType.kRightRumble, 0);
+				oi.driverJoystick.setRumble(RumbleType.kLeftRumble, 0);
+			}
 		}
 	}
 
