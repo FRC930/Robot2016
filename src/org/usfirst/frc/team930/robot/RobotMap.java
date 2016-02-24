@@ -18,8 +18,8 @@ public class RobotMap {
 	
 	public static int WinchPort = 6;
 	
-	public static int lightSensorPort = 1;
-	public static int lightSensorShooterPort = 0;
+	public static int lightSensorPort = 0;
+	//public static int lightSensorShooterPort = 0;
 	
 	
 	public static int potPort = 1;
