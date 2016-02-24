@@ -148,15 +148,37 @@ public class Robot extends IterativeRobot {
 //			}
 //		}
 		int counter = 0;
-		counter++;
-		if(Robot.intakeRoller.seeBall() == true && oi.getRightTrigger() >= 0.75 && counter <= 50 && Robot.intakeRoller.getState() == IntakeRoller.Direction.STOP){
+		int timer = 0;
+		
+		if(Robot.intakeRoller.getState() == IntakeRoller.Direction.FORWARD){
+			timer++;
+		}
+		if(timer > 1 && Robot.intakeRoller.getState() == IntakeRoller.Direction.STOP){
+			
+			
+		if(Robot.intakeRoller.seeBall() == true && oi.getRightTrigger() >= 0.75){
+			counter++;
 			oi.driverJoystick.setRumble(RumbleType.kRightRumble,1);
 			oi.driverJoystick.setRumble(RumbleType.kLeftRumble,1);
+			timer = 0;
+			if(counter >= 50){
+				oi.driverJoystick.setRumble(RumbleType.kRightRumble,0);
+				oi.driverJoystick.setRumble(RumbleType.kLeftRumble,0);
+				counter = 0;
+				timer = 0;
+				
+			}
+			else {
+				counter = 0;
+				timer = 0;
+				
+			}
 		}
-		else{
-			counter = 0;
+		else {
 			oi.driverJoystick.setRumble(RumbleType.kRightRumble,0);
-			oi.driverJoystick.setRumble(RumbleType.kLeftRumble,0);	
+			oi.driverJoystick.setRumble(RumbleType.kLeftRumble,0);
+			timer = 0;
+		}
 		}
 	}
 
