@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Preferences;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.Joystick.RumbleType;
 
 import org.usfirst.frc.team930.robot.commands.AutoDriveForward;
@@ -63,11 +64,15 @@ public class Robot extends IterativeRobot {
 	Command gyroDriveStraight;
 	SendableChooser chooser;
 	public static Preferences prefs;
+//	Timer timer = new Timer();
+//	double startTime;
+//	double currentTime;
 
 	public void robotInit() {
 		 OI.getInstance();
 		
 		prefs = Preferences.getInstance();
+		
 	}
 
 	public void disabledInit() {
@@ -160,42 +165,51 @@ public class Robot extends IterativeRobot {
 //			}
 //		}
 		
-		
-		
+//		startTime = timer.get();
+//		currentTime = timer.get();
+//		
+//		while(startTime - currentTime < 5){
+//			currentTime = timer.get();
+		if(Robot.intakeRoller.seeBall() == true && (OI.getInstance().getRightTrigger() > .75)){
+	OI.getInstance().driverJoystick.setRumble(RumbleType.kLeftRumble, 1);
+				OI.getInstance().driverJoystick.setRumble(RumbleType.kLeftRumble, 1);
+			}else{
+		OI.getInstance().driverJoystick.setRumble(RumbleType.kLeftRumble, 0);
+				OI.getInstance().driverJoystick.setRumble(RumbleType.kLeftRumble, 0);
+	}
+//			
+//		}
+//		OI.getInstance().driverJoystick.setRumble(RumbleType.kLeftRumble, 0);
+//		OI.getInstance().driverJoystick.setRumble(RumbleType.kLeftRumble, 0);
 		//!!!!!!!BEGINNING OF RUMBLE FOR INTAKE
-		int counter = 0;
-		int timer = 0;
+//		boolean ballVibes = false;
+//		if(Robot.intakeRoller.seeBall() == false){
+//			ballVibes = true;
+//		}
+//		if(Robot.intakeRoller.seeBall() == true && ballVibes == true){
+//			int count= 0;
+//			
+//			while(count<50){
+//				count++;
+//			
+//				OI.getInstance().driverJoystick.setRumble(RumbleType.kLeftRumble, 1);
+//				OI.getInstance().driverJoystick.setRumble(RumbleType.kLeftRumble, 1);
+//				
+//			}
+//			if(count>50){
+//				OI.getInstance().driverJoystick.setRumble(RumbleType.kLeftRumble, 0);
+//				OI.getInstance().driverJoystick.setRumble(RumbleType.kLeftRumble, 0);
+//				ballVibes = false;
+//			}
+//			else{
+//				OI.getInstance().driverJoystick.setRumble(RumbleType.kLeftRumble, 0);
+//				OI.getInstance().driverJoystick.setRumble(RumbleType.kLeftRumble, 0);
+//				ballVibes = false;
+//			}
+//			
+//		}
 		
-		if(Robot.intakeRoller.getState() == IntakeRoller.Direction.FORWARD){
-			timer++;
-		}
-		if(timer > 1 && Robot.intakeRoller.getState() == IntakeRoller.Direction.STOP){
-			
-			
-		if(Robot.intakeRoller.seeBall() == true && oi.getRightTrigger() >= 0.75){
-			counter++;
-			oi.driverJoystick.setRumble(RumbleType.kRightRumble,1);
-			oi.driverJoystick.setRumble(RumbleType.kLeftRumble,1);
-			timer = 0;
-			if(counter >= 30){
-				oi.driverJoystick.setRumble(RumbleType.kRightRumble,0);
-				oi.driverJoystick.setRumble(RumbleType.kLeftRumble,0);
-				counter = 0;
-				timer = 0;
-				
-			}
-			else {
-				counter = 0;
-				timer = 0;
-				
-			}
-		}
-		else {
-			oi.driverJoystick.setRumble(RumbleType.kRightRumble,0);
-			oi.driverJoystick.setRumble(RumbleType.kLeftRumble,0);
-			timer = 0;
-		}
-		}
+		 
 		//!!!!!!!!!!!!!END OF RUMBLE FOR INTAKE
 		
 		//!!!!!!!!!!!!!BEGINNING OF GYRO RUMBLE
@@ -203,17 +217,19 @@ public class Robot extends IterativeRobot {
 		if(gyroDriveBackward.isRunning()&&gyroDriveStraight.isRunning()&&gyroDriveLeft.isRunning()&&gyroDriveLeft.isRunning()){
 			pulse++;
 			if(pulse <= 17){
-			oi.driverJoystick.setRumble(RumbleType.kRightRumble, 1);
-			oi.driverJoystick.setRumble(RumbleType.kLeftRumble, 1);
+			OI.getInstance().driverJoystick.setRumble(RumbleType.kRightRumble, 1);
+			OI.getInstance().driverJoystick.setRumble(RumbleType.kLeftRumble, 1);
 			
 			}
 			else{
 				pulse = 0;
-				oi.driverJoystick.setRumble(RumbleType.kRightRumble, 0);
-				oi.driverJoystick.setRumble(RumbleType.kLeftRumble, 0);
+				OI.getInstance().driverJoystick.setRumble(RumbleType.kRightRumble, 0);
+				OI.getInstance().driverJoystick.setRumble(RumbleType.kLeftRumble, 0);
 			}
 		}
 	}
+
+
 
 	public void testPeriodic() {
 		LiveWindow.run();
