@@ -19,6 +19,7 @@
 //
 //    // Called just before this Command runs the first time
 //    protected void initialize() {
+//    	Robot.hangerWinch.initializeCount();
 //    }
 //
 //    // Called repeatedly when this Command is scheduled to run
@@ -27,6 +28,7 @@
 //    	{
 //        	Robot.hangerWinch.turnWinch();	
 //    	}
+//    	Robot.hangerWinch.stopWinch();	
 //    }
 //
 //    // Make this return true when this Command no longer needs to run execute()

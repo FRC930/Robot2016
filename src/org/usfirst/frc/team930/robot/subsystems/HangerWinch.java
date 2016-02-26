@@ -3,7 +3,7 @@
 //import org.usfirst.frc.team930.robot.RobotMap;
 //
 //import edu.wpi.first.wpilibj.DigitalInput;
-//import edu.wpi.first.wpilibj.Victor;
+//import edu.wpi.first.wpilibj.Spark;
 //import edu.wpi.first.wpilibj.command.Subsystem;
 //
 ///**
@@ -13,7 +13,7 @@
 //
 //	int counter;
 //	
-//	Victor hangerWinch = new Victor(RobotMap.WinchPort); 
+//	Spark hangerWinch = new Spark(RobotMap.WinchPort); 
 //	DigitalInput hallEffect = new DigitalInput(RobotMap.hallPort);
 //	
 //    public void initDefaultCommand() {
@@ -55,5 +55,9 @@
 //    	hangerWinch.set(1);
 //    }
 //    
+//    public void stopWinch()
+//    {
+//    	hangerWinch.set(0);
+//    }
 //}
 //
