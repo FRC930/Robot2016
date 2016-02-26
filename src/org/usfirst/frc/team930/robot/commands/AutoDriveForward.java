@@ -12,8 +12,9 @@ public class AutoDriveForward extends Command {
 	final int START = 0;
 	final int DRIVE = 1;
 	final int TURNING_OFF = 2;
-	final int END = 3;
+	final int END = 3; 
 	int state = 0;
+	final double driveSpeed = 1;
 	Timer timer = new Timer();
 	double startTime; // time the command starts running (seconds)
 	double currentTime; // the current time (seconds)
@@ -28,6 +29,7 @@ public class AutoDriveForward extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	state = START;
+    	Robot.drivetrain.drivePID.setSetpoint(0.0);
     	timer.start();
     }
 
@@ -36,12 +38,13 @@ public class AutoDriveForward extends Command {
     	if(state == START){
     		startTime = timer.get(); // gets the starting time in seconds
     		state = DRIVE;
+    		Robot.drivetrain.drivePID.enable();
     	}
     	
     	else if(state == DRIVE){
     		currentTime = timer.get();
-    		Robot.drivetrain.setL(1);
-			Robot.drivetrain.setR(1);
+    		Robot.drivetrain.setL(driveSpeed);
+			Robot.drivetrain.setR(driveSpeed);
     		if(currentTime - startTime >= 3){
     			state = TURNING_OFF;
     		}
@@ -50,6 +53,7 @@ public class AutoDriveForward extends Command {
     	else if(state == TURNING_OFF){
     		Robot.drivetrain.setL(0);
     		Robot.drivetrain.setR(0);
+    		Robot.drivetrain.drivePID.disable();
     		state = END;
     	}
     }
