@@ -105,4 +105,6 @@ public class IntakeLifter extends Subsystem {
 		return potentiometer.get();
 	}
 	
+	
+	
 }

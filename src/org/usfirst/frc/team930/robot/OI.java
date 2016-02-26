@@ -76,7 +76,7 @@ public class OI {
 		coDriverButton1.whileHeld(new MoveIntakeRollers(IntakeRoller.Direction.BACKWARD));
 		coDriverButton3.whenPressed(new ManualIntakeDown());//does nothing
 		coDriverButton4.whenPressed(new ManualIntakeUp());//does nothing
-		
+		coDriverButton2.whileHeld(new MoveIntakeRollers(IntakeRoller.Direction.SHOOTERPULL));
 		driverButton4.whileHeld(new GyroDriveStraight());
 		driverButton2.whileHeld(new GyroDriveRight());
 		driverButton3.whileHeld(new GyroDriveLeft());
