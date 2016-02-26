@@ -59,12 +59,12 @@ public class ShootHighGoal extends Command {
 			break;
 		case WAIT_ONE:
 			/*
-			 * STATE 2 - get current time - wait 1 second
+			 * STATE 2 - get current time - wait .5 second
 			 */
 			currentTime = timer.get(); // gets current time
-			// after a total 1 second, the state moves on
+			// after a total .5 second, the state moves on
 			System.out.println("                                   STATE 2");
-			if ((currentTime - startTime) >= 1) {
+			if ((currentTime - startTime) >= .5) {
 
 				state = State.INTAKE_FORWARD;
 			}
@@ -85,10 +85,10 @@ public class ShootHighGoal extends Command {
 			 * intake)
 			 */
 
-			// once the ball isn't in the intake, the state moves on
+			// once 1 second has passed, the state moves on
 			currentTime = timer.get(); // gets current time
 			System.out.println("                                   STATE 4");
-			if ((currentTime - startTime) >= 2) {
+			if ((currentTime - startTime) >= 1.5) {
 				state = State.INTAKE_OFF;
 			}
 			break;
