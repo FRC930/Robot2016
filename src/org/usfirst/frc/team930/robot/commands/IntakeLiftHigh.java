@@ -20,11 +20,15 @@ public class IntakeLiftHigh extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.intakeLifter.PID.enable();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.intakeLifter.setAngle(IntakeLifter.Positions.DEFAULT);
+    	if(Robot.intakeLifter.getPOT() > 167 && Robot.intakeLifter.getPOT() < 172){
+    		Robot.intakeLifter.PID.disable();
+    	}
     	//this makes the PDI run the intakelifter until it gets to the default position
     }
 

@@ -18,11 +18,15 @@ public class IntakeLiftPort extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.intakeLifter.PID.enable();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.intakeLifter.setAngle(IntakeLifter.Positions.PORT);
+    	if(Robot.intakeLifter.getPOT() > 47 && Robot.intakeLifter.getPOT() < 52){
+    		Robot.intakeLifter.PID.disable();
+    	}
         // Make this return true when this Command no longer needs to run execute()
     }
 

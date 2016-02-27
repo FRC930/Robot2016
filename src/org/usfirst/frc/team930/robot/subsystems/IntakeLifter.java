@@ -52,7 +52,7 @@ public class IntakeLifter extends Subsystem {
 	//declares the SPARK which runs the motor for the intakelifter
 	static Spark intakeLifter = new Spark(RobotMap.ILiftPort);
 	//declares the PID controller which handles the PID values 
-	public static PIDController PID = new PIDController(P,I,D,potentiometer,intakeLifter);
+	public PIDController PID = new PIDController(P,I,D,potentiometer,intakeLifter);
 
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.

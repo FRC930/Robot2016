@@ -24,6 +24,7 @@ public class Pickup extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.intakeLifter.PID.enable();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -31,6 +32,9 @@ public class Pickup extends Command {
     	//this makes the intake lifter go to the appropriate position for pickup
     	Robot.intakeLifter.setAngle(IntakeLifter.Positions.PICKUP);
     	//sets the intakeRollers to pull in the ball
+    	if(Robot.intakeLifter.getPOT() > 77 && Robot.intakeLifter.getPOT() < 82){
+    		Robot.intakeLifter.PID.disable();
+    	}
     	if(!Robot.intakeRoller.seeBall())
     		Robot.intakeRoller.setState(IntakeRoller.Direction.FORWARD);
     	else

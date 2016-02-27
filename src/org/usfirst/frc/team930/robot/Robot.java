@@ -16,7 +16,7 @@ import org.usfirst.frc.team930.robot.commands.GyroDriveLeft;
 import org.usfirst.frc.team930.robot.commands.GyroDriveRight;
 import org.usfirst.frc.team930.robot.commands.GyroDriveStraight;
 import org.usfirst.frc.team930.robot.commands.IntakeLiftHigh;
-import org.usfirst.frc.team930.robot.commands.IntakeLiftPickup;
+
 import org.usfirst.frc.team930.robot.commands.IntakeLiftPort;
 import org.usfirst.frc.team930.robot.commands.MoveIntakeRollers;
 import org.usfirst.frc.team930.robot.commands.Pickup;
