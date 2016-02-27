@@ -63,7 +63,7 @@ public class AutoDriveShootMiddle extends Command {
     		count++;
     		Robot.shooter.setShooter(1);
     		if(count >= 50){
-    			Robot.intakeRoller.setState(IntakeRoller.Direction.FORWARD);
+    			Robot.intakeRoller.setState(IntakeRoller.Direction.SHOOTERPULL);
     		}
     		if(count >= 150){
     			state = TURNING_OFF;
