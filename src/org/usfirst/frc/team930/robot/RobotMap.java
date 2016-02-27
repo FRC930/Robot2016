@@ -20,7 +20,7 @@ public class RobotMap {
 	public static int HangerArmPort = 7;
 	
 	public static int lightSensorPort = 0;
-	//public static int lightSensorShooterPort = 0;
+	//public static int lightSensorShooterPort = 2;
 	
 	
 	public static int potPort = 1;
