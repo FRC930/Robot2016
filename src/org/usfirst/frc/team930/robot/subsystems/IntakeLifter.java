@@ -81,6 +81,11 @@ public class IntakeLifter extends Subsystem {
 		//enables the PID
 		PID.enable();
 	}
+	
+	public void setSpeed(double speed)
+	{
+		intakeLifter.set(speed);
+	}
 	/**
 	 * Updates PID Values in accordance to Preferences inputs and returns the new angle that will be set.
 	 * 
