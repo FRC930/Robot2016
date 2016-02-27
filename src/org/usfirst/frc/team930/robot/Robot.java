@@ -58,10 +58,7 @@ public class Robot extends IterativeRobot {
 	Command rollersForwardTeleop;
 	Command rollersBackwardTeleop;
 	Command rollersStopTeleop;
-	Command gyroDriveBackward;
-	Command gyroDriveLeft;
-	Command gyroDriveRight;
-	Command gyroDriveStraight;
+	
 	SendableChooser chooser;
 	public static Preferences prefs;
 //	Timer timer = new Timer();
@@ -99,17 +96,15 @@ public class Robot extends IterativeRobot {
 	}
 
 	public void autonomousPeriodic() {
-		//Scheduler.getInstance().run();
+		Scheduler.getInstance().run();
 	}
 
 	public void teleopInit() {
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
 
-		gyroDriveBackward = new GyroDriveBackward();
-		gyroDriveRight = new GyroDriveRight();
-		gyroDriveLeft = new GyroDriveLeft();
-		gyroDriveStraight = new GyroDriveStraight();
+		
+	
 		intakeLiftPortTeleop = new IntakeLiftPort();
 		intakeLiftHighTeleop = new IntakeLiftHigh();
 		pickupTeleop = new Pickup();
@@ -213,21 +208,7 @@ public class Robot extends IterativeRobot {
 		//!!!!!!!!!!!!!END OF RUMBLE FOR INTAKE
 		
 		//!!!!!!!!!!!!!BEGINNING OF GYRO RUMBLE
-		int pulse = 0;
-		if(gyroDriveBackward.isRunning()&&gyroDriveStraight.isRunning()&&gyroDriveLeft.isRunning()&&gyroDriveLeft.isRunning()){
-			pulse++;
-			if(pulse <= 17){
-			OI.getInstance().driverJoystick.setRumble(RumbleType.kRightRumble, 1);
-			OI.getInstance().driverJoystick.setRumble(RumbleType.kLeftRumble, 1);
-			
-			}
-			else{
-				pulse = 0;
-				OI.getInstance().driverJoystick.setRumble(RumbleType.kRightRumble, 0);
-				OI.getInstance().driverJoystick.setRumble(RumbleType.kLeftRumble, 0);
-			}
-		}
-	}
+		
 
 
 
