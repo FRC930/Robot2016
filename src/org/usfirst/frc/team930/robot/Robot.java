@@ -172,6 +172,7 @@ public class Robot extends IterativeRobot {
 		OI.getInstance().driverJoystick.setRumble(RumbleType.kLeftRumble, 0);
 				OI.getInstance().driverJoystick.setRumble(RumbleType.kLeftRumble, 0);
 	}
+	}
 //			
 //		}
 //		OI.getInstance().driverJoystick.setRumble(RumbleType.kLeftRumble, 0);
