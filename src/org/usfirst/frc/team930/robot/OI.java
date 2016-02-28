@@ -14,6 +14,8 @@ import org.usfirst.frc.team930.robot.commands.ManualIntakeUp;
 import org.usfirst.frc.team930.robot.commands.MoveIntakeRollers;
 import org.usfirst.frc.team930.robot.commands.Pickup;
 import org.usfirst.frc.team930.robot.commands.ShootHighGoal;
+import org.usfirst.frc.team930.robot.commands.LiftHanger;
+import org.usfirst.frc.team930.robot.commands.WinchHanger;
 import org.usfirst.frc.team930.robot.subsystems.IntakeLifter;
 import org.usfirst.frc.team930.robot.subsystems.IntakeRoller;
 
@@ -48,6 +50,8 @@ public class OI {
 
 	private OI() {
 		// init
+		try
+		{
 		driverJoystick = new Joystick(1);
 		coJoystick = new Joystick(2);
 
@@ -68,6 +72,7 @@ public class OI {
 		coDriverButton7 = new JoystickButton(coJoystick, 7);
 		coDriverButton8 = new JoystickButton(coJoystick, 8);
 
+
 		//Driver Buttons (May end up being removed)
 		//driverButton2.toggleWhenPressed(new MoveIntakeRollers(IntakeRoller.Direction.BACKWARD));
 		//driverButton1.whenPressed(new Pickup());
@@ -87,8 +92,8 @@ public class OI {
 		//A Button runs Shooter
 		//coDriverButton1.whenPressed(new ShootHighGoal());
 		//Start/Select Buttons run a Hanger command that doesn't exist yet
-		//coDriverButton7.whenPressed(new LiftHanger());
-		//coDriverButton8.whileHed(new WinchHanger());
+		coDriverButton7.whenPressed(new LiftHanger());
+		coDriverButton8.whileHeld(new WinchHanger());
 		
 		//Right Joystick runs Intake
 		
@@ -97,6 +102,10 @@ public class OI {
 //		else new LiftIntake(IntakeLifter.Position.LOW);
 //		if (coJoystick.getRawAxis(5) >= 0.75) new LiftIntake(IntakeLifter.Position.PORT);
 //		else new LiftIntake(IntakeLifter.Position.LOW);
+	}catch(Exception e){
+		System.out.println(e.getLocalizedMessage());
+	
+	}
 	}
 
 	public static OI getInstance() {

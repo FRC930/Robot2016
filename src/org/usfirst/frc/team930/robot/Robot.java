@@ -16,6 +16,9 @@ import org.usfirst.frc.team930.robot.commands.GyroDriveLeft;
 import org.usfirst.frc.team930.robot.commands.GyroDriveRight;
 import org.usfirst.frc.team930.robot.commands.GyroDriveStraight;
 import org.usfirst.frc.team930.robot.commands.IntakeLiftHigh;
+import org.usfirst.frc.team930.robot.commands.LiftHanger;
+import org.usfirst.frc.team930.robot.commands.WinchHanger;
+
 
 import org.usfirst.frc.team930.robot.commands.IntakeLiftPort;
 import org.usfirst.frc.team930.robot.commands.MoveIntakeRollers;
@@ -24,6 +27,9 @@ import org.usfirst.frc.team930.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team930.robot.subsystems.IntakeLifter;
 import org.usfirst.frc.team930.robot.subsystems.IntakeRoller;
 import org.usfirst.frc.team930.robot.subsystems.Shooter;
+import org.usfirst.frc.team930.robot.subsystems.HangerLifter;
+import org.usfirst.frc.team930.robot.subsystems.HangerWinch;
+
 
 public class Robot extends IterativeRobot {
 
@@ -32,8 +38,8 @@ public class Robot extends IterativeRobot {
 	public static Shooter shooter;
 	public static IntakeLifter intakeLifter;
 	public static OI oi;
-	//public static HangerLifter hangerLifter;
-	//public static HangerWinch hangerWinch;
+	public static HangerLifter hangerLifter;
+	public static HangerWinch hangerWinch;
 	
 	static {
 		try {
@@ -42,7 +48,8 @@ public class Robot extends IterativeRobot {
 			System.out.println("in static");
 			shooter = new Shooter();
 			System.out.println("made shooter");
-
+			hangerLifter = new HangerLifter();
+			hangerWinch = new HangerWinch();
 			intakeLifter = new IntakeLifter();
 		} catch(Exception e) {
 			System.out.println("exception");
@@ -58,6 +65,8 @@ public class Robot extends IterativeRobot {
 	Command rollersForwardTeleop;
 	Command rollersBackwardTeleop;
 	Command rollersStopTeleop;
+	Command liftHanger;
+	Command winchHanger;
 	
 	SendableChooser chooser;
 	public static Preferences prefs;
@@ -111,6 +120,8 @@ public class Robot extends IterativeRobot {
 		rollersForwardTeleop = new MoveIntakeRollers(IntakeRoller.Direction.FORWARD);
 		rollersBackwardTeleop = new MoveIntakeRollers(IntakeRoller.Direction.BACKWARD);
 		rollersStopTeleop = new MoveIntakeRollers(IntakeRoller.Direction.STOP);
+		liftHanger = new LiftHanger();
+		winchHanger = new WinchHanger();
 	}
 
 	public void teleopPeriodic() {
