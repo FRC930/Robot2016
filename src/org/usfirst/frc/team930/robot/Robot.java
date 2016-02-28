@@ -135,7 +135,7 @@ public class Robot extends IterativeRobot {
 			System.out.println(" pick up ");
 			if(!pickupTeleop.isRunning()){
 				pickupTeleop.start();
-				//System.out.println("starting pick up ");
+				System.out.println("starting pick up ");
 			}
 		}else{
 			if(!intakeLiftHighTeleop.isRunning()) {

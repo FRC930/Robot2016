@@ -32,9 +32,10 @@ public class Pickup extends Command {
     	//this makes the intake lifter go to the appropriate position for pickup
     	Robot.intakeLifter.setAngle(IntakeLifter.Positions.PICKUP);
     	//sets the intakeRollers to pull in the ball
-    	if(Robot.intakeLifter.getPOT() > 73 && Robot.intakeLifter.getPOT() < 82){
-    		Robot.intakeLifter.PID.disable();
-    	}
+//    	if(Robot.intakeLifter.getPOT() > 73 && Robot.intakeLifter.getPOT() < 82){
+//    		Robot.intakeLifter.PID.disable();
+//    		System.out.println("Disabling pickup");
+//    	}
     	if(!Robot.intakeRoller.seeBall())
     		Robot.intakeRoller.setState(IntakeRoller.Direction.FORWARD);
     	else

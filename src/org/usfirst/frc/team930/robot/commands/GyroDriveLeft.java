@@ -27,7 +27,7 @@ public class GyroDriveLeft extends Command {
     // Called just before this Command runs the first time
  // Called just before this Command runs the first time
  	protected void initialize() {
- 		Robot.drivetrain.drivePID.setSetpoint(-60.0);
+ 		Robot.drivetrain.drivePID.setSetpoint(-45.0);
  	}
 
  	// Called repeatedly when this Command is scheduled to run

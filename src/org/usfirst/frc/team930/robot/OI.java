@@ -87,8 +87,8 @@ public class OI {
 		//A Button runs Shooter
 		//coDriverButton1.whenPressed(new ShootHighGoal());
 		//Start/Select Buttons run a Hanger command that doesn't exist yet
-		//coDriverButton7.whenPressed(new <LiftHanger>);
-		//coDriverButton8.whenPressed(new <LowerHanger>);
+		//coDriverButton7.whenPressed(new LiftHanger());
+		//coDriverButton8.whileHed(new WinchHanger());
 		
 		//Right Joystick runs Intake
 		

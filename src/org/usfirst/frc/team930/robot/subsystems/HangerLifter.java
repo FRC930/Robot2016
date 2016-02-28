@@ -9,8 +9,8 @@
 // *
 // */
 //public class HangerLifter extends Subsystem {
-//	static final double extendSpeed = 1;
-//	static final double retractSpeed = -1;
+//	static final double extendSpeed = .4;
+//	static final double retractSpeed = -.4;
 //    Spark spark = new Spark(RobotMap.hangerSpark);
 //
 //    public void initDefaultCommand() {

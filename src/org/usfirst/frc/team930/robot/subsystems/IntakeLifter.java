@@ -79,7 +79,7 @@ public class IntakeLifter extends Subsystem {
 		//sets the value that the PID is supposed to get to
 		PID.setSetpoint(position.getAngle());
 		//enables the PID
-		PID.enable();
+		//PID.enable();
 	}
 	
 	public void setSpeed(double speed)

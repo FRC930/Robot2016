@@ -7,6 +7,7 @@ import org.usfirst.frc.team930.robot.controller.BBSController;
 import org.usfirst.frc.team930.robot.controller.CounterRPMSource;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.Victor;
@@ -18,9 +19,9 @@ public class Shooter extends Subsystem {
 	Victor shooter1 = new Victor(RobotMap.S1Port);
 	Victor shooter2 = new Victor(RobotMap.S2Port);
 
-	//DigitalInput lightSensorShooter = new DigitalInput(RobotMap.lightSensorShooterPort); 
+	DigitalInput lightSensorShooter = new DigitalInput(RobotMap.lightSensorShooterPort); 
 
-	//CounterRPMSource rpmSource = new CounterRPMSource(lightSensorShooter);
+	CounterRPMSource rpmSource = new CounterRPMSource(lightSensorShooter);
 
 	BBSController cont1, cont2;
 
@@ -46,8 +47,9 @@ public class Shooter extends Subsystem {
 		//cont1.setRPM(rpm);
 		//cont2.setRPM(rpm);
 		
-		 shooter1.set(rpm);
+		 shooter1.set(-1*rpm);
 		 shooter2.set(rpm);
+		 SmartDashboard.putNumber("Shooter1Speed", 30.0/rpmSource.getPeriod());
 	}
 
 	public void setAccel(double accel) {

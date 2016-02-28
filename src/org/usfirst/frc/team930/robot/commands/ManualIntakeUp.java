@@ -24,7 +24,7 @@ public class ManualIntakeUp extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.intakeLifter.setSpeed(.25);
+    	Robot.intakeLifter.setSpeed(.4);
     }
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -34,10 +34,12 @@ public class ManualIntakeUp extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.intakeLifter.setSpeed(0);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	Robot.intakeLifter.setSpeed(0);
     }
 }
