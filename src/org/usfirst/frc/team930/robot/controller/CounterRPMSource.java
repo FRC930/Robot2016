@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.DigitalInput;
 public class CounterRPMSource extends Counter implements ControllerSource {
 
 	private FileWriter fw;
-	public static final boolean WRITE_TO_FILE = true;
+	public static final boolean WRITE_TO_FILE = false;
 
 	public CounterRPMSource(DigitalInput s) {
 		super(s);

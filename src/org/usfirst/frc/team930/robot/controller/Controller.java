@@ -36,7 +36,7 @@ abstract class Controller {
 	 */
 	public void enable() {
 		enabled = true;
-		System.out.println("Enabled Controller");
+		//System.out.println("Enabled Controller");
 	}
 
 	/**
@@ -44,7 +44,7 @@ abstract class Controller {
 	 */
 	public void disable() {
 		enabled = false;
-		System.out.println("Disabled Controller");
+		//System.out.println("Disabled Controller");
 	}
 	
 	/**

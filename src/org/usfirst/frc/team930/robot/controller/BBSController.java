@@ -17,7 +17,7 @@ import edu.wpi.first.wpilibj.SpeedController;
  * 
  * @see Controller.java
  * @author Nick Janovetz
- * @version 2016.02.10_1 removed Hungarian notation
+ * @version 2016.03.29_1 accel value fix
  */
 public class BBSController extends Controller {
 
@@ -54,11 +54,12 @@ public class BBSController extends Controller {
 			accel = 0;
 		} else if (a > 1) {
 			accel = 1;
+		} else {
+			accel = a;
 		}
 
 		CONTROLLER_COUNT++;
 		count = CONTROLLER_COUNT;
-		System.out.println("Controller " + count + " made");
 	}
 
 	/**
@@ -88,10 +89,10 @@ public class BBSController extends Controller {
 
 		// Calculations
 		if (source.getValue() < t) {
-			System.out.println("" + count + " Increase! for " + t + " " + a);
+			//System.out.println("" + count + " Increase! for " + t + " " + a);
 			speedcontroller.set(a);
 		} else {
-			System.out.println("" + count + " OK! for " + t + " " + a);
+			//System.out.println("" + count + " OK! for " + t + " " + a);
 			speedcontroller.set(0);
 		}
 	}
@@ -113,7 +114,7 @@ public class BBSController extends Controller {
 	 *            New set RPM for the controller to set the speedcontroller to
 	 */
 	public void setRPM(double tr) {
-		System.out.println("Set to tr" + tr);
+		//System.out.println("Set to tr" + tr);
 		targetRPM = tr;
 	}
 
@@ -124,7 +125,7 @@ public class BBSController extends Controller {
 	 *            New acceleration value for the speedcontroller
 	 */
 	public void setAccel(double a) {
-		System.out.println("Set accel " + a);
+		//System.out.println("Set accel " + a);
 		accel = a;
 	}
 }
