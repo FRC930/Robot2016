@@ -1,5 +1,6 @@
 package org.usfirst.frc.team930.robot.subsystems;
 
+import org.usfirst.frc.team930.robot.Robot;
 import org.usfirst.frc.team930.robot.RobotMap;
 import org.usfirst.frc.team930.robot.commands.IntakeLiftHigh;
 import org.usfirst.frc.team930.robot.commands.ShootHighGoal;
@@ -28,9 +29,12 @@ public class Shooter extends Subsystem {
 	public Shooter() {
 		super();
 		
+		shooter1.setInverted(true);
+		
 		// bang bang controllers
-		//cont1 = new BBSController(rpmSource, shooter1, 0, 0);
-		//cont2 = new BBSController(rpmSource, shooter2, 0, 0);
+		cont1 = new BBSController(rpmSource, shooter1, 0, .8);
+		cont2 = new BBSController(rpmSource, shooter2, 0, .8);
+
 	}
 
 	// Put methods for controlling this subsystem
@@ -44,26 +48,26 @@ public class Shooter extends Subsystem {
 
 	public void setShooter(double rpm) {
 
-		//cont1.setRPM(rpm);
-		//cont2.setRPM(rpm);
+		cont1.setRPM(rpm);
+		cont2.setRPM(rpm);
 		
-		 shooter1.set(-1*rpm);
-		 shooter2.set(rpm);
+		 //shooter1.set(rpm);
+		 //shooter2.set(rpm);
 		 SmartDashboard.putNumber("Shooter1Speed", 30.0/rpmSource.getPeriod());
 	}
 
 	public void setAccel(double accel) {
-		//cont1.setAccel(accel);
-		//cont2.setAccel(accel);
+		cont1.setAccel(accel);
+		cont2.setAccel(accel);
 	}
 	
 	public void enable() {
-		//cont1.enable();
-		//cont2.enable();
+		cont1.enable();
+		cont2.enable();
 	}
 	
 	public void disable() {
-		//cont1.disable();
-		//cont2.disable();
+		cont1.disable();
+		cont2.disable();
 	}
 }

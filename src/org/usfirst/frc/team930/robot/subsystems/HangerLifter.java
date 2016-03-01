@@ -25,5 +25,9 @@ public class HangerLifter extends Subsystem {
     	spark.set(retractSpeed);
     }
     
+    public void stop(){
+    	spark.set(0);
+    }
+    
 }
 

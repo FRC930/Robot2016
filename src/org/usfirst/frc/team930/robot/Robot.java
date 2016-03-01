@@ -17,9 +17,8 @@ import org.usfirst.frc.team930.robot.commands.GyroDriveRight;
 import org.usfirst.frc.team930.robot.commands.GyroDriveStraight;
 import org.usfirst.frc.team930.robot.commands.IntakeLiftHigh;
 import org.usfirst.frc.team930.robot.commands.LiftHanger;
+import org.usfirst.frc.team930.robot.commands.RetractHanger;
 import org.usfirst.frc.team930.robot.commands.WinchHanger;
-
-
 import org.usfirst.frc.team930.robot.commands.IntakeLiftPort;
 import org.usfirst.frc.team930.robot.commands.MoveIntakeRollers;
 import org.usfirst.frc.team930.robot.commands.Pickup;
@@ -67,6 +66,7 @@ public class Robot extends IterativeRobot {
 	Command rollersStopTeleop;
 	Command liftHanger;
 	Command winchHanger;
+	Command retractHanger;
 	
 	SendableChooser chooser;
 	public static Preferences prefs;
@@ -122,11 +122,13 @@ public class Robot extends IterativeRobot {
 		rollersStopTeleop = new MoveIntakeRollers(IntakeRoller.Direction.STOP);
 		liftHanger = new LiftHanger();
 		winchHanger = new WinchHanger();
+		retractHanger = new RetractHanger();
 	}
 
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
 		SmartDashboard.putBoolean("Is ball in Robot?", Robot.intakeRoller.seeBall());
+		System.out.println("             POT--------------------------- " + Robot.intakeLifter.getPOT());
 		//System.out.println(Robot.intakeRoller.seeBall());
 		//System.out.println(Robot.drivetrain.gyro.getAngle());
 		//System.out.println("Pot value: " + Robot.intakeLifter.getPOT());

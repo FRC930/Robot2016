@@ -58,7 +58,9 @@ public class ShootHighGoal extends Command {
 			 * STATE 1 - set shooter speed - set start time
 			 */
 			// turn on shooter wheels
-			Robot.shooter.setShooter(.25);
+			Robot.shooter.enable();
+			Robot.shooter.enable();
+			Robot.shooter.setShooter(.25 * Shooter.HIGH_GOAL_RPM);
 			startTime = timer.get(); // gets the starting time in seconds
 			state = State.WAIT_ONE_1; // move onto the next state
 			break;
@@ -75,7 +77,7 @@ public class ShootHighGoal extends Command {
 			break;
 		case START_2:
 			// turn on shooter wheels
-			Robot.shooter.setShooter(.5);
+			Robot.shooter.setShooter(.5 * Shooter.HIGH_GOAL_RPM);
 			startTime = timer.get(); // gets the starting time in seconds
 			state = State.WAIT_ONE_2; // move onto the next state
 			break;
@@ -89,7 +91,7 @@ public class ShootHighGoal extends Command {
 			break;
 		case START_3:
 			// turn on shooter wheels
-			Robot.shooter.setShooter(.75);
+			Robot.shooter.setShooter(.75 * Shooter.HIGH_GOAL_RPM);
 			startTime = timer.get(); // gets the starting time in seconds
 			state = State.WAIT_ONE_3; // move onto the next state
 			break;
@@ -103,7 +105,7 @@ public class ShootHighGoal extends Command {
 			break;
 		case START_4:
 			// turn on shooter wheels
-			Robot.shooter.setShooter(1);
+			Robot.shooter.setShooter(Shooter.HIGH_GOAL_RPM);
 			startTime = timer.get(); // gets the starting time in seconds
 			state = State.WAIT_ONE_4; // move onto the next state
 			break;

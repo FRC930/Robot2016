@@ -66,7 +66,7 @@ public class IntakeRoller extends Subsystem {
 	//gives the state of the lightsensor
 	public boolean seeBall() {
 		//System.out.println("I see ball: "+lightSensor.get());
-		return !lightSensor.get();
+		return lightSensor.get();
 		
 	}
 	//gets the direction of the rollers

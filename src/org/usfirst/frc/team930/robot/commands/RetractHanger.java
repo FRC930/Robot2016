@@ -8,9 +8,9 @@ import org.usfirst.frc.team930.robot.subsystems.HangerLifter;
 /**
  *
  */
-public class LiftHanger extends Command {
+public class RetractHanger extends Command {
 	
-    public LiftHanger() {
+    public RetractHanger() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.hangerLifter);
@@ -23,7 +23,7 @@ public class LiftHanger extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.hangerLifter.extend();
+    	Robot.hangerLifter.retract();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -40,6 +40,7 @@ public class LiftHanger extends Command {
     // subsystems is scheduled to run
     protected void interrupted() {
     	Robot.hangerLifter.stop();
+
     }
     
 }

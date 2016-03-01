@@ -13,6 +13,7 @@ import org.usfirst.frc.team930.robot.commands.ManualIntakeDown;
 import org.usfirst.frc.team930.robot.commands.ManualIntakeUp;
 import org.usfirst.frc.team930.robot.commands.MoveIntakeRollers;
 import org.usfirst.frc.team930.robot.commands.Pickup;
+import org.usfirst.frc.team930.robot.commands.RetractHanger;
 import org.usfirst.frc.team930.robot.commands.ShootHighGoal;
 import org.usfirst.frc.team930.robot.commands.LiftHanger;
 import org.usfirst.frc.team930.robot.commands.WinchHanger;
@@ -42,6 +43,7 @@ public class OI {
 	Button coDriverButton6;
 	Button coDriverButton7;
 	Button coDriverButton8;
+	Button coDriverButton9;
 
 	double leftTrigger;
 	double rightTrigger;
@@ -71,6 +73,7 @@ public class OI {
 		coDriverButton6 = new JoystickButton(coJoystick, 6);
 		coDriverButton7 = new JoystickButton(coJoystick, 7);
 		coDriverButton8 = new JoystickButton(coJoystick, 8);
+		coDriverButton9 = new JoystickButton(coJoystick, 9);
 
 
 		//Driver Buttons (May end up being removed)
@@ -78,10 +81,6 @@ public class OI {
 		//driverButton1.whenPressed(new Pickup());
 		driverButton5.whenPressed(new ShootHighGoal());
 	driverButton6.whenPressed(new ShootHighGoal());
-		coDriverButton1.whileHeld(new MoveIntakeRollers(IntakeRoller.Direction.BACKWARD));
-		coDriverButton3.whileHeld(new ManualIntakeDown());
-		coDriverButton4.whileHeld(new ManualIntakeUp());
-		coDriverButton2.whileHeld(new MoveIntakeRollers(IntakeRoller.Direction.SHOOTERPULL));
 		driverButton4.whileHeld(new GyroDriveStraight());
 		driverButton2.whileHeld(new GyroDriveRight());
 		driverButton3.whileHeld(new GyroDriveLeft());
@@ -92,8 +91,14 @@ public class OI {
 		//A Button runs Shooter
 		//coDriverButton1.whenPressed(new ShootHighGoal());
 		//Start/Select Buttons run a Hanger command that doesn't exist yet
+		coDriverButton1.whileHeld(new MoveIntakeRollers(IntakeRoller.Direction.BACKWARD));
+		coDriverButton3.whileHeld(new ManualIntakeDown());
+		coDriverButton4.whileHeld(new ManualIntakeUp());
+		coDriverButton2.whileHeld(new MoveIntakeRollers(IntakeRoller.Direction.SHOOTERPULL)); // in 
 		coDriverButton7.whenPressed(new LiftHanger());
 		coDriverButton8.whileHeld(new WinchHanger());
+		coDriverButton9.whileHeld(new RetractHanger());
+		
 		
 		//Right Joystick runs Intake
 		
