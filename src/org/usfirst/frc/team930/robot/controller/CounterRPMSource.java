@@ -37,7 +37,7 @@ public class CounterRPMSource extends Counter implements ControllerSource {
 			System.out.printf("%-10s%10.2f%n", "RPM", (highPulse.isInfinite())
 					|| (highPulse > 100000f) ? 0f : highPulse);
 			try {
-				fw.write("" + highPulse + "\n");
+				fw.write("RPM: " + highPulse + "\n");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

@@ -58,6 +58,7 @@ public class BBSController extends Controller {
 
 		CONTROLLER_COUNT++;
 		count = CONTROLLER_COUNT;
+		System.out.println("Controller " + count + " made");
 	}
 
 	/**
@@ -87,10 +88,10 @@ public class BBSController extends Controller {
 
 		// Calculations
 		if (source.getValue() < t) {
-			System.out.println("\t" + count + " Increase!");
+			System.out.println("" + count + " Increase! for " + t + " " + a);
 			speedcontroller.set(a);
 		} else {
-			System.out.println("\t" + count + " OK!");
+			System.out.println("" + count + " OK! for " + t + " " + a);
 			speedcontroller.set(0);
 		}
 	}
@@ -112,6 +113,7 @@ public class BBSController extends Controller {
 	 *            New set RPM for the controller to set the speedcontroller to
 	 */
 	public void setRPM(double tr) {
+		System.out.println("Set to tr" + tr);
 		targetRPM = tr;
 	}
 
@@ -122,6 +124,7 @@ public class BBSController extends Controller {
 	 *            New acceleration value for the speedcontroller
 	 */
 	public void setAccel(double a) {
+		System.out.println("Set accel " + a);
 		accel = a;
 	}
 }

@@ -32,9 +32,8 @@ public class Shooter extends Subsystem {
 		shooter1.setInverted(true);
 		
 		// bang bang controllers
-		cont1 = new BBSController(rpmSource, shooter1, 0, .8);
-		cont2 = new BBSController(rpmSource, shooter2, 0, .8);
-
+		cont1 = new BBSController(rpmSource, shooter1, 0, 1);
+		cont2 = new BBSController(rpmSource, shooter2, 0, 1);
 	}
 
 	// Put methods for controlling this subsystem

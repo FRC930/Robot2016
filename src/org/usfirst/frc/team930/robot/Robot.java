@@ -128,7 +128,7 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
 		SmartDashboard.putBoolean("Is ball in Robot?", Robot.intakeRoller.seeBall());
-		System.out.println("             POT--------------------------- " + Robot.intakeLifter.getPOT());
+		//System.out.println("             POT--------------------------- " + Robot.intakeLifter.getPOT());
 		//System.out.println(Robot.intakeRoller.seeBall());
 		//System.out.println(Robot.drivetrain.gyro.getAngle());
 		//System.out.println("Pot value: " + Robot.intakeLifter.getPOT());

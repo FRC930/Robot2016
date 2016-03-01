@@ -59,7 +59,6 @@ public class ShootHighGoal extends Command {
 			 */
 			// turn on shooter wheels
 			Robot.shooter.enable();
-			Robot.shooter.enable();
 			Robot.shooter.setShooter(.25 * Shooter.HIGH_GOAL_RPM);
 			startTime = timer.get(); // gets the starting time in seconds
 			state = State.WAIT_ONE_1; // move onto the next state
