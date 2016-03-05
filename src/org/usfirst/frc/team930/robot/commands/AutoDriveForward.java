@@ -14,7 +14,7 @@ public class AutoDriveForward extends Command {
 	final int WAIT = 2;
 	final int DRIVE_BACKWARD = 3;
 	final int TURNING_OFF = 4;
-	final int END = 3; 
+	final int END = 5; 
 	int state = 0;
 	final double driveSpeedForward = 1;
 	final double driveSpeedBackward = -1;
@@ -34,26 +34,29 @@ public class AutoDriveForward extends Command {
     	state = START;
     	Robot.drivetrain.drivePID.setSetpoint(0.0);
     	timer.start();
+    	startTime = timer.get(); // gets the starting time in seconds
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	System.out.println(timer.get() - startTime);
     	if(state == START){
-    		startTime = timer.get(); // gets the starting time in seconds
     		state = DRIVE_FORWARD;
     		//Robot.drivetrain.drivePID.enable();
     	}
     	
     	else if(state == DRIVE_FORWARD){
+    		System.out.println("State is drive forward");
     		currentTime = timer.get();
     		Robot.drivetrain.setL(driveSpeedForward);
 			Robot.drivetrain.setR(driveSpeedForward);
     		if(currentTime - startTime >= 2){
-    			state = WAIT;
+    			state = END;
     		}
     	}
     	
     	else if(state == WAIT){
+    		System.out.println("State is wait");
     		currentTime = timer.get();
     		Robot.drivetrain.setL(0);
 			Robot.drivetrain.setR(0);
@@ -63,15 +66,17 @@ public class AutoDriveForward extends Command {
     	}
     	
     	else if(state == DRIVE_BACKWARD){
+    		System.out.println("State is drive backward");
     		currentTime = timer.get();
     		Robot.drivetrain.setL(driveSpeedBackward);
 			Robot.drivetrain.setR(driveSpeedBackward);
-    		if(currentTime - startTime >= 5){
+    		if(currentTime - startTime >= 4.5){
     			state = TURNING_OFF;
     		}
     	}
     	
     	else if(state == TURNING_OFF){
+    		System.out.println("State is turning off");
     		Robot.drivetrain.setL(0);
     		Robot.drivetrain.setR(0);
     		Robot.drivetrain.drivePID.disable();

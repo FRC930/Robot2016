@@ -9,8 +9,8 @@ public class RobotMap {
 	public static int RTopPort = 4;
 	public static int RBackPort = 5;
 	
-	public static int S1Port = 0;
-	public static int S2Port = 1;
+	public static int S1Port = 0; //0
+	public static int S2Port = 1; //1
 	public static int I1Port = 3;
 	public static int I2Port = 4;
 	

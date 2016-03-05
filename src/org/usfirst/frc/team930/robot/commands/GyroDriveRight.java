@@ -25,7 +25,7 @@ public class GyroDriveRight extends Command {
 
  // Called just before this Command runs the first time
  	protected void initialize() {
- 		Robot.drivetrain.drivePID.setSetpoint(45.0);
+ 		Robot.drivetrain.drivePID.setSetpoint(55.0);
  	}
 
  	// Called repeatedly when this Command is scheduled to run

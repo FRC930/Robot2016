@@ -91,11 +91,11 @@ public class OI {
 		//A Button runs Shooter
 		//coDriverButton1.whenPressed(new ShootHighGoal());
 		//Start/Select Buttons run a Hanger command that doesn't exist yet
-		coDriverButton1.whileHeld(new MoveIntakeRollers(IntakeRoller.Direction.BACKWARD));
-		coDriverButton3.whileHeld(new ManualIntakeDown());
+		coDriverButton5.whileHeld(new MoveIntakeRollers(IntakeRoller.Direction.BACKWARD));
+		coDriverButton1.whileHeld(new ManualIntakeDown());
 		coDriverButton4.whileHeld(new ManualIntakeUp());
-		coDriverButton2.whileHeld(new MoveIntakeRollers(IntakeRoller.Direction.SHOOTERPULL)); // in 
-		coDriverButton7.whenPressed(new LiftHanger());
+		coDriverButton6.whileHeld(new MoveIntakeRollers(IntakeRoller.Direction.SHOOTERPULL)); // in 
+		coDriverButton7.whileHeld(new LiftHanger());
 		coDriverButton8.whileHeld(new WinchHanger());
 		coDriverButton9.whileHeld(new RetractHanger());
 		

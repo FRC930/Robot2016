@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.Joystick.RumbleType;
@@ -29,6 +30,9 @@ import org.usfirst.frc.team930.robot.subsystems.Shooter;
 import org.usfirst.frc.team930.robot.subsystems.HangerLifter;
 import org.usfirst.frc.team930.robot.subsystems.HangerWinch;
 
+import com.ni.vision.NIVision;
+import com.ni.vision.NIVision.Image;
+
 
 public class Robot extends IterativeRobot {
 
@@ -39,7 +43,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static HangerLifter hangerLifter;
 	public static HangerWinch hangerWinch;
-	
+
 	static {
 		try {
 			drivetrain = new Drivetrain();
@@ -56,7 +60,7 @@ public class Robot extends IterativeRobot {
 			e.printStackTrace();
 		}
 	}
-	
+
 	Command autonomousCommand;
 	Command intakeLiftPortTeleop;
 	Command intakeLiftHighTeleop;
@@ -67,18 +71,31 @@ public class Robot extends IterativeRobot {
 	Command liftHanger;
 	Command winchHanger;
 	Command retractHanger;
-	
+
+	// CAMERA --------------------------------
+	int session;
+	Image frame;
+	// CAMERA --------------------------------
+
 	SendableChooser chooser;
 	public static Preferences prefs;
-//	Timer timer = new Timer();
-//	double startTime;
-//	double currentTime;
+	//	Timer timer = new Timer();
+	//	double startTime;
+	//	double currentTime;
 
 	public void robotInit() {
-		 OI.getInstance();
-		
+		OI.getInstance();
 		prefs = Preferences.getInstance();
-		
+
+		// CAMERA --------------------------------
+		try{
+			frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
+			session = NIVision.IMAQdxOpenCamera("cam0", NIVision.IMAQdxCameraControlMode.CameraControlModeController);
+			NIVision.IMAQdxConfigureGrab(session);
+		}catch(Exception e){
+		}
+		// CAMERA --------------------------------
+
 	}
 
 	public void disabledInit() {
@@ -112,8 +129,8 @@ public class Robot extends IterativeRobot {
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
 
-		
-	
+
+
 		intakeLiftPortTeleop = new IntakeLiftPort();
 		intakeLiftHighTeleop = new IntakeLiftHigh();
 		pickupTeleop = new Pickup();
@@ -123,22 +140,41 @@ public class Robot extends IterativeRobot {
 		liftHanger = new LiftHanger();
 		winchHanger = new WinchHanger();
 		retractHanger = new RetractHanger();
+
+		// CAMERA --------------------------------
+		try{
+			NIVision.IMAQdxStartAcquisition(session);
+		}catch(Exception e){
+		}
+		// CAMERA --------------------------------
 	}
 
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		SmartDashboard.putBoolean("Is ball in Robot?", Robot.intakeRoller.seeBall());
-		//System.out.println("             POT--------------------------- " + Robot.intakeLifter.getPOT());
+		
+		// CAMERA --------------------------------
+		try{
+			NIVision.IMAQdxGrab(session, frame, 1);
+			CameraServer.getInstance().setImage(frame);
+		}catch(Exception e){
+		}
+		// CAMERA --------------------------------
+
+		SmartDashboard.putBoolean("Is ball in intake?", Robot.intakeRoller.seeBall());
+		System.out.println("             POT--------------------------- " + Robot.intakeLifter.getPOT());
+		SmartDashboard.putBoolean("Is ball in shooter?", Robot.shooter.seeBall());
+		SmartDashboard.putNumber("pot", Robot.intakeLifter.getPOT());
 		//System.out.println(Robot.intakeRoller.seeBall());
 		//System.out.println(Robot.drivetrain.gyro.getAngle());
 		//System.out.println("Pot value: " + Robot.intakeLifter.getPOT());
-		
+
 		// When the left trigger is held down, the intake lifter moves to the portcullis angle
 		// When the right trigger is held down, the intake lifter moves down and the rollers move inward 
-		
+
 		// Moving the position of the arm with driver triggers
 		//System.out.println("See ball: " + Robot.intakeRoller.seeBall());
-		if (OI.getInstance().getLeftTrigger() >= 0.75){
+		
+		if (OI.getInstance().getLeftTrigger() >= 0.75){ // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! POT
 			System.out.println("port ");
 			if(!intakeLiftPortTeleop.isRunning()){
 				intakeLiftPortTeleop.start();
@@ -156,75 +192,37 @@ public class Robot extends IterativeRobot {
 			}
 			//System.out.println("Default");
 		}
-		
+
 		// Moving the rollers with codriver triggers
-//		if(OI.getInstance().getCoLeftTrigger() >= 0.75){
-//			if( !rollersForwardTeleop.isRunning()){
-//				rollersForwardTeleop.start();
-//			}
-//		}else if (OI.getInstance().getCoRightTrigger() >= 0.75){
-//			if(!rollersBackwardTeleop.isRunning())
-//			{
-//				rollersBackwardTeleop.start();
-//			}
-//		}else{
-//			if(!pickupTeleop.isRunning() && !rollersStopTeleop.isRunning()){
-//				rollersStopTeleop.start();
-//			}
-//		}
-		
-//		startTime = timer.get();
-//		currentTime = timer.get();
-//		
-//		while(startTime - currentTime < 5){
-//			currentTime = timer.get();
+		//		if(OI.getInstance().getCoLeftTrigger() >= 0.75){
+		//			if( !rollersForwardTeleop.isRunning()){
+		//				rollersForwardTeleop.start();
+		//			}
+		//		}else if (OI.getInstance().getCoRightTrigger() >= 0.75){
+		//			if(!rollersBackwardTeleop.isRunning())
+		//			{
+		//				rollersBackwardTeleop.start();
+		//			}
+		//		}else{
+		//			if(!pickupTeleop.isRunning() && !rollersStopTeleop.isRunning()){
+		//				rollersStopTeleop.start();
+		//			}
+		//		}
+
+		//		startTime = timer.get();
+		//		currentTime = timer.get();
+		//		
+		//		while(startTime - currentTime < 5){
+		//			currentTime = timer.get();
 		if(Robot.intakeRoller.seeBall() == true && (OI.getInstance().getRightTrigger() > .75)){
-	OI.getInstance().driverJoystick.setRumble(RumbleType.kLeftRumble, 1);
-				OI.getInstance().driverJoystick.setRumble(RumbleType.kLeftRumble, 1);
-			}else{
-		OI.getInstance().driverJoystick.setRumble(RumbleType.kLeftRumble, 0);
-				OI.getInstance().driverJoystick.setRumble(RumbleType.kLeftRumble, 0);
-	}
-	}
-//			
-//		}
-//		OI.getInstance().driverJoystick.setRumble(RumbleType.kLeftRumble, 0);
-//		OI.getInstance().driverJoystick.setRumble(RumbleType.kLeftRumble, 0);
-		//!!!!!!!BEGINNING OF RUMBLE FOR INTAKE
-//		boolean ballVibes = false;
-//		if(Robot.intakeRoller.seeBall() == false){
-//			ballVibes = true;
-//		}
-//		if(Robot.intakeRoller.seeBall() == true && ballVibes == true){
-//			int count= 0;
-//			
-//			while(count<50){
-//				count++;
-//			
-//				OI.getInstance().driverJoystick.setRumble(RumbleType.kLeftRumble, 1);
-//				OI.getInstance().driverJoystick.setRumble(RumbleType.kLeftRumble, 1);
-//				
-//			}
-//			if(count>50){
-//				OI.getInstance().driverJoystick.setRumble(RumbleType.kLeftRumble, 0);
-//				OI.getInstance().driverJoystick.setRumble(RumbleType.kLeftRumble, 0);
-//				ballVibes = false;
-//			}
-//			else{
-//				OI.getInstance().driverJoystick.setRumble(RumbleType.kLeftRumble, 0);
-//				OI.getInstance().driverJoystick.setRumble(RumbleType.kLeftRumble, 0);
-//				ballVibes = false;
-//			}
-//			
-//		}
-		
-		 
-		//!!!!!!!!!!!!!END OF RUMBLE FOR INTAKE
-		
-		//!!!!!!!!!!!!!BEGINNING OF GYRO RUMBLE
-		
+			OI.getInstance().driverJoystick.setRumble(RumbleType.kLeftRumble, 1);
+			OI.getInstance().driverJoystick.setRumble(RumbleType.kRightRumble, 1);
+		}else{
+			OI.getInstance(). driverJoystick.setRumble(RumbleType.kLeftRumble, 0);
+			OI.getInstance().driverJoystick.setRumble(RumbleType.kRightRumble, 0);
+		}
 
-
+	}
 
 	public void testPeriodic() {
 		LiveWindow.run();

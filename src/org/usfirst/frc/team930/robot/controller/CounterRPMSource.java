@@ -42,8 +42,16 @@ public class CounterRPMSource extends Counter implements ControllerSource {
 				e.printStackTrace();
 			}
 		}
-		return (highPulse.isInfinite()) || (highPulse > 30000f) ? 0f
-				: highPulse;
+		
+		if(!highPulse.isInfinite()){
+			if(highPulse > 10000) return 10000;
+			else return highPulse;
+		} else {
+			return 0;
+		}
+		
+		//return (highPulse.isInfinite()) || (highPulse > 30000f) ? 0f
+		//		: highPulse;
 	}
 
 }

@@ -16,9 +16,9 @@ public class IntakeLifter extends Subsystem {
 	public static enum Positions
 	{
 		//sets the intakelifter values
-		PORT(50),
-		DEFAULT(170),
-		PICKUP(80);
+		PORT(256), //245; old = 50; old = 270
+		DEFAULT(137), //130; old = 170; old = 150
+		PICKUP(224); //217; old = 80; old = 237
 		// declares the variable that will set the position
 		private final double angle;
 		
@@ -43,7 +43,7 @@ public class IntakeLifter extends Subsystem {
 	//static int I = Robot.prefs.getInt("I", 0);
 	//static int D = Robot.prefs.getInt("D", 0);
 	//sets the values that the PID will use
-	static double P = 0.02;
+	static double P = -0.02;
 	static double I = 0.00;
 	static double D = 0;
 

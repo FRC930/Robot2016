@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.Victor;
 
 public class Shooter extends Subsystem {
 
-	public static final double HIGH_GOAL_RPM = 3800;
+	public static final double HIGH_GOAL_RPM = 6000;
 
 	Victor shooter1 = new Victor(RobotMap.S1Port);
 	Victor shooter2 = new Victor(RobotMap.S2Port);
@@ -52,7 +52,15 @@ public class Shooter extends Subsystem {
 		
 		 //shooter1.set(rpm);
 		 //shooter2.set(rpm);
+	}
+	
+	public void print(){
+		 System.out.println("Shooter1Speed    "+ 30.0/rpmSource.getPeriod());
 		 SmartDashboard.putNumber("Shooter1Speed", 30.0/rpmSource.getPeriod());
+	}
+	
+	public boolean seeBall(){
+		return lightSensorShooter.get();
 	}
 
 	public void setAccel(double accel) {
