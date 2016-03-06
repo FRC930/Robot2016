@@ -29,6 +29,8 @@ import org.usfirst.frc.team930.robot.subsystems.IntakeRoller;
 import org.usfirst.frc.team930.robot.subsystems.Shooter;
 import org.usfirst.frc.team930.robot.subsystems.HangerLifter;
 import org.usfirst.frc.team930.robot.subsystems.HangerWinch;
+import org.usfirst.frc.team930.robot.commands.UnwindWinch;
+
 
 import com.ni.vision.NIVision;
 import com.ni.vision.NIVision.Image;
@@ -71,6 +73,7 @@ public class Robot extends IterativeRobot {
 	Command liftHanger;
 	Command winchHanger;
 	Command retractHanger;
+	Command unwinchHanger;
 
 	// CAMERA --------------------------------
 	int session;
@@ -140,6 +143,7 @@ public class Robot extends IterativeRobot {
 		liftHanger = new LiftHanger();
 		winchHanger = new WinchHanger();
 		retractHanger = new RetractHanger();
+		unwinchHanger = new UnwindWinch();
 
 		// CAMERA --------------------------------
 		try{

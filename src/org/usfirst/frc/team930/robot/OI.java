@@ -16,6 +16,7 @@ import org.usfirst.frc.team930.robot.commands.Pickup;
 import org.usfirst.frc.team930.robot.commands.RetractHanger;
 import org.usfirst.frc.team930.robot.commands.ShootHighGoal;
 import org.usfirst.frc.team930.robot.commands.LiftHanger;
+import org.usfirst.frc.team930.robot.commands.UnwindWinch;
 import org.usfirst.frc.team930.robot.commands.WinchHanger;
 import org.usfirst.frc.team930.robot.subsystems.IntakeLifter;
 import org.usfirst.frc.team930.robot.subsystems.IntakeRoller;
@@ -44,6 +45,7 @@ public class OI {
 	Button coDriverButton7;
 	Button coDriverButton8;
 	Button coDriverButton9;
+	Button coDriverButton10;
 
 	double leftTrigger;
 	double rightTrigger;
@@ -74,6 +76,7 @@ public class OI {
 		coDriverButton7 = new JoystickButton(coJoystick, 7);
 		coDriverButton8 = new JoystickButton(coJoystick, 8);
 		coDriverButton9 = new JoystickButton(coJoystick, 9);
+		coDriverButton10 = new JoystickButton(coJoystick, 10);
 
 
 		//Driver Buttons (May end up being removed)
@@ -98,6 +101,7 @@ public class OI {
 		coDriverButton7.whileHeld(new LiftHanger());
 		coDriverButton8.whileHeld(new WinchHanger());
 		coDriverButton9.whileHeld(new RetractHanger());
+		coDriverButton10.whileHeld(new UnwindWinch());
 		
 		
 		//Right Joystick runs Intake

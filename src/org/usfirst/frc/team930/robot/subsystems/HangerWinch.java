@@ -59,5 +59,10 @@ public class HangerWinch extends Subsystem {
     {
     	hangerWinch.set(0);
     }
+    
+    public void unwindWinch()
+    {
+    	hangerWinch.set(1);
+    }
 }
 

@@ -7,11 +7,11 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class WinchHanger extends Command {
+public class UnwindWinch extends Command {
 	
 	int limit = 800; // when the winch will stop
 
-    public WinchHanger() {
+    public UnwindWinch() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.hangerWinch);
@@ -31,7 +31,7 @@ public class WinchHanger extends Command {
     	}
     	Robot.hangerWinch.stopWinch();	
       */
-		Robot.hangerWinch.unwindWinch();	
+		Robot.hangerWinch.turnWinch();	
     }
 
     // Make this return true when this Command no longer needs to run execute()
