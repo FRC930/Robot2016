@@ -90,9 +90,11 @@ public class AutoLowBarShoot extends Command {
 			currentTime = timer.get();
 			if (currentTime - startTime > 12.0) {
 				Robot.intakeRoller.setState(IntakeRoller.Direction.SHOOTERPULL);
+				state = TURNING_OFF;
 			}
+			
 		}
-		state = TURNING_OFF;
+		
 		if (state == TURNING_OFF) {
 			Robot.intakeRoller.setState(IntakeRoller.Direction.STOP);
 			state = END;
