@@ -11,14 +11,14 @@ public class RobotMap {
 	
 	public static int Shooter1Port = 0; //0
 	public static int Shooter2Port = 1; //1
-	public static int Intake1Port = 3;
+	public static int IntakeRollersPort = 3;
 	
 	public static int IntakeLiftPort = 5;
 	
 	public static int WinchPort = 8;
 	public static int HangerArmPort = 7;
 	
-	public static int lightSensorPort = 0;
+	public static int lightSensorIntakePort = 0;
 	public static int lightSensorShooterPort = 2;
 	
 	public static int potPort = 1;
