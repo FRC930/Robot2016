@@ -9,12 +9,11 @@ public class RobotMap {
 	public static int RTopPort = 4;
 	public static int RBackPort = 5;
 	
-	public static int S1Port = 0; //0
-	public static int S2Port = 1; //1
-	public static int I1Port = 3;
-	public static int I2Port = 4;
+	public static int Shooter1Port = 0; //0
+	public static int Shooter2Port = 1; //1
+	public static int Intake1Port = 3;
 	
-	public static int ILiftPort = 5;
+	public static int IntakeLiftPort = 5;
 	
 	public static int WinchPort = 8;
 	public static int HangerArmPort = 7;
@@ -22,13 +21,11 @@ public class RobotMap {
 	public static int lightSensorPort = 0;
 	public static int lightSensorShooterPort = 2;
 	
-	
 	public static int potPort = 1;
 	
-	public static int shooterSensorPort = 2;
 	public static int distanceSensorPort = 3;
 
 	public static int hallPort = 4;
-	public static int hangerSpark = 7; // do we use this?
+	
 
 }

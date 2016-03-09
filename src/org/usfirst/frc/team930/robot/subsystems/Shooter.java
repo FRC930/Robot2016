@@ -17,8 +17,8 @@ public class Shooter extends Subsystem {
 
 	public static final double HIGH_GOAL_RPM = 6000;
 
-	Victor shooter1 = new Victor(RobotMap.S1Port);
-	Victor shooter2 = new Victor(RobotMap.S2Port);
+	Victor shooter1 = new Victor(RobotMap.Shooter1Port);
+	Victor shooter2 = new Victor(RobotMap.Shooter2Port);
 
 	DigitalInput lightSensorShooter = new DigitalInput(RobotMap.lightSensorShooterPort); 
 

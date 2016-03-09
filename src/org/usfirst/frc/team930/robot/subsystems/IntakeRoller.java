@@ -35,7 +35,7 @@ public class IntakeRoller extends Subsystem {
 	//sets it so that you can set the direction with the word state
 	Direction state;
 	//declares the victor to control the motor
-	Victor intakeRoller = new Victor(RobotMap.I1Port);
+	Victor intakeRoller = new Victor(RobotMap.Intake1Port);
 	//declares the Lightsensor so it can get values
 	DigitalInput lightSensor = new DigitalInput(RobotMap.lightSensorPort);
 
