@@ -12,6 +12,9 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.Joystick.RumbleType;
 
 import org.usfirst.frc.team930.robot.commands.AutoDriveForward;
+import org.usfirst.frc.team930.robot.commands.AutoDrivePort;
+import org.usfirst.frc.team930.robot.commands.AutoLowBar;
+import org.usfirst.frc.team930.robot.commands.AutoLowBarShoot;
 import org.usfirst.frc.team930.robot.commands.GyroDriveBackward;
 import org.usfirst.frc.team930.robot.commands.GyroDriveLeft;
 import org.usfirst.frc.team930.robot.commands.GyroDriveRight;
@@ -19,6 +22,7 @@ import org.usfirst.frc.team930.robot.commands.GyroDriveStraight;
 import org.usfirst.frc.team930.robot.commands.IntakeLiftHigh;
 import org.usfirst.frc.team930.robot.commands.LiftHanger;
 import org.usfirst.frc.team930.robot.commands.RetractHanger;
+import org.usfirst.frc.team930.robot.commands.SpyBoxShooter;
 import org.usfirst.frc.team930.robot.commands.WinchHanger;
 import org.usfirst.frc.team930.robot.commands.IntakeLiftPort;
 import org.usfirst.frc.team930.robot.commands.MoveIntakeRollers;
@@ -30,6 +34,10 @@ import org.usfirst.frc.team930.robot.subsystems.Shooter;
 import org.usfirst.frc.team930.robot.subsystems.HangerLifter;
 import org.usfirst.frc.team930.robot.subsystems.HangerWinch;
 import org.usfirst.frc.team930.robot.commands.UnwindWinch;
+
+
+
+
 
 
 import com.ni.vision.NIVision;
@@ -63,7 +71,8 @@ public class Robot extends IterativeRobot {
 			e.printStackTrace();
 		}
 	}
-
+	Command autonmousCommand;
+	SendableChooser autoChooser;
 	Command autonomousCommand;
 	Command intakeLiftPortTeleop;
 	Command intakeLiftHighTeleop;
@@ -121,6 +130,12 @@ public class Robot extends IterativeRobot {
 		 */
 
 		// schedule the autonomous command (example)
+		autoChooser = new SendableChooser();
+		autoChooser.addDefault ("Auto Drive Forward", new AutoDriveForward());
+		autoChooser.addObject ("SpyBotShooter", new SpyBoxShooter());
+		autoChooser.addObject ("Low Bar", new AutoLowBar());
+		autoChooser.addObject ("Low Bar Shooter", new AutoLowBarShoot());
+		autoChooser.addObject ("Portcullis", new AutoDrivePort());
 		if (autonomousCommand != null)
 			autonomousCommand.start();
 	}
