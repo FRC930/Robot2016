@@ -5,6 +5,7 @@ import org.usfirst.frc.team930.robot.RobotMap;
 import org.usfirst.frc.team930.robot.commands.Drive;
 import org.usfirst.frc.team930.robot.controller.AlignOutput;
 import org.usfirst.frc.team930.robot.controller.AngleSource;
+import org.usfirst.frc.team930.robot.subsystems.IntakeLifter.Positions;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.AnalogGyro;
@@ -47,6 +48,14 @@ public class Drivetrain extends Subsystem {
 	AngleSource source = new AngleSource();
 	AlignOutput alignOutput = new AlignOutput(L1, L2, L3, R1, R2, R3);
 	public PIDController drivePID = new PIDController(P, I, D, source, alignOutput, 0.01);
+	
+	public static enum Positions
+	{
+		STRAIGHT, 
+		BACKWARD,
+		LEFT,
+		RIGHT;
+	}
 
 	public Drivetrain() {
 		super();
@@ -85,23 +94,18 @@ public class Drivetrain extends Subsystem {
 		goalAngleRight -= 90.0;
 	}
 	
-	public double getGoalAngle(String angle) {
-		if(angle.equals("straight"))
+	public double getGoalAngle(Positions angle) {
+		switch (angle) {
+		case STRAIGHT:
 			return goalAngleStraight;
-		
-		else if(angle.equals("backward"))
+		case BACKWARD:
 			return goalAngleBackward;
-		
-		else if(angle.equals("left"))
+		case LEFT:
 			return goalAngleLeft;
-		
-		else if(angle.equals("right"))
+		case RIGHT:
 			return goalAngleRight;
-		
-		else
-			return 0.0;
-		
+		default:
+			return 0;
+		}
 	}
-	
-
 }

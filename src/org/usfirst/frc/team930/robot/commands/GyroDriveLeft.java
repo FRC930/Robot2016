@@ -4,6 +4,7 @@ import org.usfirst.frc.team930.robot.OI;
 import org.usfirst.frc.team930.robot.Robot;
 import org.usfirst.frc.team930.robot.controller.AlignOutput;
 import org.usfirst.frc.team930.robot.controller.AngleSource;
+import org.usfirst.frc.team930.robot.subsystems.Drivetrain.Positions;
 
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.command.Command;
@@ -27,7 +28,7 @@ public class GyroDriveLeft extends Command {
     // Called just before this Command runs the first time
  // Called just before this Command runs the first time
  	protected void initialize() {
- 		Robot.drivetrain.drivePID.setSetpoint(Robot.drivetrain.getGoalAngle("left"));
+ 		Robot.drivetrain.drivePID.setSetpoint(Robot.drivetrain.getGoalAngle(Positions.LEFT));
  	}
 
  	// Called repeatedly when this Command is scheduled to run

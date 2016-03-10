@@ -3,6 +3,7 @@ package org.usfirst.frc.team930.robot.commands;
 import org.usfirst.frc.team930.robot.Robot;
 import org.usfirst.frc.team930.robot.controller.AlignOutput;
 import org.usfirst.frc.team930.robot.controller.AngleSource;
+import org.usfirst.frc.team930.robot.subsystems.Drivetrain.Positions;
 
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.PIDController.Tolerance;
@@ -21,7 +22,7 @@ public class GyroDriveStraight extends Command {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		Robot.drivetrain.drivePID.setSetpoint(Robot.drivetrain.getGoalAngle("straight"));
+		Robot.drivetrain.drivePID.setSetpoint(Robot.drivetrain.getGoalAngle(Positions.STRAIGHT));
 	}
 
 	// Called repeatedly when this Command is scheduled to run
