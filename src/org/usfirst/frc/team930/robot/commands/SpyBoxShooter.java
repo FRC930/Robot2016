@@ -28,7 +28,6 @@ final double driveSpeed = 1.0;
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.drivetrain.drivePID.setSetpoint(0.0);
         timer.start();
         state = START;
     }
@@ -36,11 +35,10 @@ final double driveSpeed = 1.0;
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	if(state == START){
-    	startTime = timer.get();
-    	
-    	Robot.drivetrain.setGoalAngle();
-    	
-    	state = DRIVE;
+    		startTime = timer.get();
+    		Robot.drivetrain.setGoalAngle(); // realigns the gyro stuff - we don't actually use the gyro here duh
+    		// lean back, good squat
+    		state = DRIVE;
     	}
     	if(state == DRIVE){
     		Robot.drivetrain.setL(driveSpeed);

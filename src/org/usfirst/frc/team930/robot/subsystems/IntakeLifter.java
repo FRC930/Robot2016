@@ -48,7 +48,7 @@ public class IntakeLifter extends Subsystem {
 	static double D = 0;
 
 	//declares the POT and sets the boundry for it
-	static AnalogPotentiometer potentiometer = new AnalogPotentiometer(RobotMap.potPort,270,0);
+	static AnalogPotentiometer potentiometer = new AnalogPotentiometer(RobotMap.intakeLifterPotPort,270,0);
 	//declares the SPARK which runs the motor for the intakelifter
 	static Spark intakeLifter = new Spark(RobotMap.IntakeLiftPort);
 	//declares the PID controller which handles the PID values 
