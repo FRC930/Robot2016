@@ -39,8 +39,8 @@ public class AutoLowBarShoot extends Command {
 	protected void initialize() {
 		Robot.drivetrain.drivePID.setSetpoint(0.0);
 		state = START;
-		timer.start();
-		startTime = timer.get();
+		
+		
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -56,14 +56,14 @@ public class AutoLowBarShoot extends Command {
 			Robot.drivetrain.setL(0.25);
 			Robot.drivetrain.setL(0.25);
 			currentTime = timer.get();
-			if (currentTime - startTime > 6) {
+			if (Robot.drivetrain.distance.getRangeInches() <=  48) {
 				state = TURN;
 			}
 		}
 		if (state == TURN) {
 			Robot.drivetrain.drivePID.setSetpoint(60.0);
 			currentTime = timer.get();
-			if (currentTime - startTime > 6.5) {
+			if (Robot.drivetrain.distance.getRangeInches() > 70) {
 				state = DRIVE_2;
 			}
 		}
@@ -71,7 +71,7 @@ public class AutoLowBarShoot extends Command {
 			Robot.drivetrain.setL(0.6);
 			Robot.drivetrain.setR(0.6);
 			currentTime = timer.get();
-			if (currentTime - startTime > 8.5) {
+			if (Robot.drivetrain.distance.getRangeInches() <=  5) {
 				Robot.drivetrain.setL(0);
 				Robot.drivetrain.setR(0);
 				state = SHOOT;
@@ -79,16 +79,18 @@ public class AutoLowBarShoot extends Command {
 		}
 		if (state == SHOOT) {
 			Robot.shooter.setShooter(0.5 * 6000);
+			timer.start();
+			startTime = timer.get();
 			currentTime = timer.get();
-			if (currentTime - startTime > 8.7) {
+			if (currentTime - startTime > 0.1) {
 				Robot.shooter.setShooter(0.75 * 6000);
 			}
 			currentTime = timer.get();
-			if (currentTime - startTime > 9.0) {
+			if (currentTime - startTime > 0.2) {
 				Robot.shooter.setShooter(6000);
 			}
 			currentTime = timer.get();
-			if (currentTime - startTime > 12.0) {
+			if (currentTime - startTime > 3.3) {
 				Robot.intakeRoller.setState(IntakeRoller.Direction.SHOOTERPULL);
 				state = TURNING_OFF;
 			}
