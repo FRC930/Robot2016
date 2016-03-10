@@ -45,6 +45,7 @@ public class Drivetrain extends Subsystem {
 	//public Ultrasonic ultra = new Ultrasonic(0, 0);
 	
 	public AnalogGyro gyro = new AnalogGyro(0);
+	public Ultrasonic distance = new Ultrasonic(RobotMap.distanceSensorOutPort,RobotMap.distanceSensorInPort);
 	AngleSource source = new AngleSource();
 	AlignOutput alignOutput = new AlignOutput(L1, L2, L3, R1, R2, R3);
 	public PIDController drivePID = new PIDController(P, I, D, source, alignOutput, 0.01);

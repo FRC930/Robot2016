@@ -23,9 +23,10 @@ public class RobotMap {
 	
 	public static int potPort = 1;
 	
-	public static int distanceSensorPort = 3;
+	public static int distanceSensorInPort = 3;
+	public static int distanceSensorOutPort = 4;
 
-	public static int hallPort = 4;
+	public static int hallPort = 5;
 	
 
 }
