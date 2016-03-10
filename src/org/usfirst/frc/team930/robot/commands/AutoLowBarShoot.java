@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class AutoLowBarShoot extends Command {
 
 	Timer timer = new Timer();
+	Timer timer2 = new Timer();
 
 	final int START = 0;
 	final int DRIVE = 1;
@@ -25,6 +26,8 @@ public class AutoLowBarShoot extends Command {
 
 	double startTime; // time the command starts running (seconds)
 	double currentTime; // the current time (seconds)
+	double startTime2; // time the command starts running (seconds)
+	double currentTime2; // the current time (seconds)
 
 	public AutoLowBarShoot() {
 		// Use requires() here to declare subsystem dependencies
@@ -53,10 +56,12 @@ public class AutoLowBarShoot extends Command {
 			state = DRIVE;
 		}
 		if (state == DRIVE) {
+			timer2.start();
+			startTime2 = timer2.get();
 			Robot.drivetrain.setL(0.25);
 			Robot.drivetrain.setL(0.25);
-			currentTime = timer.get();
-			if (Robot.drivetrain.distance.getRangeInches() <=  48) {
+			currentTime2 = timer2.get();
+			if (currentTime - startTime >= 4 && Robot.drivetrain.distance.getRangeInches() <=  48) {
 				state = TURN;
 			}
 		}
