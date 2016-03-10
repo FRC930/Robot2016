@@ -14,14 +14,14 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class GyroDriveStraight extends Command {
-
+	
 	public GyroDriveStraight() {
 		requires(Robot.drivetrain);
 	}
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		Robot.drivetrain.drivePID.setSetpoint(0.0);
+		Robot.drivetrain.drivePID.setSetpoint(Robot.drivetrain.getGoalAngle("straight"));
 	}
 
 	// Called repeatedly when this Command is scheduled to run

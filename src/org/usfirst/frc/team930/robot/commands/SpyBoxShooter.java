@@ -16,10 +16,9 @@ Timer timer = new Timer();
 double startTime = 0;
 double currentTime = 0;
 final int START = 0;
-final int TURN = 1;
-final int DRIVE = 2;
-final int OFF = 3;
-final int END = 4;
+final int DRIVE = 1;
+final int OFF = 2;
+final int END = 3;
 int state = 0;
 final double driveSpeed = 1.0;
     public SpyBoxShooter() {
@@ -38,15 +37,10 @@ final double driveSpeed = 1.0;
     protected void execute() {
     	if(state == START){
     	startTime = timer.get();
-    	state = TURN;
-    	}
-    	if(state == TURN){
-    		currentTime = timer.get();
-    	Robot.drivetrain.drivePID.enable();
-    	Robot.drivetrain.drivePID.setSetpoint(90.0);
-    	if(currentTime - startTime > 2){
+    	
+    	Robot.drivetrain.setGoalAngle();
+    	
     	state = DRIVE;
-    	}
     	}
     	if(state == DRIVE){
     		Robot.drivetrain.setL(driveSpeed);

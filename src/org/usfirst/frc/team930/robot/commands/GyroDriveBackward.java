@@ -25,7 +25,7 @@ public class GyroDriveBackward extends Command {
 
  // Called just before this Command runs the first time
  	protected void initialize() {
- 		Robot.drivetrain.drivePID.setSetpoint(180.0);
+ 		Robot.drivetrain.drivePID.setSetpoint(Robot.drivetrain.getGoalAngle("backward"));
  	}
 
  	// Called repeatedly when this Command is scheduled to run

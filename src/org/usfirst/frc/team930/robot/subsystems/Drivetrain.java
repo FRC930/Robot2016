@@ -33,6 +33,11 @@ public class Drivetrain extends Subsystem {
 	final double P = 0.02;
 	final double I = 0.0001;
 	final double D = 0;
+	
+	public double goalAngleStraight = 0.0;
+	public double goalAngleBackward = 180.0;
+	public double goalAngleLeft = -55.0;
+	public double goalAngleRight = 55.0;
 
 	//AnalogInput distanceSensor = new AnalogInput(0);
 	
@@ -71,6 +76,31 @@ public class Drivetrain extends Subsystem {
 
 	public double getAngle() {
 		return gyro.getAngle()%360.0;
+	}
+	
+	public void setGoalAngle() {
+		goalAngleStraight -= 90.0;
+		goalAngleBackward -= 90.0;
+		goalAngleLeft -= 90.0;
+		goalAngleRight -= 90.0;
+	}
+	
+	public double getGoalAngle(String angle) {
+		if(angle.equals("straight"))
+			return goalAngleStraight;
+		
+		else if(angle.equals("backward"))
+			return goalAngleBackward;
+		
+		else if(angle.equals("left"))
+			return goalAngleLeft;
+		
+		else if(angle.equals("right"))
+			return goalAngleRight;
+		
+		else
+			return 0.0;
+		
 	}
 	
 

@@ -45,6 +45,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static HangerLifter hangerLifter;
 	public static HangerWinch hangerWinch;
+	
 
 	static {
 		try {
