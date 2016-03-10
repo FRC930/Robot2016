@@ -61,7 +61,7 @@ public class AutoLowBarShoot extends Command {
 			Robot.drivetrain.setL(0.25);
 			Robot.drivetrain.setL(0.25);
 			currentTime2 = timer2.get();
-			if (currentTime - startTime >= 4 && Robot.drivetrain.distance.getRangeInches() <=  48) {
+			if (currentTime2 - startTime2 >= 4 && Robot.drivetrain.distance.getRangeInches() <=  48) {
 				state = TURN;
 			}
 		}
