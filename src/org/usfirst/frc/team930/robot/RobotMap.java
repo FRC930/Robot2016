@@ -2,11 +2,11 @@ package org.usfirst.frc.team930.robot;
 
 public class RobotMap {
 
-	public static int LFrontPort = 0;
-	public static int LTopPort = 1;
-	public static int LBackPort = 2;
-	public static int RFrontPort = 3;
-	public static int RTopPort = 4;
+	public static int LDriveFrontPort = 0;
+	public static int LDriveTopPort = 1;
+	public static int LDriveBackPort = 2;
+	public static int RDriveFrontPort = 3;
+	public static int RDriveTopPort = 4;
 	public static int RBackPort = 5;
 	
 	public static int Shooter1Port = 0; //0

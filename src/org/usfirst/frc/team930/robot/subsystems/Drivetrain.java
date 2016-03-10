@@ -24,12 +24,12 @@ public class Drivetrain extends Subsystem {
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
 
-	public CANTalon L1 = new CANTalon(RobotMap.LFrontPort);
-	public CANTalon L2 = new CANTalon(RobotMap.LTopPort);
-	public CANTalon L3 = new CANTalon(RobotMap.LBackPort);
-	public CANTalon R1 = new CANTalon(RobotMap.RFrontPort);
-	public CANTalon R2 = new CANTalon(RobotMap.RTopPort);
-	public CANTalon R3 = new CANTalon(RobotMap.RBackPort);
+	public CANTalon L1 = new CANTalon(RobotMap.LDriveFrontPort);
+	public CANTalon L2 = new CANTalon(RobotMap.LDriveTopPort);
+	public CANTalon L3 = new CANTalon(RobotMap.LDriveBackPort);
+	public CANTalon R1 = new CANTalon(RobotMap.RDriveFrontPort);
+	public CANTalon R2 = new CANTalon(RobotMap.RDriveTopPort);
+	public CANTalon R3 = new CANTalon(RobotMap.RDriveBackPort);
 	
 	final double P = 0.02;
 	final double I = 0.0001;
