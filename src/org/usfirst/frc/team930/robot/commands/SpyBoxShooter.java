@@ -17,8 +17,11 @@ double startTime = 0;
 double currentTime = 0;
 final int START = 0;
 final int DRIVE = 1;
-final int OFF = 2;
-final int END = 3;
+final int STOP_DRIVE = 2;
+final int SHOOTER_ON = 3;
+final int INTAKE_ON = 4;
+final int OFF = 5;
+final int END = 6;
 int state = 0;
 final double driveSpeed = 1.0;
     public SpyBoxShooter() {
@@ -43,21 +46,33 @@ final double driveSpeed = 1.0;
     	if(state == DRIVE){
     		Robot.drivetrain.setL(driveSpeed);
 			Robot.drivetrain.setR(driveSpeed);
-			if(currentTime-startTime > 7){
-				Robot.drivetrain.setL(0);
-				Robot.drivetrain.setR(0);
-				Robot.shooter.setShooter(1);
-				if(currentTime- startTime > 8){
-					Robot.intakeRoller.setState(IntakeRoller.Direction.SHOOTERPULL);
-					if(currentTime-startTime > 10){
-						state = OFF;
-					}
-				}
+			if((currentTime - startTime) > 7)
+			{
+				state = STOP_DRIVE;
 			}
-    	}
+    	}else if(state == STOP_DRIVE){
+    		Robot.drivetrain.setL(0);
+    		Robot.drivetrain.setR(0);
+    		if((currentTime - startTime) > 8)
+			{
+				state = SHOOTER_ON;
+			}
+    	}else if(state == SHOOTER_ON){
+    		Robot.shooter.setShooter(1);
+			if((currentTime - startTime) > 9)
+			{
+				state = INTAKE_ON;
+			}
+    	}else if(state == INTAKE_ON){
+			Robot.intakeRoller.setState(IntakeRoller.Direction.SHOOTERPULL);
+			if(currentTime-startTime > 12){
+					state = OFF;
+			}
+		}
+    	
     	if(state== OFF){
     		Robot.shooter.setShooter(0);
-    		Robot.intakeRoller.setState(IntakeRoller.Direction.BACKWARD);
+    		Robot.intakeRoller.setState(IntakeRoller.Direction.STOP);
     		state = END;
     	}
     }
