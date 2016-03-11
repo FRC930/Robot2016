@@ -8,17 +8,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Preferences;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.Joystick.RumbleType;
 
 import org.usfirst.frc.team930.robot.commands.AutoDriveForward;
 import org.usfirst.frc.team930.robot.commands.AutoDrivePort;
 import org.usfirst.frc.team930.robot.commands.AutoLowBar;
 import org.usfirst.frc.team930.robot.commands.AutoLowBarShoot;
-import org.usfirst.frc.team930.robot.commands.GyroDriveBackward;
-import org.usfirst.frc.team930.robot.commands.GyroDriveLeft;
-import org.usfirst.frc.team930.robot.commands.GyroDriveRight;
-import org.usfirst.frc.team930.robot.commands.GyroDriveStraight;
 import org.usfirst.frc.team930.robot.commands.IntakeLiftHigh;
 import org.usfirst.frc.team930.robot.commands.LiftHanger;
 import org.usfirst.frc.team930.robot.commands.RetractHanger;
@@ -35,14 +30,8 @@ import org.usfirst.frc.team930.robot.subsystems.HangerLifter;
 import org.usfirst.frc.team930.robot.subsystems.HangerWinch;
 import org.usfirst.frc.team930.robot.commands.UnwindWinch;
 
-
-
-
-
-
 import com.ni.vision.NIVision;
 import com.ni.vision.NIVision.Image;
-
 
 public class Robot extends IterativeRobot {
 
