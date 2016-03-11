@@ -88,6 +88,7 @@ public static double autoLowBarShootdistance3 = 5; //DISTANCE 3
 public static double autoDriveForwardSpeed = 1; //DRIVE FORWARD SPEED
 public static double autoDriveBackwardSpeed = -1; //DRIVE BACKWARD SPEED
 
+//*****************************************************************************\\
 					//SPY BOX SHOOTER
 
 public static double spyBoxDriveSpeed = 1.0; //DRIVE SPEED
