@@ -22,6 +22,11 @@ public class AutoDriveForward extends Command {
 	Timer timer = new Timer();
 	double startTime; // time the command starts running (seconds)
 	double currentTime; // the current time (seconds)
+	
+	// TIMES -----------------------------------------------
+	public static final double DRIVE_FORWARD_TIME = 2; 
+	public static final double DRIVE_STOP_TIME = 1; 
+	public static final double DRIVE_BACKWARD_TIME = 1.5; 
 
     public AutoDriveForward() {
         // Use requires() here to declare subsystem dependencies
@@ -51,7 +56,7 @@ public class AutoDriveForward extends Command {
     		currentTime = timer.get();
     		Robot.drivetrain.setL(RobotConstants.autoDriveForwardSpeed);
 			Robot.drivetrain.setR(RobotConstants.autoDriveBackwardSpeed);
-    		if(currentTime - startTime >= 2){
+    		if(currentTime - startTime >= DRIVE_FORWARD_TIME){
     			state = END;
     		}
     	}
@@ -61,7 +66,7 @@ public class AutoDriveForward extends Command {
     		currentTime = timer.get();
     		Robot.drivetrain.setL(0);
 			Robot.drivetrain.setR(0);
-    		if(currentTime - startTime >= 3){
+    		if(currentTime - startTime >= (DRIVE_FORWARD_TIME + DRIVE_STOP_TIME)){
     			state = DRIVE_BACKWARD;
     		}
     	}
@@ -71,7 +76,7 @@ public class AutoDriveForward extends Command {
     		currentTime = timer.get();
     		Robot.drivetrain.setL(RobotConstants.autoDriveBackwardSpeed);
 			Robot.drivetrain.setR(RobotConstants.autoDriveBackwardSpeed);
-    		if(currentTime - startTime >= 4.5){
+    		if(currentTime - startTime >= (DRIVE_FORWARD_TIME + DRIVE_STOP_TIME + DRIVE_BACKWARD_TIME)){
     			state = TURNING_OFF;
     		}
     	}

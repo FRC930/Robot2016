@@ -30,6 +30,10 @@ public class AutoLowBarShoot extends Command {
 	double currentTime; // the current time (seconds)
 	double startTime2; // time the command starts running (seconds)
 	double currentTime2; // the current time (seconds)
+	
+	// TIMES -----------------------------------------------
+	public static final double DRIVE_TIME = 4; 
+	public static final double LOWER_INTAKE_AND_DRIVE_TIME = 3; 
 
 	public AutoLowBarShoot() {
 		// Use requires() here to declare subsystem dependencies
@@ -63,13 +67,13 @@ public class AutoLowBarShoot extends Command {
 			Robot.drivetrain.setL(RobotConstants.autoLowBarshootDrivespeed);
 			Robot.drivetrain.setL(RobotConstants.autoLowBarshootDrivespeed);
 			currentTime2 = timer2.get();
-			if (currentTime2 - startTime2 >= 4 && Robot.drivetrain.distance.getRangeInches() <=  48) {
+			if (currentTime2 - startTime2 >= DRIVE_TIME && Robot.drivetrain.distance.getRangeInches() <=  RobotConstants.autoLowBarShootdistance1) {
 				state = TURN;
 			}
 		}
 		if (state == TURN) {
 			Robot.drivetrain.drivePID.setSetpoint(60.0);
-			if (Robot.drivetrain.distance.getRangeInches() > 70) {
+			if (Robot.drivetrain.distance.getRangeInches() > RobotConstants.autoLowBarShootdistance2) {
 				state = DRIVE_2;
 			}
 		}
@@ -77,7 +81,7 @@ public class AutoLowBarShoot extends Command {
 			Robot.drivetrain.setL(RobotConstants.autoLowBarshootDrivespeed2);
 			Robot.drivetrain.setR(RobotConstants.autoLowBarshootDrivespeed2);
 			
-			if (Robot.drivetrain.distance.getRangeInches() <=  5) {
+			if (Robot.drivetrain.distance.getRangeInches() <=  RobotConstants.autoLowBarShootdistance3) {
 				Robot.drivetrain.setL(0);
 				Robot.drivetrain.setR(0);
 				state = SHOOT;

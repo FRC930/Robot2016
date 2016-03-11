@@ -20,6 +20,10 @@ public class AutoDrivePort extends Command {
 	Timer timer = new Timer();
 	double startTime; // time the command starts running (seconds)
 	double currentTime; // the current time (seconds)
+	
+	// TIMES -----------------------------------------------
+	public static final double DRIVE_1_TIME = 3; 
+	public static final double LOWER_INTAKE_AND_DRIVE_TIME = 3; 
 
     public AutoDrivePort() {
         // Use requires() here to declare subsystem dependencies
@@ -49,7 +53,7 @@ public class AutoDrivePort extends Command {
     		currentTime = timer.get();
     		Robot.drivetrain.setL(RobotConstants.autoDrivePORTdriveSpeed);
 			Robot.drivetrain.setR(RobotConstants.autoDrivePORTdriveSpeed);
-    		if(currentTime - startTime >= 3){
+    		if(currentTime - startTime >= DRIVE_1_TIME){
     			state = LOWER_INTAKE_AND_DRIVE;
     		}
     	}
@@ -63,7 +67,7 @@ public class AutoDrivePort extends Command {
 
     		Robot.drivetrain.setL(1);
 			Robot.drivetrain.setR(1);
-			if(currentTime - startTime >= 6){
+			if(currentTime - startTime >= (DRIVE_1_TIME + LOWER_INTAKE_AND_DRIVE_TIME)){
 				state = TURNING_OFF;
 				
 			}

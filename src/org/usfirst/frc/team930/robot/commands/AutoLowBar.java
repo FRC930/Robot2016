@@ -20,6 +20,8 @@ public class AutoLowBar extends Command {
 	double startTime = 0;
 	double currentTime = 0;
 	
+	// TIMES -----------------------------------------------
+	public static final double DRIVE_TIME = 5;  
 
 	public AutoLowBar() {
 		// Use requires() here to declare subsystem dependencies
@@ -47,7 +49,7 @@ public class AutoLowBar extends Command {
 			Robot.drivetrain.setR(RobotConstants.autoLowBardriveSpeed);
 			Robot.drivetrain.setL(RobotConstants.autoLowBardriveSpeed);
 
-			if (currentTime - startTime >= 5) { // goes to the next stage after
+			if (currentTime - startTime >=  DRIVE_TIME) { // goes to the next stage after
 												// 5secs
 				state = STOP;
 			}
