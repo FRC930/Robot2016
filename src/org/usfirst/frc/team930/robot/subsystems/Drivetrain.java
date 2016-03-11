@@ -40,10 +40,6 @@ public class Drivetrain extends Subsystem {
 	public double goalAngleBackward = 180.0;
 	public double goalAngleLeft = -55.0;
 	public double goalAngleRight = 55.0;
-
-	//AnalogInput distanceSensor = new AnalogInput(0);
-	
-	//public Ultrasonic ultra = new Ultrasonic(0, 0);
 	
 	public AnalogGyro gyro = new AnalogGyro(0);
 	public Ultrasonic distance = new Ultrasonic(RobotMap.distanceSensorOutPort,RobotMap.distanceSensorInPort);
