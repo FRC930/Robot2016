@@ -48,6 +48,7 @@ int state = 0;
     		state = DRIVE;
     	}
     	if(state == DRIVE){
+    		currentTime= timer.get();
     		Robot.drivetrain.setL(RobotConstants.spyBoxDriveSpeed);
 			Robot.drivetrain.setR(RobotConstants.spyBoxDriveSpeed);
 			if((currentTime - startTime) > 7)
@@ -55,6 +56,7 @@ int state = 0;
 				state = STOP_DRIVE;
 			}
     	}else if(state == STOP_DRIVE){
+    		currentTime= timer.get();
     		Robot.drivetrain.setL(0);
     		Robot.drivetrain.setR(0);
     		if((currentTime - startTime) > 8)
@@ -62,12 +64,14 @@ int state = 0;
 				state = SHOOTER_ON;
 			}
     	}else if(state == SHOOTER_ON){
+    		currentTime= timer.get();
     		Robot.shooter.setShooter(RobotConstants.shootHighGoalRPM);
 			if((currentTime - startTime) > 9)
 			{
 				state = INTAKE_ON;
 			}
     	}else if(state == INTAKE_ON){
+    		currentTime= timer.get();
 			Robot.intakeRoller.setState(IntakeRoller.Direction.SHOOTERPULL);
 			if(currentTime-startTime > 12){
 					state = OFF;

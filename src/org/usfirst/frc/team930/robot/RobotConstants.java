@@ -40,6 +40,9 @@ public static double intakeLifterPORT = 256;
 public static double intakeLifterDEFAULT = 137;
 public static double intakeLifterPICKUP = 224;
 
+public static double intakeLifterPotUpperThreshold = 0;
+public static double intakeLifterPotLowerThreshold = -25;
+
 //*****************************************************************************\\
 					//INTAKE ROLLER
 

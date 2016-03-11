@@ -27,7 +27,7 @@ public class IntakeLiftHigh extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.intakeLifter.setAngle(IntakeLifter.Positions.DEFAULT);
-    	if(Robot.intakeLifter.getPOT() > (RobotConstants.intakeLifterDEFAULT-25) && (Robot.intakeLifter.getPOT() < RobotConstants.intakeLifterDEFAULT)){
+    	if(Robot.intakeLifter.getPOT() > (RobotConstants.intakeLifterDEFAULT-RobotConstants.intakeLifterPotLowerThreshold) && (Robot.intakeLifter.getPOT() < (RobotConstants.intakeLifterDEFAULT+RobotConstants.intakeLifterPotUpperThreshold))){
     		Robot.intakeLifter.PID.disable();
     	}
     	//this makes the PDI run the intakelifter until it gets to the default position
