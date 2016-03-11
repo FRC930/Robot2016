@@ -1,5 +1,6 @@
 package org.usfirst.frc.team930.robot.subsystems;
 
+import org.usfirst.frc.team930.robot.RobotConstants;
 import org.usfirst.frc.team930.robot.RobotMap;
 import org.usfirst.frc.team930.robot.commands.MoveIntakeRollers;
 
@@ -12,9 +13,9 @@ public class IntakeRoller extends Subsystem {
 	public static enum Direction {
 	//sets the value for all the speeds the of rollers
 		STOP(0),
-		FORWARD(1),
-		BACKWARD(-.75),
-		SHOOTERPULL(.75);
+		FORWARD(RobotConstants.intakeRollerforward),
+		BACKWARD(RobotConstants.intakeRollerbackward),
+		SHOOTERPULL(RobotConstants.intakeLifterDvalue);
 		//declaress a variable to run the speed of the rollers
 		private final double speed;
 		

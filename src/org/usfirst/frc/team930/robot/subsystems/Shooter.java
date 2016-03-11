@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.Victor;
 
 public class Shooter extends Subsystem {
 
-	public static final double HIGH_GOAL_RPM = 6000;
+	
 
 	Victor shooter1 = new Victor(RobotMap.Shooter1Port);
 	Victor shooter2 = new Victor(RobotMap.Shooter2Port);

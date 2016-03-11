@@ -1,6 +1,7 @@
 package org.usfirst.frc.team930.robot.commands;
 
 import org.usfirst.frc.team930.robot.Robot;
+import org.usfirst.frc.team930.robot.RobotConstants;
 import org.usfirst.frc.team930.robot.subsystems.IntakeLifter;
 import org.usfirst.frc.team930.robot.subsystems.IntakeRoller;
 import org.usfirst.frc.team930.robot.subsystems.Shooter;
@@ -59,8 +60,8 @@ public class AutoLowBarShoot extends Command {
 		if (state == DRIVE) {
 			timer2.start();
 			startTime2 = timer2.get();
-			Robot.drivetrain.setL(0.25);
-			Robot.drivetrain.setL(0.25);
+			Robot.drivetrain.setL(RobotConstants.autoLowBarshootDrivespeed);
+			Robot.drivetrain.setL(RobotConstants.autoLowBarshootDrivespeed);
 			currentTime2 = timer2.get();
 			if (currentTime2 - startTime2 >= 4 && Robot.drivetrain.distance.getRangeInches() <=  48) {
 				state = TURN;
@@ -73,8 +74,8 @@ public class AutoLowBarShoot extends Command {
 			}
 		}
 		if (state == DRIVE_2) {
-			Robot.drivetrain.setL(0.6);
-			Robot.drivetrain.setR(0.6);
+			Robot.drivetrain.setL(RobotConstants.autoLowBarshootDrivespeed2);
+			Robot.drivetrain.setR(RobotConstants.autoLowBarshootDrivespeed2);
 			
 			if (Robot.drivetrain.distance.getRangeInches() <=  5) {
 				Robot.drivetrain.setL(0);
@@ -83,16 +84,16 @@ public class AutoLowBarShoot extends Command {
 			}
 		}
 		if (state == SHOOT) {
-			Robot.shooter.setShooter(0.5 *Shooter.HIGH_GOAL_RPM);
+			Robot.shooter.setShooter(0.5 *RobotConstants.shootHighGoalRPM);
 			timer.start();
 			startTime = timer.get();
 			currentTime = timer.get();
 			if (currentTime - startTime > 0.1) {
-				Robot.shooter.setShooter(0.75 *Shooter.HIGH_GOAL_RPM);
+				Robot.shooter.setShooter(0.75 *RobotConstants.shootHighGoalRPM);
 			}
 			currentTime = timer.get();
 			if (currentTime - startTime > 0.2) {
-				Robot.shooter.setShooter(Shooter.HIGH_GOAL_RPM);
+				Robot.shooter.setShooter(RobotConstants.shootHighGoalRPM);
 			}
 			currentTime = timer.get();
 			if (currentTime - startTime > 3.3) {

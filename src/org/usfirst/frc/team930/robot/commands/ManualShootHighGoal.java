@@ -2,6 +2,7 @@ package org.usfirst.frc.team930.robot.commands;
 
 import org.usfirst.frc.team930.robot.OI;
 import org.usfirst.frc.team930.robot.Robot;
+import org.usfirst.frc.team930.robot.RobotConstants;
 import org.usfirst.frc.team930.robot.subsystems.IntakeRoller;
 import org.usfirst.frc.team930.robot.subsystems.Shooter;
 
@@ -52,7 +53,7 @@ public class ManualShootHighGoal extends Command {
 			 * STATE 1 - set shooter speed - set start time
 			 */
 			// turn on shooter wheels
-			Robot.shooter.setShooter(Shooter.HIGH_GOAL_RPM);
+			Robot.shooter.setShooter(RobotConstants.shootHighGoalRPM);
 			startTime = timer.get(); // gets the starting time in seconds
 			state = State.WAIT_ONE; // move onto the next state
 			break;

@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team930.robot.OI;
 import org.usfirst.frc.team930.robot.Robot;
+import org.usfirst.frc.team930.robot.RobotConstants;
 import org.usfirst.frc.team930.robot.Robot;
 import org.usfirst.frc.team930.robot.subsystems.Drivetrain;
 
@@ -16,8 +17,7 @@ public class Drive extends Command {
 
 	RobotDrive r;
 	double oldWheel, quickStopAccumulator;
-	private double throttleDeadband = 0.02;
-	private double wheelDeadband = 0.02;
+	
 
 	public Drive() {
 		// Use requires() here to declare subsystem dependencies
@@ -51,8 +51,8 @@ public class Drive extends Command {
 
 		double wheelNonLinearity;
 
-		wheel = handleDeadband(wheel, .085);
-		throttle = handleDeadband(throttle, .10);
+		wheel = handleDeadband(wheel, RobotConstants.driveWheeldeadBand);
+		throttle = handleDeadband(throttle, RobotConstants.driveThrottledeadBand);
 
 		double negInertia = wheel - oldWheel;
 		oldWheel = wheel;

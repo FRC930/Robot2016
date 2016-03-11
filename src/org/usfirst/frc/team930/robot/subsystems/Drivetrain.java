@@ -1,6 +1,7 @@
 package org.usfirst.frc.team930.robot.subsystems;
 
 import org.usfirst.frc.team930.robot.Robot;
+import org.usfirst.frc.team930.robot.RobotConstants;
 import org.usfirst.frc.team930.robot.RobotMap;
 import org.usfirst.frc.team930.robot.commands.Drive;
 import org.usfirst.frc.team930.robot.controller.AlignOutput;
@@ -31,9 +32,9 @@ public class Drivetrain extends Subsystem {
 	public CANTalon R2 = new CANTalon(RobotMap.RDriveTopPort);
 	public CANTalon R3 = new CANTalon(RobotMap.RDriveBackPort);
 	
-	final double P = 0.02;
-	final double I = 0.0001;
-	final double D = 0;
+	final double P = RobotConstants.drivetrainPvalue;
+	final double I = RobotConstants.drivetrainIvalue;
+	final double D = RobotConstants.drivetrainDvalue;
 	
 	public double goalAngleStraight = 0.0;
 	public double goalAngleBackward = 180.0;

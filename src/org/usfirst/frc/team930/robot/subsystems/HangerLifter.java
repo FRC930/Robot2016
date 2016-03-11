@@ -1,5 +1,6 @@
 package org.usfirst.frc.team930.robot.subsystems;
 
+import org.usfirst.frc.team930.robot.RobotConstants;
 import org.usfirst.frc.team930.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.Spark;
@@ -9,8 +10,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class HangerLifter extends Subsystem {
-	static final double extendSpeed = .75;
-	static final double retractSpeed = -.75;
+	
     Spark spark = new Spark(RobotMap.HangerArmPort);
 
     public void initDefaultCommand() {
@@ -18,11 +18,11 @@ public class HangerLifter extends Subsystem {
     }
     
     public void extend() {
-    	spark.set(extendSpeed);
+    	spark.set(RobotConstants.hangerLifterextendSpeed);
     }
     
     public void retract() {
-    	spark.set(retractSpeed);
+    	spark.set(RobotConstants.hangerLifterretractSpeed);
     }
     
     public void stop(){

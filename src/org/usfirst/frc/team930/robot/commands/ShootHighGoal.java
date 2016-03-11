@@ -2,6 +2,7 @@ package org.usfirst.frc.team930.robot.commands;
 
 import org.usfirst.frc.team930.robot.OI;
 import org.usfirst.frc.team930.robot.Robot;
+import org.usfirst.frc.team930.robot.RobotConstants;
 import org.usfirst.frc.team930.robot.subsystems.IntakeRoller;
 import org.usfirst.frc.team930.robot.subsystems.Shooter;
 
@@ -59,7 +60,7 @@ public class ShootHighGoal extends Command {
 			 */
 			// turn on shooter wheels
 			Robot.shooter.enable();
-			Robot.shooter.setShooter(.25 * Shooter.HIGH_GOAL_RPM);
+			Robot.shooter.setShooter(.25 * RobotConstants.shootHighGoalRPM);
 			startTime = timer.get(); // gets the starting time in seconds
 			state = State.WAIT_ONE_1; // move onto the next state
 			Robot.shooter.print();
@@ -78,7 +79,7 @@ public class ShootHighGoal extends Command {
 			break;
 		case START_2:
 			// turn on shooter wheels
-			Robot.shooter.setShooter(.5 * Shooter.HIGH_GOAL_RPM);
+			Robot.shooter.setShooter(.5 * RobotConstants.shootHighGoalRPM);
 			state = State.WAIT_ONE_2; // move onto the next state
 			Robot.shooter.print();
 			break;
@@ -93,7 +94,7 @@ public class ShootHighGoal extends Command {
 			break;
 		case START_3:
 			// turn on shooter wheels
-			Robot.shooter.setShooter(.75 * Shooter.HIGH_GOAL_RPM);
+			Robot.shooter.setShooter(.75 * RobotConstants.shootHighGoalRPM);
 			state = State.WAIT_ONE_3; // move onto the next state
 			Robot.shooter.print();
 			break;
@@ -108,7 +109,7 @@ public class ShootHighGoal extends Command {
 			break;
 		case START_4:
 			// turn on shooter wheels
-			Robot.shooter.setShooter(Shooter.HIGH_GOAL_RPM);
+			Robot.shooter.setShooter(RobotConstants.shootHighGoalRPM);
 			state = State.WAIT_ONE_4; // move onto the next state
 			Robot.shooter.print();
 			break;

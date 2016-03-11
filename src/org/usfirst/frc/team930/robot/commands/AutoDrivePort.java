@@ -1,6 +1,7 @@
 package org.usfirst.frc.team930.robot.commands;
 
 import org.usfirst.frc.team930.robot.Robot;
+import org.usfirst.frc.team930.robot.RobotConstants;
 import org.usfirst.frc.team930.robot.subsystems.IntakeLifter;
 
 import edu.wpi.first.wpilibj.Timer;
@@ -46,8 +47,8 @@ public class AutoDrivePort extends Command {
 		 */
     	else if(state == DRIVE_1){
     		currentTime = timer.get();
-    		Robot.drivetrain.setL(1);
-			Robot.drivetrain.setR(1);
+    		Robot.drivetrain.setL(RobotConstants.autoDrivePORTdriveSpeed);
+			Robot.drivetrain.setR(RobotConstants.autoDrivePORTdriveSpeed);
     		if(currentTime - startTime >= 3){
     			state = LOWER_INTAKE_AND_DRIVE;
     		}

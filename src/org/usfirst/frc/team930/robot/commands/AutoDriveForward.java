@@ -1,6 +1,7 @@
 package org.usfirst.frc.team930.robot.commands;
 
 import org.usfirst.frc.team930.robot.Robot;
+import org.usfirst.frc.team930.robot.RobotConstants;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
@@ -16,8 +17,8 @@ public class AutoDriveForward extends Command {
 	final int TURNING_OFF = 4;
 	final int END = 5; 
 	int state = 0;
-	final double driveSpeedForward = 1;
-	final double driveSpeedBackward = -1;
+	
+	
 	Timer timer = new Timer();
 	double startTime; // time the command starts running (seconds)
 	double currentTime; // the current time (seconds)
@@ -48,8 +49,8 @@ public class AutoDriveForward extends Command {
     	else if(state == DRIVE_FORWARD){
     		System.out.println("State is drive forward");
     		currentTime = timer.get();
-    		Robot.drivetrain.setL(driveSpeedForward);
-			Robot.drivetrain.setR(driveSpeedForward);
+    		Robot.drivetrain.setL(RobotConstants.autoDriveForwardSpeed);
+			Robot.drivetrain.setR(RobotConstants.autoDriveBackwardSpeed);
     		if(currentTime - startTime >= 2){
     			state = END;
     		}
@@ -68,8 +69,8 @@ public class AutoDriveForward extends Command {
     	else if(state == DRIVE_BACKWARD){
     		System.out.println("State is drive backward");
     		currentTime = timer.get();
-    		Robot.drivetrain.setL(driveSpeedBackward);
-			Robot.drivetrain.setR(driveSpeedBackward);
+    		Robot.drivetrain.setL(RobotConstants.autoDriveBackwardSpeed);
+			Robot.drivetrain.setR(RobotConstants.autoDriveBackwardSpeed);
     		if(currentTime - startTime >= 4.5){
     			state = TURNING_OFF;
     		}

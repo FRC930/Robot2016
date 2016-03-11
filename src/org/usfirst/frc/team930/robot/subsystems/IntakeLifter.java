@@ -1,6 +1,7 @@
 package org.usfirst.frc.team930.robot.subsystems;
 
 import org.usfirst.frc.team930.robot.Robot;
+import org.usfirst.frc.team930.robot.RobotConstants;
 import org.usfirst.frc.team930.robot.RobotMap;
 import org.usfirst.frc.team930.robot.subsystems.IntakeRoller.Direction;
 
@@ -16,9 +17,9 @@ public class IntakeLifter extends Subsystem {
 	public static enum Positions
 	{
 		//sets the intakelifter values
-		PORT(256), //245; old = 50; old = 270
-		DEFAULT(137), //130; old = 170; old = 150
-		PICKUP(224); //217; old = 80; old = 237
+		PORT(RobotConstants.intakeLifterPORT), //245; old = 50; old = 270
+		DEFAULT(RobotConstants.intakeLifterDEFAULT), //130; old = 170; old = 150
+		PICKUP(RobotConstants.intakeLifterPICKUP); //217; old = 80; old = 237
 		// declares the variable that will set the position
 		private final double angle;
 		
@@ -43,9 +44,9 @@ public class IntakeLifter extends Subsystem {
 	//static int I = Robot.prefs.getInt("I", 0);
 	//static int D = Robot.prefs.getInt("D", 0);
 	//sets the values that the PID will use
-	static double P = -0.02;
-	static double I = 0.00;
-	static double D = 0;
+	static double P = RobotConstants.intakeLifterPvalue;
+	static double I = RobotConstants.intakeLifterIvalue;
+	static double D = RobotConstants.intakeLifterDvalue;
 
 	//declares the POT and sets the boundry for it
 	static AnalogPotentiometer potentiometer = new AnalogPotentiometer(RobotMap.intakeLifterPotPort,270,0);
@@ -62,7 +63,7 @@ public class IntakeLifter extends Subsystem {
 		position = Positions.DEFAULT;
 //		PID.setInputRange(-135, 135);
 		
-		intakeLifter.setInverted(true);//sets the motor to go backwards
+		intakeLifter.setInverted(RobotConstants.intakeRollerphotoEye);//sets the motor to go backwards
 		//sets the off in degrees that the PID will accept
 		PID.setAbsoluteTolerance(5);
 	}

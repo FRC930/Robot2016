@@ -1,6 +1,7 @@
 package org.usfirst.frc.team930.robot.commands;
 
 import org.usfirst.frc.team930.robot.Robot;
+import org.usfirst.frc.team930.robot.RobotConstants;
 import org.usfirst.frc.team930.robot.subsystems.IntakeLifter;
 
 import edu.wpi.first.wpilibj.Timer;
@@ -18,7 +19,7 @@ public class AutoLowBar extends Command {
 	Timer timer = new Timer();
 	double startTime = 0;
 	double currentTime = 0;
-	double driveSpeed = 0.25;
+	
 
 	public AutoLowBar() {
 		// Use requires() here to declare subsystem dependencies
@@ -43,8 +44,8 @@ public class AutoLowBar extends Command {
 			state = DRIVE;
 		}
 		if (state == DRIVE) { // goes to the 2nd stage where it drives
-			Robot.drivetrain.setR(driveSpeed);
-			Robot.drivetrain.setL(driveSpeed);
+			Robot.drivetrain.setR(RobotConstants.autoLowBardriveSpeed);
+			Robot.drivetrain.setL(RobotConstants.autoLowBardriveSpeed);
 
 			if (currentTime - startTime >= 5) { // goes to the next stage after
 												// 5secs

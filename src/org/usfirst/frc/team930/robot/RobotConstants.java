@@ -15,8 +15,8 @@ public static double drivetrainGoalangleBackward = 180; //GYRO ANGLES
 public static double drivetrainGoalangleLeft = -55;
 public static double drivetrainGoalangleRight = 55;
 
-public static double driveThrottledeadBand = 0.02; //DEADBAND VALUES
-public static double driveWheeldeadBand = 0.02;
+public static double driveThrottledeadBand = 0.1; //DEADBAND VALUES
+public static double driveWheeldeadBand = 0.085;
 
 //*****************************************************************************\\
 					//HANGER 
@@ -35,6 +35,10 @@ public static int winchUnwindlimit = 800; //LIMIT ON UNWINDING
 public static double intakeLifterPvalue = -0.02; //P.I.D.
 public static double intakeLifterIvalue = 0;
 public static double intakeLifterDvalue = 0;
+
+public static double intakeLifterPORT = 256;
+public static double intakeLifterDEFAULT = 137;
+public static double intakeLifterPICKUP = 224;
 
 //*****************************************************************************\\
 					//INTAKE ROLLER
@@ -71,7 +75,8 @@ public static double autoLowBardriveSpeed = 0.25; //DRIVE SPEED
 //*****************************************************************************\\
 					//LOW BAR SHOOT
 
-public static double autoLowBarshootDrivespeed = 0.25; //DRIVE SPEED
+public static double autoLowBarshootDrivespeed = 0.25;
+public static double autoLowBarshootDrivespeed2 = 0.6;//DRIVE SPEED
 
 public static double autoLowBarShootdistance1 = 48; //DISTANCE 1
 public static double autoLowBarShootdistance2 = 70; //DISTANCE 2
@@ -82,5 +87,9 @@ public static double autoLowBarShootdistance3 = 5; //DISTANCE 3
 
 public static double autoDriveForwardSpeed = 1; //DRIVE FORWARD SPEED
 public static double autoDriveBackwardSpeed = -1; //DRIVE BACKWARD SPEED
+
+					//SPY BOX SHOOTER
+
+public static double spyBoxDriveSpeed = 1.0; //DRIVE SPEED
 
 }

@@ -3,6 +3,7 @@ package org.usfirst.frc.team930.robot.commands;
 import java.awt.geom.Arc2D.Double;
 
 import org.usfirst.frc.team930.robot.Robot;
+import org.usfirst.frc.team930.robot.RobotConstants;
 import org.usfirst.frc.team930.robot.subsystems.IntakeRoller;
 
 import edu.wpi.first.wpilibj.Timer;
@@ -23,7 +24,7 @@ final int INTAKE_ON = 4;
 final int OFF = 5;
 final int END = 6;
 int state = 0;
-final double driveSpeed = 1.0;
+
     public SpyBoxShooter() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -47,8 +48,8 @@ final double driveSpeed = 1.0;
     		state = DRIVE;
     	}
     	if(state == DRIVE){
-    		Robot.drivetrain.setL(driveSpeed);
-			Robot.drivetrain.setR(driveSpeed);
+    		Robot.drivetrain.setL(RobotConstants.spyBoxDriveSpeed);
+			Robot.drivetrain.setR(RobotConstants.spyBoxDriveSpeed);
 			if((currentTime - startTime) > 7)
 			{
 				state = STOP_DRIVE;
@@ -61,7 +62,7 @@ final double driveSpeed = 1.0;
 				state = SHOOTER_ON;
 			}
     	}else if(state == SHOOTER_ON){
-    		Robot.shooter.setShooter(1);
+    		Robot.shooter.setShooter(RobotConstants.shootHighGoalRPM);
 			if((currentTime - startTime) > 9)
 			{
 				state = INTAKE_ON;
