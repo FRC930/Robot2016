@@ -3,6 +3,7 @@ package org.usfirst.frc.team930.robot.commands;
 import org.usfirst.frc.team930.robot.Robot;
 import org.usfirst.frc.team930.robot.subsystems.IntakeLifter;
 import org.usfirst.frc.team930.robot.subsystems.IntakeRoller;
+import org.usfirst.frc.team930.robot.subsystems.Shooter;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
@@ -51,7 +52,7 @@ public class AutoLowBarShoot extends Command {
 
 		Robot.drivetrain.drivePID.enable();
 		if (state == START) {
-			currentTime = timer.get(); // gets the current time
+			
 			Robot.intakeLifter.setAngle(IntakeLifter.Positions.PICKUP);
 			state = DRIVE;
 		}
@@ -67,7 +68,6 @@ public class AutoLowBarShoot extends Command {
 		}
 		if (state == TURN) {
 			Robot.drivetrain.drivePID.setSetpoint(60.0);
-			currentTime = timer.get();
 			if (Robot.drivetrain.distance.getRangeInches() > 70) {
 				state = DRIVE_2;
 			}
@@ -75,7 +75,7 @@ public class AutoLowBarShoot extends Command {
 		if (state == DRIVE_2) {
 			Robot.drivetrain.setL(0.6);
 			Robot.drivetrain.setR(0.6);
-			currentTime = timer.get();
+			
 			if (Robot.drivetrain.distance.getRangeInches() <=  5) {
 				Robot.drivetrain.setL(0);
 				Robot.drivetrain.setR(0);
@@ -83,16 +83,16 @@ public class AutoLowBarShoot extends Command {
 			}
 		}
 		if (state == SHOOT) {
-			Robot.shooter.setShooter(0.5 * 6000);
+			Robot.shooter.setShooter(0.5 *Shooter.HIGH_GOAL_RPM);
 			timer.start();
 			startTime = timer.get();
 			currentTime = timer.get();
 			if (currentTime - startTime > 0.1) {
-				Robot.shooter.setShooter(0.75 * 6000);
+				Robot.shooter.setShooter(0.75 *Shooter.HIGH_GOAL_RPM);
 			}
 			currentTime = timer.get();
 			if (currentTime - startTime > 0.2) {
-				Robot.shooter.setShooter(6000);
+				Robot.shooter.setShooter(Shooter.HIGH_GOAL_RPM);
 			}
 			currentTime = timer.get();
 			if (currentTime - startTime > 3.3) {
