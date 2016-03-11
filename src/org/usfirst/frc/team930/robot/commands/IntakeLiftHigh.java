@@ -1,6 +1,7 @@
 package org.usfirst.frc.team930.robot.commands;
 
 import org.usfirst.frc.team930.robot.Robot;
+import org.usfirst.frc.team930.robot.RobotConstants;
 import org.usfirst.frc.team930.robot.subsystems.IntakeLifter;
 import org.usfirst.frc.team930.robot.subsystems.IntakeRoller;
 
@@ -26,7 +27,7 @@ public class IntakeLiftHigh extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.intakeLifter.setAngle(IntakeLifter.Positions.DEFAULT);
-    	if(Robot.intakeLifter.getPOT() > 100 && Robot.intakeLifter.getPOT() < 125){
+    	if(Robot.intakeLifter.getPOT() > (RobotConstants.intakeLifterDEFAULT-25) && (Robot.intakeLifter.getPOT() < RobotConstants.intakeLifterDEFAULT)){
     		Robot.intakeLifter.PID.disable();
     	}
     	//this makes the PDI run the intakelifter until it gets to the default position
