@@ -27,6 +27,9 @@ final double driveSpeed = 1.0;
     public SpyBoxShooter() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	requires(Robot.drivetrain);
+		requires(Robot.shooter);
+		requires(Robot.intakeRoller);
     }
 
     // Called just before this Command runs the first time
