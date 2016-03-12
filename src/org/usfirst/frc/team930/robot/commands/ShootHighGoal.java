@@ -40,7 +40,7 @@ public class ShootHighGoal extends Command {
 	public static final double SHOOTER_SPEED_UP_1_TIME = .1; 
 	public static final double SHOOTER_SPEED_UP_2_TIME = .1; 
 	public static final double SHOOTER_SPEED_UP_3_TIME = .1; 
-	public static final double SHOOTER_SPEED_UP_4_TIME = 8; 
+	public static final double SHOOTER_SPEED_UP_4_TIME = 2; 
 	public static final double INTAKE_FORWARD_TIME = 2; 
 
 	public ShootHighGoal() {
