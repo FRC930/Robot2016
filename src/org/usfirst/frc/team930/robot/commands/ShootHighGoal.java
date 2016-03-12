@@ -40,8 +40,8 @@ public class ShootHighGoal extends Command {
 	public static final double SHOOTER_SPEED_UP_1_TIME = .1; 
 	public static final double SHOOTER_SPEED_UP_2_TIME = .1; 
 	public static final double SHOOTER_SPEED_UP_3_TIME = .1; 
-	public static final double SHOOTER_SPEED_UP_4_TIME = 1; 
-	public static final double INTAKE_FORWARD_TIME = 1; 
+	public static final double SHOOTER_SPEED_UP_4_TIME = 8; 
+	public static final double INTAKE_FORWARD_TIME = 2; 
 
 	public ShootHighGoal() {
 		System.out.println("Making Command");
@@ -59,8 +59,9 @@ public class ShootHighGoal extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-
+		
 		switch (state) {
+		
 		case START:
 			/*
 			 * STATE 1 - set shooter speed - set start time
@@ -122,6 +123,7 @@ public class ShootHighGoal extends Command {
 			break;
 		case SHOOTER_SPEED_UP_4_WAIT:
 			currentTime = timer.get(); // gets current time
+			Robot.shooter.setShooter(RobotConstants.shootHighGoalRPM);
 			// after a total 1 second, the state moves on
 			if ((currentTime - startTime) >= (SHOOTER_SPEED_UP_1_TIME + SHOOTER_SPEED_UP_2_TIME + SHOOTER_SPEED_UP_3_TIME + SHOOTER_SPEED_UP_4_TIME)) {
 

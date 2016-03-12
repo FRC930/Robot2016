@@ -54,9 +54,10 @@ public static boolean intakeRollerphotoEye = true; //ROLLER PHOTEYE
 
 //*****************************************************************************\\
 					//SHOOT HIGH GOAL
-
-public static double shootHighGoalRPM = 6000; //R.P.M.
-
+public static double shootRatio = .916;
+public static double shootHighGoalRPM = 5000 / shootRatio; //R.P.M.
+public static double shooterP = 10;
+public static double shooterMaxSpeed = 6000;
 //*****************************************************************************\\
 					//MANUAL INTAKE LIFTER
 

@@ -170,9 +170,10 @@ public class Robot extends IterativeRobot {
 		// CAMERA --------------------------------
 
 		SmartDashboard.putBoolean("Is ball in intake?", Robot.intakeRoller.seeBall());
-		System.out.println("             POT--------------------------- " + Robot.intakeLifter.getPOT());
+		//System.out.println("             POT--------------------------- " + Robot.intakeLifter.getPOT());
 		SmartDashboard.putBoolean("Is ball in shooter?", Robot.shooter.seeBall());
 		SmartDashboard.putNumber("pot", Robot.intakeLifter.getPOT());
+
 		//System.out.println(Robot.intakeRoller.seeBall());
 		//System.out.println(Robot.drivetrain.gyro.getAngle());
 		//System.out.println("Pot value: " + Robot.intakeLifter.getPOT());
