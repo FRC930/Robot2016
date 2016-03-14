@@ -55,7 +55,7 @@ public static boolean intakeRollerphotoEye = true; //ROLLER PHOTEYE
 //*****************************************************************************\\
 					//SHOOT HIGH GOAL
 public static double shootRatio = .916;
-public static double shootHighGoalRPM = 5000 / shootRatio; //R.P.M.
+public static double shootHighGoalRPM = 3500 / shootRatio; //R.P.M.
 public static double shooterP = 10;
 public static double shooterMaxSpeed = 6000;
 //*****************************************************************************\\

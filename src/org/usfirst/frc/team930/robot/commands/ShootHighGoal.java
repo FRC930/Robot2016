@@ -40,7 +40,7 @@ public class ShootHighGoal extends Command {
 	public static final double SHOOTER_SPEED_UP_1_TIME = .1; 
 	public static final double SHOOTER_SPEED_UP_2_TIME = .1; 
 	public static final double SHOOTER_SPEED_UP_3_TIME = .1; 
-	public static final double SHOOTER_SPEED_UP_4_TIME = 2; 
+	public static final double SHOOTER_SPEED_UP_4_TIME = 1; 
 	public static final double INTAKE_FORWARD_TIME = 2; 
 
 	public ShootHighGoal() {
@@ -49,6 +49,7 @@ public class ShootHighGoal extends Command {
 		// eg. requires(chassis);
 		requires(Robot.shooter);
 		requires(Robot.intakeRoller);
+		requires(Robot.drivetrain);
 	}
 
 	// Called just before this Command runs the first time
@@ -69,6 +70,8 @@ public class ShootHighGoal extends Command {
 			// turn on shooter wheels
 			Robot.shooter.enable();
 			Robot.shooter.setShooter(.25 * RobotConstants.shootHighGoalRPM);
+			Robot.drivetrain.setL(.2);
+			Robot.drivetrain.setR(.2);
 			startTime = timer.get(); // gets the starting time in seconds
 			state = State.SHOOTER_SPEED_UP_1_WAIT; // move onto the next state
 			Robot.shooter.print();
@@ -170,6 +173,8 @@ public class ShootHighGoal extends Command {
 			 * STATE 7 - turn off shooter
 			 */
 			Robot.shooter.setShooter(0); // shooter is set to 0 rpm
+			Robot.drivetrain.setL(0);
+			Robot.drivetrain.setR(0);
 			System.out.println("                                   STATE 7");
 			state = State.END;
 			Robot.shooter.print();
