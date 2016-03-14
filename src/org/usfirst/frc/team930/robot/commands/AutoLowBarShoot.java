@@ -33,6 +33,8 @@ public class AutoLowBarShoot extends Command {
 	
 	// TIMES -----------------------------------------------
 	public static final double DRIVE_TIME = 4; 
+	public static final double TURN_TIME = 2;
+	public static final double DRIVE_2_TIME = 3;
 	public static final double LOWER_INTAKE_AND_DRIVE_TIME = 3; 
 
 	public AutoLowBarShoot() {
@@ -67,13 +69,14 @@ public class AutoLowBarShoot extends Command {
 			Robot.drivetrain.setL(RobotConstants.autoLowBarshootDrivespeed);
 			Robot.drivetrain.setL(RobotConstants.autoLowBarshootDrivespeed);
 			currentTime2 = timer2.get();
-			if (currentTime2 - startTime2 >= DRIVE_TIME && Robot.drivetrain.distance.getRangeInches() <=  RobotConstants.autoLowBarShootdistance1) {
+			if (currentTime2 - startTime2 >= DRIVE_TIME /*&& Robot.drivetrain.distance.getRangeInches() <=  RobotConstants.autoLowBarShootdistance1*/) {
 				state = TURN;
 			}
 		}
 		if (state == TURN) {
+			currentTime2 = timer2.get();
 			Robot.drivetrain.drivePID.setSetpoint(60.0);
-			if (Robot.drivetrain.distance.getRangeInches() > RobotConstants.autoLowBarShootdistance2) {
+			if (currentTime2 - startTime2 >= DRIVE_TIME + TURN_TIME /*Robot.drivetrain.distance.getRangeInches() > RobotConstants.autoLowBarShootdistance2*/) {
 				state = DRIVE_2;
 			}
 		}
@@ -81,7 +84,7 @@ public class AutoLowBarShoot extends Command {
 			Robot.drivetrain.setL(RobotConstants.autoLowBarshootDrivespeed2);
 			Robot.drivetrain.setR(RobotConstants.autoLowBarshootDrivespeed2);
 			
-			if (Robot.drivetrain.distance.getRangeInches() <=  RobotConstants.autoLowBarShootdistance3) {
+			if (currentTime2 - startTime2 >= DRIVE_TIME + TURN_TIME + DRIVE_2_TIME/*Robot.drivetrain.distance.getRangeInches() <=  RobotConstants.autoLowBarShootdistance3*/) {
 				Robot.drivetrain.setL(0);
 				Robot.drivetrain.setR(0);
 				state = SHOOT;

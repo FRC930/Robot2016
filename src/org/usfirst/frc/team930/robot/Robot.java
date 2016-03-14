@@ -97,6 +97,14 @@ public class Robot extends IterativeRobot {
 		}catch(Exception e){
 		}
 		// CAMERA --------------------------------
+		
+		autoChooser = new SendableChooser();
+		autoChooser.addDefault ("Auto Drive Forward", new AutoDriveForward());
+		autoChooser.addObject ("SpyBotShooter", new SpyBoxShooter());
+		autoChooser.addObject ("Low Bar", new AutoLowBar());
+		autoChooser.addObject ("Low Bar Shooter", new AutoLowBarShoot());
+		autoChooser.addObject ("Portcullis", new AutoDrivePort());
+		SmartDashboard.putData("Autonomous mode chooser",autoChooser);
 
 	}
 
@@ -109,7 +117,7 @@ public class Robot extends IterativeRobot {
 	}
 
 	public void autonomousInit() {
-		autonomousCommand = new AutoDriveForward();
+		
 
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
@@ -119,14 +127,11 @@ public class Robot extends IterativeRobot {
 		 */
 
 		// schedule the autonomous command (example)
-		autoChooser = new SendableChooser();
-		autoChooser.addDefault ("Auto Drive Forward", new AutoDriveForward());
-		autoChooser.addObject ("SpyBotShooter", new SpyBoxShooter());
-		autoChooser.addObject ("Low Bar", new AutoLowBar());
-		autoChooser.addObject ("Low Bar Shooter", new AutoLowBarShoot());
-		autoChooser.addObject ("Portcullis", new AutoDrivePort());
-		if (autonomousCommand != null)
-			autonomousCommand.start();
+
+		autonomousCommand = (Command) autoChooser.getSelected();
+		autonomousCommand.start();
+//		if (autonomousCommand != null)
+//			autonomousCommand.start();
 	}
 
 	public void autonomousPeriodic() {
