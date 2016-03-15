@@ -34,6 +34,7 @@ public class AutoLowBarShoot extends Command {
 	double currentTime2; // the current time (seconds)
 	
 	// TIMES -----------------------------------------------
+	public static final double ARM_DOWN = 0.1;
 	public static final double DRIVE_TIME = 4.6; 
 	public static final double TURN_TIME = 2;
 	public static final double DRIVE_2_TIME = 3;
@@ -41,8 +42,6 @@ public class AutoLowBarShoot extends Command {
 	
 
 	public AutoLowBarShoot() {
-		// Use requires() here to declare subsystem dependencies
-		// eg. requires(chassis);
 		requires(Robot.drivetrain);
 		requires(Robot.intakeRoller);
 		requires(Robot.intakeLifter);
@@ -69,7 +68,10 @@ public class AutoLowBarShoot extends Command {
 			
 		case START:
 			Robot.intakeLifter.setAngle(IntakeLifter.Positions.PICKUP);
+			if(currentTime2 - startTime2 >= ARM_DOWN){
+			startTime2 = timer2.get();
 			break;
+			}
 		
 		case DRIVE:
 
@@ -79,6 +81,7 @@ public class AutoLowBarShoot extends Command {
 			currentTime2 = timer2.get();
 			if (currentTime2 - startTime2 >= DRIVE_TIME /*&& Robot.drivetrain.distance.getRangeInches() <=  RobotConstants.autoLowBarShootdistance1*/) {
 				Robot.drivetrain.drivePID.disable();
+				startTime2 = timer2.get();
 				break;
 			}
 		
@@ -87,8 +90,9 @@ public class AutoLowBarShoot extends Command {
 			Robot.drivetrain.throttleInt.setThrottle(0);
 			Robot.drivetrain.drivePID.setSetpoint(60);
 			Robot.drivetrain.drivePID.enable();
-			if (currentTime2 - startTime2 >= DRIVE_TIME + TURN_TIME /*Robot.drivetrain.distance.getRangeInches() > RobotConstants.autoLowBarShootdistance2*/) {
+			if (currentTime2 - startTime2 >= TURN_TIME /*Robot.drivetrain.distance.getRangeInches() > RobotConstants.autoLowBarShootdistance2*/) {
 				Robot.drivetrain.drivePID.disable();
+				startTime2 = timer2.get();
 				break;
 			}
 		
@@ -99,10 +103,11 @@ public class AutoLowBarShoot extends Command {
 			Robot.drivetrain.throttleInt.setThrottle(RobotConstants.autoLowBarshootDrivespeed);
 			Robot.drivetrain.drivePID.enable();
 			
-			if (currentTime2 - startTime2 >= DRIVE_TIME + TURN_TIME + DRIVE_2_TIME/*Robot.drivetrain.distance.getRangeInches() <=  RobotConstants.autoLowBarShootdistance3*/) {
+			if (currentTime2 - startTime2 >= DRIVE_2_TIME/*Robot.drivetrain.distance.getRangeInches() <=  RobotConstants.autoLowBarShootdistance3*/) {
 				Robot.drivetrain.setL(0);
 				Robot.drivetrain.setR(0);
 				Robot.drivetrain.drivePID.disable();
+				startTime2 = timer2.get();
 				break;
 			}
 		
