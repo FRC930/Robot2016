@@ -7,8 +7,8 @@ public class RobotConstants {
 //*****************************************************************************\\
 					//DRIVETRAIN
 	
-public static double drivetrainPvalue = 0.2; //P.I.D.
-public static double drivetrainIvalue = 0.0001;
+public static double drivetrainPvalue = 0.035; //P.I.D.
+public static double drivetrainIvalue = 0.000;
 public static double drivetrainDvalue = 0.0;
  
 public static double drivetrainGoalangleBackward = 180; //GYRO ANGLES
@@ -74,12 +74,12 @@ public static double autoDrivePORTdriveSpeed = 0.5; //DRIVE SPEED
 //*****************************************************************************\\
 					//LOW BAR
 
-public static double autoLowBardriveSpeed = 0.25; //DRIVE SPEED
+public static double autoLowBardriveSpeed = 0.5; //DRIVE SPEED
 
 //*****************************************************************************\\
 					//LOW BAR SHOOT
 
-public static double autoLowBarshootDrivespeed = 0.25;
+public static double autoLowBarshootDrivespeed = 0.5;
 public static double autoLowBarshootDrivespeed2 = 0.6;//DRIVE SPEED
 
 public static double autoLowBarShootdistance1 = 48; //DISTANCE 1

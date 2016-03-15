@@ -7,6 +7,7 @@ import org.usfirst.frc.team930.robot.commands.Drive;
 import org.usfirst.frc.team930.robot.controller.AlignOutput;
 import org.usfirst.frc.team930.robot.controller.AngleSource;
 import org.usfirst.frc.team930.robot.subsystems.IntakeLifter.Positions;
+import org.usfirst.frc.team930.robot.controller.ThrottleInt;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.AnalogGyro;
@@ -31,6 +32,8 @@ public class Drivetrain extends Subsystem {
 	public CANTalon R1 = new CANTalon(RobotMap.RDriveFrontPort);
 	public CANTalon R2 = new CANTalon(RobotMap.RDriveTopPort);
 	public CANTalon R3 = new CANTalon(RobotMap.RDriveBackPort);
+	
+	public ThrottleInt throttleInt = new ThrottleInt();
 	
 	final double P = RobotConstants.drivetrainPvalue;
 	final double I = RobotConstants.drivetrainIvalue;

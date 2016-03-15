@@ -2,11 +2,12 @@ package org.usfirst.frc.team930.robot.controller;
 
 import org.usfirst.frc.team930.robot.OI;
 import org.usfirst.frc.team930.robot.Robot;
+import org.usfirst.frc.team930.robot.RobotConstants;
 
 import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.SpeedController;
 
-public class AlignOutput implements PIDOutput {
+public class AlignOutputAuto implements PIDOutput {
 	
 	SpeedController Left1;
 	SpeedController Left2;
@@ -15,7 +16,7 @@ public class AlignOutput implements PIDOutput {
 	SpeedController Right2;
 	SpeedController Right3;
 	
-	public AlignOutput(SpeedController L1, SpeedController L2, SpeedController L3, SpeedController R1, SpeedController R2, SpeedController R3) {
+	public AlignOutputAuto(SpeedController L1, SpeedController L2, SpeedController L3, SpeedController R1, SpeedController R2, SpeedController R3) {
 		Left1 = L1;
 		Left2 = L2;
 		Left3 = L3;
@@ -26,7 +27,7 @@ public class AlignOutput implements PIDOutput {
 	
 	public void pidWrite(double output) {
 		// TODO Auto-generated method stub
-		double throttle = Robot.drivetrain.throttleInt.getThrottle();
+		double throttle = RobotConstants.autoLowBardriveSpeed;
 		Left1.set(throttle + output);
 		Left2.set(throttle + output);
 		Left3.set(throttle + output);

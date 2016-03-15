@@ -22,6 +22,7 @@ public class GyroDriveStraight extends Command {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
+		Robot.drivetrain.throttleInt.useJoystick(true);
 		Robot.drivetrain.drivePID.setSetpoint(Robot.drivetrain.getGoalAngle(Positions.STRAIGHT));
 	}
 

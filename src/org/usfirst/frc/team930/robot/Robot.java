@@ -180,7 +180,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("pot", Robot.intakeLifter.getPOT());
 
 		//System.out.println(Robot.intakeRoller.seeBall());
-		//System.out.println(Robot.drivetrain.gyro.getAngle());
+		SmartDashboard.putNumber("gyro",Robot.drivetrain.gyro.getAngle());
 		//System.out.println("Pot value: " + Robot.intakeLifter.getPOT());
 
 		// When the left trigger is held down, the intake lifter moves to the portcullis angle
