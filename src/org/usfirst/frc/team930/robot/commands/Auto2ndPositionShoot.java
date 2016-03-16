@@ -61,17 +61,17 @@ public class Auto2ndPositionShoot extends Command {
 	protected void execute() {
 		System.out.println("state = " + state);
 		
-		
-
 		//Robot.drivetrain.drivePID.enable();
 		switch (state) {
 			
 		case START:
+			currentTime2 = timer2.get();
 			Robot.intakeLifter.setAngle(IntakeLifter.Positions.PICKUP);
 			if(currentTime2 - startTime2 >= ARM_DOWN){
-			startTime2 = timer2.get();
-			break;
+				startTime2 = timer2.get();
+				state = State.DRIVE;
 			}
+			break;
 		
 		case DRIVE:
 
@@ -82,8 +82,9 @@ public class Auto2ndPositionShoot extends Command {
 			if (currentTime2 - startTime2 >= DRIVE_TIME /*&& Robot.drivetrain.distance.getRangeInches() <=  RobotConstants.autoLowBarShootdistance1*/) {
 				Robot.drivetrain.drivePID.disable();
 				startTime2 = timer2.get();
-				break;
+				state = State.TURN;
 			}
+			break;
 		
 		case TURN:
 			currentTime2 = timer2.get();
@@ -93,8 +94,9 @@ public class Auto2ndPositionShoot extends Command {
 			if (currentTime2 - startTime2 >= TURN_TIME /*Robot.drivetrain.distance.getRangeInches() > RobotConstants.autoLowBarShootdistance2*/) {
 				Robot.drivetrain.drivePID.disable();
 				startTime2 = timer2.get();
-				break;
+				state = State.DRIVE_2;
 			}
+			break;
 		
 		case DRIVE_2:
 			currentTime2 = timer2.get();
@@ -108,16 +110,18 @@ public class Auto2ndPositionShoot extends Command {
 				Robot.drivetrain.setR(0);
 				Robot.drivetrain.drivePID.disable();
 				startTime2 = timer2.get();
-				break;
+				state = State.TURNING_OFF;
 			}
+			break;
 		
 		case TURNING_OFF:
 			Robot.intakeRoller.setState(IntakeRoller.Direction.STOP);
 			Robot.drivetrain.drivePID.disable();
 			state = State.END;
 			break;
-			default:
+			//default:
 		}
+		
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

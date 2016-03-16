@@ -61,6 +61,7 @@ public class ManualShootHighGoal extends Command {
 			Robot.shooter.setShooter(RobotConstants.shootHighGoalRPM);
 			startTime = timer.get(); // gets the starting time in seconds
 			state = State.SHOOTER_SPEED_UP_WAIT; // move onto the next state
+			startTime = timer.get();
 			break;
 		case SHOOTER_SPEED_UP_WAIT:
 			/*
@@ -69,7 +70,7 @@ public class ManualShootHighGoal extends Command {
 			currentTime = timer.get(); // gets current time
 			// after a total 1 second, the state moves on
 			if ((currentTime - startTime) >= SHOOTER_SPEED_UP_TIME) {
-
+				startTime = timer.get();
 				state = State.INTAKE_FORWARD;
 			}
 			break;
@@ -77,10 +78,10 @@ public class ManualShootHighGoal extends Command {
 			/*
 			 * STATE 3 - set intake rollers to forward
 			 */
-
 			// intake rollers move forward
 			Robot.intakeRoller.setState(IntakeRoller.Direction.FORWARD);
 			state = State.INTAKE_FORWARD_WAIT;
+			startTime =timer.get();
 			break;
 		case INTAKE_FORWARD_WAIT:
 			/*
@@ -90,7 +91,8 @@ public class ManualShootHighGoal extends Command {
 
 			// after three seconds, the state moves on
 			currentTime = timer.get();
-			if(currentTime - startTime >= SHOOTER_SPEED_UP_TIME + INTAKE_FORWARD_TIME){
+			if(currentTime - startTime >= INTAKE_FORWARD_TIME){
+				startTime = timer.get();
 				state = State.INTAKE_OFF;
 			}
 			break;
@@ -98,10 +100,10 @@ public class ManualShootHighGoal extends Command {
 			/*
 			 * STATE 5 - intake rollers are set to off
 			 */
-
 			// the intake rollers shut off
 			Robot.intakeRoller.setState(IntakeRoller.Direction.STOP);
 			state = State.INTAKE_OFF_WAIT;
+			startTime = timer.get();
 			break;
 		case INTAKE_OFF_WAIT:
 			/*
@@ -109,7 +111,8 @@ public class ManualShootHighGoal extends Command {
 			 */
 			currentTime = timer.get(); // gets current time
 			// after a total 3 seconds, the state moves on
-			if ((currentTime - startTime) >= SHOOTER_SPEED_UP_TIME + INTAKE_FORWARD_TIME + INTAKE_OFF_TIME) {
+			if ((currentTime - startTime) >= INTAKE_OFF_TIME) {
+				startTime = timer.get();
 				state = State.SHOOTER_OFF;
 			}
 			break;

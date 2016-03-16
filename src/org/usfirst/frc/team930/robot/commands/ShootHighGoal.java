@@ -17,18 +17,13 @@ public class ShootHighGoal extends Command {
 
 	private enum State {
 		START,
-		START_2,
-		START_3,
-		START_4,
 		SHOOTER_SPEED_UP_1_WAIT,
 		SHOOTER_SPEED_UP_2_WAIT,
 		SHOOTER_SPEED_UP_3_WAIT,
 		SHOOTER_SPEED_UP_4_WAIT,
-		INTAKE_FORWARD,
 		INTAKE_FORWARD_WAIT,
-		INTAKE_OFF,
-		WAIT_THREE,
-		SHOOTER_OFF, END;
+		INTAKE_SHOOTER_OFF,
+		END;
 	}
 
 	Timer timer = new Timer();
@@ -75,111 +70,84 @@ public class ShootHighGoal extends Command {
 			startTime = timer.get(); // gets the starting time in seconds
 			state = State.SHOOTER_SPEED_UP_1_WAIT; // move onto the next state
 			Robot.shooter.print();
+			
 			break;
+			
 		case SHOOTER_SPEED_UP_1_WAIT:
 			/*
 			 * STATE 2 - get current time - wait 1 second
 			 */
+			Robot.shooter.setShooter(.25 * RobotConstants.shootHighGoalRPM);
 			currentTime = timer.get(); // gets current time
 			// after a total 1 second, the state moves on
 			if ((currentTime - startTime) >= SHOOTER_SPEED_UP_1_TIME) {
-
-				state = State.START_2;
+				startTime = timer.get();
+				state = State.SHOOTER_SPEED_UP_2_WAIT;
 			}
 			Robot.shooter.print();
 			break;
-		case START_2:
-			// turn on shooter wheels
-			Robot.shooter.setShooter(.5 * RobotConstants.shootHighGoalRPM);
-			state = State.SHOOTER_SPEED_UP_2_WAIT; // move onto the next state
-			Robot.shooter.print();
-			break;
+			
 		case SHOOTER_SPEED_UP_2_WAIT:
 			currentTime = timer.get(); // gets current time
+			Robot.shooter.setShooter(.5 * RobotConstants.shootHighGoalRPM);
 			// after a total 1 second, the state moves on
-			if ((currentTime - startTime) >= (SHOOTER_SPEED_UP_1_TIME + SHOOTER_SPEED_UP_2_TIME)) {
-
-				state = State.START_3;
+			if ((currentTime - startTime) >= SHOOTER_SPEED_UP_2_TIME) {
+				startTime = timer.get();
+				state = State.SHOOTER_SPEED_UP_3_WAIT;
 			}
 			Robot.shooter.print();
 			break;
-		case START_3:
-			// turn on shooter wheels
-			Robot.shooter.setShooter(.75 * RobotConstants.shootHighGoalRPM);
-			state = State.SHOOTER_SPEED_UP_3_WAIT; // move onto the next state
-			Robot.shooter.print();
-			break;
+			
 		case SHOOTER_SPEED_UP_3_WAIT:
 			currentTime = timer.get(); // gets current time
+			Robot.shooter.setShooter(.75 * RobotConstants.shootHighGoalRPM);
 			// after a total 1 second, the state moves on
-			if ((currentTime - startTime) >= (SHOOTER_SPEED_UP_1_TIME + SHOOTER_SPEED_UP_2_TIME + SHOOTER_SPEED_UP_3_TIME)) {
-
-				state = State.START_4;
+			if ((currentTime - startTime) >= SHOOTER_SPEED_UP_3_TIME) {
+				startTime = timer.get();
+				state = State.SHOOTER_SPEED_UP_4_WAIT;
 			}
 			Robot.shooter.print();
 			break;
-		case START_4:
-			// turn on shooter wheels
-			Robot.shooter.setShooter(RobotConstants.shootHighGoalRPM);
-			state = State.SHOOTER_SPEED_UP_4_WAIT; // move onto the next state
-			Robot.shooter.print();
-			break;
+			
 		case SHOOTER_SPEED_UP_4_WAIT:
 			currentTime = timer.get(); // gets current time
 			Robot.shooter.setShooter(RobotConstants.shootHighGoalRPM);
 			// after a total 1 second, the state moves on
-			if ((currentTime - startTime) >= (SHOOTER_SPEED_UP_1_TIME + SHOOTER_SPEED_UP_2_TIME + SHOOTER_SPEED_UP_3_TIME + SHOOTER_SPEED_UP_4_TIME)) {
-
-				state = State.INTAKE_FORWARD;
+			if ((currentTime - startTime) >= SHOOTER_SPEED_UP_4_TIME) {
+				startTime = timer.get();
+				state = State.INTAKE_FORWARD_WAIT;
 			}
 			Robot.shooter.print();
 			break;
-		case INTAKE_FORWARD:
-			/*
-			 * STATE 3 - set intake rollers to forward
-			 */
-
-			// intake rollers move forward
-			Robot.intakeRoller.setState(IntakeRoller.Direction.FORWARD);
-			System.out.println("                                   STATE 3");
-			state = State.INTAKE_FORWARD_WAIT;
-			Robot.shooter.print();
-			break;
+			
 		case INTAKE_FORWARD_WAIT:
 			/*
-			 * STATE 4 - once 1 second has passed, the state moves on
+			 * STATE 3 - once 1 second has passed, the state moves on
 			 */
-
+			Robot.intakeRoller.setState(IntakeRoller.Direction.FORWARD);
 			currentTime = timer.get(); // gets current time
-			System.out.println("                                   STATE 4");
-			if ((currentTime - startTime) >= (SHOOTER_SPEED_UP_1_TIME + SHOOTER_SPEED_UP_2_TIME + SHOOTER_SPEED_UP_3_TIME + SHOOTER_SPEED_UP_4_TIME + INTAKE_FORWARD_TIME)) {
-				state = State.INTAKE_OFF;
+			System.out.println("                                   STATE 3");
+			if ((currentTime - startTime) >= INTAKE_FORWARD_TIME) {
+				startTime = timer.get();
+				state = State.INTAKE_SHOOTER_OFF;
 			}
 			Robot.shooter.print();
 			break;
-		case INTAKE_OFF:
+			
+		case INTAKE_SHOOTER_OFF:
 			/*
-			 * STATE 5 - intake rollers are set to off
+			 * STATE 4 - turn off shooter
 			 */
-
-			// the intake rollers shut off
 			Robot.intakeRoller.setState(IntakeRoller.Direction.STOP);
-			System.out.println("                                   STATE 5");
-			state = State.SHOOTER_OFF;
-			Robot.shooter.print();
-			break;
-		case SHOOTER_OFF:
-			/*
-			 * STATE 7 - turn off shooter
-			 */
 			Robot.shooter.setShooter(0); // shooter is set to 0 rpm
 			Robot.drivetrain.setL(0);
 			Robot.drivetrain.setR(0);
-			System.out.println("                                   STATE 7");
+			System.out.println("                                   STATE 4");
 			state = State.END;
 			Robot.shooter.print();
 			break;
-		default:
+			
+			default:
 		}
 	}
 

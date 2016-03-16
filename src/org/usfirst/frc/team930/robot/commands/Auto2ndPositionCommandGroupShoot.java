@@ -1,5 +1,7 @@
 package org.usfirst.frc.team930.robot.commands;
 
+import org.usfirst.frc.team930.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -24,7 +26,13 @@ public class Auto2ndPositionCommandGroupShoot extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
+    	requires(Robot.drivetrain);
+		requires(Robot.intakeRoller);
+		requires(Robot.intakeLifter);
+		System.out.println("Starting Command Group");
     	addSequential(new Auto2ndPositionShoot());
+    	System.out.println("Done with autio low bar, starting high goal");
     	addSequential(new ShootHighGoal());
+    	System.out.println("Done with all cmmands");
     }
 }

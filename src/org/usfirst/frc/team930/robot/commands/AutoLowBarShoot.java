@@ -35,7 +35,7 @@ public class AutoLowBarShoot extends Command {
 	
 	// TIMES -----------------------------------------------
 	public static final double ARM_DOWN = 0.1;
-	public static final double DRIVE_TIME = 4.6; 
+	public static final double DRIVE_TIME = 4.25; 
 	public static final double TURN_TIME = 2;
 	public static final double DRIVE_2_TIME = 3;
 	public static final double LOWER_INTAKE_AND_DRIVE_TIME = 3; 
@@ -61,17 +61,17 @@ public class AutoLowBarShoot extends Command {
 	protected void execute() {
 		System.out.println("state = " + state);
 		
-		
-
 		//Robot.drivetrain.drivePID.enable();
 		switch (state) {
 			
 		case START:
+			currentTime2 = timer2.get();
 			Robot.intakeLifter.setAngle(IntakeLifter.Positions.PICKUP);
 			if(currentTime2 - startTime2 >= ARM_DOWN){
 			startTime2 = timer2.get();
-			break;
+			state = State.DRIVE;
 			}
+			break;
 		
 		case DRIVE:
 
@@ -82,8 +82,10 @@ public class AutoLowBarShoot extends Command {
 			if (currentTime2 - startTime2 >= DRIVE_TIME /*&& Robot.drivetrain.distance.getRangeInches() <=  RobotConstants.autoLowBarShootdistance1*/) {
 				Robot.drivetrain.drivePID.disable();
 				startTime2 = timer2.get();
-				break;
+				state = State.TURN;
+				
 			}
+			break;
 		
 		case TURN:
 			currentTime2 = timer2.get();
@@ -93,9 +95,10 @@ public class AutoLowBarShoot extends Command {
 			if (currentTime2 - startTime2 >= TURN_TIME /*Robot.drivetrain.distance.getRangeInches() > RobotConstants.autoLowBarShootdistance2*/) {
 				Robot.drivetrain.drivePID.disable();
 				startTime2 = timer2.get();
-				break;
+				state = State.DRIVE_2;
 			}
-		
+			break;
+
 		case DRIVE_2:
 			currentTime2 = timer2.get();
 //			Robot.drivetrain.setL(RobotConstants.autoLowBarshootDrivespeed2);
@@ -108,16 +111,19 @@ public class AutoLowBarShoot extends Command {
 				Robot.drivetrain.setR(0);
 				Robot.drivetrain.drivePID.disable();
 				startTime2 = timer2.get();
-				break;
+				state = State.TURNING_OFF;
+			
 			}
+			break;
 		
 		case TURNING_OFF:
 			Robot.intakeRoller.setState(IntakeRoller.Direction.STOP);
 			Robot.drivetrain.drivePID.disable();
 			state = State.END;
 			break;
-			default:
+			//default:
 		}
+		
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

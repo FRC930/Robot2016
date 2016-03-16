@@ -70,7 +70,7 @@ else{
 	}
 	
 	public void print(){
-		 System.out.println("Shooter1Speed    "+ 30.0/rpmSource.getPeriod());
+		 //System.out.println("Shooter1Speed    "+ 30.0/rpmSource.getPeriod());
 		 SmartDashboard.putNumber("Shooter1Speed", 30.0/rpmSource.getPeriod());
 		 SmartDashboard.putNumber("ShooterError", Error);
 		 SmartDashboard.putNumber("ShooterTempSpeed",tempSpeed );
