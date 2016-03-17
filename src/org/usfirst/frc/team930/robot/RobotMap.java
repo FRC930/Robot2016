@@ -9,6 +9,8 @@ public class RobotMap {
 	public static int RDriveTopPort = 4;
 	public static int RDriveBackPort = 5;
 	
+	public static int drivetrainGyro = 0;
+	
 	public static int Shooter1Port = 0; //0
 	public static int Shooter2Port = 1; //1
 	public static int IntakeRollersPort = 3;

@@ -124,6 +124,7 @@ public class ShootHighGoal extends Command {
 			/*
 			 * STATE 3 - once 1 second has passed, the state moves on
 			 */
+			Robot.shooter.setShooter(RobotConstants.shootHighGoalRPM);
 			Robot.intakeRoller.setState(IntakeRoller.Direction.FORWARD);
 			currentTime = timer.get(); // gets current time
 			System.out.println("                                   STATE 3");

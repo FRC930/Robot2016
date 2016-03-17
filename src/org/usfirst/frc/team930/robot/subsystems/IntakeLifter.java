@@ -17,9 +17,9 @@ public class IntakeLifter extends Subsystem {
 	public static enum Positions
 	{
 		//sets the intakelifter values
-		PORT(RobotConstants.intakeLifterPORT), //245; old = 50; old = 270
-		DEFAULT(RobotConstants.intakeLifterDEFAULT), //130; old = 170; old = 150
-		PICKUP(RobotConstants.intakeLifterPICKUP); //217; old = 80; old = 237
+		PORT(RobotConstants.intakeLifterPORT), //245; old = 50; old = 270         160
+		DEFAULT(RobotConstants.intakeLifterDEFAULT), //130; old = 170; old = 150     262
+		PICKUP(RobotConstants.intakeLifterPICKUP); //217; old = 80; old = 237          188
 		// declares the variable that will set the position
 		private final double angle;
 		
@@ -44,16 +44,13 @@ public class IntakeLifter extends Subsystem {
 	//static int I = Robot.prefs.getInt("I", 0);
 	//static int D = Robot.prefs.getInt("D", 0);
 	//sets the values that the PID will use
-	static double P = RobotConstants.intakeLifterPvalue;
-	static double I = RobotConstants.intakeLifterIvalue;
-	static double D = RobotConstants.intakeLifterDvalue;
 
 	//declares the POT and sets the boundry for it
-	static AnalogPotentiometer potentiometer = new AnalogPotentiometer(RobotMap.intakeLifterPotPort,270,0);
+	static AnalogPotentiometer potentiometer = new AnalogPotentiometer(RobotMap.intakeLifterPotPort,360,0);
 	//declares the SPARK which runs the motor for the intakelifter
 	static Spark intakeLifter = new Spark(RobotMap.IntakeLiftPort);
 	//declares the PID controller which handles the PID values 
-	public PIDController PID = new PIDController(P,I,D,potentiometer,intakeLifter);
+	public PIDController PID = new PIDController(RobotConstants.intakeLifterPvalue,RobotConstants.intakeLifterIvalue,RobotConstants.intakeLifterDvalue,potentiometer,intakeLifter);
 
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
