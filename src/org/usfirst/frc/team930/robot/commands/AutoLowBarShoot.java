@@ -21,6 +21,7 @@ public class AutoLowBarShoot extends Command {
 	private enum State{
 		START,
 		DRIVE,
+		ARM_UP,
 		TURN,
 		DRIVE_2,
 		TURNING_OFF,
@@ -35,6 +36,7 @@ public class AutoLowBarShoot extends Command {
 	
 	// TIMES -----------------------------------------------
 	public static final double ARM_DOWN = 0.1;
+	public static final double ARM_UP = 0.1;
 	public static final double DRIVE_TIME = 4.25; 
 	public static final double TURN_TIME = 2;
 	public static final double DRIVE_2_TIME = 3;
@@ -82,10 +84,19 @@ public class AutoLowBarShoot extends Command {
 			if (currentTime2 - startTime2 >= DRIVE_TIME /*&& Robot.drivetrain.distance.getRangeInches() <=  RobotConstants.autoLowBarShootdistance1*/) {
 				Robot.drivetrain.drivePID.disable();
 				startTime2 = timer2.get();
-				state = State.TURN;
+				state = State.ARM_UP;
 				
 			}
 			break;
+			
+		case ARM_UP:
+			
+			currentTime2 = timer2.get();
+			Robot.intakeLifter.setAngle(IntakeLifter.Positions.DEFAULT);
+			if(currentTime2 - startTime2 >= ARM_UP){
+				startTime2 = timer2.get();
+				state = State.TURN;
+			}
 		
 		case TURN:
 			currentTime2 = timer2.get();

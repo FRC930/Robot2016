@@ -19,8 +19,7 @@ public class Auto2ndPositionShoot extends Command {
 	Timer timer2 = new Timer();
 
 	private enum State{
-		START,
-		DRIVE,
+		START_DRIVE,
 		TURN,
 		DRIVE_2,
 		TURNING_OFF,
@@ -34,7 +33,6 @@ public class Auto2ndPositionShoot extends Command {
 	double currentTime2; // the current time (seconds)
 	
 	// TIMES -----------------------------------------------
-	public static final double ARM_DOWN = 0.1;
 	public static final double DRIVE_TIME = 4.6; 
 	public static final double TURN_TIME = 2;
 	public static final double DRIVE_2_TIME = 3;
@@ -54,7 +52,7 @@ public class Auto2ndPositionShoot extends Command {
 		Robot.drivetrain.throttleInt.setThrottle(RobotConstants.autoLowBarshootDrivespeed);
 		timer2.start();
 		startTime2 = timer2.get();
-		state = State.START; // initializes the state
+		state = State.START_DRIVE; // initializes the state
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -64,17 +62,8 @@ public class Auto2ndPositionShoot extends Command {
 		//Robot.drivetrain.drivePID.enable();
 		switch (state) {
 			
-		case START:
-			currentTime2 = timer2.get();
-			Robot.intakeLifter.setAngle(IntakeLifter.Positions.PICKUP);
-			if(currentTime2 - startTime2 >= ARM_DOWN){
-				startTime2 = timer2.get();
-				state = State.DRIVE;
-			}
-			break;
-		
-		case DRIVE:
-
+		case START_DRIVE:
+			
 //			Robot.drivetrain.setL(RobotConstants.autoLowBarshootDrivespeed);
 //			Robot.drivetrain.setL(RobotConstants.autoLowBarshootDrivespeed);
 			Robot.drivetrain.drivePID.enable();

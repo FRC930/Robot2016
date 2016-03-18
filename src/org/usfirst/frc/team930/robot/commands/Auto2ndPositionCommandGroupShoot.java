@@ -31,8 +31,8 @@ public class Auto2ndPositionCommandGroupShoot extends CommandGroup {
 		requires(Robot.intakeLifter);
 		System.out.println("Starting Command Group");
     	addSequential(new Auto2ndPositionShoot());
-    	System.out.println("Done with autio low bar, starting high goal");
+    	System.out.println("Done with auto low bar, starting high goal");
     	addSequential(new ShootHighGoal());
-    	System.out.println("Done with all cmmands");
+    	System.out.println("Done with all commands");
     }
 }
