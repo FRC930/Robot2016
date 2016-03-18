@@ -178,6 +178,8 @@ public class Robot extends IterativeRobot {
 		}
 		// CAMERA --------------------------------
 
+		SmartDashboard.putNumber("R2 Output", Robot.drivetrain.R2.get());
+		
 		SmartDashboard.putBoolean("Is ball in intake?", Robot.intakeRoller.seeBall());
 		//System.out.println("             POT--------------------------- " + Robot.intakeLifter.getPOT());
 		SmartDashboard.putBoolean("Is ball in shooter?", Robot.shooter.seeBall());

@@ -24,7 +24,7 @@ public class ShootHighGoal extends Command {
 		INTAKE_FORWARD_WAIT,
 		INTAKE_SHOOTER_OFF,
 		END;
-	}
+	}	
 
 	Timer timer = new Timer();
 	double startTime; // time the command starts running (seconds)
