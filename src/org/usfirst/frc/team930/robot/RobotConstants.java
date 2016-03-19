@@ -97,4 +97,19 @@ public static double autoDriveBackwardSpeed = -1; //DRIVE BACKWARD SPEED
 
 public static double spyBoxDriveSpeed = 1.0; //DRIVE SPEED
 
+//*****************************************************************************\\
+                    //2nd Position
+
+public static double auto2ndPositionShootDrivespeed = 0.75;
+
+//*****************************************************************************\\
+                    //3rd Position
+
+public static double auto3rdPositionShootDrivespeed = 0.75;
+
+//*****************************************************************************\\
+                    //4th Position
+
+public static double auto4thPositionShootDrivespeed = 0.5;
+
 }

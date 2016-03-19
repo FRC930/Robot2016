@@ -1,0 +1,38 @@
+package org.usfirst.frc.team930.robot.commands;
+
+import org.usfirst.frc.team930.robot.Robot;
+
+import edu.wpi.first.wpilibj.command.CommandGroup;
+
+/**
+ *
+ */
+public class Auto4thCommandGroup extends CommandGroup {
+    
+    public  Auto4thCommandGroup() {
+        // Add Commands here:
+        // e.g. addSequential(new Command1());
+        //      addSequential(new Command2());
+        // these will run in order.
+
+        // To run multiple commands at the same time,
+        // use addParallel()
+        // e.g. addParallel(new Command1());
+        //      addSequential(new Command2());
+        // Command1 and Command2 will run in parallel.
+
+        // A command group will require all of the subsystems that each member
+        // would require.
+        // e.g. if Command1 requires chassis, and Command2 requires arm,
+        // a CommandGroup containing them would require both the chassis and the
+        // arm.
+    	requires(Robot.drivetrain);
+		requires(Robot.intakeRoller);
+		requires(Robot.intakeLifter);
+		System.out.println("Starting Command Group");
+    	addSequential(new Auto4thShoot());
+    	System.out.println("Done with auto low bar, starting high goal");
+    	addSequential(new ShootHighGoal());
+    	System.out.println("Done with all commands");
+    }
+}

@@ -13,17 +13,17 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class AutoLowBarShoot extends Command {
+public class Auto4thShoot extends Command {
 
 	Timer timer = new Timer();
 	Timer timer2 = new Timer();
 
 	private enum State{
-		START,
-		DRIVE,
-		ARM_UP,
+		START_DRIVE,
 		TURN,
 		DRIVE_2,
+		TURN_2,
+		DRIVE_3,
 		TURNING_OFF,
 		END
 	}
@@ -35,15 +35,14 @@ public class AutoLowBarShoot extends Command {
 	double currentTime2; // the current time (seconds)
 	
 	// TIMES -----------------------------------------------
-	public static final double ARM_DOWN = 0.1;
-	public static final double ARM_UP = 0.5;
-	public static final double DRIVE_TIME = 4; 
+	public static final double DRIVE_TIME = 3.85; 
 	public static final double TURN_TIME = 1;
-	public static final double DRIVE_2_TIME = 4.9;
-	public static final double LOWER_INTAKE_AND_DRIVE_TIME = 3; 
+	public static final double DRIVE_2_TIME = 1.7;
+	public static final double TURN_2_TIME = 1;
+	public static final double DRIVE_3_TIME = 3;
 	
 
-	public AutoLowBarShoot() {
+	public Auto4thShoot() {
 		requires(Robot.drivetrain);
 		requires(Robot.intakeRoller);
 		requires(Robot.intakeLifter);
@@ -51,13 +50,12 @@ public class AutoLowBarShoot extends Command {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-    	Robot.intakeLifter.PID.enable();
 		Robot.drivetrain.drivePID.setSetpoint(0.0);
 		Robot.drivetrain.throttleInt.useJoystick(false);
-		Robot.drivetrain.throttleInt.setThrottle(RobotConstants.autoLowBarshootDrivespeed);
+		Robot.drivetrain.throttleInt.setThrottle(RobotConstants.auto4thPositionShootDrivespeed);
 		timer2.start();
 		startTime2 = timer2.get();
-		state = State.START; // initializes the state
+		state = State.START_DRIVE; // initializes the state
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -67,42 +65,23 @@ public class AutoLowBarShoot extends Command {
 		//Robot.drivetrain.drivePID.enable();
 		switch (state) {
 			
-		case START:
-			currentTime2 = timer2.get();
-			Robot.intakeLifter.setAngle(IntakeLifter.Positions.PICKUP);
-			if(currentTime2 - startTime2 >= ARM_DOWN){
-			startTime2 = timer2.get();
-			state = State.DRIVE;
-			}
-			break;
-		
-		case DRIVE:
-
-//			Robot.drivetrain.setL(RobotConstants.autoLowBarshootDrivespeed);
-//			Robot.drivetrain.setL(RobotConstants.autoLowBarshootDrivespeed);
+		case START_DRIVE:
+			
+//			Robot.drivetrain.setL(RobotConstants.auto2ndPositionShootDrivespeed);
+//			Robot.drivetrain.setL(RobotConstants.auto2ndPositionShootDrivespeed);
 			Robot.drivetrain.drivePID.enable();
 			currentTime2 = timer2.get();
 			if (currentTime2 - startTime2 >= DRIVE_TIME /*&& Robot.drivetrain.distance.getRangeInches() <=  RobotConstants.autoLowBarShootdistance1*/) {
 				Robot.drivetrain.drivePID.disable();
 				startTime2 = timer2.get();
-				state = State.ARM_UP;
-				
-			}
-			break;
-			
-		case ARM_UP:
-			
-			currentTime2 = timer2.get();
-			Robot.intakeLifter.setAngle(IntakeLifter.Positions.DEFAULT);
-			if(currentTime2 - startTime2 >= ARM_UP){
-				startTime2 = timer2.get();
 				state = State.TURN;
 			}
+			break;
 		
 		case TURN:
 			currentTime2 = timer2.get();
 			Robot.drivetrain.throttleInt.setThrottle(0);
-			Robot.drivetrain.drivePID.setSetpoint(60);
+			Robot.drivetrain.drivePID.setSetpoint(-10);
 			Robot.drivetrain.drivePID.enable();
 			if (currentTime2 - startTime2 >= TURN_TIME /*Robot.drivetrain.distance.getRangeInches() > RobotConstants.autoLowBarShootdistance2*/) {
 				Robot.drivetrain.drivePID.disable();
@@ -110,7 +89,7 @@ public class AutoLowBarShoot extends Command {
 				state = State.DRIVE_2;
 			}
 			break;
-
+		
 		case DRIVE_2:
 			currentTime2 = timer2.get();
 //			Robot.drivetrain.setL(RobotConstants.autoLowBarshootDrivespeed2);
@@ -119,12 +98,37 @@ public class AutoLowBarShoot extends Command {
 			Robot.drivetrain.drivePID.enable();
 			
 			if (currentTime2 - startTime2 >= DRIVE_2_TIME/*Robot.drivetrain.distance.getRangeInches() <=  RobotConstants.autoLowBarShootdistance3*/) {
+				Robot.drivetrain.drivePID.disable();
+				startTime2 = timer2.get();
+				state = State.TURN_2;
+			}
+			break;
+			
+		case TURN_2:
+			currentTime2 = timer2.get();
+			Robot.drivetrain.throttleInt.setThrottle(0);
+			Robot.drivetrain.drivePID.setSetpoint(0.0);
+			Robot.drivetrain.drivePID.enable();
+			if (currentTime2 - startTime2 >= TURN_2_TIME /*Robot.drivetrain.distance.getRangeInches() > RobotConstants.autoLowBarShootdistance2*/) {
+				Robot.drivetrain.drivePID.disable();
+				startTime2 = timer2.get();
+				state = State.DRIVE_3;
+			}
+			break;
+			
+		case DRIVE_3:
+			currentTime2 = timer2.get();
+//			Robot.drivetrain.setL(RobotConstants.autoLowBarshootDrivespeed2);
+//			Robot.drivetrain.setR(RobotConstants.autoLowBarshootDrivespeed2);
+			Robot.drivetrain.throttleInt.setThrottle(RobotConstants.autoLowBarshootDrivespeed);
+			Robot.drivetrain.drivePID.enable();
+			
+			if (currentTime2 - startTime2 >= DRIVE_3_TIME/*Robot.drivetrain.distance.getRangeInches() <=  RobotConstants.autoLowBarShootdistance3*/) {
 				Robot.drivetrain.setL(0);
 				Robot.drivetrain.setR(0);
 				Robot.drivetrain.drivePID.disable();
 				startTime2 = timer2.get();
 				state = State.TURNING_OFF;
-			
 			}
 			break;
 		

@@ -11,6 +11,8 @@ import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.Joystick.RumbleType;
 
 import org.usfirst.frc.team930.robot.commands.Auto2ndPositionCommandGroupShoot;
+import org.usfirst.frc.team930.robot.commands.Auto3rdPositionShootCommandGroup;
+import org.usfirst.frc.team930.robot.commands.Auto4thCommandGroup;
 import org.usfirst.frc.team930.robot.commands.AutoDriveForward;
 import org.usfirst.frc.team930.robot.commands.AutoDrivePort;
 import org.usfirst.frc.team930.robot.commands.AutoLowBar;
@@ -107,6 +109,8 @@ public class Robot extends IterativeRobot {
 		autoChooser.addObject ("Low Bar Shooter", new AutoLowBarCommandGroupShoot());
 		autoChooser.addObject ("Portcullis", new AutoDrivePort());
 		autoChooser.addObject ("2nd Position Shoot", new Auto2ndPositionCommandGroupShoot());
+		autoChooser.addObject ("3rd Position Shoot", new Auto3rdPositionShootCommandGroup());
+		autoChooser.addObject ("4th Position Shoot", new Auto4thCommandGroup());
 		
 		SmartDashboard.putData("Autonomous mode chooser",autoChooser);
 

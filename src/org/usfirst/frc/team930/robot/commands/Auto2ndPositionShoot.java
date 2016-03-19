@@ -33,10 +33,9 @@ public class Auto2ndPositionShoot extends Command {
 	double currentTime2; // the current time (seconds)
 	
 	// TIMES -----------------------------------------------
-	public static final double DRIVE_TIME = 4.6; 
-	public static final double TURN_TIME = 2;
-	public static final double DRIVE_2_TIME = 3;
-	public static final double LOWER_INTAKE_AND_DRIVE_TIME = 3; 
+	public static final double DRIVE_TIME = 3.25; 
+	public static final double TURN_TIME = 1;
+	public static final double DRIVE_2_TIME = 4.9; 
 	
 
 	public Auto2ndPositionShoot() {
@@ -49,7 +48,7 @@ public class Auto2ndPositionShoot extends Command {
 	protected void initialize() {
 		Robot.drivetrain.drivePID.setSetpoint(0.0);
 		Robot.drivetrain.throttleInt.useJoystick(false);
-		Robot.drivetrain.throttleInt.setThrottle(RobotConstants.autoLowBarshootDrivespeed);
+		Robot.drivetrain.throttleInt.setThrottle(RobotConstants.auto2ndPositionShootDrivespeed);
 		timer2.start();
 		startTime2 = timer2.get();
 		state = State.START_DRIVE; // initializes the state
@@ -64,8 +63,8 @@ public class Auto2ndPositionShoot extends Command {
 			
 		case START_DRIVE:
 			
-//			Robot.drivetrain.setL(RobotConstants.autoLowBarshootDrivespeed);
-//			Robot.drivetrain.setL(RobotConstants.autoLowBarshootDrivespeed);
+//			Robot.drivetrain.setL(RobotConstants.auto2ndPositionShootDrivespeed);
+//			Robot.drivetrain.setL(RobotConstants.auto2ndPositionShootDrivespeed);
 			Robot.drivetrain.drivePID.enable();
 			currentTime2 = timer2.get();
 			if (currentTime2 - startTime2 >= DRIVE_TIME /*&& Robot.drivetrain.distance.getRangeInches() <=  RobotConstants.autoLowBarShootdistance1*/) {
@@ -78,7 +77,7 @@ public class Auto2ndPositionShoot extends Command {
 		case TURN:
 			currentTime2 = timer2.get();
 			Robot.drivetrain.throttleInt.setThrottle(0);
-			Robot.drivetrain.drivePID.setSetpoint(60);
+			Robot.drivetrain.drivePID.setSetpoint(55);
 			Robot.drivetrain.drivePID.enable();
 			if (currentTime2 - startTime2 >= TURN_TIME /*Robot.drivetrain.distance.getRangeInches() > RobotConstants.autoLowBarShootdistance2*/) {
 				Robot.drivetrain.drivePID.disable();
