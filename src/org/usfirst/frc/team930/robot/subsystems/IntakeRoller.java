@@ -15,7 +15,7 @@ public class IntakeRoller extends Subsystem {
 		STOP(0),
 		FORWARD(RobotConstants.intakeRollerforward),
 		BACKWARD(RobotConstants.intakeRollerbackward),
-		SHOOTERPULL(RobotConstants.intakeLifterDvalue);
+		SHOOTERPULL(RobotConstants.intakeRollershooterPull);
 		//declaress a variable to run the speed of the rollers
 		private final double speed;
 		

@@ -32,13 +32,13 @@ public static int winchUnwindlimit = 800; //LIMIT ON UNWINDING
 //*****************************************************************************\\
 					//INTAKE LIFTER
 
-public static double intakeLifterPvalue = -0.015; //P.I.D.
+public static double intakeLifterPvalue = 0.015; //P.I.D.
 public static double intakeLifterIvalue = 0;
 public static double intakeLifterDvalue = 0;
 
-public static double intakeLifterPORT = 100; //160
-public static double intakeLifterDEFAULT = 187; //262
-public static double intakeLifterPICKUP = 115; //188
+public static double intakeLifterPORT = 175; //old 100
+public static double intakeLifterDEFAULT = 72; //old 187
+public static double intakeLifterPICKUP = 155; //old 115
 
 public static double intakeLifterPotUpperThreshold = 0;
 public static double intakeLifterPotLowerThreshold = -2;

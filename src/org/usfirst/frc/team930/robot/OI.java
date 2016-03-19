@@ -97,7 +97,7 @@ public class OI {
 		coDriverButton5.whileHeld(new MoveIntakeRollers(IntakeRoller.Direction.BACKWARD));
 		coDriverButton1.whileHeld(new ManualIntakeDown());
 		coDriverButton4.whileHeld(new ManualIntakeUp());
-		coDriverButton6.whileHeld(new MoveIntakeRollers(IntakeRoller.Direction.SHOOTERPULL)); // in 
+		coDriverButton6.whileHeld(new MoveIntakeRollers(IntakeRoller.Direction.FORWARD)); // in 
 		coDriverButton7.whileHeld(new LiftHanger());
 		coDriverButton8.whileHeld(new WinchHanger());
 		coDriverButton9.whileHeld(new RetractHanger());

@@ -186,7 +186,7 @@ public class Robot extends IterativeRobot {
 		
 		SmartDashboard.putBoolean("Is ball in intake?", Robot.intakeRoller.seeBall());
 		//System.out.println("             POT--------------------------- " + Robot.intakeLifter.getPOT());
-		SmartDashboard.putBoolean("Is ball in shooter?", Robot.shooter.seeBall());
+		SmartDashboard.putBoolean("Shooter Photo Eye", Robot.shooter.seeBall());
 		SmartDashboard.putNumber("pot", Robot.intakeLifter.getPOT());
 
 		//System.out.println(Robot.intakeRoller.seeBall());

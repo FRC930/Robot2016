@@ -33,6 +33,8 @@ public class Auto3rdPositionShoot extends Command {
 	double currentTime2; // the current time (seconds)
 	
 	// TIMES -----------------------------------------------
+	public static final double STRAIGHT_SET_POINT = 0;
+	public static final double TURN_SET_POINT = 90;
 	public static final double DRIVE_TIME = 2.25; 
 	public static final double TURN_TIME = 1;
 	public static final double DRIVE_2_TIME = 1.5; 
@@ -46,7 +48,7 @@ public class Auto3rdPositionShoot extends Command {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		Robot.drivetrain.drivePID.setSetpoint(0.0);
+		Robot.drivetrain.drivePID.setSetpoint(STRAIGHT_SET_POINT);
 		Robot.drivetrain.throttleInt.useJoystick(false);
 		Robot.drivetrain.throttleInt.setThrottle(RobotConstants.auto3rdPositionShootDrivespeed);
 		timer2.start();
@@ -77,7 +79,7 @@ public class Auto3rdPositionShoot extends Command {
 		case TURN:
 			currentTime2 = timer2.get();
 			Robot.drivetrain.throttleInt.setThrottle(0);
-			Robot.drivetrain.drivePID.setSetpoint(90);
+			Robot.drivetrain.drivePID.setSetpoint(TURN_SET_POINT);
 			Robot.drivetrain.drivePID.enable();
 			if (currentTime2 - startTime2 >= TURN_TIME /*Robot.drivetrain.distance.getRangeInches() > RobotConstants.autoLowBarShootdistance2*/) {
 				Robot.drivetrain.drivePID.disable();
