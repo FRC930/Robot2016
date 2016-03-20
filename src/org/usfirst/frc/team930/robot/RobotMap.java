@@ -17,8 +17,8 @@ public class RobotMap {
 	
 	public static int IntakeLiftPort = 5;
 	
-	public static int WinchPort = 8;
-	public static int HangerArmPort = 7;
+	public static int WinchPort = 7;
+	public static int HangerArmPort = 8;
 	
 	public static int lightSensorIntakePort = 0;
 	public static int lightSensorShooterPort = 2;

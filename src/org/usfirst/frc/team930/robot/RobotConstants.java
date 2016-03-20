@@ -21,7 +21,7 @@ public static double driveWheeldeadBand = 0.085;
 //*****************************************************************************\\
 					//HANGER 
 
-public static double hangerLifterextendSpeed = 0.75; //EXTEND / RETRACT SPEEDS
+public static double hangerLifterextendSpeed = 1; //EXTEND / RETRACT SPEEDS
 public static double hangerLifterretractSpeed = -0.75;
 
 //*****************************************************************************\\
