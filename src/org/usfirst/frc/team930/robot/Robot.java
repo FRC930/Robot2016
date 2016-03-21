@@ -239,7 +239,7 @@ public class Robot extends IterativeRobot {
 		//		
 		//		while(startTime - currentTime < 5){
 		//			currentTime = timer.get();
-		if(Robot.intakeRoller.seeBall() == true && (OI.getInstance().getRightTrigger() > .75)){
+		if(Robot.intakeRoller.seeBall() == true && (OI.getInstance().getRightTrigger() > .75) && isEnabled()){
 			OI.getInstance().driverJoystick.setRumble(RumbleType.kLeftRumble, 1);
 			OI.getInstance().driverJoystick.setRumble(RumbleType.kRightRumble, 1);
 		}else{
