@@ -33,6 +33,7 @@ public class AutoLowBar extends Command {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
+		Robot.drivetrain.resetGyro();
 		timer.start();
 		state = START_ARM;
 		startTime = timer.get();

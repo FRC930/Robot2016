@@ -88,6 +88,10 @@ public class Drivetrain extends Subsystem {
 		return gyro.getAngle()%360.0;
 	}
 	
+	public void resetGyro(){
+		gyro.reset();
+	}
+	
 	public void setGoalAngle() {
 		goalAngleStraight -= 90.0;
 		goalAngleBackward -= 90.0;

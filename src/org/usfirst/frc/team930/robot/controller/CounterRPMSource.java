@@ -16,6 +16,7 @@ public class CounterRPMSource extends Counter implements ControllerSource {
 
 	private FileWriter fw;
 	public static final boolean WRITE_TO_FILE = false;
+	private double previousVal;
 
 	public CounterRPMSource(DigitalInput s) {
 		super(s);
@@ -24,6 +25,7 @@ public class CounterRPMSource extends Counter implements ControllerSource {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		previousVal = 0;
 	}
 
 	@Override
@@ -44,8 +46,11 @@ public class CounterRPMSource extends Counter implements ControllerSource {
 		}
 		
 		if(!highPulse.isInfinite()){
-			if(highPulse > 10000) return 10000;
-			else return highPulse;
+			if(highPulse > 10000) return previousVal;
+			else{
+				previousVal = highPulse;
+				return highPulse;
+			}
 		} else {
 			return 0;
 		}

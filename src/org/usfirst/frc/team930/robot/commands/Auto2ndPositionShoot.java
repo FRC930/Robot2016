@@ -48,6 +48,7 @@ public class Auto2ndPositionShoot extends Command {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
+		Robot.drivetrain.resetGyro();
 		Robot.drivetrain.drivePID.setSetpoint(STRAIGHT_SET_POINT);
 		Robot.drivetrain.throttleInt.useJoystick(false);
 		Robot.drivetrain.throttleInt.setThrottle(RobotConstants.auto2ndPositionShootDrivespeed);

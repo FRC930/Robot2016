@@ -53,6 +53,7 @@ public class AutoLowBarShoot extends Command {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
+		Robot.drivetrain.resetGyro();
     	Robot.intakeLifter.PID.enable();
 		Robot.drivetrain.drivePID.setSetpoint(STRAIGHT_SET_POINT);
 		Robot.drivetrain.throttleInt.useJoystick(false);

@@ -95,8 +95,8 @@ public class OI {
 		//coDriverButton1.whenPressed(new ShootHighGoal());
 		//Start/Select Buttons run a Hanger command that doesn't exist yet
 		coDriverButton5.whileHeld(new MoveIntakeRollers(IntakeRoller.Direction.BACKWARD));
-		coDriverButton1.whileHeld(new ManualIntakeDown());
-		coDriverButton4.whileHeld(new ManualIntakeUp());
+		coDriverButton4.whileHeld(new ManualIntakeDown());
+		coDriverButton1.whileHeld(new ManualIntakeUp());
 		coDriverButton6.whileHeld(new MoveIntakeRollers(IntakeRoller.Direction.FORWARD)); // in 
 		coDriverButton7.whileHeld(new LiftHanger());
 		coDriverButton8.whileHeld(new WinchHanger());

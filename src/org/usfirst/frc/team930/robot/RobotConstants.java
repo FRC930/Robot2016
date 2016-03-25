@@ -36,12 +36,12 @@ public static double intakeLifterPvalue = 0.015; //P.I.D.
 public static double intakeLifterIvalue = 0;
 public static double intakeLifterDvalue = 0;
 
-public static double intakeLifterPORT = 175; //old 100
-public static double intakeLifterDEFAULT = 72; //old 187
-public static double intakeLifterPICKUP = 155; //old 115
+public static double intakeLifterPORT = 135; //old 175
+public static double intakeLifterDEFAULT = 25; //old 72
+public static double intakeLifterPICKUP = 125; //old 125
 
 public static double intakeLifterPotUpperThreshold = 0;
-public static double intakeLifterPotLowerThreshold = -2;
+public static double intakeLifterPotLowerThreshold = 2;
 
 //*****************************************************************************\\
 					//INTAKE ROLLER

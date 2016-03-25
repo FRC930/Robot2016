@@ -53,6 +53,7 @@ public class Pickup extends Command {
     	//when it finishes it will stop the rollers and set the lifter to default
     	Robot.intakeLifter.setAngle(IntakeLifter.Positions.PICKUP);
     	Robot.intakeRoller.setState(IntakeRoller.Direction.STOP);
+    	Robot.intakeLifter.PID.disable();
     }
 
     // Called when another command which requires one or more of the same
@@ -61,5 +62,6 @@ public class Pickup extends Command {
     	//when it finishes it will stop the rollers and set the lifter to default
     	Robot.intakeLifter.setAngle(IntakeLifter.Positions.PICKUP);
     	Robot.intakeRoller.setState(IntakeRoller.Direction.STOP);   	
+    	Robot.intakeLifter.PID.disable();
     }
 }
