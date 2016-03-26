@@ -37,9 +37,7 @@ public class AutoDriveForward extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.drivetrain.resetGyro();
     	state = START;
-    	Robot.drivetrain.drivePID.setSetpoint(0.0);
     	timer.start();
     	startTime = timer.get(); // gets the starting time in seconds
     }
@@ -56,9 +54,9 @@ public class AutoDriveForward extends Command {
     		System.out.println("State is drive forward");
     		currentTime = timer.get();
     		Robot.drivetrain.setL(RobotConstants.autoDriveForwardSpeed);
-			Robot.drivetrain.setR(RobotConstants.autoDriveBackwardSpeed);
+			Robot.drivetrain.setR(RobotConstants.autoDriveForwardSpeed);
     		if(currentTime - startTime >= DRIVE_FORWARD_TIME){
-    			state = END;
+    			state = TURNING_OFF;
     		}
     	}
     	
@@ -86,7 +84,6 @@ public class AutoDriveForward extends Command {
     		System.out.println("State is turning off");
     		Robot.drivetrain.setL(0);
     		Robot.drivetrain.setR(0);
-    		Robot.drivetrain.drivePID.disable();
     		state = END;
     	}
     }

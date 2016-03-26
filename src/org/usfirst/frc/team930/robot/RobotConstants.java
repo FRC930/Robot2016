@@ -36,9 +36,9 @@ public static double intakeLifterPvalue = 0.015; //P.I.D.
 public static double intakeLifterIvalue = 0;
 public static double intakeLifterDvalue = 0;
 
-public static double intakeLifterPORT = 135; //old 175
-public static double intakeLifterDEFAULT = 25; //old 72
-public static double intakeLifterPICKUP = 125; //old 125
+public static double intakeLifterPORT = 165; //old 155
+public static double intakeLifterDEFAULT = 45; //old 25
+public static double intakeLifterPICKUP = 150; //old 125
 
 public static double intakeLifterPotUpperThreshold = 0;
 public static double intakeLifterPotLowerThreshold = 2;
@@ -55,14 +55,14 @@ public static boolean intakeRollerphotoEye = true; //ROLLER PHOTEYE
 //*****************************************************************************\\
 					//SHOOT HIGH GOAL
 public static double shootRatio = .916;
-public static double shootHighGoalRPM = 3500 / shootRatio; //R.P.M.
+public static double shootHighGoalRPM = 3500 / shootRatio; //R.P.M.  old = 3500
 public static double shooterP = 10;
 public static double shooterMaxSpeed = 6000;
 //*****************************************************************************\\
 					//MANUAL INTAKE LIFTER
 
-public static double manualIntakeLifterdown = -0.6; //UP / DOWN SPEEDS
-public static double manualIntakeLifterup = 0.6;
+public static double manualIntakeLifterdown = -0.8; //UP / DOWN SPEEDS
+public static double manualIntakeLifterup = 0.4;
 
 //!!!!!!!!!!!!!!!!!!!!!!!AUTONOMOUS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 

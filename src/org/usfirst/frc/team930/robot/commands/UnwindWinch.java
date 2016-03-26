@@ -31,7 +31,7 @@ public class UnwindWinch extends Command {
     	}
     	Robot.hangerWinch.stopWinch();	
       */
-		Robot.hangerWinch.turnWinch();	
+		Robot.hangerWinch.unwindWinch();	
     }
 
     // Make this return true when this Command no longer needs to run execute()

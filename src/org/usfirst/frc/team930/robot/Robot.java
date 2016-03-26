@@ -192,6 +192,10 @@ public class Robot extends IterativeRobot {
 		//System.out.println(Robot.intakeRoller.seeBall());
 		SmartDashboard.putNumber("gyro",Robot.drivetrain.gyro.getAngle());
 		//System.out.println("Pot value: " + Robot.intakeLifter.getPOT());
+		
+		SmartDashboard.putNumber("voltage 1",Robot.shooter.shooter1.get());
+		SmartDashboard.putNumber("voltage 2",Robot.shooter.shooter2.get());
+
 
 		// When the left trigger is held down, the intake lifter moves to the portcullis angle
 		// When the right trigger is held down, the intake lifter moves down and the rollers move inward 
@@ -212,7 +216,7 @@ public class Robot extends IterativeRobot {
 				System.out.println("starting pick up ");
 			}
 		}else{
-			if(!intakeLiftHighTeleop.isRunning()) {
+			if(!intakeLiftHighTeleop.isRunning() && Robot.intakeLifter.PID.isEnabled()) {
 				intakeLiftHighTeleop.start();
 			}
 			//System.out.println("Default");

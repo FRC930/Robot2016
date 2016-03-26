@@ -15,11 +15,13 @@ public class ManualIntakeDown extends Command {
     public ManualIntakeDown() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-
+    	requires(Robot.intakeLifter);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.intakeLifter.PID.disable();
+    	System.out.println("pid is disabled, initializing command");
     }
 
     // Called repeatedly when this Command is scheduled to run

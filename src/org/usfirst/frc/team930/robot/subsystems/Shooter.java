@@ -19,8 +19,8 @@ public class Shooter extends Subsystem {
 	double Error = 0;
 	double tempSpeed = 0;
 
-	Victor shooter1 = new Victor(RobotMap.Shooter1Port);
-	Victor shooter2 = new Victor(RobotMap.Shooter2Port);
+	public Victor shooter1 = new Victor(RobotMap.Shooter1Port);
+	public Victor shooter2 = new Victor(RobotMap.Shooter2Port);
 
 	DigitalInput lightSensorShooter = new DigitalInput(RobotMap.lightSensorShooterPort); 
 
