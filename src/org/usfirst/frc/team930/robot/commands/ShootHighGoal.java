@@ -64,11 +64,11 @@ public class ShootHighGoal extends Command {
 			 */
 			// turn on shooter wheels
 			Robot.shooter.enable();
-			Robot.shooter.setShooter(.25 * RobotConstants.shootHighGoalRPM);
+			Robot.shooter.setShooterPlain(.25 * RobotConstants.shootHighGoalRPM);
 			Robot.drivetrain.setL(.2);
 			Robot.drivetrain.setR(.2);
 			startTime = timer.get(); // gets the starting time in seconds
-			state = State.SHOOTER_SPEED_UP_1_WAIT; // move onto the next state
+			state = State.SHOOTER_SPEED_UP_2_WAIT; // move onto the next state
 			Robot.shooter.print();
 			
 			break;
@@ -77,7 +77,7 @@ public class ShootHighGoal extends Command {
 			/*
 			 * STATE 2 - get current time - wait 1 second
 			 */
-			Robot.shooter.setShooter(.25 * RobotConstants.shootHighGoalRPM);
+			Robot.shooter.setShooterPlain(.25 * RobotConstants.shootHighGoalRPM);
 			currentTime = timer.get(); // gets current time
 			// after a total 1 second, the state moves on
 			if ((currentTime - startTime) >= SHOOTER_SPEED_UP_1_TIME) {
@@ -89,18 +89,18 @@ public class ShootHighGoal extends Command {
 			
 		case SHOOTER_SPEED_UP_2_WAIT:
 			currentTime = timer.get(); // gets current time
-			Robot.shooter.setShooter(.5 * RobotConstants.shootHighGoalRPM);
+			Robot.shooter.setShooterPlain(.5 * RobotConstants.shootHighGoalRPM);
 			// after a total 1 second, the state moves on
 			if ((currentTime - startTime) >= SHOOTER_SPEED_UP_2_TIME) {
 				startTime = timer.get();
-				state = State.SHOOTER_SPEED_UP_3_WAIT;
+				state = State.SHOOTER_SPEED_UP_4_WAIT;
 			}
 			Robot.shooter.print();
 			break;
 			
 		case SHOOTER_SPEED_UP_3_WAIT:
 			currentTime = timer.get(); // gets current time
-			Robot.shooter.setShooter(.75 * RobotConstants.shootHighGoalRPM);
+			Robot.shooter.setShooterPlain(.75 * RobotConstants.shootHighGoalRPM);
 			// after a total 1 second, the state moves on
 			if ((currentTime - startTime) >= SHOOTER_SPEED_UP_3_TIME) {
 				startTime = timer.get();
@@ -111,7 +111,7 @@ public class ShootHighGoal extends Command {
 			
 		case SHOOTER_SPEED_UP_4_WAIT:
 			currentTime = timer.get(); // gets current time
-			Robot.shooter.setShooter(RobotConstants.shootHighGoalRPM);
+			Robot.shooter.setShooterPlain(RobotConstants.shootHighGoalRPM);
 			// after a total 1 second, the state moves on
 			if ((currentTime - startTime) >= SHOOTER_SPEED_UP_4_TIME) {
 				startTime = timer.get();
@@ -124,8 +124,8 @@ public class ShootHighGoal extends Command {
 			/*
 			 * STATE 3 - once 1 second has passed, the state moves on
 			 */
-			Robot.shooter.setShooter(RobotConstants.shootHighGoalRPM);
-			Robot.intakeRoller.setState(IntakeRoller.Direction.FORWARD);
+			Robot.shooter.setShooterPlain(RobotConstants.shootHighGoalRPM);
+			Robot.intakeRoller.setState(IntakeRoller.Direction.SHOOTERPULL);
 			currentTime = timer.get(); // gets current time
 			System.out.println("                                   STATE 3");
 			if ((currentTime - startTime) >= INTAKE_FORWARD_TIME) {
@@ -140,7 +140,7 @@ public class ShootHighGoal extends Command {
 			 * STATE 4 - turn off shooter
 			 */
 			Robot.intakeRoller.setState(IntakeRoller.Direction.STOP);
-			Robot.shooter.setShooter(0); // shooter is set to 0 rpm
+			Robot.shooter.setShooterPlain(0); // shooter is set to 0 rpm
 			Robot.drivetrain.setL(0);
 			Robot.drivetrain.setR(0);
 			System.out.println("                                   STATE 4");
@@ -166,7 +166,7 @@ public class ShootHighGoal extends Command {
 	// subsystems is scheduled to run
 	protected void interrupted() {
 		System.out.println("INTERUPTED INTERUPTED INTERUPTED INTERUPTED INTERUPTED INTERUPTED INTERUPTED INTERUPTED");
-		Robot.shooter.setShooter(0);
+		Robot.shooter.setShooterPlain(0);
 		Robot.intakeRoller.setState(IntakeRoller.Direction.STOP);
 	}
 }

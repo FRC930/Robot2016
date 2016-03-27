@@ -56,17 +56,24 @@ public class Shooter extends Subsystem {
 		System.out.println(Error);
 
 		tempSpeed = ((rpm - 30.0/rpmSource.getPeriod()) * RobotConstants.shooterP) / RobotConstants.shooterMaxSpeed;
-if(tempSpeed <0){
-	shooter1.set(0);
-	shooter2.set(0);
-}
-else{
-	
-		 shooter1.set(tempSpeed);
-		 shooter2.set(tempSpeed);
-}
-	
+		if(tempSpeed <0){
+			shooter1.set(0);
+			shooter2.set(0);
+		}
+		else{
+			
+				 shooter1.set(tempSpeed);
+				 shooter2.set(tempSpeed);
+				 
+		 
+		}
 		 	
+	}
+	
+	public void setShooterPlain(double percent)
+	{
+		shooter1.set(percent);
+		shooter2.set(percent);
 	}
 	
 	public void print(){

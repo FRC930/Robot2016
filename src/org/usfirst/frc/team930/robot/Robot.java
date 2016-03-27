@@ -184,6 +184,10 @@ public class Robot extends IterativeRobot {
 
 		SmartDashboard.putNumber("R2 Output", Robot.drivetrain.R2.get());
 		
+		if(Robot.shooter.seeBall())
+			SmartDashboard.putNumber("Shooter Photo Eye GRAPH", 1 + Math.random() *.001);
+		else if(!Robot.shooter.seeBall())
+			SmartDashboard.putNumber("Shooter Photo Eye GRAPH", 0 + Math.random() *.001);
 		SmartDashboard.putBoolean("Is ball in intake?", Robot.intakeRoller.seeBall());
 		//System.out.println("             POT--------------------------- " + Robot.intakeLifter.getPOT());
 		SmartDashboard.putBoolean("Shooter Photo Eye", Robot.shooter.seeBall());

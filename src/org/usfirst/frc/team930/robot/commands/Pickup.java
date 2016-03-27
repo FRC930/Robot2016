@@ -36,10 +36,21 @@ public class Pickup extends Command {
 //    		Robot.intakeLifter.PID.disable();
 //    		System.out.println("Disabling pickup");
 //    	}
+    	
+    	
+    	
+    	
+    	
+    	
     	if(!Robot.intakeRoller.seeBall())
     		Robot.intakeRoller.setState(IntakeRoller.Direction.FORWARD);
     	else
     		Robot.intakeRoller.setState(IntakeRoller.Direction.STOP);
+    	
+    	
+    	
+    	
+//    	Robot.intakeRoller.setState(IntakeRoller.Direction.FORWARD);
     }
 
     // Make this return true when this Command no longer needs to run execute()
