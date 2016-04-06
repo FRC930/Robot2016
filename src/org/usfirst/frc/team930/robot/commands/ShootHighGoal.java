@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class ShootHighGoal extends Command {
 
-	private enum State {
+	public enum State {
 		START,
 		SHOOTER_SPEED_UP_1_WAIT,
 		SHOOTER_SPEED_UP_2_WAIT,
