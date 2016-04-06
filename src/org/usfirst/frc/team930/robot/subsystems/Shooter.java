@@ -10,8 +10,13 @@ import org.usfirst.frc.team930.robot.controller.CounterRPMSource;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.CANTalon;
+import edu.wpi.first.wpilibj.CANTalon.FeedbackDevice;
+import edu.wpi.first.wpilibj.CANTalon.TalonControlMode;
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Preferences;
+import edu.wpi.first.wpilibj.TalonSRX;
 import edu.wpi.first.wpilibj.Victor;
 
 public class Shooter extends Subsystem {
@@ -19,12 +24,18 @@ public class Shooter extends Subsystem {
 	double Error = 0;
 	double tempSpeed = 0;
 
-	public Victor shooter1 = new Victor(RobotMap.Shooter1Port);
-	public Victor shooter2 = new Victor(RobotMap.Shooter2Port);
+//	public Victor shooter1 = new Victor(RobotMap.Shooter1Port);
+//	public Victor shooter2 = new Victor(RobotMap.Shooter2Port);
+	
+	public CANTalon shooter1 = new CANTalon(RobotMap.Shooter1Port);
+	public CANTalon shooter2 = new CANTalon(RobotMap.Shooter2Port);
 
 	DigitalInput lightSensorShooter = new DigitalInput(RobotMap.lightSensorShooterPort); 
 
-	CounterRPMSource rpmSource = new CounterRPMSource(lightSensorShooter);
+	//CounterRPMSource rpmSource = new CounterRPMSource(shooter1);
+	
+	//Encoder rpmSource = new Encoder(RobotMap.Shooter1Port);
+	
 
 	//BBSController cont1, cont2;
 
@@ -32,6 +43,16 @@ public class Shooter extends Subsystem {
 		super();
 		
 		shooter1.setInverted(true);
+		shooter1.changeControlMode(TalonControlMode.PercentVbus);
+		shooter2.changeControlMode(TalonControlMode.PercentVbus);
+		shooter1.enableBrakeMode(false);
+		shooter2.enableBrakeMode(false);
+
+		shooter1.setFeedbackDevice(FeedbackDevice.QuadEncoder);
+		shooter1.configEncoderCodesPerRev(RobotConstants.codesPerRev);
+//		shooter1.setPID(RobotConstants.shooterP,0,0);
+//		shooter1.enableControl();
+//		shooter2.changeControlMode(TalonControlMode.Follower);
 		
 		// bang bang controllers
 	//	cont1 = new BBSController(rpmSource, shooter1, 0, 1);
@@ -48,25 +69,36 @@ public class Shooter extends Subsystem {
 	}
 
 	public void setShooter(double rpm) {
+		shooter1.set(-1);
+		shooter2.set(-1);
+		
+		SmartDashboard.putNumber("shooter speed", shooter1.getSpeed());
+		
+		System.out.println("SHOOTER 1 " + shooter1.get());
+		System.out.println("SHOOTER 2 " + shooter2.get());
+		
 
+	//	shooter1.getEncVelocity();
 	//	cont1.setRPM(rpm);
+		
+		
 	//	cont2.setRPM(rpm);
-		Error = (rpm-30.0/rpmSource.getPeriod());
-		System.out.print("ERROR:      ");
-		System.out.println(Error);
-
-		tempSpeed = ((rpm - 30.0/rpmSource.getPeriod()) * RobotConstants.shooterP) / RobotConstants.shooterMaxSpeed;
-		if(tempSpeed <0){
-			shooter1.set(0);
-			shooter2.set(0);
-		}
-		else{
-			
-				 shooter1.set(tempSpeed);
-				 shooter2.set(tempSpeed);
-				 
-		 
-		}
+//		Error = (rpm-30.0/rpmSource.getPeriod());
+//		System.out.print("ERROR:      ");
+//		System.out.println(Error);
+//
+//		tempSpeed = ((rpm - 30.0/rpmSource.getPeriod()) * RobotConstants.shooterP) / RobotConstants.shooterMaxSpeed;
+//		if(tempSpeed <0){
+//			shooter1.set(0);
+//			shooter2.set(0);
+//		}
+//		else{
+//			
+//				 shooter1.set(tempSpeed);
+//				 shooter2.set(tempSpeed);
+//				 
+//		 
+//		}
 		 	
 	}
 	
@@ -78,7 +110,7 @@ public class Shooter extends Subsystem {
 	
 	public void print(){
 		 //System.out.println("Shooter1Speed    "+ 30.0/rpmSource.getPeriod());
-		 SmartDashboard.putNumber("Shooter1Speed", 30.0/rpmSource.getPeriod());
+//		 SmartDashboard.putNumber("Shooter1Speed", 30.0/rpmSource.getPeriod());
 		 SmartDashboard.putNumber("ShooterError", Error);
 		 SmartDashboard.putNumber("ShooterTempSpeed",tempSpeed );
 

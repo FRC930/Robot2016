@@ -58,6 +58,12 @@ public static double shootRatio = .916;
 public static double shootHighGoalRPM = .6; //3500 / shootRatio; //no PID = .6
 public static double shooterP = 10;
 public static double shooterMaxSpeed = 6000;
+
+//*****************************************************************************\\
+                    //ENCODER
+public static int codesPerRev = 1024;
+
+
 //*****************************************************************************\\
 					//MANUAL INTAKE LIFTER
 
