@@ -63,8 +63,8 @@ public class ShootHighGoal extends Command {
 			 * STATE 1 - set shooter speed - set start time
 			 */
 			// turn on shooter wheels
-			Robot.shooter.enable();
-			Robot.shooter.setShooterPlain(.25 * RobotConstants.shootHighGoalRPM);
+			Robot.shooter.enableTalons();
+			Robot.shooter.setShooter(.25 * RobotConstants.shootHighGoalRPM);
 			Robot.drivetrain.setL(.2);
 			Robot.drivetrain.setR(.2);
 			startTime = timer.get(); // gets the starting time in seconds
@@ -77,7 +77,7 @@ public class ShootHighGoal extends Command {
 			/*
 			 * STATE 2 - get current time - wait 1 second
 			 */
-			Robot.shooter.setShooterPlain(.25 * RobotConstants.shootHighGoalRPM);
+			Robot.shooter.setShooter(.25 * RobotConstants.shootHighGoalRPM);
 			currentTime = timer.get(); // gets current time
 			// after a total 1 second, the state moves on
 			if ((currentTime - startTime) >= SHOOTER_SPEED_UP_1_TIME) {
@@ -140,7 +140,8 @@ public class ShootHighGoal extends Command {
 			 * STATE 4 - turn off shooter
 			 */
 			Robot.intakeRoller.setState(IntakeRoller.Direction.STOP);
-			Robot.shooter.setShooterPlain(0); // shooter is set to 0 rpm
+			Robot.shooter.disableTalons();
+			//Robot.shooter.setShooter(0); // shooter is set to 0 rpm
 			Robot.drivetrain.setL(0);
 			Robot.drivetrain.setR(0);
 			System.out.println("                                   STATE 4");
@@ -159,14 +160,15 @@ public class ShootHighGoal extends Command {
 
 	// Called once after isFinished returns true
 	protected void end() {
-		Robot.shooter.disable();
+		Robot.shooter.disableTalons();
 	}
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	protected void interrupted() {
 		System.out.println("INTERUPTED INTERUPTED INTERUPTED INTERUPTED INTERUPTED INTERUPTED INTERUPTED INTERUPTED");
-		Robot.shooter.setShooterPlain(0);
+		Robot.shooter.setShooter(0);
+		Robot.shooter.disableTalons();
 		Robot.intakeRoller.setState(IntakeRoller.Direction.STOP);
 	}
 }

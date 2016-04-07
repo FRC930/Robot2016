@@ -43,16 +43,16 @@ public class Shooter extends Subsystem {
 		super();
 		
 		shooter1.setInverted(true);
-		shooter1.changeControlMode(TalonControlMode.PercentVbus);
-		shooter2.changeControlMode(TalonControlMode.PercentVbus);
+		shooter1.changeControlMode(TalonControlMode.Speed);
+		shooter2.changeControlMode(TalonControlMode.Speed);
 		shooter1.enableBrakeMode(false);
 		shooter2.enableBrakeMode(false);
 
 		shooter1.setFeedbackDevice(FeedbackDevice.QuadEncoder);
 		shooter1.configEncoderCodesPerRev(RobotConstants.codesPerRev);
-//		shooter1.setPID(RobotConstants.shooterP,0,0);
-//		shooter1.enableControl();
-//		shooter2.changeControlMode(TalonControlMode.Follower);
+		shooter1.setPID(RobotConstants.shooterP,RobotConstants.shooterI,0);
+		shooter1.enableControl();
+		
 		
 		// bang bang controllers
 	//	cont1 = new BBSController(rpmSource, shooter1, 0, 1);
@@ -69,8 +69,8 @@ public class Shooter extends Subsystem {
 	}
 
 	public void setShooter(double rpm) {
-		shooter1.set(-1);
-		shooter2.set(-1);
+		shooter1.set(-rpm);
+		shooter2.set(-shooter1.get());
 		
 		SmartDashboard.putNumber("shooter speed", shooter1.getSpeed());
 		
@@ -100,6 +100,18 @@ public class Shooter extends Subsystem {
 //		 
 //		}
 		 	
+	}
+	
+	public void enableTalons()
+	{
+		shooter1.enable();
+		shooter2.enable();
+	}
+	
+	public void disableTalons()
+	{
+		shooter1.disable();
+		shooter2.disable();
 	}
 	
 	public void setShooterPlain(double percent)
