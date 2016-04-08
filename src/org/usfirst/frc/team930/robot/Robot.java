@@ -10,6 +10,11 @@ import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.Joystick.RumbleType;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.*;
 import org.usfirst.frc.team930.robot.commands.Auto2ndPositionCommandGroupShoot;
 import org.usfirst.frc.team930.robot.commands.Auto3rdPositionShootCommandGroup;
 import org.usfirst.frc.team930.robot.commands.Auto4thCommandGroup;
@@ -46,6 +51,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static HangerLifter hangerLifter;
 	public static HangerWinch hangerWinch;
+	
 	
 
 	static {
@@ -92,6 +98,9 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		OI.getInstance();
 		prefs = Preferences.getInstance();
+		
+		
+    
 
 		// CAMERA --------------------------------
 		try{
@@ -150,7 +159,7 @@ public class Robot extends IterativeRobot {
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
 
-
+		
 
 		intakeLiftPortTeleop = new IntakeLiftPort();
 		intakeLiftHighTeleop = new IntakeLiftHigh();
@@ -199,7 +208,7 @@ public class Robot extends IterativeRobot {
 		
 		SmartDashboard.putNumber("voltage 1",Robot.shooter.shooter1.get());
 		SmartDashboard.putNumber("voltage 2",Robot.shooter.shooter2.get());
-
+		
 
 		// When the left trigger is held down, the intake lifter moves to the portcullis angle
 		// When the right trigger is held down, the intake lifter moves down and the rollers move inward 

@@ -36,7 +36,7 @@ public class Shooter extends Subsystem {
 	
 	//Encoder rpmSource = new Encoder(RobotMap.Shooter1Port);
 	
-
+	public boolean commandRunning = false;
 	//BBSController cont1, cont2;
 
 	public Shooter() {
@@ -147,4 +147,5 @@ public class Shooter extends Subsystem {
 		//cont1.disable();
 		//cont2.disable();
 	}
+	
 }
