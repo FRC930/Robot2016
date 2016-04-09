@@ -15,6 +15,7 @@ import org.usfirst.frc.team930.robot.commands.MoveIntakeRollers;
 import org.usfirst.frc.team930.robot.commands.Pickup;
 import org.usfirst.frc.team930.robot.commands.RetractHanger;
 import org.usfirst.frc.team930.robot.commands.ShootHighGoal;
+import org.usfirst.frc.team930.robot.commands.ShooterData;
 import org.usfirst.frc.team930.robot.commands.LiftHanger;
 import org.usfirst.frc.team930.robot.commands.UnwindWinch;
 import org.usfirst.frc.team930.robot.commands.WinchHanger;
@@ -84,6 +85,8 @@ public class OI {
 		//driverButton1.whenPressed(new Pickup());
 		driverButton5.whenPressed(new ShootHighGoal());
 	driverButton6.whenPressed(new ShootHighGoal());
+	driverButton5.whenPressed(new ShooterData());
+	driverButton6.whenPressed(new ShooterData());
 		driverButton4.whileHeld(new GyroDriveStraight());
 		driverButton2.whileHeld(new GyroDriveRight());
 		driverButton3.whileHeld(new GyroDriveLeft());

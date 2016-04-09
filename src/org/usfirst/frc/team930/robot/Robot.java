@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.Joystick.RumbleType;
 
+<<<<<<< HEAD
 import org.usfirst.frc.team930.robot.commands.A2ChevalS;
 import org.usfirst.frc.team930.robot.commands.A2MoatS;
 import org.usfirst.frc.team930.robot.commands.A2RTerrainS;
@@ -30,6 +31,13 @@ import org.usfirst.frc.team930.robot.commands.A5MoatS;
 import org.usfirst.frc.team930.robot.commands.A5RTerrainS;
 import org.usfirst.frc.team930.robot.commands.A5RampS;
 import org.usfirst.frc.team930.robot.commands.A5RockwallS;
+=======
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.*;
+>>>>>>> origin/master
 import org.usfirst.frc.team930.robot.commands.Auto2ndPositionCommandGroupShoot;
 import org.usfirst.frc.team930.robot.commands.Auto3rdPositionShootCommandGroup;
 import org.usfirst.frc.team930.robot.commands.Auto4thCommandGroup;
@@ -66,6 +74,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static HangerLifter hangerLifter;
 	public static HangerWinch hangerWinch;
+	
 	
 
 	static {
@@ -112,6 +121,9 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		OI.getInstance();
 		prefs = Preferences.getInstance();
+		
+		
+    
 
 		// CAMERA --------------------------------
 		try{
@@ -190,7 +202,7 @@ public class Robot extends IterativeRobot {
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
 
-
+		
 
 		intakeLiftPortTeleop = new IntakeLiftPort();
 		intakeLiftHighTeleop = new IntakeLiftHigh();
@@ -213,6 +225,8 @@ public class Robot extends IterativeRobot {
 
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		
+		SmartDashboard.putNumber("DEVIN LOOK HERE YOU BUM!!!!!!", Robot.shooter.encoderPulses());
 		
 		// CAMERA --------------------------------
 		try{
@@ -237,9 +251,13 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("gyro",Robot.drivetrain.gyro.getAngle());
 		//System.out.println("Pot value: " + Robot.intakeLifter.getPOT());
 		
-		SmartDashboard.putNumber("voltage 1",Robot.shooter.shooter1.get());
-		SmartDashboard.putNumber("voltage 2",Robot.shooter.shooter2.get());
-
+		try {
+			SmartDashboard.putNumber("voltage 1",Robot.shooter.shooter1.get());
+			SmartDashboard.putNumber("voltage 2",Robot.shooter.shooter2.get());
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
 
 		// When the left trigger is held down, the intake lifter moves to the portcullis angle
 		// When the right trigger is held down, the intake lifter moves down and the rollers move inward 

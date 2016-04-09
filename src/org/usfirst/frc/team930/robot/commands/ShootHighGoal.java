@@ -1,5 +1,11 @@
 package org.usfirst.frc.team930.robot.commands;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Calendar;
+
 import org.usfirst.frc.team930.robot.OI;
 import org.usfirst.frc.team930.robot.Robot;
 import org.usfirst.frc.team930.robot.RobotConstants;
@@ -31,6 +37,7 @@ public class ShootHighGoal extends Command {
 	double currentTime; // the current time (seconds)
 	State state; // state of shooting, from 1 to 6
 	
+	
 	// TIMES -----------------------------------------------
 	public static final double SHOOTER_SPEED_UP_1_TIME = .1; 
 	public static final double SHOOTER_SPEED_UP_2_TIME = .1; 
@@ -51,6 +58,7 @@ public class ShootHighGoal extends Command {
 	protected void initialize() {
 		timer.start();
 		state = State.START; // initializes the state
+
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -63,8 +71,8 @@ public class ShootHighGoal extends Command {
 			 * STATE 1 - set shooter speed - set start time
 			 */
 			// turn on shooter wheels
-			Robot.shooter.enable();
-			Robot.shooter.setShooterPlain(.25 * RobotConstants.shootHighGoalRPM);
+			Robot.shooter.enableTalons();
+			Robot.shooter.setShooter(.25 * RobotConstants.shootHighGoalRPM);
 			Robot.drivetrain.setL(.2);
 			Robot.drivetrain.setR(.2);
 			startTime = timer.get(); // gets the starting time in seconds
@@ -77,7 +85,7 @@ public class ShootHighGoal extends Command {
 			/*
 			 * STATE 2 - get current time - wait 1 second
 			 */
-			Robot.shooter.setShooterPlain(.25 * RobotConstants.shootHighGoalRPM);
+			Robot.shooter.setShooter(.25 * RobotConstants.shootHighGoalRPM);
 			currentTime = timer.get(); // gets current time
 			// after a total 1 second, the state moves on
 			if ((currentTime - startTime) >= SHOOTER_SPEED_UP_1_TIME) {
@@ -85,6 +93,7 @@ public class ShootHighGoal extends Command {
 				state = State.SHOOTER_SPEED_UP_2_WAIT;
 			}
 			Robot.shooter.print();
+			
 			break;
 			
 		case SHOOTER_SPEED_UP_2_WAIT:
@@ -140,7 +149,8 @@ public class ShootHighGoal extends Command {
 			 * STATE 4 - turn off shooter
 			 */
 			Robot.intakeRoller.setState(IntakeRoller.Direction.STOP);
-			Robot.shooter.setShooterPlain(0); // shooter is set to 0 rpm
+			Robot.shooter.disableTalons();
+			//Robot.shooter.setShooter(0); // shooter is set to 0 rpm
 			Robot.drivetrain.setL(0);
 			Robot.drivetrain.setR(0);
 			System.out.println("                                   STATE 4");
@@ -159,14 +169,18 @@ public class ShootHighGoal extends Command {
 
 	// Called once after isFinished returns true
 	protected void end() {
-		Robot.shooter.disable();
+		Robot.shooter.disableTalons();
+		Robot.shooter.commandRunning=false;
 	}
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	protected void interrupted() {
 		System.out.println("INTERUPTED INTERUPTED INTERUPTED INTERUPTED INTERUPTED INTERUPTED INTERUPTED INTERUPTED");
-		Robot.shooter.setShooterPlain(0);
+		Robot.shooter.setShooter(0);
+		Robot.shooter.disableTalons();
 		Robot.intakeRoller.setState(IntakeRoller.Direction.STOP);
+		Robot.shooter.commandRunning=false;
+
 	}
 }
