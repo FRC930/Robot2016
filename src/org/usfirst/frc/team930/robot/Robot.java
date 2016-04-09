@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.Joystick.RumbleType;
 
-<<<<<<< HEAD
+
 import org.usfirst.frc.team930.robot.commands.A2ChevalS;
 import org.usfirst.frc.team930.robot.commands.A2MoatS;
 import org.usfirst.frc.team930.robot.commands.A2RTerrainS;
@@ -31,13 +31,13 @@ import org.usfirst.frc.team930.robot.commands.A5MoatS;
 import org.usfirst.frc.team930.robot.commands.A5RTerrainS;
 import org.usfirst.frc.team930.robot.commands.A5RampS;
 import org.usfirst.frc.team930.robot.commands.A5RockwallS;
-=======
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
->>>>>>> origin/master
+
 import org.usfirst.frc.team930.robot.commands.Auto2ndPositionCommandGroupShoot;
 import org.usfirst.frc.team930.robot.commands.Auto3rdPositionShootCommandGroup;
 import org.usfirst.frc.team930.robot.commands.Auto4thCommandGroup;
