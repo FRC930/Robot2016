@@ -44,12 +44,17 @@ public class Shooter extends Subsystem {
 		
 		shooter1.setInverted(true);
 		shooter1.changeControlMode(TalonControlMode.Speed);
+		//shooter2.changeControlMode(TalonControlMode.Follower);
+		
 		shooter2.changeControlMode(TalonControlMode.Speed);
+
+		
 		shooter1.enableBrakeMode(false);
 		shooter2.enableBrakeMode(false);
 
-		shooter1.setFeedbackDevice(FeedbackDevice.QuadEncoder);
-		shooter1.configEncoderCodesPerRev(RobotConstants.codesPerRev);
+		shooter1.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Absolute);
+		//shooter1.configEncoderCodesPerRev(RobotConstants.codesPerRev);
+		
 		shooter1.setPID(RobotConstants.shooterP,RobotConstants.shooterI,0);
 		shooter1.enableControl();
 		
@@ -70,12 +75,19 @@ public class Shooter extends Subsystem {
 
 	public void setShooter(double rpm) {
 		shooter1.set(-rpm);
-		shooter2.set(-shooter1.get());
+		shooter2.set(-1*shooter1.get());
 		
-		SmartDashboard.putNumber("shooter speed", shooter1.getSpeed());
+		//shooter1.set(rpm);
+		//shooter2.set(-1);
+	
+		try {
+			SmartDashboard.putNumber("shooter speed", shooter1.getSpeed());
+			System.out.println("SHOOTER 1 " + shooter1.get());
+			System.out.println("SHOOTER 2 " + shooter2.get());
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 		
-		System.out.println("SHOOTER 1 " + shooter1.get());
-		System.out.println("SHOOTER 2 " + shooter2.get());
 		
 
 	//	shooter1.getEncVelocity();
@@ -100,6 +112,12 @@ public class Shooter extends Subsystem {
 //		 
 //		}
 		 	
+	}
+	
+	public double encoderPulses()
+	{
+		return shooter1.getEncPosition();
+		
 	}
 	
 	public void enableTalons()

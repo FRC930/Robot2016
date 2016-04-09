@@ -183,6 +183,8 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
 		
+		SmartDashboard.putNumber("DEVIN LOOK HERE YOU BUM!!!!!!", Robot.shooter.encoderPulses());
+		
 		// CAMERA --------------------------------
 		try{
 			NIVision.IMAQdxGrab(session, frame, 1);
@@ -206,8 +208,12 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("gyro",Robot.drivetrain.gyro.getAngle());
 		//System.out.println("Pot value: " + Robot.intakeLifter.getPOT());
 		
-		SmartDashboard.putNumber("voltage 1",Robot.shooter.shooter1.get());
-		SmartDashboard.putNumber("voltage 2",Robot.shooter.shooter2.get());
+		try {
+			SmartDashboard.putNumber("voltage 1",Robot.shooter.shooter1.get());
+			SmartDashboard.putNumber("voltage 2",Robot.shooter.shooter2.get());
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 		
 
 		// When the left trigger is held down, the intake lifter moves to the portcullis angle

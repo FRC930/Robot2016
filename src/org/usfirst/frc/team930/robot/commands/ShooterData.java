@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.Calendar;
 
 import org.usfirst.frc.team930.robot.Robot;
+import org.usfirst.frc.team930.robot.RobotConstants;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
@@ -35,7 +36,8 @@ public class ShooterData extends Command {
     	Robot.shooter.commandRunning=true;
 		try {
     		//f = new File("/home/lvuser/Output"+cal.get(Calendar.DAY_OF_MONTH)+cal.get(Calendar.MONTH)+cal.get(Calendar.YEAR)+cal.get(Calendar.HOUR_OF_DAY)+cal.get(Calendar.MINUTE)+cal.get(Calendar.SECOND)+".csv");
-    		f = new File("/home/lvuser/Output"+System.currentTimeMillis()+".csv");
+    	    f = new File("/home/lvuser/Output"+ Robot.shooter.shooter1.getP() + " " + Robot.shooter.shooter1.getI() + " " + RobotConstants.shootHighGoalRPM + " " + System.currentTimeMillis()+".csv");
+			//f = new File("/media/sda1"+System.currentTimeMillis()+".csv");
 
 			if(!f.exists()){
     			f.createNewFile();
@@ -46,14 +48,14 @@ public class ShooterData extends Command {
 			e.printStackTrace();
 		}
     	bw = new BufferedWriter(fw);
+    	timer.start();
+    	startTime = timer.get();
     	
     	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	timer.start();
-    	startTime = timer.get();
     	try {
 			bw.write(System.currentTimeMillis() + ", "+(int)Robot.shooter.shooter1.get()+"\n");
     		
