@@ -1,15 +1,16 @@
 package org.usfirst.frc.team930.robot.commands;
 
 import org.usfirst.frc.team930.robot.Robot;
+import org.usfirst.frc.team930.robot.RobotConstants;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class Auto2ndPositionCommandGroupShoot extends CommandGroup {
+public class A2MoatS extends CommandGroup {
     
-    public  Auto2ndPositionCommandGroupShoot() {
+    public  A2MoatS() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -29,10 +30,7 @@ public class Auto2ndPositionCommandGroupShoot extends CommandGroup {
     	requires(Robot.drivetrain);
 		requires(Robot.intakeRoller);
 		requires(Robot.intakeLifter);
-		//System.out.println("Starting Command Group");
-    	addSequential(new Auto2ndPositionShoot());
-    	//System.out.println("Done with auto low bar, starting high goal");
-    	addSequential(new ShootHighGoal());
-    	//System.out.println("Done with all commands");
+		addSequential(new Auto1TurnDrive(RobotConstants.auto2MoatdriveTime1, RobotConstants.auto2MoatturnAngle, RobotConstants.auto2MoatturnTime, RobotConstants.auto2MoatdriveTime2, RobotConstants.auto2MoatdriveSpeed));
+		addSequential(new ShootHighGoal());
     }
 }

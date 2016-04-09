@@ -11,12 +11,15 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class AutoDrivePort extends Command {
+	
 	final int START = 0;
 	final int DRIVE_1 = 1;
 	final int LOWER_INTAKE_AND_DRIVE = 2;
 	final int TURNING_OFF = 3;
 	final int END = 4;
+	
 	int state = 0;
+	
 	Timer timer = new Timer();
 	double startTime; // time the command starts running (seconds)
 	double currentTime; // the current time (seconds)

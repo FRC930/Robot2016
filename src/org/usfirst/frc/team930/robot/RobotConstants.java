@@ -118,4 +118,162 @@ public static double auto3rdPositionShootDrivespeed = 0.75;
 
 public static double auto4thPositionShootDrivespeed = 0.5;
 
+//*****************************************************************************\\
+                    //One Turn
+
+//2nd Position
+public static double auto2RockwalldriveTime1 = 4;   //Rockwall
+public static double auto2RockwallturnAngle = 60;
+public static double auto2RockwallturnTime = 1;
+public static double auto2RockwalldriveTime2 = 3;
+public static double auto2RockwalldriveSpeed = 1;
+
+public static double auto2MoatdriveTime1 = 4;       //Moat
+public static double auto2MoatturnAngle = 60;
+public static double auto2MoatturnTime = 1;
+public static double auto2MoatdriveTime2 = 3;
+public static double auto2MoatdriveSpeed = 1;
+
+public static double auto2RTerraindriveTime1 = 4;    //RTerrain
+public static double auto2RTerrainturnAngle = 60;
+public static double auto2RTerrainturnTime = 1;
+public static double auto2RTerraindriveTime2 = 3;
+public static double auto2RTerraindriveSpeed = 1;
+
+public static double auto2RampdriveTime1 = 4;       //Ramparts
+public static double auto2RampturnAngle = 60;
+public static double auto2RampturnTime = 1;
+public static double auto2RampdriveTime2 = 3;
+public static double auto2RampdriveSpeed = 1;
+
+public static double auto2ChevaldriveTime1 = 4;       //Cheval
+public static double auto2ChevallowerDriveTime = 4;
+public static double auto2ChevalraiseTime = 1;
+public static double auto2ChevalturnAngle = 60;
+public static double auto2ChevalturnTime = 1;
+public static double auto2ChevaldriveTime2 = 3;
+public static double auto2ChevaldriveSpeed = 1;
+
+//5th Position
+public static double auto5RockwalldriveTime1 = 4;    //Rockwall
+public static double auto5RockwallturnAngle = -60;
+public static double auto5RockwallturnTime = 1;
+public static double auto5RockwalldriveTime2 = 3;
+public static double auto5RockwalldriveSpeed = 1;
+
+public static double auto5MoatdriveTime1 = 4;      //Moat
+public static double auto5MoatturnAngle = -60; 
+public static double auto5MoatturnTime = 1;
+public static double auto5MoatdriveTime2 = 3;
+public static double auto5MoatdriveSpeed = 1;
+
+public static double auto5RTerraindriveTime1 = 4;   //RTerrain
+public static double auto5RTerrainturnAngle = -60;
+public static double auto5RTerrainturnTime = 1;
+public static double auto5RTerraindriveTime2 = 3;
+public static double auto5RTerraindriveSpeed = 1;
+
+public static double auto5RampdriveTime1 = 4;    //Ramparts
+public static double auto5RampturnAngle = -60;
+public static double auto5RampturnTime = 1;
+public static double auto5RampdriveTime2 = 3;
+public static double auto5RampdriveSpeed = 1;
+
+public static double auto5ChevaldriveTime1 = 4;       //Cheval
+public static double auto5ChevallowerDriveTime = 4;
+public static double auto5ChevalraiseTime = 1;
+public static double auto5ChevalturnAngle = 60;
+public static double auto5ChevalturnTime = 1;
+public static double auto5ChevaldriveTime2 = 3;
+public static double auto5ChevaldriveSpeed = 1;
+
+//*****************************************************************************\\
+                    //Two Turn
+
+//3rd Position
+public static double auto3RockwalldriveTime1 = 4;    //Rockwall
+public static double auto3RockwallturnAngle1 = -60;
+public static double auto3RockwallturnTime1 = 1;
+public static double auto3RockwalldriveTime2 = 3;
+public static double auto3RockwallturnTime2 = 1;
+public static double auto3RockwalldriveTime3 = 3;
+public static double auto3RockwalldriveSpeed = 1;
+
+public static double auto3MoatdriveTime1 = 4;      //Moat
+public static double auto3MoatturnAngle1 = -60;
+public static double auto3MoatturnTime1 = 1;
+public static double auto3MoatdriveTime2 = 3;
+public static double auto3MoatturnTime2 = 1;
+public static double auto3MoatdriveTime3 = 3;
+public static double auto3MoatdriveSpeed = 1;
+
+public static double auto3RTerraindriveTime1 = 4;      //RTerrain
+public static double auto3RTerrainturnAngle1 = -60;
+public static double auto3RTerrainturnTime1 = 1;
+public static double auto3RTerraindriveTime2 = 3;
+public static double auto3RTerrainturnTime2 = 1;
+public static double auto3RTerraindriveTime3 = 3;
+public static double auto3RTerraindriveSpeed = 1;
+
+public static double auto3RampdriveTime1 = 4;       //Ramparts
+public static double auto3RampturnAngle1 = -60;
+public static double auto3RampturnTime1 = 1;
+public static double auto3RampdriveTime2 = 3;
+public static double auto3RampturnTime2 = 1;
+public static double auto3RampdriveTime3 = 3;
+public static double auto3RampdriveSpeed = 1;
+
+public static double auto3ChevaldriveTime1 = 4;       //Cheval
+public static double auto3ChevallowerDriveTime = 4;
+public static double auto3ChevalraiseTime = 1;
+public static double auto3ChevalturnAngle1 = -60;
+public static double auto3ChevalturnTime1 = 1;
+public static double auto3ChevaldriveTime2 = 3;
+public static double auto3ChevalturnTime2 = 1;
+public static double auto3ChevaldriveTime3 = 3;
+public static double auto3ChevaldriveSpeed = 1;
+
+//4th Position
+public static double auto4RockwalldriveTime1 = 4;    //Rockwall
+public static double auto4RockwallturnAngle1 = -60;
+public static double auto4RockwallturnTime1 = 1;
+public static double auto4RockwalldriveTime2 = 3;
+public static double auto4RockwallturnTime2 = 1;
+public static double auto4RockwalldriveTime3 = 3;
+public static double auto4RockwalldriveSpeed = 1;
+
+public static double auto4MoatdriveTime1 = 4;      //Moat
+public static double auto4MoatturnAngle1 = -60;
+public static double auto4MoatturnTime1 = 1;
+public static double auto4MoatdriveTime2 = 3;
+public static double auto4MoatturnTime2 = 1;
+public static double auto4MoatdriveTime3 = 3;
+public static double auto4MoatdriveSpeed = 1;
+
+public static double auto4RTerraindriveTime1 = 4;      //RTerrain
+public static double auto4RTerrainturnAngle1 = -60;
+public static double auto4RTerrainturnTime1 = 1;
+public static double auto4RTerraindriveTime2 = 3;
+public static double auto4RTerrainturnTime2 = 1;
+public static double auto4RTerraindriveTime3 = 3;
+public static double auto4RTerraindriveSpeed = 1;
+
+public static double auto4RampdriveTime1 = 4;       //Ramparts
+public static double auto4RampturnAngle1 = -60;
+public static double auto4RampturnTime1 = 1;
+public static double auto4RampdriveTime2 = 3;
+public static double auto4RampturnTime2 = 1;
+public static double auto4RampdriveTime3 = 3;
+public static double auto4RampdriveSpeed = 1;
+
+public static double auto4ChevaldriveTime1 = 4;       //Cheval
+public static double auto4ChevallowerDriveTime = 4;
+public static double auto4ChevalraiseTime = 1;
+public static double auto4ChevalturnAngle1 = -60;
+public static double auto4ChevalturnTime1 = 1;
+public static double auto4ChevaldriveTime2 = 3;
+public static double auto4ChevalturnTime2 = 1;
+public static double auto4ChevaldriveTime3 = 3;
+public static double auto4ChevaldriveSpeed = 1;
+
 }
