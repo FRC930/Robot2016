@@ -42,7 +42,7 @@ public class ShootHighGoal extends Command {
 	public static final double SHOOTER_SPEED_UP_1_TIME = .1; 
 	public static final double SHOOTER_SPEED_UP_2_TIME = 1; 
 	public static final double SHOOTER_SPEED_UP_3_TIME = .1; 
-	public static final double SHOOTER_SPEED_UP_4_TIME = 1; 
+	public static final double SHOOTER_SPEED_UP_4_TIME = 4; // used to be 1 or 2
 	public static final double INTAKE_FORWARD_TIME = 2; 
 
 	public ShootHighGoal() {
@@ -76,7 +76,7 @@ public class ShootHighGoal extends Command {
 			Robot.drivetrain.setL(.2);
 			Robot.drivetrain.setR(.2);
 			startTime = timer.get(); // gets the starting time in seconds
-			state = State.SHOOTER_SPEED_UP_2_WAIT; // move onto the next state
+			state = State.SHOOTER_SPEED_UP_4_WAIT; // move onto the next state
 			Robot.shooter.print();
 			
 			break;

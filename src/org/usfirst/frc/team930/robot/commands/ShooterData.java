@@ -64,7 +64,7 @@ public class ShooterData extends Command {
 			e.printStackTrace();
 		}
     	currentTime = timer.get();
-    	if(currentTime >= 3.5){
+    	if(currentTime >= 5.5){
     		END = true;
     	}
     }

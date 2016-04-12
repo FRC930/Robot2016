@@ -46,7 +46,7 @@ public static double intakeLifterPotLowerThreshold = 2;
 //*****************************************************************************\\
 					//INTAKE ROLLER
 
-public static double intakeRollerforward = .5;  //ROLLER SPEEDS
+public static double intakeRollerforward = .45;  //ROLLER SPEEDS
 public static double intakeRollerbackward = -1;
 public static double intakeRollershooterPull = 1;
 
@@ -55,9 +55,9 @@ public static boolean intakeRollerphotoEye = true; //ROLLER PHOTEYE
 //*****************************************************************************\\
 					//SHOOT HIGH GOAL
 public static double shootRatio = .916;
-public static double shootHighGoalRPM = 4000; //old 3500 ; // old was .6 ------ 3500 / shootRatio; //no PID = .6
-public static double shooterP = 0.065;
-public static double shooterI = 0.0005;
+public static double shootHighGoalRPM = 5000; //old 3500 ; // old was .6 ------ 3500 / shootRatio; //no PID = .6
+public static double shooterP = 0.12;
+public static double shooterI = 0.0001;
 public static double shooterMaxSpeed = 6000;
 
 //*****************************************************************************\\
