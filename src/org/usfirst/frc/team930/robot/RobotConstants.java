@@ -155,6 +155,14 @@ public static double auto2ChevalturnTime = 1;
 public static double auto2ChevaldriveTime2 = 3;
 public static double auto2ChevaldriveSpeed = 1;
 
+public static double auto2PortdriveTime1 = 4;       //Port
+public static double auto2PortlowerDriveTime = 4;
+public static double auto2PortraiseTime = 1;
+public static double auto2PortturnAngle = 60;
+public static double auto2PortturnTime = 1;
+public static double auto2PortdriveTime2 = 3;
+public static double auto2PortdriveSpeed = 1;
+
 //5th Position
 public static double auto5RockwalldriveTime1 = 4;    //Rockwall
 public static double auto5RockwallturnAngle = -60;
@@ -187,6 +195,14 @@ public static double auto5ChevalturnAngle = 60;
 public static double auto5ChevalturnTime = 1;
 public static double auto5ChevaldriveTime2 = 3;
 public static double auto5ChevaldriveSpeed = 1;
+
+public static double auto5PortdriveTime1 = 4;       //Port
+public static double auto5PortlowerDriveTime = 4;
+public static double auto5PortraiseTime = 1;
+public static double auto5PortturnAngle = 60;
+public static double auto5PortturnTime = 1;
+public static double auto5PortdriveTime2 = 3;
+public static double auto5PortdriveSpeed = 1;
 
 //*****************************************************************************\\
                     //Two Turn
@@ -234,6 +250,16 @@ public static double auto3ChevalturnTime2 = 1;
 public static double auto3ChevaldriveTime3 = 3;
 public static double auto3ChevaldriveSpeed = 1;
 
+public static double auto3PortdriveTime1 = 4;       //Port
+public static double auto3PortlowerDriveTime = 4;
+public static double auto3PortraiseTime = 1;
+public static double auto3PortturnAngle1 = -60;
+public static double auto3PortturnTime1 = 1;
+public static double auto3PortdriveTime2 = 3;
+public static double auto3PortturnTime2 = 1;
+public static double auto3PortdriveTime3 = 3;
+public static double auto3PortdriveSpeed = 1;
+
 //4th Position
 public static double auto4RockwalldriveTime1 = 4;    //Rockwall
 public static double auto4RockwallturnAngle1 = -60;
@@ -276,5 +302,15 @@ public static double auto4ChevaldriveTime2 = 3;
 public static double auto4ChevalturnTime2 = 1;
 public static double auto4ChevaldriveTime3 = 3;
 public static double auto4ChevaldriveSpeed = 1;
+
+public static double auto4PortdriveTime1 = 4;       //Port
+public static double auto4PortlowerDriveTime = 4;
+public static double auto4PortraiseTime = 1;
+public static double auto4PortturnAngle1 = -60;
+public static double auto4PortturnTime1 = 1;
+public static double auto4PortdriveTime2 = 3;
+public static double auto4PortturnTime2 = 1;
+public static double auto4PortdriveTime3 = 3;
+public static double auto4PortdriveSpeed = 1;
 
 }
