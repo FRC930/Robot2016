@@ -163,6 +163,8 @@ public static double auto2PortturnTime = 1;
 public static double auto2PortdriveTime2 = 3;
 public static double auto2PortdriveSpeed = 1;
 
+//_____________________________________________________________________________\\
+
 //5th Position
 public static double auto5RockwalldriveTime1 = 4;    //Rockwall
 public static double auto5RockwallturnAngle = -60;
@@ -260,6 +262,8 @@ public static double auto3PortturnTime2 = 1;
 public static double auto3PortdriveTime3 = 3;
 public static double auto3PortdriveSpeed = 1;
 
+//_____________________________________________________________________________\\
+
 //4th Position
 public static double auto4RockwalldriveTime1 = 4;    //Rockwall
 public static double auto4RockwallturnAngle1 = -60;
@@ -312,5 +316,6 @@ public static double auto4PortdriveTime2 = 3;
 public static double auto4PortturnTime2 = 1;
 public static double auto4PortdriveTime3 = 3;
 public static double auto4PortdriveSpeed = 1;
+//________________________________________________________________________________________\\
 
 }
