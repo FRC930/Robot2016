@@ -52,7 +52,8 @@ public class MoveIntakeRollers extends Command {
 		if (command.equals(IntakeRoller.Direction.BACKWARD)) {
 			return false;//this makes it so if you are pushing out a ball 
 			//the return will not listen to the light sensor
-		} else
+		} 
+		else
 			return Robot.intakeRoller.seeBall();
 		//will stop the rollers if a ball is in the rollers
 	}
