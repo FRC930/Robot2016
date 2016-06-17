@@ -233,8 +233,8 @@ public class Robot extends IterativeRobot {
 
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		
-		SmartDashboard.putNumber("DEVIN LOOK HERE YOU BUM!!!!!!", Robot.shooter.encoderPulses());
+		//UNCOMMENT
+		//SmartDashboard.putNumber("DEVIN LOOK HERE YOU BUM!!!!!!", Robot.shooter.encoderPulses());
 		
 		// CAMERA --------------------------------
 		try{

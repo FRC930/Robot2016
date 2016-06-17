@@ -23,12 +23,14 @@ public class Shooter extends Subsystem {
 
 	double Error = 0;
 	double tempSpeed = 0;
-
-//	public Victor shooter1 = new Victor(RobotMap.Shooter1Port);
-//	public Victor shooter2 = new Victor(RobotMap.Shooter2Port);
 	
-	public CANTalon shooter1 = new CANTalon(RobotMap.Shooter1Port);
-	public CANTalon shooter2 = new CANTalon(RobotMap.Shooter2Port);
+	//Victor for Blue, CAN for Silver
+
+	public Victor shooter1 = new Victor(RobotMap.Shooter1Port);
+	public Victor shooter2 = new Victor(RobotMap.Shooter2Port);
+	
+//	public CANTalon shooter1 = new CANTalon(RobotMap.Shooter1Port);
+//	public CANTalon shooter2 = new CANTalon(RobotMap.Shooter2Port);
 
 	DigitalInput lightSensorShooter = new DigitalInput(RobotMap.lightSensorShooterPort); 
 
@@ -42,7 +44,7 @@ public class Shooter extends Subsystem {
 	public Shooter() {
 		super();
 		
-		shooter1.setInverted(true);
+		/*shooter1.setInverted(true);
 
 		shooter1.changeControlMode(TalonControlMode.Speed);
 		//shooter2.changeControlMode(TalonControlMode.Follower);
@@ -59,7 +61,7 @@ public class Shooter extends Subsystem {
 		
 		
 		shooter1.setPID(RobotConstants.shooterP,RobotConstants.shooterI,0);
-		shooter1.enableControl();
+		shooter1.enableControl();*/
 		
 		
 		
@@ -78,11 +80,11 @@ public class Shooter extends Subsystem {
 	}
 
 	public void setShooter(double rpm) {
-		shooter1.set(-rpm);
-		shooter2.set(6);
+		//shooter1.set(-rpm);
+		//shooter2.set(6);
 		
-		//shooter1.set(-1);
-		//shooter2.set(-1);
+		shooter1.set(-1);
+		shooter2.set(1);
 	
 		try {
 			SmartDashboard.putNumber("shooter speed", shooter1.getSpeed());
@@ -119,16 +121,16 @@ public class Shooter extends Subsystem {
 		 	
 	}
 	
-	public double encoderPulses()
+	/*public double encoderPulses()
 	{
-		return shooter1.getEncPosition();
+		//return shooter1.getEncPosition();
 		
-	}
+	}*/
 	
 	public void enableTalons()
 	{
-		shooter1.enable();
-		shooter2.enable();
+		//shooter1.enable();
+		//shooter2.enable();
 	}
 	
 	public void disableTalons()

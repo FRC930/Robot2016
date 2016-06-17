@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class ShooterData extends Command {
+/*public class ShooterData extends Command {
 	File f;
 	BufferedWriter bw;
 	FileWriter fw;
@@ -35,8 +35,10 @@ public class ShooterData extends Command {
     	END = false;
     	Robot.shooter.commandRunning=true;
 		try {
-    		//f = new File("/home/lvuser/Output"+cal.get(Calendar.DAY_OF_MONTH)+cal.get(Calendar.MONTH)+cal.get(Calendar.YEAR)+cal.get(Calendar.HOUR_OF_DAY)+cal.get(Calendar.MINUTE)+cal.get(Calendar.SECOND)+".csv");
-    	    f = new File("/home/lvuser/Output"+ Robot.shooter.shooter1.getP() + " " + Robot.shooter.shooter1.getI() + " " + RobotConstants.shootHighGoalRPM + " " + System.currentTimeMillis()+".csv");
+    		
+			//f = new File("/home/lvuser/Output"+cal.get(Calendar.DAY_OF_MONTH)+cal.get(Calendar.MONTH)+cal.get(Calendar.YEAR)+cal.get(Calendar.HOUR_OF_DAY)+cal.get(Calendar.MINUTE)+cal.get(Calendar.SECOND)+".csv");
+    	    //UNCOMMENT BELOW!!!!!!!!!!!!!!!!!!
+			f = new File("/home/lvuser/Output"+ Robot.shooter.shooter1.getP() + " " + Robot.shooter.shooter1.getI() + " " + RobotConstants.shootHighGoalRPM + " " + System.currentTimeMillis()+".csv");
 			//f = new File("/media/sda1"+System.currentTimeMillis()+".csv");
 
 			if(!f.exists()){
@@ -101,3 +103,4 @@ public class ShooterData extends Command {
 		}
     }
 }
+*/
