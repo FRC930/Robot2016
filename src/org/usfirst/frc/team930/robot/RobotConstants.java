@@ -46,7 +46,7 @@ public static double intakeLifterPotLowerThreshold = 2;
 //*****************************************************************************\\
 					//INTAKE ROLLER
 
-public static double intakeRollerforward = .45;  //ROLLER SPEEDS
+public static double intakeRollerforward = .6;  //ROLLER SPEEDS
 public static double intakeRollerbackward = -1;
 public static double intakeRollershooterPull = 1;
 
