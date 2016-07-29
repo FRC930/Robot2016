@@ -119,6 +119,7 @@ public class ShootHighGoal extends Command {
 			break;
 			
 		case SHOOTER_SPEED_UP_4_WAIT:
+			//Robot.shooter.enableTalons();
 			currentTime = timer.get(); // gets current time
 			Robot.shooter.setShooter(RobotConstants.shootHighGoalRPM);
 			// after a total 1 second, the state moves on

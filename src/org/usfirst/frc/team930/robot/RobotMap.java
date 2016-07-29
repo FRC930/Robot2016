@@ -11,8 +11,8 @@ public class RobotMap {
 	
 	public static int drivetrainGyro = 0;
 	
-	public static int Shooter1Port = 0; //6
-	public static int Shooter2Port = 1; //7
+	public static int Shooter1Port = 6; //0
+	public static int Shooter2Port = 7; //1
 	public static int IntakeRollersPort = 3;
 	
 	public static int IntakeLiftPort = 5;
