@@ -48,7 +48,7 @@ public class IntakeRoller extends Subsystem {
 		//sets the first direction to stop
 		state = Direction.STOP;
 		//sets the motor to do the opposite of the value I give it
-		intakeRoller.setInverted(true);
+		intakeRoller.setInverted(false);
 	}																																																																																																																																																														
 		
 	
